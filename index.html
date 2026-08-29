@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>মুক্তার থাই এস.এস গ্যালারী এন্ড গ্লাস হাউজ  -  ক্যালকুলেটর</title>
+  <link rel="icon" href="images/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="pane-bg"></div>
+  <div class="wrap">
+    <header class="top">
+      <img class="logo" src="images/logo.svg" alt="গ্লাস হাউজ">
+      <div>
+        <h1>মুক্তার থাই এস.এস গ্যালারী এন্ড গ্লাস হাউজ</h1>
+        <p>থাই কাঁচ জানালা ও দরজা ক্যালকুলেটর  -  মাপ দেখে ভিজুয়াল সহ দাম হিসাব করুন</p>
+      </div>
+    </header>
+
+    <div class="tabs">
+      <button type="button" class="tab-btn active" data-tab="calc">ক্যালকুলেটর</button>
+      <button type="button" class="tab-btn" data-tab="cutting">মিস্ত্রির কাটিং লিস্ট</button>
+      <button type="button" class="tab-btn" data-tab="rates">রেট সেটিংস</button>
+    </div>
+
+    <div id="tab-calc">
+      <div class="calc-layout">
+        <div class="card">
+          <h2>নতুন জানালা / দরজা যোগ করুন <span class="badge">Add Item</span></h2>
+          <div class="type-section">
+            <h3>জানালার ধরন</h3>
+            <div class="type-grid" id="type-windows"></div>
+          </div>
+          <div class="type-section">
+            <h3>দরজার ধরন</h3>
+            <div class="type-grid doors" id="type-doors"></div>
+          </div>
+          <div class="grid3">
+            <div class="field"><label for="in-h-ft">উচ্চতা (ফুট)</label><input type="number" min="0" step="0.1" id="in-h-ft" placeholder="৫"></div>
+            <div class="field"><label for="in-h-in">উচ্চতা (ইঞ্চি)</label><input type="number" min="0" max="11.9" step="0.1" id="in-h-in" placeholder="৬"></div>
+            <div class="field"><label for="in-qty">পরিমাণ (সংখ্যা)</label><input type="number" min="1" step="1" id="in-qty" value="1"></div>
+          </div>
+          <div class="grid3">
+            <div class="field"><label for="in-w-ft">প্রস্থ (ফুট)</label><input type="number" min="0" step="0.1" id="in-w-ft" placeholder="৪"></div>
+            <div class="field"><label for="in-w-in">প্রস্থ (ইঞ্চি)</label><input type="number" min="0" max="11.9" step="0.1" id="in-w-in" placeholder="0"></div>
+            <div class="field"><label for="in-thickness">থিকনেস (মিমি)</label><input type="number" min="0" step="0.5" id="in-thickness" placeholder="৫"></div>
+          </div>
+          <div class="grid2">
+            <div class="field"><label for="sel-company">কাঁচের কোম্পানি</label><select id="sel-company"></select></div>
+            <div class="field">
+              <label>কাঁচের রং</label>
+              <div class="color-grid" id="color-grid"></div>
+            </div>
+          </div>
+          <div class="grid2">
+            <div class="field"><label for="sel-lock">লক এর ধরন</label><select id="sel-lock"></select></div>
+            <div class="field">
+              <label>মশারি নেট</label>
+              <div class="choice-row">
+                <button type="button" class="choice-btn active" data-net="0" id="btn-net-no">নেই</button>
+                <button type="button" class="choice-btn" data-net="1" id="btn-net-yes">আছে</button>
+              </div>
+            </div>
+          </div>
+          <div class="grid2">
+            <div class="field"><label for="in-frame-rate">ফ্রেম রেট (৳/বর্গফুট)  -  ঐচ্ছিক</label><input type="number" min="0" step="1" id="in-frame-rate" placeholder="0"></div>
+            <div class="field"><label for="in-net-rate">নেট চার্জ (৳)</label><input type="number" min="0" step="1" id="in-net-rate" placeholder="0"></div>
+          </div>
+          <div class="field">
+            <label for="in-extra">ইনস্টলেশন / অন্যান্য চার্জ (৳)</label>
+            <input type="number" min="0" step="1" id="in-extra" placeholder="0">
+          </div>
+          <div class="err" id="err-msg">উচ্চতা ও প্রস্থ সঠিকভাবে দিন।</div>
+          <button type="button" class="primary" id="btn-add">+ যোগ করুন ও হিসাব করুন</button>
+        </div>
+
+        <aside class="card preview-card">
+          <h2>ভিজুয়াল প্রিভিউ <span class="badge">Live</span></h2>
+          <div class="preview-stage" id="live-preview"></div>
+          <div class="preview-meta">
+            <div><span>ধরন</span><strong id="preview-kind">জানালা</strong></div>
+            <div><span>মডেল</span><strong id="preview-type">ফিক্সড</strong></div>
+            <div><span>মাপ</span><strong id="preview-size">মাপ লিখুন</strong></div>
+          </div>
+          <div class="preview-meta">
+            <div><span>রং</span><strong id="preview-color">স্বচ্ছ</strong></div>
+            <div><span>লক</span><strong id="preview-lock">লক নেই</strong></div>
+            <div><span>নেট</span><strong id="preview-net">নেই</strong></div>
+          </div>
+          <p class="preview-caption">উচ্চতা ও প্রস্থ লিখলে ছবির অনুপাত বদলাবে  -  কাস্টমার সহজে বুঝতে পারবেন।</p>
+        </aside>
+      </div>
+
+      <div class="card" id="list-card">
+        <h2>জানালা / দরজার তালিকা</h2>
+        <div id="item-list"></div>
+        <div class="empty-note" id="empty-note">এখনও কোনো জানালা বা দরজা যোগ করা হয়নি।</div>
+      </div>
+
+      <div class="summary hidden" id="summary-card">
+        <div class="summary-line"><span>মোট বর্গফুট</span><span id="sum-sqft">0</span></div>
+        <div class="summary-line"><span>কাঁচের দাম</span><span id="sum-glass">৳0</span></div>
+        <div class="summary-line"><span>লকের দাম</span><span id="sum-lock">৳0</span></div>
+        <div class="summary-line"><span>ফ্রেম এর দাম</span><span id="sum-frame">৳0</span></div>
+        <div class="summary-line"><span>মশারি নেট</span><span id="sum-net">৳0</span></div>
+        <div class="summary-line"><span>ইনস্টলেশন / অন্যান্য</span><span id="sum-extra">৳0</span></div>
+        <div class="summary-line grand"><span>সর্বমোট</span><span id="sum-total">৳0</span></div>
+        <div class="actions-row">
+          <button type="button" class="secondary" id="btn-clear">তালিকা খালি করুন</button>
+          <button type="button" class="secondary" id="btn-print">প্রিন্ট / PDF</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="tab-cutting" class="hidden">
+      <div class="card">
+        <h2>মিস্ত্রির জন্য কাটিং লিস্ট <span class="badge">Cutting List</span></h2>
+        <p class="hint">প্রতিটি জানালা/দরজার জন্য কোনো পার্টস কতটুকু মাপে কাটতে হবে তার তালিকা।</p>
+        <p class="hint warn">একটা সাধারণ হিসাব  -  শাটার এর ওভারল্যাপ, ট্র্যাক গভীরতা বা প্রোফাইল অনুযায়ী প্রকৃত মাপ কিছুটা ভিন্ন হতে পারে।</p>
+        <div id="cutting-list-wrap"></div>
+        <div class="empty-note" id="cutting-empty">এখনও কোনো জানালা বা দরজা যোগ করা হয়নি।</div>
+        <div class="actions-row hidden" id="cutting-actions">
+          <button type="button" class="secondary" id="btn-print-cutting">প্রিন্ট / PDF</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="tab-rates" class="hidden">
+      <div class="card">
+        <h2>কাটিং ফর্মুলা সেটিংস <span class="badge">Cutting Formula</span></h2>
+        <p class="hint">ফ্রেম এর বাইরের মাপ থেকে প্রতিটি পার্টস কতটুকু কমিয়ে কাটতে হয় তা এখানে সেট করুন।</p>
+        <div class="grid2">
+          <div class="field"><label for="in-cp-outerhoriz">O/H, B  -  আউটার ফ্রেম উপর/নিচ কমতি</label><input type="number" min="0" step="0.1" id="in-cp-outerhoriz" placeholder="3.6"></div>
+          <div class="field"><label for="in-cp-side">S/L, I/N  -  সাইড/ইন্টারলক কমতি</label><input type="number" min="0" step="0.1" id="in-cp-side" placeholder="1.1"></div>
+        </div>
+        <div class="grid2">
+          <div class="field"><label for="in-cp-shutterhoriz">S/T, B  -  শাটার উপর/নিচ কমতি</label><input type="number" min="0" step="0.1" id="in-cp-shutterhoriz" placeholder="1.5"></div>
+          <div class="field"><label for="in-cp-glassgap">গ্লাস গ্যাপ  -  ফ্রেম থেকে কাঁচ কতটুকু ছোট</label><input type="number" min="0" step="0.05" id="in-cp-glassgap" placeholder="0.25"></div>
+        </div>
+        <button type="button" class="secondary" id="btn-save-cut">সংরক্ষণ</button>
+        <p class="hint spaced">সব মান ইঞ্চিতে। আপনার প্রোফাইল/মিস্ত্রির মাপ অনুযায়ী বদলে নিন।</p>
+      </div>
+
+      <div class="card">
+        <h2>কাঁচের কোম্পানি ও রেট <span class="badge">৳ / বর্গফুট</span></h2>
+        <p class="hint">নিয়মিত ব্যবহৃত কাঁচ কোম্পানি এর নাম ও প্রতি বর্গফুট রেট যোগ করুন।</p>
+        <p class="hint warn">ডিফল্ট রেট বাজারভেদে বদলায়  -  আপনার আসল ক্রয়মূল্য অনুযায়ী এডিট করে নিন।</p>
+        <div class="rate-list" id="company-list"></div>
+        <div class="add-row-form">
+          <input type="text" id="new-company-name" placeholder="কোম্পানি এর নাম, যেমনঃ থাই ৫ মিমি">
+          <input type="number" id="new-company-rate" class="narrow-num" placeholder="রেট (৳/বর্গফুট)" min="0" step="1">
+          <button type="button" class="secondary" id="btn-add-company">যোগ করুন</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>লক এর ধরন ও দাম <span class="badge">৳ / প্রতি লক</span></h2>
+        <p class="hint">প্রতিটি লক এর ধরন ও তার দাম যোগ করুন।</p>
+        <div class="rate-list" id="lock-list"></div>
+        <div class="add-row-form">
+          <input type="text" id="new-lock-name" placeholder="লক এর নাম, যেমনঃ স্লাইডিং লক">
+          <select id="new-lock-style" style="max-width:150px;">
+            <option value="sliding">স্লাইডিং</option>
+            <option value="casement">হ্যান্ডেল</option>
+            <option value="deadbolt">ডেডবোল্ট</option>
+            <option value="knob">নব</option>
+            <option value="generic">সাধারণ</option>
+          </select>
+          <input type="number" id="new-lock-rate" class="narrow-num" placeholder="দাম (৳)" min="0" step="1">
+          <button type="button" class="secondary" id="btn-add-lock">যোগ করুন</button>
+        </div>
+      </div>
+      <span class="save-flash" id="save-flash">সংরক্ষণ হয়েছে ✓</span>
+    </div>
+  </div>
+  <script src="js/calculator.js"></script>
+</body>
+</html>

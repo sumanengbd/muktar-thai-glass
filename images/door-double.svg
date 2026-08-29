@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 220" width="160" height="220">
+  <defs>
+    <linearGradient id="ddGlass" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8f6fb"/>
+      <stop offset="48%" stop-color="#8ec8dc"/>
+      <stop offset="100%" stop-color="#c5e4ef"/>
+    </linearGradient>
+  </defs>
+  <rect x="8" y="6" width="144" height="208" rx="4" fill="#5e7f8e"/>
+  <rect x="16" y="16" width="60" height="128" fill="url(#ddGlass)"/>
+  <rect x="84" y="16" width="60" height="128" fill="url(#ddGlass)"/>
+  <rect x="16" y="150" width="60" height="54" fill="#6d8d9b"/>
+  <rect x="84" y="150" width="60" height="54" fill="#6d8d9b"/>
+  <rect x="74" y="6" width="12" height="208" fill="#4e6d7b"/>
+  <path d="M20 20 L42 20 L30 138 L18 138 Z" fill="#fff" opacity="0.26"/>
+  <circle cx="68" cy="118" r="4.5" fill="#d9b56a" stroke="#8a6d28" stroke-width="1"/>
+  <circle cx="92" cy="118" r="4.5" fill="#d9b56a" stroke="#8a6d28" stroke-width="1"/>
+  <rect x="8" y="208" width="144" height="6" fill="#3d5c6a"/>
+</svg>

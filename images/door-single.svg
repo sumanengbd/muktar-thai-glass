@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 220" width="140" height="220">
+  <defs>
+    <linearGradient id="dsGlass" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8f6fb"/>
+      <stop offset="48%" stop-color="#8ec8dc"/>
+      <stop offset="100%" stop-color="#c5e4ef"/>
+    </linearGradient>
+  </defs>
+  <rect x="18" y="6" width="104" height="208" rx="4" fill="#5e7f8e"/>
+  <rect x="28" y="16" width="84" height="128" fill="url(#dsGlass)"/>
+  <rect x="28" y="150" width="84" height="54" fill="#6d8d9b"/>
+  <rect x="34" y="156" width="72" height="42" rx="2" fill="#4e6d7b"/>
+  <path d="M32 20 L58 20 L42 138 L30 138 Z" fill="#fff" opacity="0.26"/>
+  <circle cx="100" cy="118" r="5" fill="#d9b56a" stroke="#8a6d28" stroke-width="1"/>
+  <rect x="18" y="208" width="104" height="6" fill="#3d5c6a"/>
+</svg>
