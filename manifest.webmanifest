@@ -1,0 +1,39 @@
+{
+  "name": "মুক্তার থাই এস.এস গ্যালারী এন্ড গ্লাস হাউজ",
+  "short_name": "গ্লাস হাউজ",
+  "description": "থাই কাঁচ জানালা ও দরজা ক্যালকুলেটর  -  মাপ দেখে ভিজুয়াল সহ দাম হিসাব করুন",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0a4456",
+  "theme_color": "#0a4456",
+  "lang": "bn",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "images/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "images/icon-180.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

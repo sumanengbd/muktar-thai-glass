@@ -39,9 +39,11 @@
   "map": "মাপ",
   "songkha": "সংখ্যা",
   "piece": "পিস",
-  "errCompany": "প্রথমে \"রেট সেটিংস\" ট্যাব থেকে অন্তত একটি কাঁচের কোম্পানি যোগ করুন।",
+  "errCompany": "প্রথমে Admin থেকে অন্তত একটি কাঁচের কোম্পানি যোগ করুন।",
   "errSize": "উচ্চতা ও প্রস্থ সঠিকভাবে দিন।",
   "cutToggle": "কাটিং লিস্ট দেখান/লুকান",
+  "cutShow": "কাটিং লিস্ট দেখান",
+  "cutHide": "কাটিং লিস্ট লুকান",
   "subtotal": "সাবটোটাল",
   "outerSize": "বাইরের মাপ",
   "glassGap": "গ্লাস গ্যাপ",
@@ -71,13 +73,83 @@
   "generic": "সাধারণ",
   "dhoron": "ধরন",
   "winTypes": "জানালার ধরন",
-  "doorTypes": "দরজার ধরন"
+  "doorTypes": "দরজার ধরন",
+  "errKind": "প্রথমে জানালা বা দরজা সিলেক্ট করুন।",
+  "ownerSetPin": "মালিক পিন সেট করুন",
+  "ownerUnlock": "মালিক লগইন",
+  "ownerSetHint": "রেট ও কাটিং শুধু দোকান মালিক দেখতে পারবেন। ৪-৮ ডিজিট পিন দিন।",
+  "ownerUnlockHint": "ইমেইল ও পিন দুটোই দিতে হবে।",
+  "ownerPinLabel": "পিন",
+  "ownerPin2Label": "পিন আবার দিন",
+  "ownerOpen": "খুলুন",
+  "ownerSavePin": "পিন সেভ করুন",
+  "ownerPinBad": "পিন ৪ থেকে ৮ ডিজিট দিন।",
+  "ownerPinMismatch": "দুইবার একই পিন দিন।",
+  "ownerPinWrong": "ইমেইল বা পিন ভুল।",
+  "ownerLock": "লক",
+  "ownerEmailLabel": "ইমেইল",
+  "ownerEmailNeed": "ইমেইল দিন।",
+  "ownerPinNeed": "পিন দিন।",
+  "ownerEmailBad": "সঠিক ইমেইল দিন।",
+  "ownerNeedEmail": "Users শীটে ইমেইল ও পিন বসান।",
+  "ownerNeedApi": "Google Apps Script URL js/config.js এ বসান।",
+  "ownerNetErr": "শীট খুলতে পারেনি। ইন্টারনেট চেক করুন।",
+  "ownerSaveFail": "শীটে সেভ হয়নি।",
+  "ownerLocked": "অনেকবার ভুল চেষ্টা। পরে চেষ্টা করুন।",
+  "staffLogin": "স্টাফ লগইন",
+  "quoteTitle": "মালিককে পাঠান",
+  "quoteHint": "নাম ও মোবাইল দিন। কোট শীটে সেভ হবে।",
+  "quoteName": "নাম",
+  "quotePhone": "মোবাইল",
+  "quoteSend": "পাঠান",
+  "quoteNameNeed": "নাম দিন।",
+  "quotePhoneNeed": "মোবাইল দিন।",
+  "quotePhoneBad": "সঠিক মোবাইল দিন।",
+  "quoteEmpty": "আগে জানালা/দরজা যোগ করুন।",
+  "quoteOk": "মালিকের কাছে পাঠানো হয়েছে।",
+  "quoteFail": "পাঠানো যায়নি।",
+  "quotesTitle": "ভিজিটর কোট",
+  "quotesEmpty": "এখনও কোনো কোট আসেনি।",
+  "errAlu": "আলুমিনিয়াম কোম্পানি ও থিকনেস সিলেক্ট করুন।",
+  "aluShort": "আলুমিনিয়াম",
+  "glassThick": "কাঁচের থিকনেস (মিমি)",
+  "aluCompany": "আলুমিনিয়াম কোম্পানি",
+  "aluThick": "আলুমিনিয়াম থিকনেস",
+  "aluRatesTitle": "আলুমিনিয়াম কোম্পানি, থিকনেস ও রং",
+  "aluRatesHint": "কোম্পানি, থিকনেস ও রং একসাথে। একই কোম্পানির একাধিক থিকনেস বা রং আলাদা সারিতে যোগ করুন।",
+  "thickRatesTitle": "কাঁচের থিকনেস",
+  "thickRatesHint": "ভিজিটর শুধু সিলেক্ট করবে। রেট শীট থেকে।",
+  "chargesTitle": "নেট ও ইনস্টলেশন রেট",
+  "chargesHint": "প্রতি জানালা/দরজার চার্জ । শীট থেকে আসে।",
+  "chargeNet": "নেট (টাকা / টি)",
+  "chargeExtra": "ইনস্টলেশন (টাকা / টি)",
+  "addBtn": "যোগ করুন",
+  "saveBtn": "সংরক্ষণ",
+  "aluNamePh": "কোম্পানি",
+  "aluThickPh": "মিমি",
+  "aluRatePh": "রেট",
+  "glassThickPh": "মিমি",
+  "companyRatesHint": "কোম্পানি, থিকনেস, রেট ও রং একসাথে যোগ করুন। একই কোম্পানির একাধিক থিকনেস বা রং আলাদা সারিতে।",
+  "aluColor": "আলুমিনিয়াম রং",
+  "aluSilver": "সিলভার",
+  "aluWhite": "সাদা",
+  "aluChampagne": "শ্যাম্পেন",
+  "aluBrown": "বাদামি",
+  "catalogEmpty": "শীট থেকে লিস্ট আসেনি। ইন্টারনেট চেক করে পেজ রিফ্রেশ করুন।",
+  "admin": "Admin",
+  "staffTitle": "স্টাফ অ্যাকাউন্ট",
+  "staffHint": "মালিক স্টাফ যোগ করতে পারবেন। ইমেইল ও পিন দিয়ে তারা লগইন করবে। টেনে সারি সাজাতে পারবেন।",
+  "staffEmailPh": "ইমেইল",
+  "staffPinPh": "পিন ৪-৮ ডিজিট",
+  "roleStaff": "স্টাফ",
+  "roleOwner": "মালিক",
+  "staffNeedOwner": "অন্তত একজন মালিক রাখতে হবে।",
+  "staffBad": "সঠিক ইমেইল ও ৪-৮ ডিজিট পিন দিন।"
 };
   const KEYS = {
-    companies: "glasscalc:companies",
-    locks: "glasscalc:locks",
-    cutParams: "glasscalc:cutparams",
-    items: "glasscalc:items"
+    items: "glasscalc:items",
+    tab: "glasscalc:tab",
+    session: "glasscalc:session"
   };
 
   const PRODUCT_TYPES = {
@@ -105,33 +177,58 @@
     { id: "frosted", labelKey: "colorFrosted", light: "#f7f8f9", mid: "#c5ccd1", dark: "#e6eaed" }
   ];
 
-  const DEFAULT_COMPANIES = [
-    { name: T.nasir5, rate: 95 },
-    { name: T.nasir6, rate: 103 },
-    { name: T.abul, rate: 90 },
-    { name: T.dhaka, rate: 90 },
-    { name: T.usmania, rate: 85 }
+  const ALU_COLORS = [
+    { id: "silver", labelKey: "aluSilver", light: "#eef2f4", mid: "#9aa8b0", dark: "#5e6d76" },
+    { id: "bronze", labelKey: "colorBronze", light: "#e8d0b0", mid: "#a86a38", dark: "#6b4220" },
+    { id: "black", labelKey: "colorBlack", light: "#6b7280", mid: "#1a222b", dark: "#111827" },
+    { id: "white", labelKey: "aluWhite", light: "#ffffff", mid: "#e5e7eb", dark: "#9ca3af" },
+    { id: "champagne", labelKey: "aluChampagne", light: "#f3e6c8", mid: "#c4a574", dark: "#8a7048" },
+    { id: "brown", labelKey: "aluBrown", light: "#d4b896", mid: "#7a4e2e", dark: "#4a2e1a" }
   ];
-  const DEFAULT_LOCKS = [
-    { name: T.slidingLock, rate: 250, style: "sliding" },
-    { name: T.caseLock, rate: 350, style: "casement" },
-    { name: T.deadbolt + " " + T.lock, rate: 400, style: "deadbolt" },
-    { name: T.knob, rate: 300, style: "knob" }
-  ];
-  const DEFAULT_CUT = { outerHoriz: 3.6, side: 1.1, shutterHoriz: 1.5, glassGap: 0.25 };
+
+  const DEFAULT_CUT = { outerHoriz: 0, side: 0, shutterHoriz: 0, glassGap: 0 };
 
   const state = {
     companies: [],
     locks: [],
+    aluminium: [],
+    glassThicks: [],
+    charges: { net: 0, extra: 0 },
     items: [],
     cutParams: { ...DEFAULT_CUT },
     selectedKind: null,
-    selectedType: "fixed",
+    selectedType: null,
     glassColor: "clear",
-    hasNet: false
+    aluColor: "silver",
+    hasNet: false,
+    ownerPin: "",
+    ownerEmail: "",
+    ownerUnlocked: false,
+    role: "",
+    quotes: [],
+    staff: []
   };
 
   const $ = (id) => document.getElementById(id);
+
+
+  function ico(name) {
+    var p = {
+      plus: '<path d="M12 5v14"/><path d="M5 12h14"/>',
+      minus: '<path d="M5 12h14"/>',
+      trash: '<polyline points="3 7 5 7 21 7"/><path d="M8 7V5h8v2"/><path d="M6 7l1 14h10l1-14"/><path d="M10 11v6"/><path d="M14 11v6"/>',
+      down: '<path d="M6 9l6 6 6-6"/>',
+      up: '<path d="M6 15l6-6 6 6"/>',
+      print: '<path d="M6 9V4h12v5"/><path d="M6 18H5a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-1"/><rect x="6" y="14" width="12" height="7" rx="1"/>',
+      save: '<path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8"/><path d="M7 3v5h8"/>',
+      grip: '<path d="M8 6h8M8 12h8M8 18h8"/>'
+    };
+    return '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + (p[name] || "") + "</svg>";
+  }
+
+  function cutToggleLabel(open) {
+    return ico(open ? "up" : "down") + "<span>" + (open ? T.cutHide : T.cutShow) + "</span>";
+  }
 
   function escapeHtml(value) {
     return String(value ?? "")
@@ -174,6 +271,28 @@
     return T[getColor(id).labelKey] || id;
   }
 
+  function getAluColor(id) {
+    return ALU_COLORS.find((c) => c.id === id) || ALU_COLORS[0];
+  }
+
+  function aluColorLabel(id) {
+    return T[getAluColor(id).labelKey] || id;
+  }
+
+  function normalizeAluColorId(id) {
+    const s = String(id || "").trim().toLowerCase();
+    return ALU_COLORS.some((c) => c.id === s) ? s : "silver";
+  }
+
+  function normalizeAluminium(list) {
+    return (list || []).map((a) => ({
+      name: String(a.name || "").trim(),
+      thickness: Number(a.thickness),
+      rate: Number(a.rate) || 0,
+      color: normalizeAluColorId(a.color)
+    })).filter((a) => a.name && a.thickness > 0);
+  }
+
   function kindLabel(kind) {
     return kind === "door" ? T.dorja : T.janala;
   }
@@ -192,6 +311,57 @@
   function selectedLock() {
     const idx = parseInt($("sel-lock").value, 10);
     return idx >= 0 ? state.locks[idx] : null;
+  }
+
+  function selectedAluName() {
+    return $("sel-alu-company") ? $("sel-alu-company").value : "";
+  }
+
+  function selectedAluThick() {
+    return $("sel-alu-thick") ? $("sel-alu-thick").value : "";
+  }
+
+  function aluRows(filters) {
+    return state.aluminium.filter((a) => {
+      if (filters.name && a.name !== filters.name) return false;
+      if (filters.thick != null && filters.thick !== "" && String(a.thickness) !== String(filters.thick)) return false;
+      if (filters.color && a.color !== filters.color) return false;
+      return true;
+    });
+  }
+
+  function uniqueAlu(field, filters) {
+    const seen = {};
+    const out = [];
+    aluRows(filters).forEach((a) => {
+      const key = String(a[field]);
+      if (!seen[key]) {
+        seen[key] = true;
+        out.push(a[field]);
+      }
+    });
+    return out;
+  }
+
+  function pickValid(cur, list) {
+    if (cur != null && cur !== "" && list.some((x) => String(x) === String(cur))) return cur;
+    return list.length ? list[0] : "";
+  }
+
+  function selectedAlu() {
+    const name = selectedAluName();
+    const thick = selectedAluThick();
+    return state.aluminium.find((a) => a.name === name && String(a.thickness) === String(thick) && a.color === state.aluColor)
+      || state.aluminium.find((a) => a.name === name && String(a.thickness) === String(thick))
+      || null;
+  }
+
+  function fillAluColorSelect() {
+    const el = $("new-alu-color");
+    if (!el) return;
+    el.innerHTML = ALU_COLORS.map((c) =>
+      '<option value="' + c.id + '">' + escapeHtml(T[c.labelKey]) + "</option>"
+    ).join("");
   }
 
   async function storeGet(key) {
@@ -258,13 +428,14 @@
   function buildDiagram(opts) {
     const type = getType(opts.typeId);
     const color = getColor(opts.glassColor);
+    const aluC = getAluColor(opts.aluColor);
     const isDoor = type.kind === "door";
     const h = opts.heightFt > 0 ? opts.heightFt : (isDoor ? 7 : 5);
     const w = opts.widthFt > 0 ? opts.widthFt : (isDoor ? 3.5 : 4);
     const shutters = type.shutters;
     const compact = Boolean(opts.compact);
-    const boxH = compact ? 118 : 220;
-    const boxW = Math.max(compact ? 48 : 72, Math.min(compact ? 88 : 260, boxH * (w / h)));
+    const boxH = compact ? 118 : 240;
+    const boxW = Math.max(compact ? 48 : 80, Math.min(compact ? 88 : 300, boxH * (w / h)));
     const padL = compact ? 8 : 54;
     const padR = compact ? 8 : 14;
     const padT = compact ? 8 : 16;
@@ -293,10 +464,10 @@
         panes += `<rect x="${px}" y="${py}" width="${paneW}" height="${glassH}" fill="#fff" opacity="0.28"/>`;
       }
       if (isDoor && type.id !== "door-sliding") {
-        panes += `<rect x="${px}" y="${py + glassH + 4}" width="${paneW}" height="${innerH - glassH - 4}" fill="#6d8d9b"/>`;
+        panes += `<rect x="${px}" y="${py + glassH + 4}" width="${paneW}" height="${innerH - glassH - 4}" fill="${aluC.mid}"/>`;
       }
       if (i < shutters - 1) {
-        panes += `<rect x="${px + paneW}" y="${y}" width="${paneGap}" height="${boxH}" fill="#6d8d9b"/>`;
+        panes += `<rect x="${px + paneW}" y="${y}" width="${paneGap}" height="${boxH}" fill="${aluC.mid}"/>`;
       }
     }
 
@@ -333,10 +504,10 @@
             <path d="M0 0 L7 7 M7 0 L0 7" stroke="#1d3d2c" stroke-width="0.55" opacity="0.55"/>
           </pattern>
         </defs>
-        <rect x="${x}" y="${y}" width="${boxW}" height="${boxH}" rx="3" fill="#5e7f8e"/>
+        <rect x="${x}" y="${y}" width="${boxW}" height="${boxH}" rx="3" fill="${aluC.mid}"/>
         ${panes}
         ${extras}
-        <rect x="${x}" y="${y}" width="${boxW}" height="${boxH}" rx="3" fill="none" stroke="#3d5c6a" stroke-width="2"/>
+        <rect x="${x}" y="${y}" width="${boxW}" height="${boxH}" rx="3" fill="none" stroke="${aluC.dark}" stroke-width="2"/>
         ${dims}
       </svg>
     `;
@@ -352,6 +523,7 @@
       heightFt,
       widthFt,
       glassColor: extra && extra.glassColor ? extra.glassColor : state.glassColor,
+      aluColor: extra && extra.aluColor ? extra.aluColor : state.aluColor,
       lockStyle: extra && extra.lockStyle ? extra.lockStyle : lockStyleOf(selectedLock()),
       hasNet: extra && extra.hasNet != null ? extra.hasNet : state.hasNet,
       compact: Boolean(extra && extra.compact)
@@ -366,14 +538,24 @@
   }
 
   function renderLivePreview(animate) {
+    if (!state.selectedKind || !state.selectedType) {
+      $("live-preview").innerHTML = "";
+      $("preview-kind").textContent = "-";
+      $("preview-type").textContent = "-";
+      $("preview-size").textContent = T.typeEnterSize;
+      $("preview-color").textContent = colorLabel(state.glassColor);
+      $("preview-lock").textContent = selectedLock() ? selectedLock().name : T.noLock;
+      $("preview-net").textContent = state.hasNet ? T.netYes : T.netNo;
+      return;
+    }
     const opts = diagramOpts();
     const type = getType(opts.typeId);
     const lock = selectedLock();
     $("live-preview").innerHTML = buildDiagram(opts);
     $("preview-kind").textContent = kindLabel(type.kind);
-    $("preview-type").textContent = type.label + " � " + type.sub;
+    $("preview-type").textContent = type.label + " · " + type.sub;
     $("preview-size").textContent = opts.heightFt > 0 && opts.widthFt > 0
-      ? ftInLabel(opts.heightFt) + " � " + ftInLabel(opts.widthFt)
+      ? ftInLabel(opts.heightFt) + " x " + ftInLabel(opts.widthFt)
       : T.typeEnterSize;
     $("preview-color").textContent = colorLabel(opts.glassColor);
     $("preview-lock").textContent = lock ? lock.name : T.noLock;
@@ -415,10 +597,106 @@
     `).join("");
   }
 
+  function normalizeColorId(id) {
+    const s = String(id || "").trim().toLowerCase();
+    return GLASS_COLORS.some((c) => c.id === s) ? s : "clear";
+  }
+
+  function normalizeCompanies(list) {
+    return (list || []).map((c) => ({
+      name: String(c.name || "").trim(),
+      thickness: Number(c.thickness) > 0 ? Number(c.thickness) : 5,
+      rate: Number(c.rate) || 0,
+      color: normalizeColorId(c.color)
+    })).filter((c) => c.name);
+  }
+
+  function companyNames() {
+    const names = [];
+    const seen = {};
+    state.companies.forEach((c) => {
+      if (c.name && !seen[c.name]) {
+        seen[c.name] = true;
+        names.push(c.name);
+      }
+    });
+    return names;
+  }
+
+  function selectedCompanyName() {
+    return $("sel-company") ? $("sel-company").value : "";
+  }
+
+  function selectedGlassThick() {
+    return $("sel-glass-thick") ? $("sel-glass-thick").value : "";
+  }
+
+  function companyRows(filters) {
+    return state.companies.filter((c) => {
+      if (filters.name && c.name !== filters.name) return false;
+      if (filters.thick != null && filters.thick !== "" && String(c.thickness) !== String(filters.thick)) return false;
+      if (filters.color && c.color !== filters.color) return false;
+      return true;
+    });
+  }
+
+  function uniqueCompany(field, filters) {
+    const seen = {};
+    const out = [];
+    companyRows(filters).forEach((c) => {
+      const key = String(c[field]);
+      if (!seen[key]) {
+        seen[key] = true;
+        out.push(c[field]);
+      }
+    });
+    return out;
+  }
+
+  function colorsForCompany(name, thick) {
+    return uniqueCompany("color", { name: name, thick: thick });
+  }
+
+  function selectedGlassCompany() {
+    const name = selectedCompanyName();
+    const thick = selectedGlassThick();
+    return state.companies.find((c) => c.name === name && String(c.thickness) === String(thick) && c.color === state.glassColor)
+      || state.companies.find((c) => c.name === name && String(c.thickness) === String(thick))
+      || state.companies.find((c) => c.name === name)
+      || null;
+  }
+
+  function syncGlassColorToCompany() {
+    const available = colorsForCompany(selectedCompanyName(), selectedGlassThick());
+    if (!available.length) return;
+    if (available.indexOf(state.glassColor) < 0) state.glassColor = available[0];
+  }
+
+  function fillCompanyColorSelect() {
+    const el = $("new-company-color");
+    if (!el) return;
+    el.innerHTML = GLASS_COLORS.map((c) =>
+      '<option value="' + c.id + '">' + escapeHtml(T[c.labelKey]) + "</option>"
+    ).join("");
+  }
+
   function renderColorGrid() {
-    $("color-grid").innerHTML = GLASS_COLORS.map((c) => `
-      <button type="button" class="color-swatch${c.id === state.glassColor ? " active" : ""}" data-color="${c.id}" title="${escapeHtml(T[c.labelKey])}" style="background:linear-gradient(135deg,${c.light},${c.mid})"></button>
-    `).join("");
+    const grid = $("color-grid");
+    if (!grid) return;
+    const name = selectedCompanyName();
+    const thick = selectedGlassThick();
+    const available = colorsForCompany(name, thick);
+    const colors = GLASS_COLORS.filter((c) => available.indexOf(c.id) >= 0);
+    const showRate = isStaff();
+    if (!colors.length) {
+      grid.innerHTML = "";
+      return;
+    }
+    grid.innerHTML = colors.map((c) => {
+      const row = state.companies.find((x) => x.name === name && String(x.thickness) === String(thick) && x.color === c.id);
+      const title = T[c.labelKey] + (showRate && row ? " - " + T.taka + row.rate + T.perSqftSlash : "");
+      return '<button type="button" class="color-swatch' + (c.id === state.glassColor ? " active" : "") + '" data-color="' + c.id + '" title="' + escapeHtml(title) + '" style="background:linear-gradient(135deg,' + c.light + "," + c.mid + ')"></button>';
+    }).join("");
   }
 
   function setSelectedKind(kind) {
@@ -437,14 +715,232 @@
   }
 
   function renderCompanySelect() {
-    $("sel-company").innerHTML = state.companies.map((c, i) =>
-      `<option value="${i}">${escapeHtml(c.name)} - ${T.taka}${c.rate}${T.perSqftSlash}</option>`
+    const el = $("sel-company");
+    if (!el) return;
+    const names = companyNames();
+    const cur = el.value;
+    el.innerHTML = names.map((n) =>
+      '<option value="' + escapeHtml(n) + '">' + escapeHtml(n) + "</option>"
     ).join("");
+    if (cur && names.indexOf(cur) >= 0) el.value = cur;
+    renderGlassThickSelect();
   }
 
   function renderLockSelect() {
+    const showRate = isStaff();
     $("sel-lock").innerHTML = `<option value="-1">${T.noLock}</option>` +
-      state.locks.map((l, i) => `<option value="${i}">${escapeHtml(l.name)} - ${T.taka}${l.rate}</option>`).join("");
+      state.locks.map((l, i) =>
+        `<option value="${i}">${escapeHtml(l.name)}${showRate ? " - " + T.taka + l.rate : ""}</option>`
+      ).join("");
+  }
+
+  function renderGlassThickSelect() {
+    const el = $("sel-glass-thick");
+    if (!el) return;
+    const name = selectedCompanyName();
+    const thicks = uniqueCompany("thickness", { name: name });
+    const cur = pickValid(el.value, thicks);
+    el.innerHTML = thicks.map((mm) =>
+      '<option value="' + mm + '">' + mm + " " + T.mm + "</option>"
+    ).join("");
+    if (cur !== "") el.value = String(cur);
+    syncGlassColorToCompany();
+    renderColorGrid();
+  }
+
+  function onGlassCompanyChange() {
+    renderGlassThickSelect();
+    renderLivePreview(true);
+  }
+
+  function onGlassThickChange() {
+    syncGlassColorToCompany();
+    renderColorGrid();
+    renderLivePreview(true);
+  }
+
+  function renderAluCompanySelect() {
+    const el = $("sel-alu-company");
+    if (!el) return;
+    const names = uniqueAlu("name", {});
+    const cur = pickValid(el.value, names);
+    el.innerHTML = names.map((n) =>
+      '<option value="' + escapeHtml(n) + '">' + escapeHtml(n) + "</option>"
+    ).join("");
+    if (cur) el.value = cur;
+    renderAluThickSelect();
+  }
+
+  function renderAluThickSelect() {
+    const el = $("sel-alu-thick");
+    if (!el) return;
+    const name = selectedAluName();
+    const thicks = uniqueAlu("thickness", { name: name });
+    const cur = pickValid(el.value, thicks);
+    const showRate = isStaff();
+    el.innerHTML = thicks.map((mm) => {
+      const row = state.aluminium.find((a) => a.name === name && String(a.thickness) === String(mm) && a.color === state.aluColor)
+        || state.aluminium.find((a) => a.name === name && String(a.thickness) === String(mm));
+      const rate = row ? row.rate : "";
+      return '<option value="' + mm + '">' + mm + " " + T.mm + (showRate && rate !== "" ? " - " + T.taka + rate + T.perSqftSlash : "") + "</option>";
+    }).join("");
+    if (cur !== "") el.value = String(cur);
+    syncAluColorToSelection();
+    renderAluColorGrid();
+  }
+
+  function syncAluColorToSelection() {
+    const colors = uniqueAlu("color", { name: selectedAluName(), thick: selectedAluThick() });
+    state.aluColor = normalizeAluColorId(pickValid(state.aluColor, colors) || "silver");
+  }
+
+  function onAluCompanyChange() {
+    renderAluThickSelect();
+    renderLivePreview(true);
+  }
+
+  function onAluThickChange() {
+    const name = selectedAluName();
+    const thick = selectedAluThick();
+    const names = uniqueAlu("name", { thick: thick });
+    const companyEl = $("sel-alu-company");
+    if (companyEl && names.length && names.indexOf(name) < 0) {
+      companyEl.value = names[0];
+      renderAluThickSelect();
+      return;
+    }
+    syncAluColorToSelection();
+    renderAluColorGrid();
+    renderLivePreview(true);
+  }
+
+  function onAluColorChange(id) {
+    state.aluColor = normalizeAluColorId(id);
+    const name = selectedAluName();
+    const thicks = uniqueAlu("thickness", { name: name, color: state.aluColor });
+    const thickEl = $("sel-alu-thick");
+    if (thickEl && thicks.length && thicks.every((mm) => String(mm) !== String(thickEl.value))) {
+      thickEl.value = String(thicks[0]);
+    }
+    renderAluColorGrid();
+    renderLivePreview(true);
+  }
+
+  function renderAluColorGrid() {
+    const grid = $("alu-color-grid");
+    if (!grid) return;
+    const name = selectedAluName();
+    const thick = selectedAluThick();
+    const available = uniqueAlu("color", { name: name, thick: thick });
+    const colors = ALU_COLORS.filter((c) => available.indexOf(c.id) >= 0);
+    const showRate = isStaff();
+    if (!colors.length) {
+      grid.innerHTML = "";
+      return;
+    }
+    if (available.indexOf(state.aluColor) < 0) state.aluColor = colors[0].id;
+    grid.innerHTML = colors.map((c) => {
+      const row = state.aluminium.find((x) => x.name === name && String(x.thickness) === String(thick) && x.color === c.id);
+      const title = T[c.labelKey] + (showRate && row ? " - " + T.taka + row.rate + T.perSqftSlash : "");
+      return '<button type="button" class="color-swatch' + (c.id === state.aluColor ? " active" : "") + '" data-alu-color="' + c.id + '" title="' + escapeHtml(title) + '" style="background:linear-gradient(135deg,' + c.light + "," + c.mid + ')"></button>';
+    }).join("");
+  }
+
+  function renderAluList() {
+    const wrap = $("alu-list");
+    if (!wrap) return;
+    if (!state.aluminium.length) {
+      wrap.innerHTML = '<div class="empty-note">' + T.emptyRates + "</div>";
+      return;
+    }
+    wrap.innerHTML = state.aluminium.map((item, i) =>
+      rateRowOpen(i) + '<span class="name">' + escapeHtml(item.name) + " · " + item.thickness + T.mm + " · " + escapeHtml(aluColorLabel(item.color)) + '</span><span class="price">' + T.taka + item.rate + T.perSq + '</span><button type="button" class="danger-ghost icon-btn" data-action="remove-alu" data-index="' + i + '">' + ico("trash") + "<span>" + T.muchun + "</span></button></div>"
+    ).join("");
+  }
+
+  function renderGlassThickList() {
+    const wrap = $("glass-thick-list");
+    if (!wrap) return;
+    if (!state.glassThicks.length) {
+      wrap.innerHTML = `<div class="empty-note">${T.emptyRates}</div>`;
+      return;
+    }
+    wrap.innerHTML = state.glassThicks.map((mm, i) =>
+      rateRowOpen(i) + '<span class="name">' + mm + " " + T.mm + '</span><button type="button" class="danger-ghost icon-btn" data-action="remove-glass-thick" data-index="' + i + '">' + ico("trash") + "<span>" + T.muchun + "</span></button></div>"
+    ).join("");
+  }
+
+  function fillChargesInputs() {
+    if ($("in-charge-net")) $("in-charge-net").value = state.charges.net || 0;
+    if ($("in-charge-extra")) $("in-charge-extra").value = state.charges.extra || 0;
+  }
+
+  function moveItem(arr, from, to) {
+    from = Number(from);
+    to = Number(to);
+    if (!arr || from === to || from < 0 || to < 0 || from >= arr.length || to >= arr.length) return false;
+    const item = arr.splice(from, 1)[0];
+    arr.splice(to, 0, item);
+    return true;
+  }
+
+  function bindSortable(wrapId, getList, onDone) {
+    const wrap = $(wrapId);
+    if (!wrap || wrap.dataset.sortBound) return;
+    wrap.dataset.sortBound = "1";
+    let drag = null;
+
+    function clearMarks() {
+      wrap.querySelectorAll(".rate-row").forEach((r) => r.classList.remove("dragging", "drag-over"));
+    }
+
+    function rowAt(x, y) {
+      const el = document.elementFromPoint(x, y);
+      return el && el.closest ? el.closest("#" + wrapId + " .rate-row") : null;
+    }
+
+    wrap.addEventListener("pointerdown", (e) => {
+      if (!e.target.closest(".drag-handle")) return;
+      const row = e.target.closest(".rate-row");
+      if (!row) return;
+      e.preventDefault();
+      e.target.closest(".drag-handle").setPointerCapture(e.pointerId);
+      drag = { from: Number(row.dataset.index) };
+      row.classList.add("dragging");
+    });
+    wrap.addEventListener("pointermove", (e) => {
+      if (!drag) return;
+      wrap.querySelectorAll(".drag-over").forEach((r) => r.classList.remove("drag-over"));
+      const over = rowAt(e.clientX, e.clientY);
+      if (over) over.classList.add("drag-over");
+    });
+    wrap.addEventListener("pointerup", (e) => {
+      if (!drag) return;
+      const over = rowAt(e.clientX, e.clientY);
+      const to = over ? Number(over.dataset.index) : -1;
+      const from = drag.from;
+      drag = null;
+      clearMarks();
+      if (moveItem(getList(), from, to)) onDone();
+    });
+    wrap.addEventListener("pointercancel", () => {
+      drag = null;
+      clearMarks();
+    });
+  }
+
+  function rateRowOpen(i) {
+    return '<div class="rate-row" data-index="' + i + '"><span class="drag-handle" aria-hidden="true">' + ico("grip") + "</span>";
+  }
+
+  function refreshSheetSelects() {
+    renderCompanySelect();
+    renderLockSelect();
+    renderGlassThickSelect();
+    renderAluCompanySelect();
+    renderAluList();
+    renderGlassThickList();
+    fillChargesInputs();
   }
 
   function renderRateList(wrapId, items, kind) {
@@ -454,13 +950,9 @@
       return;
     }
     const unit = kind === "company" ? T.perSq : "";
-    wrap.innerHTML = items.map((item, i) => `
-      <div class="rate-row">
-        <span class="name">${escapeHtml(item.name)}</span>
-        <span class="price">${T.taka}${item.rate}${unit}</span>
-        <button type="button" class="danger-ghost" data-action="remove-${kind}" data-index="${i}">${T.muchun}</button>
-      </div>
-    `).join("");
+    wrap.innerHTML = items.map((item, i) =>
+      rateRowOpen(i) + '<span class="name">' + escapeHtml(item.name) + (kind === "company" && item.thickness ? " · " + item.thickness + T.mm : "") + (kind === "company" && item.color ? " · " + escapeHtml(colorLabel(item.color)) : "") + '</span><span class="price">' + T.taka + item.rate + unit + '</span><button type="button" class="danger-ghost icon-btn" data-action="remove-' + kind + '" data-index="' + i + '">' + ico("trash") + "<span>" + T.muchun + "</span></button></div>"
+    ).join("");
   }
 
   function computeCutList(item) {
@@ -540,6 +1032,7 @@
       heightFt: item.heightFt,
       widthFt: item.widthFt,
       glassColor: item.glassColor,
+      aluColor: item.aluColor,
       lockStyle: item.lockStyle || "none",
       hasNet: item.hasNet,
       compact: compact
@@ -573,10 +1066,12 @@
       listEl.innerHTML = "";
       emptyEl.classList.remove("hidden");
       summaryCard.classList.add("hidden");
+      updateQuoteCard();
       return;
     }
     emptyEl.classList.add("hidden");
     summaryCard.classList.remove("hidden");
+    updateQuoteCard();
     listEl.innerHTML = state.items.map((item, i) => {
       const type = getType(item.winType);
       const extras = [
@@ -584,23 +1079,23 @@
         colorLabel(item.glassColor),
         item.lockName ? T.lock + ": " + item.lockName : T.noLock,
         item.hasNet ? T.net + " " + T.netYes : T.net + " " + T.netNo
-      ].filter(Boolean).join(" � ");
+      ].filter(Boolean).join(" · ");
       return `
         <div class="window-item">
           <div class="item-thumb">${itemDiagram(item, true)}</div>
           <div>
             <div class="item-head">
               <span class="tag">${kindLabel(type.kind)} ${i + 1} x ${item.qty} - ${escapeHtml(type.label)}</span>
-              <button type="button" class="danger-ghost" data-action="remove-item" data-index="${i}">${T.muchun}</button>
+              <button type="button" class="danger-ghost icon-btn" data-action="remove-item" data-index="${i}">${ico("trash")}<span>${T.muchun}</span></button>
             </div>
             <div class="item-details">
-              ${T.map}: ${ftInLabel(item.heightFt)} x ${ftInLabel(item.widthFt)} � ${escapeHtml(type.sub)}<br>
-              ${T.kach}: ${escapeHtml(item.companyName)} (${T.taka}${item.companyRate}${T.perSq})<br>
+              ${T.map}: ${ftInLabel(item.heightFt)} x ${ftInLabel(item.widthFt)} · ${escapeHtml(type.sub)}<br>
+              ${T.kach}: ${escapeHtml(item.companyName)}${item.thickness ? " · " + item.thickness + T.mm : ""}${isStaff() ? " (" + T.taka + item.companyRate + T.perSq + ")" : ""}<br>
+              ${T.aluShort}: ${escapeHtml(item.aluName || "-")}${item.aluThick ? " · " + item.aluThick + T.mm : ""}${item.aluColor ? " · " + escapeHtml(aluColorLabel(item.aluColor)) : ""}${isStaff() && item.frameRate ? " (" + T.taka + item.frameRate + T.perSq + ")" : ""}<br>
               ${escapeHtml(extras)}
             </div>
-            <button type="button" class="secondary" data-action="toggle-cut" data-index="${i}" style="margin-top:8px;font-size:12.5px;padding:6px 12px;">${T.cutToggle}</button>
-            <div id="cutwrap-${i}" class="hidden">${renderCutTable(item)}</div>
-            <div class="item-subtotal">${T.subtotal} (${fmt(item.totalSqft)}${T.sqLabel}): ${money(item.subtotal)}</div>
+            ${isStaff() ? `<button type="button" class="secondary icon-btn cut-toggle" data-action="toggle-cut" data-index="${i}">${cutToggleLabel(false)}</button><div id="cutwrap-${i}" class="hidden">${renderCutTable(item)}</div>` : ""}
+            <div class="item-subtotal">${isStaff() ? T.subtotal + " (" + fmt(item.totalSqft) + T.sqLabel + "): " + money(item.subtotal) : fmt(item.totalSqft) + T.sqLabel}</div>
           </div>
         </div>
       `;
@@ -632,7 +1127,7 @@
             <div class="item-details">
               ${T.outerSize}: ${ftInLabel(item.heightFt)} x ${ftInLabel(item.widthFt)}
               - ${T.glassGap}: ${state.cutParams.glassGap} ${T.inchi}
-              ${item.hasNet ? " � " + T.net : ""}
+              ${item.hasNet ? " · " + T.net : ""}
             </div>
             ${renderCutTable(item)}
           </div>
@@ -655,15 +1150,21 @@
     const heightFt = toFeet($("in-h-ft").value, $("in-h-in").value);
     const widthFt = toFeet($("in-w-ft").value, $("in-w-in").value);
     const qty = Math.max(1, parseInt($("in-qty").value, 10) || 1);
-    const thickness = parseFloat($("in-thickness").value) || 0;
-    const companyIdx = parseInt($("sel-company").value, 10);
+    const thickness = parseFloat($("sel-glass-thick") && $("sel-glass-thick").value) || 0;
+    const company = selectedGlassCompany();
     const lock = selectedLock();
-    const frameRate = parseFloat($("in-frame-rate").value) || 0;
-    const extra = parseFloat($("in-extra").value) || 0;
-    const netCost = state.hasNet ? (parseFloat($("in-net-rate").value) || 0) : 0;
+    const alu = selectedAlu();
 
-    if (!state.companies.length) {
+    if (!state.selectedKind || !state.selectedType) {
+      showError(T.errKind);
+      return;
+    }
+    if (!company) {
       showError(T.errCompany);
+      return;
+    }
+    if (!alu) {
+      showError(T.errAlu);
       return;
     }
     if (heightFt <= 0 || widthFt <= 0) {
@@ -672,17 +1173,22 @@
     }
     hideError();
 
-    const company = state.companies[companyIdx];
     const totalSqft = heightFt * widthFt * qty;
-    const glassCost = totalSqft * company.rate;
-    const lockCost = lock ? lock.rate * qty : 0;
+    const glassCost = totalSqft * (Number(company.rate) || 0);
+    const lockCost = lock ? (Number(lock.rate) || 0) * qty : 0;
+    const frameRate = Number(alu.rate) || 0;
     const frameCost = frameRate * totalSqft;
+    const extra = (Number(state.charges.extra) || 0) * qty;
+    const netCost = state.hasNet ? (Number(state.charges.net) || 0) * qty : 0;
 
     state.items.push({
       heightFt,
       widthFt,
       qty,
       thickness,
+      aluName: alu.name,
+      aluThick: alu.thickness,
+      aluColor: alu.color || state.aluColor,
       companyName: company.name,
       companyRate: company.rate,
       glassColor: state.glassColor,
@@ -702,13 +1208,17 @@
     });
 
     storeSet(KEYS.items, state.items);
+    state.selectedKind = null;
+    state.selectedType = null;
+    renderKindPicker();
+    renderTypePicker();
     renderItems();
     clearInputs();
     renderLivePreview(true);
   }
 
   function clearInputs() {
-    ["in-h-ft", "in-h-in", "in-w-ft", "in-w-in", "in-thickness", "in-frame-rate", "in-extra", "in-net-rate"].forEach((id) => {
+    ["in-h-ft", "in-h-in", "in-w-ft", "in-w-in"].forEach((id) => {
       $(id).value = "";
     });
     $("in-qty").value = "1";
@@ -722,32 +1232,94 @@
 
   function clearAll() {
     state.items = [];
+    state.selectedKind = null;
+    state.selectedType = null;
     storeSet(KEYS.items, state.items);
+    renderKindPicker();
+    renderTypePicker();
     renderItems();
+    renderLivePreview(false);
   }
 
   function toggleCutList(index) {
     const el = $("cutwrap-" + index);
-    if (el) el.classList.toggle("hidden");
+    if (!el) return;
+    el.classList.toggle("hidden");
+    const open = !el.classList.contains("hidden");
+    const btn = document.querySelector('[data-action="toggle-cut"][data-index="' + index + '"]');
+    if (btn) btn.innerHTML = cutToggleLabel(open);
   }
 
   function addCompany() {
     const name = $("new-company-name").value.trim();
+    const thickness = parseFloat($("new-company-thick") && $("new-company-thick").value);
     const rate = parseFloat($("new-company-rate").value);
-    if (!name || Number.isNaN(rate) || rate < 0) return;
-    state.companies.push({ name, rate });
+    const color = normalizeColorId($("new-company-color") && $("new-company-color").value);
+    if (!name || Number.isNaN(thickness) || thickness <= 0 || Number.isNaN(rate) || rate < 0) return;
+    const existing = state.companies.find((c) => c.name === name && Number(c.thickness) === thickness && c.color === color);
+    if (existing) existing.rate = rate;
+    else state.companies.push({ name, thickness, rate, color });
     $("new-company-name").value = "";
+    if ($("new-company-thick")) $("new-company-thick").value = "";
     $("new-company-rate").value = "";
     renderRateList("company-list", state.companies, "company");
     renderCompanySelect();
-    storeSet(KEYS.companies, state.companies).then(flashSaved);
+    persistOwnerData();
   }
 
   function removeCompany(index) {
     state.companies.splice(index, 1);
     renderRateList("company-list", state.companies, "company");
     renderCompanySelect();
-    storeSet(KEYS.companies, state.companies).then(flashSaved);
+    persistOwnerData();
+  }
+
+  function addAluminium() {
+    const name = $("new-alu-name").value.trim();
+    const thickness = parseFloat($("new-alu-thick").value);
+    const rate = parseFloat($("new-alu-rate").value);
+    const color = normalizeAluColorId($("new-alu-color") && $("new-alu-color").value);
+    if (!name || Number.isNaN(thickness) || thickness <= 0 || Number.isNaN(rate) || rate < 0) return;
+    const existing = state.aluminium.find((a) => a.name === name && Number(a.thickness) === thickness && a.color === color);
+    if (existing) existing.rate = rate;
+    else state.aluminium.push({ name, thickness, rate, color });
+    $("new-alu-name").value = "";
+    $("new-alu-thick").value = "";
+    $("new-alu-rate").value = "";
+    refreshSheetSelects();
+    persistOwnerData();
+  }
+
+  function removeAluminium(index) {
+    state.aluminium.splice(index, 1);
+    refreshSheetSelects();
+    persistOwnerData();
+  }
+
+  function addGlassThick() {
+    const mm = parseFloat($("new-glass-thick").value);
+    if (Number.isNaN(mm) || mm <= 0) return;
+    if (state.glassThicks.indexOf(mm) >= 0) return;
+    state.glassThicks.push(mm);
+    state.glassThicks.sort((a, b) => a - b);
+    $("new-glass-thick").value = "";
+    refreshSheetSelects();
+    persistOwnerData();
+  }
+
+  function removeGlassThick(index) {
+    state.glassThicks.splice(index, 1);
+    refreshSheetSelects();
+    persistOwnerData();
+  }
+
+  function saveCharges() {
+    const net = parseFloat($("in-charge-net").value);
+    const extra = parseFloat($("in-charge-extra").value);
+    if (Number.isNaN(net) || net < 0 || Number.isNaN(extra) || extra < 0) return;
+    state.charges = { net, extra };
+    persistOwnerData();
+    flashSaved();
   }
 
   function addLock() {
@@ -760,7 +1332,7 @@
     $("new-lock-rate").value = "";
     renderRateList("lock-list", state.locks, "lock");
     renderLockSelect();
-    storeSet(KEYS.locks, state.locks).then(flashSaved);
+    persistOwnerData();
     renderLivePreview(true);
   }
 
@@ -768,7 +1340,7 @@
     state.locks.splice(index, 1);
     renderRateList("lock-list", state.locks, "lock");
     renderLockSelect();
-    storeSet(KEYS.locks, state.locks).then(flashSaved);
+    persistOwnerData();
     renderLivePreview(true);
   }
 
@@ -781,18 +1353,564 @@
     };
     if (Object.values(next).some((v) => Number.isNaN(v) || v < 0)) return;
     state.cutParams = next;
-    storeSet(KEYS.cutParams, state.cutParams).then(flashSaved);
+    persistOwnerData();
     renderItems();
   }
 
+
+  function setupPwa() {
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("sw.js").catch(function () {});
+    }
+    var installBtn = $("btn-install");
+    var tip = $("install-tip");
+    var deferred = null;
+    var standalone = window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone;
+    if (standalone) document.documentElement.classList.add("is-standalone");
+    window.addEventListener("beforeinstallprompt", function (e) {
+      e.preventDefault();
+      deferred = e;
+      if (installBtn) installBtn.classList.remove("hidden");
+    });
+    window.addEventListener("appinstalled", function () {
+      deferred = null;
+      if (installBtn) installBtn.classList.add("hidden");
+      if (tip) tip.classList.add("hidden");
+    });
+    if (installBtn) {
+      installBtn.addEventListener("click", function () {
+        if (deferred) {
+          deferred.prompt();
+          deferred.userChoice.finally(function () {
+            deferred = null;
+            installBtn.classList.add("hidden");
+          });
+          return;
+        }
+        if (tip) tip.classList.toggle("hidden");
+      });
+    }
+    if (!standalone && /iphone|ipad|ipod/i.test(navigator.userAgent) && installBtn) {
+      installBtn.classList.remove("hidden");
+    }
+  }
+
+  function sheetApiUrl() {
+    return String(window.MTG_SHEET_API || "").trim();
+  }
+
+  function sheetRequest(payload) {
+    const url = sheetApiUrl();
+    if (!url) return Promise.reject(new Error("noapi"));
+    return fetch(url, {
+      method: "POST",
+      redirect: "follow",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify(payload)
+    }).then((res) => res.json());
+  }
+
+  function fillCutInputs() {
+    $("in-cp-outerhoriz").value = state.cutParams.outerHoriz;
+    $("in-cp-side").value = state.cutParams.side;
+    $("in-cp-shutterhoriz").value = state.cutParams.shutterHoriz;
+    $("in-cp-glassgap").value = state.cutParams.glassGap;
+  }
+
+  function applyOwnerData(data) {
+    if (data.role === "owner" || data.role === "operator") state.role = data.role;
+    if (Array.isArray(data.companies)) state.companies = normalizeCompanies(data.companies);
+    if (Array.isArray(data.locks)) state.locks = data.locks;
+    if (Array.isArray(data.aluminium)) state.aluminium = normalizeAluminium(data.aluminium);
+    if (Array.isArray(data.glassThicks)) state.glassThicks = data.glassThicks;
+    if (data.charges && typeof data.charges === "object") {
+      state.charges = { net: Number(data.charges.net) || 0, extra: Number(data.charges.extra) || 0 };
+    }
+    if (data.cutParams && typeof data.cutParams === "object") {
+      state.cutParams = { ...DEFAULT_CUT, ...data.cutParams };
+    }
+    state.quotes = isOwner() && Array.isArray(data.quotes) ? data.quotes : [];
+    state.staff = isOwner() && Array.isArray(data.users) ? data.users : [];
+    fillCutInputs();
+    renderRateList("company-list", state.companies, "company");
+    renderRateList("lock-list", state.locks, "lock");
+    refreshSheetSelects();
+    renderStaffList();
+    renderQuotes();
+    renderItems();
+    updateRoleUi();
+    updateCatalogHint();
+  }
+
+  function applyCatalog(data) {
+    if (isStaff()) return false;
+    if (!data) return false;
+    const hasLists = Array.isArray(data.companies) || Array.isArray(data.aluminium)
+      || Array.isArray(data.glassThicks) || Array.isArray(data.locks);
+    if (data.ok === false && !hasLists) return false;
+    if (Array.isArray(data.companies)) state.companies = normalizeCompanies(data.companies);
+    if (Array.isArray(data.locks)) state.locks = data.locks;
+    if (Array.isArray(data.aluminium)) state.aluminium = normalizeAluminium(data.aluminium);
+    if (Array.isArray(data.glassThicks)) state.glassThicks = data.glassThicks;
+    state.charges = { net: 0, extra: 0 };
+    refreshSheetSelects();
+    updateCatalogHint();
+    return !!(state.companies.length || state.aluminium.length || state.glassThicks.length);
+  }
+
+  function updateCatalogHint() {
+    const el = $("catalog-hint");
+    if (!el) return;
+    const empty = !state.companies.length && !state.aluminium.length && !state.glassThicks.length;
+    el.textContent = empty ? T.catalogEmpty : "";
+    el.classList.toggle("hidden", !empty);
+  }
+
+  function fetchCatalogGet() {
+    const url = sheetApiUrl();
+    const sep = url.indexOf("?") >= 0 ? "&" : "?";
+    return fetch(url + sep + "action=catalog", {
+      method: "GET",
+      redirect: "follow"
+    }).then((res) => res.json());
+  }
+
+  function loadCatalog() {
+    if (!sheetApiUrl()) return;
+    sheetRequest({ action: "catalog" }).then(function (data) {
+      if (applyCatalog(data)) return;
+      return fetchCatalogGet().then(applyCatalog);
+    }).catch(function () {
+      return fetchCatalogGet().then(applyCatalog).catch(function () {
+        updateCatalogHint();
+      });
+    });
+  }
+
+
+  function roleLabel(role) {
+    return role === "owner" ? T.roleOwner : T.roleStaff;
+  }
+
+  function renderStaffList() {
+    const wrap = $("staff-list");
+    if (!wrap) return;
+    if (!isOwner()) {
+      wrap.innerHTML = "";
+      return;
+    }
+    if (!state.staff.length) {
+      wrap.innerHTML = '<div class="empty-note">' + T.emptyRates + "</div>";
+      return;
+    }
+    wrap.innerHTML = state.staff.map((u, i) =>
+      rateRowOpen(i) + '<span class="name">' + escapeHtml(u.email) + " · " + escapeHtml(roleLabel(u.role)) + '</span><button type="button" class="danger-ghost icon-btn" data-action="remove-staff" data-index="' + i + '">' + ico("trash") + "<span>" + T.muchun + "</span></button></div>"
+    ).join("");
+  }
+
+  function addStaff() {
+    if (!isOwner()) return;
+    const email = String($("new-staff-email") && $("new-staff-email").value || "").trim().toLowerCase();
+    const pin = String($("new-staff-pin") && $("new-staff-pin").value || "").trim();
+    const role = $("new-staff-role") && $("new-staff-role").value === "owner" ? "owner" : "operator";
+    if (!ownerEmailOk(email) || !ownerPinOk(pin)) return;
+    const existing = state.staff.find((u) => u.email === email);
+    if (existing) {
+      existing.pin = pin;
+      existing.role = role;
+    } else {
+      state.staff.push({ email: email, pin: pin, role: role });
+    }
+    $("new-staff-email").value = "";
+    $("new-staff-pin").value = "";
+    renderStaffList();
+    persistOwnerData();
+  }
+
+  function removeStaff(index) {
+    if (!isOwner()) return;
+    const next = state.staff.filter((_, i) => i !== index);
+    if (!next.some((u) => u.role === "owner")) return;
+    state.staff = next;
+    renderStaffList();
+    persistOwnerData();
+  }
+
+  function persistOwnerData() {
+    if (!isOwner() || !state.ownerPin || !state.ownerEmail || !sheetApiUrl()) return;
+    sheetRequest({
+      action: "save",
+      email: state.ownerEmail,
+      pin: state.ownerPin,
+      companies: state.companies,
+      locks: state.locks,
+      aluminium: state.aluminium,
+      glassThicks: state.glassThicks,
+      charges: state.charges,
+      cutParams: state.cutParams,
+      users: state.staff
+    }).then((data) => {
+      if (!data || !data.ok) throw new Error("save");
+      flashSaved();
+    }).catch(() => {
+      const el = $("save-flash");
+      if (el) {
+        el.textContent = T.ownerSaveFail;
+        el.classList.add("show");
+        setTimeout(() => el.classList.remove("show"), 1800);
+      }
+    });
+  }
+
+  function isStaff() {
+    return state.role === "owner" || state.role === "operator";
+  }
+
+  function isOwner() {
+    return state.role === "owner";
+  }
+
+  function isOwnerUnlocked() {
+    return isStaff();
+  }
+
+  function saveSession(email, pin) {
+    storeSet(KEYS.session, { email: String(email || "").toLowerCase(), pin: String(pin || "") });
+  }
+
+  function clearSession() {
+    try { localStorage.removeItem(KEYS.session); } catch (_) { /* ignore */ }
+  }
+
+  function applyLoginSuccess(data, email, pin, nextTab) {
+    state.ownerEmail = String(email || "").toLowerCase();
+    state.ownerPin = String(pin || "");
+    state.role = data.role === "operator" ? "operator" : "owner";
+    saveSession(state.ownerEmail, state.ownerPin);
+    applyOwnerData(data);
+    setOwnerUnlocked(true);
+    $("owner-gate").classList.add("hidden");
+    var tab = nextTab || state.pendingOwnerTab || (state.role === "owner" ? "rates" : "cutting");
+    if (tab === "rates" && state.role !== "owner") tab = "cutting";
+    if ((tab === "cutting" || tab === "rates") && !isStaff()) tab = "calc";
+    switchTab(tab);
+  }
+
+  function restoreSession(saved, nextTab) {
+    if (!saved || !saved.email || !saved.pin || !sheetApiUrl()) return Promise.resolve(false);
+    return sheetRequest({ action: "unlock", email: saved.email, pin: saved.pin }).then((data) => {
+      if (!data || !data.ok) {
+        clearSession();
+        return false;
+      }
+      applyLoginSuccess(data, saved.email, saved.pin, nextTab);
+      return true;
+    }).catch(() => {
+      clearSession();
+      return false;
+    });
+  }
+
+  function setOwnerUnlocked(on) {
+    state.ownerUnlocked = on;
+    if (!on) {
+      state.ownerPin = "";
+      state.ownerEmail = "";
+      state.role = "";
+      state.quotes = [];
+    }
+    updateRoleUi();
+  }
+
+  function updateRoleUi() {
+    document.body.classList.toggle("is-staff", isStaff());
+    if ($("btn-staff-login")) $("btn-staff-login").classList.toggle("hidden", isStaff());
+    if ($("btn-owner-lock")) $("btn-owner-lock").classList.toggle("hidden", !isStaff());
+    if ($("nav-cutting")) $("nav-cutting").classList.toggle("tab-hidden", !isStaff());
+    if ($("nav-rates")) $("nav-rates").classList.toggle("tab-hidden", !isOwner());
+    if ($("staff-card")) $("staff-card").classList.toggle("hidden", !isOwner());
+    updateQuoteCard();
+    renderQuotes();
+  }
+
+  function updateQuoteCard() {
+    if ($("quote-card")) $("quote-card").classList.toggle("hidden", !state.items.length);
+  }
+
+  function fillQuoteLabels() {
+    if ($("staff-login-label")) $("staff-login-label").textContent = T.staffLogin;
+    if ($("quote-title")) $("quote-title").textContent = T.quoteTitle;
+    if ($("quote-hint")) $("quote-hint").textContent = T.quoteHint;
+    if ($("quote-name-label")) $("quote-name-label").textContent = T.quoteName;
+    if ($("quote-phone-label")) $("quote-phone-label").textContent = T.quotePhone;
+    if ($("btn-send-quote")) $("btn-send-quote").textContent = T.quoteSend;
+    if ($("quotes-title")) $("quotes-title").textContent = T.quotesTitle;
+    if ($("glass-thick-label")) $("glass-thick-label").textContent = T.glassThick;
+    if ($("alu-company-label")) $("alu-company-label").textContent = T.aluCompany;
+    if ($("alu-thick-label")) $("alu-thick-label").textContent = T.aluThick;
+    if ($("alu-color-label")) $("alu-color-label").textContent = T.aluColor;
+    if ($("alu-rates-title")) $("alu-rates-title").textContent = T.aluRatesTitle;
+    if ($("alu-rates-hint")) $("alu-rates-hint").textContent = T.aluRatesHint;
+    if ($("thick-rates-title")) $("thick-rates-title").textContent = T.thickRatesTitle;
+    if ($("thick-rates-hint")) $("thick-rates-hint").textContent = T.thickRatesHint;
+    if ($("charges-title")) $("charges-title").textContent = T.chargesTitle;
+    if ($("charges-hint")) $("charges-hint").textContent = T.chargesHint;
+    if ($("charge-net-label")) $("charge-net-label").textContent = T.chargeNet;
+    if ($("charge-extra-label")) $("charge-extra-label").textContent = T.chargeExtra;
+    if ($("btn-add-alu-label")) $("btn-add-alu-label").textContent = T.addBtn;
+    if ($("btn-add-thick-label")) $("btn-add-thick-label").textContent = T.addBtn;
+    if ($("btn-save-charges-label")) $("btn-save-charges-label").textContent = T.saveBtn;
+    if ($("new-alu-name")) $("new-alu-name").placeholder = T.aluNamePh;
+    if ($("new-alu-thick")) $("new-alu-thick").placeholder = T.aluThickPh;
+    if ($("new-alu-rate")) $("new-alu-rate").placeholder = T.aluRatePh;
+    if ($("new-company-thick")) $("new-company-thick").placeholder = T.glassThickPh;
+    if ($("company-rates-hint")) $("company-rates-hint").textContent = T.companyRatesHint;
+    fillCompanyColorSelect();
+    fillAluColorSelect();
+    if ($("nav-rates-label")) $("nav-rates-label").textContent = T.admin;
+    if ($("staff-title")) $("staff-title").textContent = T.staffTitle;
+    if ($("staff-hint")) $("staff-hint").textContent = T.staffHint;
+    if ($("new-staff-email")) $("new-staff-email").placeholder = T.staffEmailPh;
+    if ($("new-staff-pin")) $("new-staff-pin").placeholder = T.staffPinPh;
+    if ($("opt-staff-role")) $("opt-staff-role").textContent = T.roleStaff;
+    if ($("opt-owner-role")) $("opt-owner-role").textContent = T.roleOwner;
+    if ($("btn-add-staff-label")) $("btn-add-staff-label").textContent = T.addBtn;
+  }
+
+  function renderQuotes() {
+    var card = $("quotes-card");
+    var list = $("quotes-list");
+    if (!card || !list) return;
+    if (!isOwner()) {
+      card.classList.add("hidden");
+      return;
+    }
+    card.classList.remove("hidden");
+    if (!state.quotes.length) {
+      list.innerHTML = '<div class="empty-note">' + T.quotesEmpty + "</div>";
+      return;
+    }
+    list.innerHTML = state.quotes.map(function (q) {
+      return '<div class="quote-row"><strong>' + escapeHtml(q.name) + " · " + escapeHtml(q.phone) +
+        "</strong><span>" + escapeHtml(q.time) + " · " + q.items + " · " + fmt(q.sqft) + T.sqLabel +
+        (q.total ? " · " + money(q.total) : "") + " · " + escapeHtml(q.status) + "</span></div>";
+    }).join("");
+  }
+
+  function quotePhoneOk(phone) {
+    var p = String(phone || "").replace(/\s+/g, "");
+    return /^(?:\+?88)?01\d{9}$/.test(p) || /^\d{10,15}$/.test(p);
+  }
+
+  function sendQuote() {
+    var err = $("quote-err");
+    var okEl = $("quote-ok");
+    okEl.classList.add("hidden");
+    if (!state.items.length) {
+      err.textContent = T.quoteEmpty;
+      err.style.display = "block";
+      return;
+    }
+    var name = $("quote-name").value.trim();
+    var phone = $("quote-phone").value.trim();
+    if (name.length < 2) {
+      err.textContent = T.quoteNameNeed;
+      err.style.display = "block";
+      return;
+    }
+    if (!quotePhoneOk(phone)) {
+      err.textContent = T.quotePhoneBad;
+      err.style.display = "block";
+      return;
+    }
+    if (!sheetApiUrl()) {
+      err.textContent = T.ownerNeedApi;
+      err.style.display = "block";
+      return;
+    }
+    err.style.display = "none";
+    var btn = $("btn-send-quote");
+    btn.disabled = true;
+    sheetRequest({
+      action: "quote",
+      name: name,
+      phone: phone.replace(/\s+/g, ""),
+      items: state.items.map(function (i) {
+        var type = getType(i.winType);
+        return {
+          type: type.label + " " + type.sub,
+          heightFt: i.heightFt,
+          widthFt: i.widthFt,
+          qty: i.qty,
+          thickness: i.thickness,
+          color: colorLabel(i.glassColor),
+          colorId: i.glassColor,
+          company: i.companyName,
+          aluminium: i.aluName || "",
+          aluThick: i.aluThick || "",
+          aluColor: i.aluColor || "",
+          aluColorLabel: aluColorLabel(i.aluColor),
+          lock: i.lockName || "",
+          net: i.hasNet,
+          sqft: i.totalSqft
+        };
+      })
+    }).then(function (data) {
+      btn.disabled = false;
+      if (!data || !data.ok) {
+        var msg = T.quoteFail;
+        if (data && data.error === "phone") msg = T.quotePhoneBad;
+        if (data && data.error === "name") msg = T.quoteNameNeed;
+        err.textContent = msg;
+        err.style.display = "block";
+        return;
+      }
+      okEl.textContent = T.quoteOk + (data.id ? " (" + data.id + ")" : "");
+      okEl.classList.remove("hidden");
+    }).catch(function () {
+      btn.disabled = false;
+      err.textContent = T.quoteFail;
+      err.style.display = "block";
+    });
+  }
+
+  function showOwnerGate(nextTab) {
+    state.pendingOwnerTab = nextTab;
+    $("owner-gate-title").textContent = T.staffLogin;
+    $("owner-gate-hint").textContent = sheetApiUrl() ? T.ownerUnlockHint : T.ownerNeedApi;
+    $("owner-email-label").textContent = T.ownerEmailLabel;
+    $("owner-pin-label").textContent = T.ownerPinLabel;
+    $("btn-owner-ok").textContent = T.ownerOpen;
+    $("owner-pin2-wrap").classList.add("hidden");
+    $("owner-gate-err").style.display = "none";
+    $("owner-email").value = "";
+    $("owner-pin").value = "";
+    $("owner-gate").classList.remove("hidden");
+    $("tab-calc").classList.add("hidden");
+    $("tab-cutting").classList.add("hidden");
+    $("tab-rates").classList.add("hidden");
+    document.querySelectorAll(".tab-btn").forEach((btn) => {
+      btn.classList.toggle("active", btn.dataset.tab === nextTab);
+    });
+    const nav = document.querySelector(".bottom-nav");
+    if (nav) {
+      nav.dataset.active = nextTab;
+      nav.style.setProperty("--i", String({ calc: 0, cutting: 1, rates: 2 }[nextTab] || 0));
+    }
+    setTimeout(() => $("owner-email").focus(), 50);
+  }
+
+  function ownerEmailOk(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(email || "").trim());
+  }
+
+  function ownerPinOk(pin) {
+    return /^\d{4,8}$/.test(String(pin || "").trim());
+  }
+
+  function submitOwnerPin() {
+    const email = $("owner-email").value.trim();
+    const pin = $("owner-pin").value.trim();
+    const err = $("owner-gate-err");
+    if (!sheetApiUrl()) {
+      err.textContent = T.ownerNeedApi;
+      err.style.display = "block";
+      return;
+    }
+    if (!email) {
+      err.textContent = T.ownerEmailNeed;
+      err.style.display = "block";
+      return;
+    }
+    if (!ownerEmailOk(email)) {
+      err.textContent = T.ownerEmailBad;
+      err.style.display = "block";
+      return;
+    }
+    if (!pin) {
+      err.textContent = T.ownerPinNeed;
+      err.style.display = "block";
+      return;
+    }
+    if (!ownerPinOk(pin)) {
+      err.textContent = T.ownerPinBad;
+      err.style.display = "block";
+      return;
+    }
+    $("btn-owner-ok").disabled = true;
+    sheetRequest({ action: "unlock", email: email, pin: pin }).then((data) => {
+      $("btn-owner-ok").disabled = false;
+      if (!data || !data.ok) {
+        var msg = T.ownerPinWrong;
+        if (data && data.error === "locked") msg = T.ownerLocked;
+        if (data && data.error === "needemail") msg = T.ownerNeedEmail;
+        if (data && data.error === "required") msg = T.ownerUnlockHint;
+        err.textContent = msg;
+        err.style.display = "block";
+        return;
+      }
+      applyLoginSuccess(data, email, pin);
+    }).catch(() => {
+      $("btn-owner-ok").disabled = false;
+      err.textContent = T.ownerNetErr;
+      err.style.display = "block";
+    });
+  }
+
+  function lockOwner() {
+    clearSession();
+    setOwnerUnlocked(false);
+    state.companies = [];
+    state.locks = [];
+    state.aluminium = [];
+    state.glassThicks = [];
+    state.charges = { net: 0, extra: 0 };
+    state.cutParams = { outerHoriz: 0, side: 0, shutterHoriz: 0, glassGap: 0 };
+    state.staff = [];
+    fillCutInputs();
+    renderRateList("company-list", state.companies, "company");
+    renderRateList("lock-list", state.locks, "lock");
+    refreshSheetSelects();
+    loadCatalog();
+    showOwnerGate("calc");
+  }
+
+  function persistActiveTab(tab) {
+    if (tab !== "calc" && tab !== "cutting" && tab !== "rates") return;
+    storeSet(KEYS.tab, tab);
+  }
+
   function switchTab(tab) {
+    if (tab === "rates" && !isOwner()) {
+      if (!isStaff()) {
+        persistActiveTab(tab);
+        showOwnerGate(tab);
+        return;
+      }
+      tab = "calc";
+    }
+    if (tab === "cutting" && !isStaff()) {
+      persistActiveTab(tab);
+      showOwnerGate(tab);
+      return;
+    }
+    persistActiveTab(tab);
+    $("owner-gate").classList.add("hidden");
     document.querySelectorAll(".tab-btn").forEach((btn) => {
       btn.classList.toggle("active", btn.dataset.tab === tab);
     });
+    const nav = document.querySelector(".bottom-nav");
+    if (nav) {
+      nav.dataset.active = tab;
+      nav.style.setProperty("--i", String({ calc: 0, cutting: 1, rates: 2 }[tab] || 0));
+    }
     $("tab-calc").classList.toggle("hidden", tab !== "calc");
     $("tab-cutting").classList.toggle("hidden", tab !== "cutting");
     $("tab-rates").classList.toggle("hidden", tab !== "rates");
     if (tab === "cutting") renderCuttingTab();
+    if (tab === "rates") renderQuotes();
+    var body = document.querySelector(".app-body");
+    if (body) body.scrollTop = 0;
   }
 
   function setNet(on) {
@@ -821,7 +1939,23 @@
     $("btn-net-no").addEventListener("click", () => setNet(false));
     $("btn-net-yes").addEventListener("click", () => setNet(true));
     $("sel-lock").addEventListener("change", () => renderLivePreview(true));
-    $("sel-company").addEventListener("change", () => renderLivePreview(true));
+    $("sel-company").addEventListener("change", onGlassCompanyChange);
+    if ($("sel-glass-thick")) {
+      $("sel-glass-thick").addEventListener("change", onGlassThickChange);
+    }
+    if ($("sel-alu-company")) {
+      $("sel-alu-company").addEventListener("change", onAluCompanyChange);
+    }
+    if ($("sel-alu-thick")) {
+      $("sel-alu-thick").addEventListener("change", onAluThickChange);
+    }
+    if ($("alu-color-grid")) {
+      $("alu-color-grid").addEventListener("click", (e) => {
+        const btn = e.target.closest("[data-alu-color]");
+        if (!btn) return;
+        onAluColorChange(btn.dataset.aluColor);
+      });
+    }
 
     ["in-h-ft", "in-h-in", "in-w-ft", "in-w-in"].forEach((id) => {
       $(id).addEventListener("input", () => renderLivePreview(true));
@@ -833,6 +1967,9 @@
     $("btn-print-cutting").addEventListener("click", () => window.print());
     $("btn-add-company").addEventListener("click", addCompany);
     $("btn-add-lock").addEventListener("click", addLock);
+    $("btn-add-alu").addEventListener("click", addAluminium);
+    if ($("btn-add-staff")) $("btn-add-staff").addEventListener("click", addStaff);
+    $("btn-save-charges").addEventListener("click", saveCharges);
     $("btn-save-cut").addEventListener("click", saveCutParams);
 
     $("item-list").addEventListener("click", (e) => {
@@ -850,35 +1987,96 @@
       const btn = e.target.closest("[data-action='remove-lock']");
       if (btn) removeLock(Number(btn.dataset.index));
     });
+    $("alu-list").addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-action='remove-alu']");
+      if (btn) removeAluminium(Number(btn.dataset.index));
+    });
+    if ($("staff-list")) {
+      $("staff-list").addEventListener("click", (e) => {
+        const btn = e.target.closest("[data-action='remove-staff']");
+        if (btn) removeStaff(Number(btn.dataset.index));
+      });
+    }
+    bindSortable("company-list", () => state.companies, () => {
+      renderRateList("company-list", state.companies, "company");
+      renderCompanySelect();
+      persistOwnerData();
+    });
+    bindSortable("lock-list", () => state.locks, () => {
+      renderRateList("lock-list", state.locks, "lock");
+      renderLockSelect();
+      persistOwnerData();
+    });
+    bindSortable("alu-list", () => state.aluminium, () => {
+      refreshSheetSelects();
+      persistOwnerData();
+    });
+    bindSortable("staff-list", () => state.staff, () => {
+      renderStaffList();
+      persistOwnerData();
+    });
     document.querySelectorAll(".tab-btn").forEach((btn) => {
       btn.addEventListener("click", () => switchTab(btn.dataset.tab));
+    });
+    $("btn-owner-ok").addEventListener("click", submitOwnerPin);
+    $("owner-email").addEventListener("keydown", (e) => {
+      if (e.key === "Enter") $("owner-pin").focus();
+    });
+    $("owner-pin").addEventListener("keydown", (e) => {
+      if (e.key === "Enter") submitOwnerPin();
+    });
+    $("owner-pin-2").addEventListener("keydown", (e) => {
+      if (e.key === "Enter") submitOwnerPin();
+    });
+    $("btn-owner-lock").addEventListener("click", lockOwner);
+    $("btn-staff-login").addEventListener("click", function () {
+      showOwnerGate("calc");
+    });
+    $("btn-send-quote").addEventListener("click", sendQuote);
+    $("quote-phone").addEventListener("keydown", function (e) {
+      if (e.key === "Enter") sendQuote();
     });
   }
 
   async function init() {
-    const savedCompanies = await storeGet(KEYS.companies);
-    const savedLocks = await storeGet(KEYS.locks);
-    const broken = (list) => Array.isArray(list) && list.some((item) => /\?{2,}/.test(item.name || ""));
-    state.companies = savedCompanies && !broken(savedCompanies) ? savedCompanies : DEFAULT_COMPANIES;
-    state.locks = savedLocks && !broken(savedLocks) ? savedLocks : DEFAULT_LOCKS;
-    state.cutParams = { ...DEFAULT_CUT, ...(await storeGet(KEYS.cutParams) || {}) };
+    try {
+      ["glasscalc:companies", "glasscalc:locks", "glasscalc:cutparams", "glasscalc:ownerpin"].forEach((k) => {
+        localStorage.removeItem(k);
+      });
+    } catch (_) { /* ignore */ }
+    state.companies = [];
+    state.locks = [];
+    state.aluminium = [];
+    state.glassThicks = [];
+    state.charges = { net: 0, extra: 0 };
+    state.cutParams = { outerHoriz: 0, side: 0, shutterHoriz: 0, glassGap: 0 };
     state.items = (await storeGet(KEYS.items)) || [];
 
-    $("in-cp-outerhoriz").value = state.cutParams.outerHoriz;
-    $("in-cp-side").value = state.cutParams.side;
-    $("in-cp-shutterhoriz").value = state.cutParams.shutterHoriz;
-    $("in-cp-glassgap").value = state.cutParams.glassGap;
+    fillCutInputs();
 
     bindEvents();
+    fillQuoteLabels();
+    setOwnerUnlocked(false);
+    $("owner-lock-label").textContent = T.ownerLock;
+    loadCatalog();
     renderKindPicker();
     renderTypePicker();
     renderColorGrid();
-    renderCompanySelect();
-    renderLockSelect();
     renderRateList("company-list", state.companies, "company");
     renderRateList("lock-list", state.locks, "lock");
+    refreshSheetSelects();
     renderItems();
     renderLivePreview(false);
+    setupPwa();
+    const savedTab = await storeGet(KEYS.tab);
+    const session = await storeGet(KEYS.session);
+    const tab = savedTab === "cutting" || savedTab === "rates" || savedTab === "calc" ? savedTab : "calc";
+    if (session && session.email && session.pin) {
+      const ok = await restoreSession(session, tab);
+      if (!ok) switchTab("calc");
+    } else {
+      switchTab(tab === "calc" ? "calc" : "calc");
+    }
   }
 
   document.addEventListener("DOMContentLoaded", init);
