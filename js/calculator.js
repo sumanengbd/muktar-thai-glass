@@ -29,11 +29,11 @@
   "emptyRates": "এখনও কিছু যোগ করা হয়নি।",
   "perSq": "/ফুট²",
   "muchun": "মুছুন",
-  "outerTB": "বাইরের ফ্রেম  -  উপর/নিচ (O/H, B)",
-  "outerLR": "বাইরের ফ্রেম  -  বাম/ডান (S/L)",
+  "outerTB": "বাইরের ফ্রেম - উপর/নিচ (O/H, B)",
+  "outerLR": "বাইরের ফ্রেম - বাম/ডান (S/L)",
   "glass": "কাঁচ",
   "shutterTB": "শাটার ফ্রেম",
-  "shutterLR": "শাটার ফ্রেম  -  বাম/ডান",
+  "shutterLR": "শাটার ফ্রেম - বাম/ডান",
   "glassEach": "কাঁচ (প্রতিটি শাটার)",
   "parts": "পার্টস",
   "map": "মাপ",
@@ -68,7 +68,10 @@
   "colorFrosted": "ফ্রস্টেড",
   "deadbolt": "ডেডবোল্ট",
   "knob": "নব লক",
-  "generic": "সাধারণ"
+  "generic": "সাধারণ",
+  "dhoron": "ধরন",
+  "winTypes": "জানালার ধরন",
+  "doorTypes": "দরজার ধরন"
 };
   const KEYS = {
     companies: "glasscalc:companies",
@@ -122,6 +125,7 @@
     locks: [],
     items: [],
     cutParams: { ...DEFAULT_CUT },
+    selectedKind: null,
     selectedType: "fixed",
     glassColor: "clear",
     hasNet: false
@@ -178,10 +182,10 @@
     if (!lock) return "none";
     if (lock.style) return lock.style;
     const n = String(lock.name || "").toLowerCase();
-    if (/slid|??????/.test(n)) return "sliding";
-    if (/case|handle|???????|?????/.test(n)) return "casement";
-    if (/dead|???|?????/.test(n)) return "deadbolt";
-    if (/knob|??/.test(n)) return "knob";
+    if (n.indexOf("slid") !== -1) return "sliding";
+    if (n.indexOf("case") !== -1 || n.indexOf("handle") !== -1) return "casement";
+    if (n.indexOf("dead") !== -1 || n.indexOf("bolt") !== -1) return "deadbolt";
+    if (n.indexOf("knob") !== -1) return "knob";
     return "generic";
   }
 
@@ -377,24 +381,53 @@
     if (animate) pulsePreview();
   }
 
+  function renderKindPicker() {
+    $("kind-heading").textContent = T.janala + " / " + T.dorja;
+    $("kind-picker").innerHTML = `
+      <button type="button" class="kind-btn${state.selectedKind === "window" ? " active" : ""}" data-kind="window">
+        <img src="images/window-fixed.svg" alt="${escapeHtml(T.janala)}">
+        <span>${escapeHtml(T.janala)}</span>
+      </button>
+      <button type="button" class="kind-btn${state.selectedKind === "door" ? " active" : ""}" data-kind="door">
+        <img src="images/door-single.svg" alt="${escapeHtml(T.dorja)}">
+        <span>${escapeHtml(T.dorja)}</span>
+      </button>
+    `;
+  }
+
   function renderTypePicker() {
-    const makeCards = (list, wrapId) => {
-      $(wrapId).innerHTML = list.map((t) => `
-        <button type="button" class="type-card${t.id === state.selectedType ? " active" : ""}" data-type="${t.id}">
-          <img src="${t.image}" alt="${escapeHtml(t.label)}">
-          <span class="name">${escapeHtml(t.label)}</span>
-          <span class="sub">${escapeHtml(t.sub)}</span>
-        </button>
-      `).join("");
-    };
-    makeCards(PRODUCT_TYPES.windows, "type-windows");
-    makeCards(PRODUCT_TYPES.doors, "type-doors");
+    const section = $("section-types");
+    if (!state.selectedKind) {
+      section.classList.add("hidden");
+      return;
+    }
+    section.classList.remove("hidden");
+    const isDoor = state.selectedKind === "door";
+    const list = isDoor ? PRODUCT_TYPES.doors : PRODUCT_TYPES.windows;
+    $("types-heading").textContent = isDoor ? T.doorTypes : T.winTypes;
+    $("type-list").classList.toggle("doors", isDoor);
+    $("type-list").innerHTML = list.map((t) => `
+      <button type="button" class="type-card${t.id === state.selectedType ? " active" : ""}" data-type="${t.id}">
+        <img src="${t.image}" alt="${escapeHtml(t.label)}">
+        <span class="name">${escapeHtml(t.label)}</span>
+        <span class="sub">${escapeHtml(t.sub)}</span>
+      </button>
+    `).join("");
   }
 
   function renderColorGrid() {
     $("color-grid").innerHTML = GLASS_COLORS.map((c) => `
       <button type="button" class="color-swatch${c.id === state.glassColor ? " active" : ""}" data-color="${c.id}" title="${escapeHtml(T[c.labelKey])}" style="background:linear-gradient(135deg,${c.light},${c.mid})"></button>
     `).join("");
+  }
+
+  function setSelectedKind(kind) {
+    state.selectedKind = kind;
+    const list = kind === "door" ? PRODUCT_TYPES.doors : PRODUCT_TYPES.windows;
+    state.selectedType = list[0].id;
+    renderKindPicker();
+    renderTypePicker();
+    renderLivePreview(true);
   }
 
   function setSelectedType(id) {
@@ -770,11 +803,11 @@
   }
 
   function bindEvents() {
-    $("type-windows").addEventListener("click", (e) => {
-      const card = e.target.closest("[data-type]");
-      if (card) setSelectedType(card.dataset.type);
+    $("kind-picker").addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-kind]");
+      if (btn) setSelectedKind(btn.dataset.kind);
     });
-    $("type-doors").addEventListener("click", (e) => {
+    $("type-list").addEventListener("click", (e) => {
       const card = e.target.closest("[data-type]");
       if (card) setSelectedType(card.dataset.type);
     });
@@ -837,6 +870,7 @@
     $("in-cp-glassgap").value = state.cutParams.glassGap;
 
     bindEvents();
+    renderKindPicker();
     renderTypePicker();
     renderColorGrid();
     renderCompanySelect();

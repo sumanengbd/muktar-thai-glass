@@ -32,12 +32,12 @@
         <div class="card">
           <h2>নতুন জানালা / দরজা যোগ করুন <span class="badge">Add Item</span></h2>
           <div class="type-section">
-            <h3>জানালার ধরন</h3>
-            <div class="type-grid" id="type-windows"></div>
+            <h3 id="kind-heading"></h3>
+            <div class="kind-row" id="kind-picker"></div>
           </div>
-          <div class="type-section">
-            <h3>দরজার ধরন</h3>
-            <div class="type-grid doors" id="type-doors"></div>
+          <div class="type-section hidden" id="section-types">
+            <h3 id="types-heading"></h3>
+            <div class="type-grid" id="type-list"></div>
           </div>
           <div class="grid3">
             <div class="field"><label for="in-h-ft">উচ্চতা (ফুট)</label><input type="number" min="0" step="0.1" id="in-h-ft" placeholder="৫"></div>

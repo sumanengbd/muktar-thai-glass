@@ -261,6 +261,47 @@ header.top p {
   grid-template-columns: repeat(3, 1fr);
 }
 
+.kind-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.kind-btn {
+  border: 1.5px solid var(--border);
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: 14px;
+  padding: 12px 10px 10px;
+  cursor: pointer;
+  font-family: inherit;
+  color: inherit;
+  text-align: center;
+  transition: 0.15s;
+}
+
+.kind-btn img {
+  width: 72px;
+  height: 88px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 8px;
+}
+
+.kind-btn span {
+  display: block;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--blue-deep);
+}
+
+.kind-btn:hover { border-color: rgba(31, 111, 146, 0.45); }
+
+.kind-btn.active {
+  border-color: var(--blue);
+  background: rgba(31, 111, 146, 0.1);
+  box-shadow: 0 0 0 3px rgba(31, 111, 146, 0.12);
+}
+
 .type-card {
   border: 1.5px solid var(--border);
   background: rgba(255, 255, 255, 0.7);
