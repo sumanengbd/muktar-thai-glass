@@ -1,4 +1,4 @@
-const CACHE = "mtg-app-v30";
+const CACHE = "mtg-app-v63";
 const ASSETS = [
   "./",
   "./index.html",

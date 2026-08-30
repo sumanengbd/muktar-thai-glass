@@ -2,10 +2,10 @@
  * Bind this script to a PRIVATE Google Sheet (Extensions > Apps Script).
  *
  * Tabs (created on setup / first request):
+ *   Config      key | value   (optional fallback owner pin + email)
  *   Users       email | pin | role   (owner | operator)
- *   Config      A1=pin B1   A2=email B2  (optional fallback owner)
- *   Companies      name | thickness | rate | color   (one row per company+mm+color)
- *   Aluminium      name | thickness | rate | color   (one row per company+mm+color)
+ *   Companies      name | thickness | rate | color   (one row per company; mm/color use | )
+ *   Aluminium      name | thickness | rate | color   (one row per company; mm/color use | )
  *   Locks          name | rate | style
  *   Charges        key | value   (net, extra)
  *   CutParams      key | value
@@ -26,10 +26,6 @@ var TZ = "Asia/Dhaka";
 
 function setup() {
   ensureSheets_();
-}
-
-function myFunction() {
-  setup();
 }
 
 function doGet(e) {
@@ -71,10 +67,10 @@ function doPost(e) {
       writeCompanies_(body.companies || []);
       writeLocks_(body.locks || []);
       writeAluminium_(body.aluminium || []);
-      writeGlassThicks_(body.glassThicks || []);
       writeCharges_(body.charges || {});
       writeCut_(body.cutParams || {});
-      if (body.users) writeUsers_(body.users);
+      if (Array.isArray(body.glassThicks)) writeGlassThicks_(body.glassThicks);
+      if (Array.isArray(body.users)) writeUsers_(body.users, user);
     }
     return json_({
       ok: true,
@@ -85,7 +81,7 @@ function doPost(e) {
       glassThicks: readGlassThicks_(),
       charges: readCharges_(),
       cutParams: readCut_(),
-      quotes: user.role === "owner" ? readQuotes_() : [],
+      quotes: (user.role === "owner" || user.role === "operator") ? readQuotes_() : [],
       users: user.role === "owner" ? readUsers_() : []
     });
   } catch (err) {
@@ -106,20 +102,93 @@ function nowText_() {
   return Utilities.formatDate(new Date(), TZ, "yyyy-MM-dd HH:mm");
 }
 
+var SHEET_STYLE_ = [
+  ["Config", "#6b7280", 2],
+  ["Users", "#5b4d9a", 3],
+  ["Companies", "#0e6b86", 4],
+  ["Aluminium", "#3d6f8a", 4],
+  ["Locks", "#d28a1a", 3],
+  ["Charges", "#2f8f5b", 2],
+  ["CutParams", "#2a5f73", 2],
+  ["Quotes", "#c17a20", 8],
+  ["QuoteItems", "#f2a93b", 20],
+  ["GlassThickness", "#0e6b86", 1]
+];
+
+function styleSheet_(sh, tabColor, cols) {
+  if (!sh) return;
+  if (tabColor) sh.setTabColor(tabColor);
+  var n = cols || Math.max(1, sh.getLastColumn());
+  var head = sh.getRange(1, 1, 1, n);
+  head.setFontWeight("bold");
+  head.setFontColor("#ffffff");
+  head.setBackground("#0a4456");
+  head.setHorizontalAlignment("center");
+  head.setVerticalAlignment("middle");
+  sh.setFrozenRows(1);
+}
+
+function styleSheetByName_(name) {
+  for (var i = 0; i < SHEET_STYLE_.length; i++) {
+    if (SHEET_STYLE_[i][0] === name) {
+      styleSheet_(ss_().getSheetByName(name), SHEET_STYLE_[i][1], SHEET_STYLE_[i][2]);
+      return;
+    }
+  }
+}
+
+function styleAllSheets_() {
+  var book = ss_();
+  for (var i = 0; i < SHEET_STYLE_.length; i++) {
+    var spec = SHEET_STYLE_[i];
+    var sh = book.getSheetByName(spec[0]);
+    if (sh) styleSheet_(sh, spec[1], spec[2]);
+  }
+}
+
+function configValue_(key) {
+  var sh = ss_().getSheetByName("Config");
+  if (!sh) return "";
+  var a1 = String(sh.getRange("A1").getValue() || "").trim().toLowerCase();
+  if (a1 === "key") {
+    var rows = sh.getDataRange().getValues();
+    for (var i = 1; i < rows.length; i++) {
+      if (String(rows[i][0] || "").trim().toLowerCase() === key) {
+        return String(rows[i][1] || "").trim();
+      }
+    }
+    return "";
+  }
+  if (a1 === "pin") {
+    if (key === "pin") return String(sh.getRange("B1").getValue() || "").trim();
+    if (key === "email") return String(sh.getRange("B2").getValue() || "").trim();
+  }
+  return "";
+}
+
+function ensureConfigSheet_(book) {
+  var config = book.getSheetByName("Config") || book.insertSheet("Config");
+  var a1 = String(config.getRange("A1").getValue() || "").trim().toLowerCase();
+  if (a1 === "key") return config;
+  var oldPin = a1 === "pin" ? String(config.getRange("B1").getValue() || "").trim() : "";
+  var oldEmail = a1 === "pin" ? String(config.getRange("B2").getValue() || "").trim() : "";
+  config.clear();
+  config.getRange(1, 1, 3, 2).setValues([
+    ["key", "value"],
+    ["pin", oldPin || "1234"],
+    ["email", oldEmail]
+  ]);
+  return config;
+}
+
 function ensureSheets_() {
   var book = ss_();
-  var config = book.getSheetByName("Config") || book.insertSheet("Config");
-  if (!config.getRange("A1").getValue()) {
-    config.getRange("A1:B1").setValues([["pin", "1234"]]);
-  }
-  if (!String(config.getRange("A2").getValue() || "").trim()) {
-    config.getRange("A2:B2").setValues([["email", ""]]);
-  }
+  ensureConfigSheet_(book);
 
   var users = book.getSheetByName("Users") || book.insertSheet("Users");
   if (users.getLastRow() < 2) {
-    var ownerEmail = String(config.getRange("B2").getValue() || "").trim() || "owner@gmail.com";
-    var ownerPin = String(config.getRange("B1").getValue() || "").trim() || "1234";
+    var ownerEmail = configValue_("email") || "owner@gmail.com";
+    var ownerPin = configValue_("pin") || "1234";
     users.clear();
     users.getRange(1, 1, 3, 3).setValues([
       ["email", "pin", "role"],
@@ -183,6 +252,7 @@ function ensureSheets_() {
   }
   var qitems = book.getSheetByName("QuoteItems") || book.insertSheet("QuoteItems");
   ensureQuoteItemHeader_(qitems);
+  styleAllSheets_();
 }
 
 function readUsers_() {
@@ -208,23 +278,45 @@ function normalizeRole_(role) {
   return r;
 }
 
-function writeUsers_(list) {
-  var sh = ss_().getSheetByName("Users");
-  if (!sh) return;
+function writeUsers_(list, actor) {
+  var sh = ss_().getSheetByName("Users") || ss_().insertSheet("Users");
   var rows = [["email", "pin", "role"]];
+  var seen = {};
   var owners = 0;
-  (list || []).forEach(function (u) {
-    var email = String((u && u.email) || "").trim().toLowerCase();
-    var pin = String((u && u.pin) || "").trim();
-    var role = normalizeRole_(u && u.role);
+
+  function addRow(email, pin, role) {
+    email = String(email || "").trim().toLowerCase();
+    pin = String(pin || "").trim();
+    role = normalizeRole_(role);
     if (!email || email.indexOf("@") < 1 || !/^\d{4,8}$/.test(pin)) return;
     if (role !== "owner" && role !== "operator") role = "operator";
+    if (seen[email]) return;
+    seen[email] = true;
     rows.push([email, pin, role]);
     if (role === "owner") owners++;
-  });
-  if (owners < 1 || rows.length < 2) return;
+  }
+
+  var incoming = list || [];
+  for (var i = 0; i < incoming.length; i++) {
+    var u = incoming[i];
+    if (u) addRow(u.email, u.pin, u.role);
+  }
+  if (actor) addRow(actor.email, actor.pin, actor.role || "owner");
+  if (owners < 1 && actor) {
+    var actorEmail = String(actor.email || "").trim().toLowerCase();
+    for (var r = 1; r < rows.length; r++) {
+      if (rows[r][0] === actorEmail) {
+        rows[r][2] = "owner";
+        owners++;
+        break;
+      }
+    }
+    if (owners < 1) addRow(actor.email, actor.pin, "owner");
+  }
+  if (rows.length < 2) return;
   sh.clear();
   sh.getRange(1, 1, rows.length, 3).setValues(rows);
+  styleSheetByName_("Users");
 }
 
 function findUser_(email, pin) {
@@ -233,8 +325,8 @@ function findUser_(email, pin) {
   for (var i = 0; i < users.length; i++) {
     if (users[i].email === email && users[i].pin === pin) return users[i];
   }
-  var cfgEmail = String(ss_().getSheetByName("Config").getRange("B2").getValue() || "").trim().toLowerCase();
-  var cfgPin = String(ss_().getSheetByName("Config").getRange("B1").getValue() || "").trim();
+  var cfgEmail = String(configValue_("email") || "").trim().toLowerCase();
+  var cfgPin = String(configValue_("pin") || "").trim();
   if (cfgEmail && cfgPin && email === cfgEmail && pin === cfgPin) {
     return { email: email, pin: pin, role: "owner" };
   }
@@ -336,7 +428,11 @@ function handleQuote_(body) {
     var aluColor = String(it.aluColorLabel || it.aluColor || "").trim();
     var glassMm = String(it.thickness || it.glass_mm || "").trim();
     itemRows.push([
-      id, time, name, phone, type, size, qty, color, company, lock, net, priced.total, alu, aluMm, glassMm, aluColor
+      id, time, name, phone, type, size, qty, color, company, lock, net, priced.total, alu, aluMm, glassMm, aluColor,
+      String(it.typeId || it.winType || ""),
+      h,
+      w,
+      String(it.lockStyle || "")
     ]);
   }
 
@@ -346,27 +442,62 @@ function handleQuote_(body) {
   var qitems = ss_().getSheetByName("QuoteItems");
   ensureQuoteItemHeader_(qitems);
   if (itemRows.length) {
-    qitems.getRange(qitems.getLastRow() + 1, 1, itemRows.length, 16).setValues(itemRows);
+    qitems.getRange(qitems.getLastRow() + 1, 1, itemRows.length, 20).setValues(itemRows);
   }
 
   return json_({ ok: true, id: id });
 }
 
+function readQuoteItems_() {
+  var sh = ss_().getSheetByName("QuoteItems");
+  var map = {};
+  if (!sh) return map;
+  var rows = sh.getDataRange().getValues();
+  for (var i = 1; i < rows.length; i++) {
+    var id = String(rows[i][0] || "").trim();
+    if (!id) continue;
+    if (!map[id]) map[id] = [];
+    map[id].push({
+      type: String(rows[i][4] || ""),
+      size: String(rows[i][5] || ""),
+      qty: Number(rows[i][6]) || 1,
+      color: String(rows[i][7] || ""),
+      company: String(rows[i][8] || ""),
+      lock: String(rows[i][9] || ""),
+      net: String(rows[i][10] || "").toLowerCase() === "yes",
+      total: Number(rows[i][11]) || 0,
+      aluminium: String(rows[i][12] || ""),
+      aluMm: String(rows[i][13] || ""),
+      glassMm: String(rows[i][14] || ""),
+      aluColor: String(rows[i][15] || ""),
+      typeId: String(rows[i][16] || ""),
+      heightFt: Number(rows[i][17]) || 0,
+      widthFt: Number(rows[i][18]) || 0,
+      lockStyle: String(rows[i][19] || "")
+    });
+  }
+  return map;
+}
+
 function readQuotes_() {
   var sh = ss_().getSheetByName("Quotes");
+  if (!sh) return [];
   var rows = sh.getDataRange().getValues();
+  var lines = readQuoteItems_();
   var out = [];
   for (var i = 1; i < rows.length; i++) {
     if (!rows[i][0]) continue;
+    var id = String(rows[i][0]);
     out.push({
-      id: String(rows[i][0]),
+      id: id,
       time: String(rows[i][1]),
       name: String(rows[i][2]),
       phone: String(rows[i][3]),
       items: Number(rows[i][4]) || 0,
       sqft: Number(rows[i][5]) || 0,
       total: Number(rows[i][6]) || 0,
-      status: String(rows[i][7] || "New")
+      status: String(rows[i][7] || "New"),
+      lines: lines[id] || []
     });
   }
   return out.reverse().slice(0, 40);
@@ -442,6 +573,79 @@ function ensureCompanyShape_() {
   }
 }
 
+function splitPipe_(value) {
+  return String(value == null ? "" : value).split("|").map(function (s) {
+    return String(s).trim();
+  }).filter(function (s) { return s !== ""; });
+}
+
+function joinPipe_(arr) {
+  var out = [];
+  (arr || []).forEach(function (x) {
+    var s = String(x == null ? "" : x).trim();
+    if (s && out.indexOf(s) < 0) out.push(s);
+  });
+  return out.join("|");
+}
+
+function parseThicks_(value, fallback) {
+  var parts = splitPipe_(value);
+  var out = [];
+  for (var i = 0; i < parts.length; i++) {
+    var n = Number(String(parts[i]).replace(/[^0-9.]/g, ""));
+    if (!isNaN(n) && n > 0) {
+      var seen = false;
+      for (var j = 0; j < out.length; j++) if (out[j] === n) seen = true;
+      if (!seen) out.push(n);
+    }
+  }
+  if (!out.length && fallback > 0) out.push(fallback);
+  return out;
+}
+
+function expandComboRow_(name, thickCell, rate, colorCell, colorFn, defaultThick) {
+  var thicks = parseThicks_(thickCell, defaultThick);
+  var colors = splitPipe_(colorCell).map(colorFn);
+  if (!colors.length) colors = [colorFn("")];
+  var rows = [];
+  for (var t = 0; t < thicks.length; t++) {
+    for (var c = 0; c < colors.length; c++) {
+      rows.push({
+        name: name,
+        thickness: thicks[t],
+        rate: isNaN(Number(rate)) ? 0 : Number(rate),
+        color: colors[c]
+      });
+    }
+  }
+  return rows;
+}
+
+function groupCombos_(list, colorFn, defaultThick) {
+  var order = [];
+  var map = {};
+  (list || []).forEach(function (row) {
+    if (!row || !row.name) return;
+    var name = String(row.name).trim();
+    if (!map[name]) {
+      map[name] = { name: name, thicks: [], colors: [], rate: Number(row.rate) || 0 };
+      order.push(name);
+    }
+    var g = map[name];
+    var thicks = parseThicks_(row.thickness, defaultThick);
+    var colors = splitPipe_(row.color || "").map(colorFn);
+    if (!colors.length) colors = [colorFn("")];
+    thicks.forEach(function (mm) {
+      if (g.thicks.indexOf(mm) < 0) g.thicks.push(mm);
+    });
+    colors.forEach(function (id) {
+      if (g.colors.indexOf(id) < 0) g.colors.push(id);
+    });
+    if (!isNaN(Number(row.rate))) g.rate = Number(row.rate);
+  });
+  return order.map(function (name) { return map[name]; });
+}
+
 function readCompanies_() {
   var sh = ss_().getSheetByName("Companies");
   if (!sh) return [];
@@ -451,17 +655,13 @@ function readCompanies_() {
   var hasThick = h2 === "thickness" || h2 === "mm";
   for (var i = 1; i < rows.length; i++) {
     var name = String(rows[i][0] || "").trim();
-    var thickness = hasThick ? Number(rows[i][1]) : 5;
+    if (!name) continue;
     var rate = Number(hasThick ? rows[i][2] : rows[i][1]);
-    var color = normalizeColorId_(hasThick ? rows[i][3] : rows[i][2]);
-    if (name) {
-      out.push({
-        name: name,
-        thickness: !isNaN(thickness) && thickness > 0 ? thickness : 5,
-        rate: isNaN(rate) ? 0 : rate,
-        color: color
-      });
-    }
+    var thickCell = hasThick ? rows[i][1] : 5;
+    var colorCell = hasThick ? rows[i][3] : rows[i][2];
+    expandComboRow_(name, thickCell, rate, colorCell, normalizeColorId_, 5).forEach(function (row) {
+      out.push(row);
+    });
   }
   return out;
 }
@@ -498,17 +698,11 @@ function writeCompanies_(list) {
   var sh = ss_().getSheetByName("Companies");
   sh.clear();
   var rows = [["name", "thickness", "rate", "color"]];
-  (list || []).forEach(function (c) {
-    if (c && c.name) {
-      rows.push([
-        String(c.name),
-        Number(c.thickness) > 0 ? Number(c.thickness) : 5,
-        Number(c.rate) || 0,
-        normalizeColorId_(c.color)
-      ]);
-    }
+  groupCombos_(list, normalizeColorId_, 5).forEach(function (g) {
+    rows.push([g.name, joinPipe_(g.thicks), Number(g.rate) || 0, joinPipe_(g.colors)]);
   });
   sh.getRange(1, 1, rows.length, 4).setValues(rows);
+  styleSheetByName_("Companies");
 }
 
 function writeLocks_(list) {
@@ -519,13 +713,16 @@ function writeLocks_(list) {
     if (l && l.name) rows.push([String(l.name), Number(l.rate) || 0, String(l.style || "generic")]);
   });
   sh.getRange(1, 1, rows.length, 3).setValues(rows);
+  styleSheetByName_("Locks");
 }
 
 function ensureQuoteItemHeader_(sh) {
-  sh.getRange(1, 1, 1, 16).setValues([[
+  sh.getRange(1, 1, 1, 20).setValues([[
     "quote_id", "time", "name", "phone", "type", "size", "qty", "color", "company",
-    "lock", "net", "line_total", "aluminium", "alu_mm", "glass_mm", "alu_color"
+    "lock", "net", "line_total", "aluminium", "alu_mm", "glass_mm", "alu_color",
+    "type_id", "height_ft", "width_ft", "lock_style"
   ]]);
+  styleSheet_(sh, "#f2a93b", 20);
 }
 
 var ALU_COLOR_IDS = ["silver", "bronze", "black", "white", "champagne", "brown"];
@@ -560,12 +757,10 @@ function readAluminium_() {
   var out = [];
   for (var i = 1; i < rows.length; i++) {
     var name = String(rows[i][0] || "").trim();
-    var thickness = Number(rows[i][1]);
-    var rate = Number(rows[i][2]);
-    var color = normalizeAluColorId_(rows[i][3]);
-    if (name && !isNaN(thickness) && thickness > 0) {
-      out.push({ name: name, thickness: thickness, rate: isNaN(rate) ? 0 : rate, color: color });
-    }
+    if (!name) continue;
+    expandComboRow_(name, rows[i][1], rows[i][2], rows[i][3], normalizeAluColorId_, 1).forEach(function (row) {
+      out.push(row);
+    });
   }
   return out;
 }
@@ -574,12 +769,11 @@ function writeAluminium_(list) {
   var sh = ss_().getSheetByName("Aluminium");
   sh.clear();
   var rows = [["name", "thickness", "rate", "color"]];
-  (list || []).forEach(function (a) {
-    if (a && a.name) {
-      rows.push([String(a.name), Number(a.thickness) || 0, Number(a.rate) || 0, normalizeAluColorId_(a.color)]);
-    }
+  groupCombos_(list, normalizeAluColorId_, 1).forEach(function (g) {
+    rows.push([g.name, joinPipe_(g.thicks), Number(g.rate) || 0, joinPipe_(g.colors)]);
   });
   sh.getRange(1, 1, rows.length, 4).setValues(rows);
+  styleSheetByName_("Aluminium");
 }
 
 function readGlassThicks_() {
@@ -595,7 +789,12 @@ function readGlassThicks_() {
 }
 
 function writeGlassThicks_(list) {
-  var sh = ss_().getSheetByName("GlassThickness");
+  var book = ss_();
+  var sh = book.getSheetByName("GlassThickness");
+  if (!sh) {
+    if (!list || !list.length) return;
+    sh = book.insertSheet("GlassThickness");
+  }
   sh.clear();
   var rows = [["mm"]];
   (list || []).forEach(function (mm) {
@@ -603,6 +802,7 @@ function writeGlassThicks_(list) {
     if (!isNaN(n) && n > 0) rows.push([n]);
   });
   sh.getRange(1, 1, rows.length, 1).setValues(rows);
+  styleSheetByName_("GlassThickness");
 }
 
 function readCharges_() {
@@ -624,6 +824,7 @@ function writeCharges_(charges) {
     ["net", Number(charges && charges.net) || 0],
     ["extra", Number(charges && charges.extra) || 0]
   ]);
+  styleSheetByName_("Charges");
 }
 
 function findRateByName_(list, name) {
@@ -696,4 +897,5 @@ function writeCut_(cut) {
     ["shutterHoriz", Number(cut.shutterHoriz) || 0],
     ["glassGap", Number(cut.glassGap) || 0]
   ]);
+  styleSheetByName_("CutParams");
 }

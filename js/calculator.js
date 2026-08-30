@@ -18,12 +18,6 @@
   "doorDouble": "ডাবল দরজা",
   "twoLeaf": "২ পাতা",
   "doorSliding": "স্লাইডিং দরজা",
-  "nasir5": "নাসির থাই গ্লাস (৫ মিমি)",
-  "nasir6": "নাসির থাই গ্লাস (৬ মিমি)",
-  "abul": "আবুল খায়ের থাই গ্লাস",
-  "dhaka": "ঢাকা ইউরো গ্লাস",
-  "usmania": "উসমানিয়া গ্লাস",
-  "slidingLock": "স্লাইডিং লক",
   "caseLock": "ক্যাসমেন্ট হ্যান্ডেল লক",
   "noLock": "লক নেই",
   "emptyRates": "এখনও কিছু যোগ করা হয়নি।",
@@ -41,14 +35,12 @@
   "piece": "পিস",
   "errCompany": "প্রথমে Admin থেকে অন্তত একটি কাঁচের কোম্পানি যোগ করুন।",
   "errSize": "উচ্চতা ও প্রস্থ সঠিকভাবে দিন।",
-  "cutToggle": "কাটিং লিস্ট দেখান/লুকান",
   "cutShow": "কাটিং লিস্ট দেখান",
   "cutHide": "কাটিং লিস্ট লুকান",
   "subtotal": "সাবটোটাল",
   "outerSize": "বাইরের মাপ",
   "glassGap": "গ্লাস গ্যাপ",
   "typeEnterSize": "মাপ লিখুন",
-  "perSqft": "/ফুট²",
   "taka": "৳",
   "sqLabel": " ফুট²",
   "thickness": "থিকনেস",
@@ -75,16 +67,10 @@
   "winTypes": "জানালার ধরন",
   "doorTypes": "দরজার ধরন",
   "errKind": "প্রথমে জানালা বা দরজা সিলেক্ট করুন।",
-  "ownerSetPin": "মালিক পিন সেট করুন",
-  "ownerUnlock": "মালিক লগইন",
-  "ownerSetHint": "রেট ও কাটিং শুধু দোকান মালিক দেখতে পারবেন। ৪-৮ ডিজিট পিন দিন।",
   "ownerUnlockHint": "ইমেইল ও পিন দুটোই দিতে হবে।",
   "ownerPinLabel": "পিন",
-  "ownerPin2Label": "পিন আবার দিন",
   "ownerOpen": "খুলুন",
-  "ownerSavePin": "পিন সেভ করুন",
   "ownerPinBad": "পিন ৪ থেকে ৮ ডিজিট দিন।",
-  "ownerPinMismatch": "দুইবার একই পিন দিন।",
   "ownerPinWrong": "ইমেইল বা পিন ভুল।",
   "ownerLock": "লক",
   "ownerEmailLabel": "ইমেইল",
@@ -103,7 +89,6 @@
   "quotePhone": "মোবাইল",
   "quoteSend": "পাঠান",
   "quoteNameNeed": "নাম দিন।",
-  "quotePhoneNeed": "মোবাইল দিন।",
   "quotePhoneBad": "সঠিক মোবাইল দিন।",
   "quoteEmpty": "আগে জানালা/দরজা যোগ করুন।",
   "quoteOk": "মালিকের কাছে পাঠানো হয়েছে।",
@@ -116,20 +101,21 @@
   "aluCompany": "আলুমিনিয়াম কোম্পানি",
   "aluThick": "আলুমিনিয়াম থিকনেস",
   "aluRatesTitle": "আলুমিনিয়াম কোম্পানি, থিকনেস ও রং",
-  "aluRatesHint": "কোম্পানি, থিকনেস ও রং একসাথে। একই কোম্পানির একাধিক থিকনেস বা রং আলাদা সারিতে যোগ করুন।",
-  "thickRatesTitle": "কাঁচের থিকনেস",
-  "thickRatesHint": "ভিজিটর শুধু সিলেক্ট করবে। রেট শীট থেকে।",
+  "aluRatesHint": "এক কোম্পানি এক সারি। একাধিক থিকনেস ও রং শীটে | দিয়ে থাকবে।",
   "chargesTitle": "নেট ও ইনস্টলেশন রেট",
   "chargesHint": "প্রতি জানালা/দরজার চার্জ । শীট থেকে আসে।",
   "chargeNet": "নেট (টাকা / টি)",
   "chargeExtra": "ইনস্টলেশন (টাকা / টি)",
+  "editBtn": "এডিট",
+  "updateBtn": "আপডেট",
+  "cancelBtn": "বাতিল",
   "addBtn": "যোগ করুন",
   "saveBtn": "সংরক্ষণ",
   "aluNamePh": "কোম্পানি",
   "aluThickPh": "মিমি",
   "aluRatePh": "রেট",
   "glassThickPh": "মিমি",
-  "companyRatesHint": "কোম্পানি, থিকনেস, রেট ও রং একসাথে যোগ করুন। একই কোম্পানির একাধিক থিকনেস বা রং আলাদা সারিতে।",
+  "companyRatesHint": "এক কোম্পানি এক সারি। একাধিক থিকনেস ও রং শীটে | দিয়ে থাকবে।",
   "aluColor": "আলুমিনিয়াম রং",
   "aluSilver": "সিলভার",
   "aluWhite": "সাদা",
@@ -137,6 +123,16 @@
   "aluBrown": "বাদামি",
   "catalogEmpty": "শীট থেকে লিস্ট আসেনি। ইন্টারনেট চেক করে পেজ রিফ্রেশ করুন।",
   "admin": "Admin",
+  "pickHint": "\u09a8\u09bf\u09b0\u09cd\u09ac\u09be\u099a\u09a8 \u0995\u09b0\u09c1\u09a8",
+  "working": "\u0985\u09aa\u09c7\u0995\u09cd\u09b7\u09be \u0995\u09b0\u09c1\u09a8...",
+  "loading": "\u09b2\u09cb\u09a1 \u09b9\u099a\u09cd\u099b\u09c7...",
+  "tabGlass": "\u0995\u09be\u0981\u099a\u09c7\u09b0 \u0995\u09cb\u09ae\u09cd\u09aa\u09be\u09a8\u09bf",
+  "tabAlu": "\u0986\u09b2\u09c1\u09ae\u09bf\u09a8\u09bf\u09df\u09be\u09ae",
+  "tabLock": "\u09b2\u0995 \u098f\u09b0 \u09a6\u09be\u09ae",
+  "tabCharges": "\u09a8\u09c7\u099f \u0993 \u0987\u09a8\u09b8\u09cd\u099f\u09b2",
+  "tabStaff": "\u09b8\u09cd\u099f\u09be\u09ab \u0985\u09cd\u09af\u09be\u0995\u09be\u0989\u09a8\u09cd\u099f",
+  "tabCut": "\u0995\u09be\u099f\u09bf\u0982 \u09ab\u09b0\u09cd\u09ae\u09c1\u09b2\u09be",
+  "tabQuotes": "\u09ad\u09bf\u099c\u09bf\u099f\u09b0 \u0995\u09cb\u099f",
   "staffTitle": "স্টাফ অ্যাকাউন্ট",
   "staffHint": "মালিক স্টাফ যোগ করতে পারবেন। ইমেইল ও পিন দিয়ে তারা লগইন করবে। টেনে সারি সাজাতে পারবেন।",
   "staffEmailPh": "ইমেইল",
@@ -144,12 +140,19 @@
   "roleStaff": "স্টাফ",
   "roleOwner": "মালিক",
   "staffNeedOwner": "অন্তত একজন মালিক রাখতে হবে।",
-  "staffBad": "সঠিক ইমেইল ও ৪-৮ ডিজিট পিন দিন।"
+  "staffBad": "সঠিক ইমেইল ও ৪-৮ ডিজিট পিন দিন।",
+  "errNeedName": "\u09a8\u09be\u09ae \u09a6\u09bf\u09a8\u0964",
+  "errNeedNumber": "\u09b8\u09a0\u09bf\u0995 \u09b8\u0982\u0996\u09cd\u09af\u09be \u09a6\u09bf\u09a8\u0964",
+  "errNeedPick": "\u09a5\u09bf\u0995\u09a8\u09c7\u09b8 \u0993 \u09b0\u0982 \u09b8\u09bf\u09b2\u09c7\u0995\u09cd\u099f \u09b0\u09be\u0996\u09c1\u09a8\u0964",
+  "cutInfo": "\u0995\u09be\u099f\u09bf\u0982 \u09a4\u09a5\u09cd\u09af",
+  "quoteCutClear": "\u09ac\u09b0\u09cd\u09a4\u09ae\u09be\u09a8 \u09a4\u09be\u09b2\u09bf\u0995\u09be",
+  "quoteNoCut": "\u098f\u0987 \u0995\u09cb\u099f\u09c7\u09b0 \u09ae\u09be\u09aa \u09a8\u09c7\u0987\u0964"
 };
   const KEYS = {
     items: "glasscalc:items",
     tab: "glasscalc:tab",
-    session: "glasscalc:session"
+    session: "glasscalc:session",
+    adminPanel: "glasscalc:adminPanel"
   };
 
   const PRODUCT_TYPES = {
@@ -206,22 +209,38 @@
     ownerUnlocked: false,
     role: "",
     quotes: [],
-    staff: []
+    staff: [],
+    edit: { kind: "", index: -1, name: "", rate: null, thicks: [], colors: [] },
+    adminPick: { companyThicks: [5], companyColors: ["clear"], aluThicks: [1], aluColors: ["silver"] },
+    adminPanel: "glass",
+    quoteOpenId: "",
+    cutQuote: null
   };
 
   const $ = (id) => document.getElementById(id);
 
+  function setHeading(id, text) {
+    const el = $(id);
+    if (!el) return;
+    let span = el.querySelector(".title-text");
+    if (!span) {
+      span = document.createElement("span");
+      span.className = "title-text";
+      el.insertBefore(span, el.firstChild);
+    }
+    span.textContent = text;
+  }
+
 
   function ico(name) {
     var p = {
-      plus: '<path d="M12 5v14"/><path d="M5 12h14"/>',
-      minus: '<path d="M5 12h14"/>',
       trash: '<polyline points="3 7 5 7 21 7"/><path d="M8 7V5h8v2"/><path d="M6 7l1 14h10l1-14"/><path d="M10 11v6"/><path d="M14 11v6"/>',
       down: '<path d="M6 9l6 6 6-6"/>',
       up: '<path d="M6 15l6-6 6 6"/>',
-      print: '<path d="M6 9V4h12v5"/><path d="M6 18H5a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-1"/><rect x="6" y="14" width="12" height="7" rx="1"/>',
       save: '<path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8"/><path d="M7 3v5h8"/>',
-      grip: '<path d="M8 6h8M8 12h8M8 18h8"/>'
+      grip: '<path d="M8 6h8M8 12h8M8 18h8"/>',
+      pencil: '<path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/>',
+      cut: '<path d="M4 7h16M4 12h16M4 17h10"/><circle cx="18" cy="17" r="2.2"/>'
     };
     return '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + (p[name] || "") + "</svg>";
   }
@@ -284,13 +303,26 @@
     return ALU_COLORS.some((c) => c.id === s) ? s : "silver";
   }
 
+  function expandNamedCombos(list, colorFn, defaultThick) {
+    const out = [];
+    (list || []).forEach((row) => {
+      const name = String(row && row.name || "").trim();
+      if (!name) return;
+      const thicks = uniqueNums(String(row.thickness == null ? "" : row.thickness).split("|").map((p) => Number(String(p).replace(/[^0-9.]/g, ""))));
+      const colors = uniqueIds(String(row.color || "").split("|").map((p) => colorFn(p.trim())));
+      const useThicks = thicks.length ? thicks : [defaultThick];
+      const useColors = colors.length ? colors : [colorFn("")];
+      const rate = Number(row.rate);
+      const useRate = Number.isFinite(rate) && rate >= 0 ? rate : 0;
+      useThicks.forEach((thickness) => {
+        useColors.forEach((color) => out.push({ name: name, thickness: thickness, rate: useRate, color: color }));
+      });
+    });
+    return out;
+  }
+
   function normalizeAluminium(list) {
-    return (list || []).map((a) => ({
-      name: String(a.name || "").trim(),
-      thickness: Number(a.thickness),
-      rate: Number(a.rate) || 0,
-      color: normalizeAluColorId(a.color)
-    })).filter((a) => a.name && a.thickness > 0);
+    return expandNamedCombos(list, normalizeAluColorId, 1).filter((a) => a.name && a.thickness > 0);
   }
 
   function kindLabel(kind) {
@@ -356,14 +388,223 @@
       || null;
   }
 
-  function fillAluColorSelect() {
-    const el = $("new-alu-color");
-    if (!el) return;
-    el.innerHTML = ALU_COLORS.map((c) =>
-      '<option value="' + c.id + '">' + escapeHtml(T[c.labelKey]) + "</option>"
-    ).join("");
+  const GLASS_THICK_PRESETS = [4, 5, 6, 8, 10, 12];
+  const ALU_THICK_PRESETS = [1, 1.2, 1.4, 1.6, 2, 3];
+
+  function togglePick(arr, value, isNum) {
+    const v = isNum ? Number(value) : value;
+    const i = arr.findIndex((x) => (isNum ? Number(x) === v : x === v));
+    if (i >= 0) arr.splice(i, 1);
+    else arr.push(v);
   }
 
+  function mergeThicks(presets, selected) {
+    const all = presets.slice();
+    selected.forEach((mm) => {
+      if (all.every((p) => Number(p) !== Number(mm))) all.push(Number(mm));
+    });
+    return all.sort((a, b) => a - b);
+  }
+
+  function addThickPick(kind) {
+    const id = kind === "company" ? "new-company-thick" : "new-alu-thick";
+    const mm = parseFloat($(id) && $(id).value);
+    if (Number.isNaN(mm) || mm <= 0) return;
+    const arr = kind === "company" ? state.adminPick.companyThicks : state.adminPick.aluThicks;
+    if (arr.every((t) => Number(t) !== mm)) arr.push(mm);
+    arr.sort((a, b) => a - b);
+    if ($(id)) $(id).value = "";
+    renderAdminPicks();
+  }
+
+  function selectedThicks(kind) {
+    const arr = (kind === "company" ? state.adminPick.companyThicks : state.adminPick.aluThicks).slice();
+    const extra = parseFloat($(kind === "company" ? "new-company-thick" : "new-alu-thick") && $(kind === "company" ? "new-company-thick" : "new-alu-thick").value);
+    if (!Number.isNaN(extra) && extra > 0 && arr.every((t) => Number(t) !== extra)) arr.push(extra);
+    return arr;
+  }
+
+  function upsertCombo(list, row) {
+    const existing = list.find((x) => x.name === row.name && Number(x.thickness) === Number(row.thickness) && x.color === row.color);
+    if (existing) existing.rate = row.rate;
+    else list.push(row);
+  }
+
+  function uniqueNums(arr) {
+    const out = [];
+    arr.forEach((n) => {
+      const v = Number(n);
+      if (!Number.isNaN(v) && v > 0 && out.every((x) => Number(x) !== v)) out.push(v);
+    });
+    return out.sort((a, b) => a - b);
+  }
+
+  function uniqueIds(arr) {
+    const out = [];
+    arr.forEach((id) => {
+      if (id && out.indexOf(id) < 0) out.push(id);
+    });
+    return out;
+  }
+
+  function replaceCombos(list, oldName, name, thicks, colors, rate, clickedRate) {
+    const old = list.filter((x) => x.name === oldName);
+    const rateMap = {};
+    old.forEach((x) => { rateMap[Number(x.thickness) + "|" + x.color] = x.rate; });
+    const rateChanged = Number(rate) !== Number(clickedRate);
+    const next = [];
+    thicks.forEach((thickness) => {
+      colors.forEach((color) => {
+        const key = Number(thickness) + "|" + color;
+        const useRate = rateChanged || rateMap[key] == null ? rate : rateMap[key];
+        next.push({ name: name, thickness: thickness, rate: useRate, color: color });
+      });
+    });
+    const kept = list.filter((x) => x.name !== oldName);
+    list.length = 0;
+    kept.concat(next).forEach((row) => list.push(row));
+  }
+
+  function setAddLabels() {
+    const companySpan = $("btn-add-company") && $("btn-add-company").querySelector("span");
+    if (companySpan) companySpan.textContent = T.addBtn;
+    if ($("btn-add-alu-label")) $("btn-add-alu-label").textContent = T.addBtn;
+    if ($("btn-cancel-company")) $("btn-cancel-company").classList.add("hidden");
+    if ($("btn-cancel-alu")) $("btn-cancel-alu").classList.add("hidden");
+  }
+
+  var loaderCount = 0;
+  function showLoader(on, text) {
+    const el = $("app-loader");
+    if (!el) return;
+    if (on) {
+      loaderCount += 1;
+      if ($("app-loader-text")) $("app-loader-text").textContent = text || T.working;
+      el.classList.remove("hidden");
+      document.documentElement.classList.add("is-busy");
+      return;
+    }
+    loaderCount = Math.max(0, loaderCount - 1);
+    if (loaderCount > 0) return;
+    el.classList.add("hidden");
+    document.documentElement.classList.remove("is-busy");
+  }
+
+  function switchAdminPanel(id) {
+    const allowed = ["glass", "alu", "lock", "charges", "staff", "cut", "quotes"];
+    if (allowed.indexOf(id) < 0) id = "glass";
+    if (isStaff() && !isOwner()) id = "quotes";
+    if (id === "quotes" && !isStaff()) id = "glass";
+    if (id === "staff" && !isOwner()) id = "glass";
+    state.adminPanel = id;
+    storeSet(KEYS.adminPanel, id);
+    document.querySelectorAll("[data-admin-panel]").forEach((el) => {
+      el.classList.toggle("hidden", el.getAttribute("data-admin-panel") !== id);
+    });
+    document.querySelectorAll(".admin-tab").forEach((btn) => {
+      btn.classList.toggle("active", btn.dataset.admin === id);
+    });
+  }
+
+  function groupByName(items) {
+    const order = [];
+    const map = {};
+    items.forEach((item, i) => {
+      const key = String(item.name || "");
+      if (!map[key]) {
+        map[key] = [];
+        order.push(key);
+      }
+      map[key].push(i);
+    });
+    return order.map((name) => ({ name: name, indices: map[name] }));
+  }
+
+  function mselLabel(values) {
+    return values.length ? values.join(", ") : T.pickHint;
+  }
+
+  function renderThickPanel(wrapId, presets, selected, inputId, kind) {
+    const wrap = $(wrapId);
+    if (!wrap) return;
+    const opts = mergeThicks(presets, selected).map((mm) =>
+      '<button type="button" class="msel-opt' + (selected.some((t) => Number(t) === Number(mm)) ? " active" : "") + '" data-mm="' + mm + '"><span class="msel-check"></span>' + mm + T.mm + "</button>"
+    ).join("");
+    wrap.innerHTML = '<div class="msel-opts">' + opts + '</div><div class="msel-custom"><input type="number" id="' + inputId + '" min="0" step="' + (kind === "alu" ? "0.1" : "0.5") + '" placeholder="' + T.mm + '"><button type="button" class="msel-add-mm" data-thick-kind="' + kind + '">+</button></div>';
+  }
+
+  function renderColorPanel(wrapId, palette, selected) {
+    const wrap = $(wrapId);
+    if (!wrap) return;
+    wrap.innerHTML = '<div class="msel-opts">' + palette.map((c) =>
+      '<button type="button" class="msel-opt' + (selected.indexOf(c.id) >= 0 ? " active" : "") + '" data-color="' + c.id + '"><span class="msel-check"></span><span class="pick-dot" style="background:linear-gradient(135deg,' + c.light + "," + c.mid + ')"></span>' + escapeHtml(T[c.labelKey]) + "</button>"
+    ).join("") + "</div>";
+  }
+
+  function renderAdminPicks() {
+    const pick = state.adminPick;
+    renderThickPanel("new-company-thicks", GLASS_THICK_PRESETS, pick.companyThicks, "new-company-thick", "company");
+    renderColorPanel("new-company-colors", GLASS_COLORS, pick.companyColors);
+    renderThickPanel("new-alu-thicks", ALU_THICK_PRESETS, pick.aluThicks, "new-alu-thick", "alu");
+    renderColorPanel("new-alu-colors", ALU_COLORS, pick.aluColors);
+    if ($("company-thick-toggle")) $("company-thick-toggle").textContent = mselLabel(pick.companyThicks.map((mm) => mm + T.mm));
+    if ($("company-color-toggle")) $("company-color-toggle").textContent = mselLabel(pick.companyColors.map((id) => colorLabel(id)));
+    if ($("alu-thick-toggle")) $("alu-thick-toggle").textContent = mselLabel(pick.aluThicks.map((mm) => mm + T.mm));
+    if ($("alu-color-toggle")) $("alu-color-toggle").textContent = mselLabel(pick.aluColors.map((id) => aluColorLabel(id)));
+  }
+
+  function bindAdminPicks() {
+    function bindPanel(wrapId, kind, field) {
+      const wrap = $(wrapId);
+      if (!wrap || wrap.dataset.pickBound) return;
+      wrap.dataset.pickBound = "1";
+      wrap.addEventListener("click", (e) => {
+        const addMm = e.target.closest(".msel-add-mm");
+        if (addMm) {
+          addThickPick(addMm.dataset.thickKind || kind);
+          return;
+        }
+        const btn = e.target.closest(".msel-opt");
+        if (!btn) return;
+        if (field === "thick") togglePick(state.adminPick[kind + "Thicks"], btn.dataset.mm, true);
+        else togglePick(state.adminPick[kind + "Colors"], btn.dataset.color, false);
+        renderAdminPicks();
+      });
+      wrap.addEventListener("keydown", (e) => {
+        if (e.key !== "Enter" || !e.target.closest(".msel-custom input")) return;
+        e.preventDefault();
+        addThickPick(kind);
+      });
+    }
+    bindPanel("new-company-thicks", "company", "thick");
+    bindPanel("new-company-colors", "company", "color");
+    bindPanel("new-alu-thicks", "alu", "thick");
+    bindPanel("new-alu-colors", "alu", "color");
+    document.addEventListener("click", (e) => {
+      const toggle = e.target.closest(".msel-toggle");
+      if (toggle) {
+        const box = toggle.closest(".msel");
+        document.querySelectorAll(".msel.open").forEach((el) => {
+          if (el !== box) el.classList.remove("open");
+        });
+        if (box) {
+          box.classList.toggle("open");
+          box.classList.remove("drop-up");
+          if (box.classList.contains("open")) {
+            const panel = box.querySelector(".msel-panel");
+            if (panel) {
+              const r = panel.getBoundingClientRect();
+              if (r.bottom > window.innerHeight - 16) box.classList.add("drop-up");
+            }
+          }
+        }
+        return;
+      }
+      if (!e.target.closest(".msel")) {
+        document.querySelectorAll(".msel.open").forEach((el) => el.classList.remove("open"));
+      }
+    });
+  }
   async function storeGet(key) {
     try {
       const raw = localStorage.getItem(key);
@@ -378,10 +619,61 @@
   }
 
   function flashSaved() {
+    flashNote("", false);
+  }
+
+  function flashNote(text, isErr) {
     const el = $("save-flash");
     if (!el) return;
+    if (!el.dataset.okText) el.dataset.okText = el.textContent;
+    el.textContent = text || el.dataset.okText;
+    el.classList.toggle("is-err", !!isErr);
     el.classList.add("show");
-    setTimeout(() => el.classList.remove("show"), 1200);
+    clearTimeout(el._hide);
+    el._hide = setTimeout(() => el.classList.remove("show", "is-err"), isErr ? 2200 : 1200);
+  }
+
+  function cleanNumberValue(raw) {
+    let v = String(raw || "").replace(/[^0-9.]/g, "");
+    const dot = v.indexOf(".");
+    if (dot >= 0) v = v.slice(0, dot + 1) + v.slice(dot + 1).replace(/\./g, "");
+    return v;
+  }
+
+  function readNonNeg(el) {
+    if (!el) return NaN;
+    const n = parseFloat(el.value);
+    return Number.isFinite(n) && n >= 0 ? n : NaN;
+  }
+
+  function cleanTextValue(raw) {
+    return String(raw || "").replace(/\s+/g, " ").trim();
+  }
+
+  function markInvalid(el, on) {
+    if (el) el.classList.toggle("is-invalid", !!on);
+  }
+
+  function bindFieldGuards() {
+    document.addEventListener("keydown", (e) => {
+      const el = e.target;
+      if (!el || el.tagName !== "INPUT") return;
+      if (el.type === "number" && (e.key === "e" || e.key === "E" || e.key === "+" || e.key === "-")) e.preventDefault();
+    });
+    document.addEventListener("input", (e) => {
+      const el = e.target;
+      if (!el || el.tagName !== "INPUT") return;
+      if (el.type === "number") {
+        const next = cleanNumberValue(el.value);
+        if (el.value !== next) el.value = next;
+        markInvalid(el, el.value !== "" && Number.isNaN(readNonNeg(el)));
+        return;
+      }
+      if (el.id === "quote-phone" || el.id === "new-staff-pin" || el.id === "owner-pin") {
+        const next = el.value.replace(/\D/g, "");
+        if (el.value !== next) el.value = next;
+      }
+    });
   }
 
   function numVal(id) {
@@ -603,12 +895,7 @@
   }
 
   function normalizeCompanies(list) {
-    return (list || []).map((c) => ({
-      name: String(c.name || "").trim(),
-      thickness: Number(c.thickness) > 0 ? Number(c.thickness) : 5,
-      rate: Number(c.rate) || 0,
-      color: normalizeColorId(c.color)
-    })).filter((c) => c.name);
+    return expandNamedCombos(list, normalizeColorId, 5).filter((c) => c.name);
   }
 
   function companyNames() {
@@ -672,14 +959,6 @@
     if (available.indexOf(state.glassColor) < 0) state.glassColor = available[0];
   }
 
-  function fillCompanyColorSelect() {
-    const el = $("new-company-color");
-    if (!el) return;
-    el.innerHTML = GLASS_COLORS.map((c) =>
-      '<option value="' + c.id + '">' + escapeHtml(T[c.labelKey]) + "</option>"
-    ).join("");
-  }
-
   function renderColorGrid() {
     const grid = $("color-grid");
     if (!grid) return;
@@ -699,18 +978,30 @@
     }).join("");
   }
 
+  function syncCalcDetails() {
+    const wrap = $("calc-details");
+    if (!wrap) return;
+    const ready = !!(state.selectedKind && state.selectedType);
+    wrap.classList.toggle("is-locked", !ready);
+    wrap.inert = !ready;
+    wrap.querySelectorAll("input, select, button").forEach((el) => {
+      el.disabled = !ready;
+    });
+  }
+
   function setSelectedKind(kind) {
     state.selectedKind = kind;
-    const list = kind === "door" ? PRODUCT_TYPES.doors : PRODUCT_TYPES.windows;
-    state.selectedType = list[0].id;
+    state.selectedType = null;
     renderKindPicker();
     renderTypePicker();
+    syncCalcDetails();
     renderLivePreview(true);
   }
 
   function setSelectedType(id) {
     state.selectedType = id;
     renderTypePicker();
+    syncCalcDetails();
     renderLivePreview(true);
   }
 
@@ -847,27 +1138,105 @@
   }
 
   function renderAluList() {
-    const wrap = $("alu-list");
-    if (!wrap) return;
-    if (!state.aluminium.length) {
-      wrap.innerHTML = '<div class="empty-note">' + T.emptyRates + "</div>";
-      return;
-    }
-    wrap.innerHTML = state.aluminium.map((item, i) =>
-      rateRowOpen(i) + '<span class="name">' + escapeHtml(item.name) + " · " + item.thickness + T.mm + " · " + escapeHtml(aluColorLabel(item.color)) + '</span><span class="price">' + T.taka + item.rate + T.perSq + '</span><button type="button" class="danger-ghost icon-btn" data-action="remove-alu" data-index="' + i + '">' + ico("trash") + "<span>" + T.muchun + "</span></button></div>"
-    ).join("");
+    renderRateList("alu-list", state.aluminium, "alu");
   }
 
-  function renderGlassThickList() {
-    const wrap = $("glass-thick-list");
-    if (!wrap) return;
-    if (!state.glassThicks.length) {
-      wrap.innerHTML = `<div class="empty-note">${T.emptyRates}</div>`;
-      return;
+  function colorOptionList(palette, selected) {
+    return palette.map(function (c) {
+      return '<option value="' + c.id + '"' + (c.id === selected ? " selected" : "") + ">" + escapeHtml(T[c.labelKey]) + "</option>";
+    }).join("");
+  }
+
+  function comboHeadHtml(kind) {
+    const colorHead = kind === "alu" ? T.aluColor : T.glassColor;
+    return '<div class="rate-head"><span></span><span>' + T.aluNamePh + "</span><span>" + T.thickness + "</span><span>" + colorHead + "</span><span>" + T.aluRatePh + "</span><span></span></div>";
+  }
+
+  function joinPipe(parts) {
+    return parts.join(" | ");
+  }
+
+  function groupRateText(rows) {
+    const rates = rows.map((x) => Number(x.rate)).filter((n) => !Number.isNaN(n));
+    if (!rates.length) return T.taka + "0" + T.perSq;
+    const min = Math.min.apply(null, rates);
+    const max = Math.max.apply(null, rates);
+    if (min === max) return T.taka + min + T.perSq;
+    return T.taka + min + "\u2013" + max + T.perSq;
+  }
+
+  function comboRowHtml(kind, item, i, groupRows) {
+    const rows = groupRows && groupRows.length ? groupRows : [item];
+    const editing = state.edit.kind === kind && (state.edit.index === i || state.edit.name === item.name);
+    const thicks = uniqueNums(rows.map((x) => x.thickness));
+    const colors = uniqueIds(rows.map((x) => kind === "alu" ? normalizeAluColorId(x.color) : normalizeColorId(x.color)));
+    const colorText = joinPipe(colors.map((id) => kind === "alu" ? aluColorLabel(id) : colorLabel(id)));
+    const thickText = joinPipe(thicks.map((mm) => mm + T.mm));
+    const rateText = groupRateText(rows);
+    const rateVal = state.edit.rate != null ? state.edit.rate : item.rate;
+    const attrs = ' data-index="' + i + '" data-group="' + escapeHtml(item.name) + '"';
+    if (editing) {
+      return '<div class="rate-row is-combo editing"' + attrs + ">" +
+        '<span class="drag-handle" aria-hidden="true">' + ico("grip") + "</span>" +
+        '<input class="edit-name" type="text" value="' + escapeHtml(item.name) + '">' +
+        '<div class="msel" id="msel-edit-thick"><button type="button" class="msel-toggle" id="edit-thick-toggle"></button><div class="msel-panel" id="edit-thicks"></div></div>' +
+        '<div class="msel" id="msel-edit-color"><button type="button" class="msel-toggle" id="edit-color-toggle"></button><div class="msel-panel" id="edit-colors"></div></div>' +
+        '<input class="edit-rate" type="number" min="0" step="1" value="' + escapeHtml(rateVal) + '">' +
+        editSaveCancel(kind, i) + "</div>";
     }
-    wrap.innerHTML = state.glassThicks.map((mm, i) =>
-      rateRowOpen(i) + '<span class="name">' + mm + " " + T.mm + '</span><button type="button" class="danger-ghost icon-btn" data-action="remove-glass-thick" data-index="' + i + '">' + ico("trash") + "<span>" + T.muchun + "</span></button></div>"
-    ).join("");
+    return '<div class="rate-row is-combo"' + attrs + '><span class="drag-handle" aria-hidden="true">' + ico("grip") + "</span>" +
+      '<span class="name">' + escapeHtml(item.name) + "</span>" +
+      '<span class="col-mm">' + escapeHtml(thickText) + "</span>" +
+      '<span class="col-color">' + escapeHtml(colorText) + "</span>" +
+      '<span class="price">' + rateText + "</span>" +
+      editAndDelete(kind, i) + "</div>";
+  }
+
+  function renderEditPicks() {
+    if (!$("edit-thicks") || !$("edit-colors")) return;
+    const kind = state.edit.kind;
+    const presets = kind === "alu" ? ALU_THICK_PRESETS : GLASS_THICK_PRESETS;
+    const palette = kind === "alu" ? ALU_COLORS : GLASS_COLORS;
+    const thicks = state.edit.thicks || [];
+    const colors = state.edit.colors || [];
+    renderThickPanel("edit-thicks", presets, thicks, "edit-thick", kind === "alu" ? "alu" : "company");
+    renderColorPanel("edit-colors", palette, colors);
+    if ($("edit-thick-toggle")) $("edit-thick-toggle").textContent = mselLabel(thicks.map((mm) => mm + T.mm));
+    if ($("edit-color-toggle")) $("edit-color-toggle").textContent = mselLabel(colors.map((id) => kind === "alu" ? aluColorLabel(id) : colorLabel(id)));
+  }
+
+  function addEditThick() {
+    const mm = parseFloat($("edit-thick") && $("edit-thick").value);
+    if (Number.isNaN(mm) || mm <= 0) return;
+    if (!state.edit.thicks) state.edit.thicks = [];
+    if (state.edit.thicks.every((t) => Number(t) !== mm)) state.edit.thicks.push(mm);
+    state.edit.thicks.sort((a, b) => a - b);
+    if ($("edit-thick")) $("edit-thick").value = "";
+    renderEditPicks();
+  }
+
+  function bindEditPicks(wrapId) {
+    const wrap = $(wrapId);
+    if (!wrap || wrap.dataset.editPickBound) return;
+    wrap.dataset.editPickBound = "1";
+    wrap.addEventListener("click", (e) => {
+      if (!e.target.closest(".rate-row.editing")) return;
+      const addMm = e.target.closest(".msel-add-mm");
+      if (addMm) {
+        addEditThick();
+        return;
+      }
+      const btn = e.target.closest(".msel-opt");
+      if (!btn) return;
+      if (btn.dataset.mm) togglePick(state.edit.thicks, btn.dataset.mm, true);
+      else if (btn.dataset.color) togglePick(state.edit.colors, btn.dataset.color, false);
+      renderEditPicks();
+    });
+    wrap.addEventListener("keydown", (e) => {
+      if (e.key !== "Enter" || !e.target.closest("#edit-thick")) return;
+      e.preventDefault();
+      addEditThick();
+    });
   }
 
   function fillChargesInputs() {
@@ -884,7 +1253,59 @@
     return true;
   }
 
-  function bindSortable(wrapId, getList, onDone) {
+  function moveGroup(list, fromName, toName) {
+    const groups = groupByName(list);
+    const from = groups.findIndex((g) => g.name === fromName);
+    const to = groups.findIndex((g) => g.name === toName);
+    if (from < 0 || to < 0 || from === to) return false;
+    const moved = groups.splice(from, 1)[0];
+    groups.splice(to, 0, moved);
+    const next = [];
+    groups.forEach((g) => g.indices.forEach((i) => next.push(list[i])));
+    list.length = 0;
+    next.forEach((row) => list.push(row));
+    return true;
+  }
+
+  function bindGroupSortable(wrapId, getList, onDone) {
+    const wrap = $(wrapId);
+    if (!wrap || wrap.dataset.groupSortBound) return;
+    wrap.dataset.groupSortBound = "1";
+    let drag = null;
+    function clearMarks() {
+      wrap.querySelectorAll(".rate-group").forEach((g) => g.classList.remove("dragging", "drag-over"));
+    }
+    wrap.addEventListener("pointerdown", (e) => {
+      const handle = e.target.closest(".rate-group-head .drag-handle");
+      if (!handle) return;
+      const group = handle.closest(".rate-group");
+      if (!group) return;
+      e.preventDefault();
+      handle.setPointerCapture(e.pointerId);
+      drag = { from: group.getAttribute("data-group") };
+      group.classList.add("dragging");
+    });
+    wrap.addEventListener("pointermove", (e) => {
+      if (!drag) return;
+      wrap.querySelectorAll(".drag-over").forEach((g) => g.classList.remove("drag-over"));
+      const el = document.elementFromPoint(e.clientX, e.clientY);
+      const over = el && el.closest && el.closest("#" + wrapId + " .rate-group");
+      if (over) over.classList.add("drag-over");
+    });
+    wrap.addEventListener("pointerup", (e) => {
+      if (!drag) return;
+      const el = document.elementFromPoint(e.clientX, e.clientY);
+      const over = el && el.closest && el.closest("#" + wrapId + " .rate-group");
+      const to = over ? over.getAttribute("data-group") : "";
+      const from = drag.from;
+      drag = null;
+      clearMarks();
+      if (to && moveGroup(getList(), from, to)) onDone();
+    });
+    wrap.addEventListener("pointercancel", () => { drag = null; clearMarks(); });
+  }
+
+  function bindSortable(wrapId, getList, onDone, byName) {
     const wrap = $(wrapId);
     if (!wrap || wrap.dataset.sortBound) return;
     wrap.dataset.sortBound = "1";
@@ -905,7 +1326,7 @@
       if (!row) return;
       e.preventDefault();
       e.target.closest(".drag-handle").setPointerCapture(e.pointerId);
-      drag = { from: Number(row.dataset.index) };
+      drag = { from: byName ? row.getAttribute("data-group") : Number(row.dataset.index) };
       row.classList.add("dragging");
     });
     wrap.addEventListener("pointermove", (e) => {
@@ -917,11 +1338,12 @@
     wrap.addEventListener("pointerup", (e) => {
       if (!drag) return;
       const over = rowAt(e.clientX, e.clientY);
-      const to = over ? Number(over.dataset.index) : -1;
       const from = drag.from;
+      const to = over ? (byName ? over.getAttribute("data-group") : Number(over.dataset.index)) : (byName ? "" : -1);
       drag = null;
       clearMarks();
-      if (moveItem(getList(), from, to)) onDone();
+      const ok = byName ? moveGroup(getList(), from, to) : moveItem(getList(), from, to);
+      if (ok) onDone();
     });
     wrap.addEventListener("pointercancel", () => {
       drag = null;
@@ -929,8 +1351,141 @@
     });
   }
 
-  function rateRowOpen(i) {
-    return '<div class="rate-row" data-index="' + i + '"><span class="drag-handle" aria-hidden="true">' + ico("grip") + "</span>";
+  const LOCK_STYLES = [
+    { id: "sliding", labelKey: "sliding" },
+    { id: "casement", labelKey: "caseLock" },
+    { id: "deadbolt", labelKey: "deadbolt" },
+    { id: "knob", labelKey: "knob" },
+    { id: "generic", labelKey: "generic" }
+  ];
+
+  function rateRowOpen(i, extra) {
+    return '<div class="rate-row' + (extra ? " " + extra : "") + '" data-index="' + i + '"><span class="drag-handle" aria-hidden="true">' + ico("grip") + "</span>";
+  }
+
+  function optionList(items, selected) {
+    return items.map(function (c) {
+      return '<option value="' + c.id + '"' + (c.id === selected ? " selected" : "") + '>' + escapeHtml(T[c.labelKey]) + "</option>";
+    }).join("");
+  }
+
+  function editSaveCancel(kind, i) {
+    return '<span class="rate-actions"><button type="button" class="icon-btn secondary compact" data-action="save-' + kind + '" data-index="' + i + '">' + ico("save") + "<span>" + T.updateBtn + "</span></button>" +
+      '<button type="button" class="icon-btn ghost compact" data-action="cancel-edit">' + T.cancelBtn + "</button></span>";
+  }
+
+  function editAndDelete(kind, i) {
+    return '<span class="rate-actions"><button type="button" class="icon-btn ghost compact" data-action="edit-' + kind + '" data-index="' + i + '">' + ico("pencil") + "<span>" + T.editBtn + "</span></button>" +
+      '<button type="button" class="danger-ghost icon-btn" data-action="remove-' + kind + '" data-index="' + i + '">' + ico("trash") + "<span>" + T.muchun + "</span></button></span>";
+  }
+
+  function cancelEdit(silent) {
+    const was = state.edit.kind;
+    state.edit = { kind: "", index: -1, name: "", rate: null, thicks: [], colors: [] };
+    if (was === "company") {
+      if ($("new-company-name")) $("new-company-name").value = "";
+      if ($("new-company-rate")) $("new-company-rate").value = "";
+      if ($("new-company-thick")) $("new-company-thick").value = "";
+      state.adminPick.companyThicks = [5];
+      state.adminPick.companyColors = ["clear"];
+    }
+    if (was === "alu") {
+      if ($("new-alu-name")) $("new-alu-name").value = "";
+      if ($("new-alu-rate")) $("new-alu-rate").value = "";
+      if ($("new-alu-thick")) $("new-alu-thick").value = "";
+      state.adminPick.aluThicks = [1];
+      state.adminPick.aluColors = ["silver"];
+    }
+    if (was === "company" || was === "alu") renderAdminPicks();
+    setAddLabels();
+    if (!silent) {
+      renderRateList("company-list", state.companies, "company");
+      renderAluList();
+      renderRateList("lock-list", state.locks, "lock");
+    }
+  }
+
+  function startEdit(kind, index) {
+    if (state.edit.kind === kind && state.edit.index === index) {
+      cancelEdit();
+      return;
+    }
+    const list = kind === "company" ? state.companies : kind === "alu" ? state.aluminium : state.locks;
+    const item = list[index];
+    if (!item) return;
+    const siblings = (kind === "company" || kind === "alu") ? list.filter((x) => x.name === item.name) : [];
+    state.edit = {
+      kind: kind,
+      index: index,
+      name: item.name || "",
+      rate: item.rate,
+      thicks: uniqueNums(siblings.map((x) => x.thickness)),
+      colors: uniqueIds(siblings.map((x) => kind === "alu" ? normalizeAluColorId(x.color) : normalizeColorId(x.color)))
+    };
+    if (kind === "company") renderRateList("company-list", state.companies, "company");
+    else if (kind === "alu") renderAluList();
+    else renderRateList("lock-list", state.locks, "lock");
+  }
+
+  function rowInput(row, cls) {
+    const el = row && row.querySelector("." + cls);
+    return el ? el.value : "";
+  }
+
+  function saveEdited(kind, index) {
+    const wrapId = kind === "company" ? "company-list" : kind === "alu" ? "alu-list" : "lock-list";
+    const wrap = $(wrapId);
+    const row = wrap && wrap.querySelector('.rate-row[data-index="' + index + '"]');
+    if (!row) return;
+    const nameEl = row.querySelector(".edit-name");
+    const rateEl = row.querySelector(".edit-rate");
+    const name = cleanTextValue(nameEl && nameEl.value);
+    const rate = parseFloat(rateEl && rateEl.value);
+    markInvalid(nameEl, !name);
+    markInvalid(rateEl, !Number.isFinite(rate) || rate < 0);
+    if (!name) { flashNote(T.errNeedName, true); return; }
+    if (!Number.isFinite(rate) || rate < 0) { flashNote(T.errNeedNumber, true); return; }
+    if (kind === "lock") {
+      const style = rowInput(row, "edit-style") || "generic";
+      state.locks[index] = { name: name, rate: rate, style: style };
+      state.edit = { kind: "", index: -1, name: "", rate: null, thicks: [], colors: [] };
+      renderRateList("lock-list", state.locks, "lock");
+      renderLockSelect();
+      renderLivePreview(true);
+      persistOwnerData();
+      return;
+    }
+    const list = kind === "company" ? state.companies : state.aluminium;
+    const thicks = (state.edit.thicks || []).slice();
+    const extra = parseFloat($("edit-thick") && $("edit-thick").value);
+    if (!Number.isNaN(extra) && extra > 0 && thicks.every((t) => Number(t) !== extra)) thicks.push(extra);
+    const colors = (state.edit.colors || []).map((id) => kind === "alu" ? normalizeAluColorId(id) : normalizeColorId(id));
+    if (!thicks.length || !colors.length) { flashNote(T.errNeedPick, true); return; }
+    replaceCombos(list, state.edit.name, name, thicks, colors, rate, state.edit.rate);
+    state.edit = { kind: "", index: -1, name: "", rate: null, thicks: [], colors: [] };
+    if (kind === "company") {
+      renderRateList("company-list", state.companies, "company");
+      renderCompanySelect();
+    } else {
+      refreshSheetSelects();
+    }
+    persistOwnerData();
+  }
+
+  function handleRateListClick(kind, e) {
+    const btn = e.target.closest("[data-action]");
+    if (!btn) return;
+    const action = btn.dataset.action;
+    const index = Number(btn.dataset.index);
+    if (action === "edit-" + kind) startEdit(kind, index);
+    else if (action === "save-" + kind) saveEdited(kind, index);
+    else if (action === "cancel-edit") cancelEdit();
+    else if (action === "remove-" + kind) {
+      if (state.edit.kind === kind) state.edit = { kind: "", index: -1, name: "", rate: null, thicks: [], colors: [] };
+      if (kind === "company") removeCompany(index);
+      else if (kind === "alu") removeAluminium(index);
+      else if (kind === "lock") removeLock(index);
+    }
   }
 
   function refreshSheetSelects() {
@@ -939,20 +1494,37 @@
     renderGlassThickSelect();
     renderAluCompanySelect();
     renderAluList();
-    renderGlassThickList();
     fillChargesInputs();
+    syncCalcDetails();
   }
 
   function renderRateList(wrapId, items, kind) {
     const wrap = $(wrapId);
+    if (!wrap) return;
     if (!items.length) {
       wrap.innerHTML = `<div class="empty-note">${T.emptyRates}</div>`;
       return;
     }
     const unit = kind === "company" ? T.perSq : "";
-    wrap.innerHTML = items.map((item, i) =>
-      rateRowOpen(i) + '<span class="name">' + escapeHtml(item.name) + (kind === "company" && item.thickness ? " · " + item.thickness + T.mm : "") + (kind === "company" && item.color ? " · " + escapeHtml(colorLabel(item.color)) : "") + '</span><span class="price">' + T.taka + item.rate + unit + '</span><button type="button" class="danger-ghost icon-btn" data-action="remove-' + kind + '" data-index="' + i + '">' + ico("trash") + "<span>" + T.muchun + "</span></button></div>"
-    ).join("");
+    if (kind === "lock") {
+      wrap.innerHTML = items.map((item, i) => {
+        const editing = state.edit.kind === kind && state.edit.index === i;
+        if (editing) {
+          return rateRowOpen(i, "editing") +
+            '<input class="edit-name" type="text" value="' + escapeHtml(item.name) + '">' +
+            '<select class="edit-style">' + optionList(LOCK_STYLES, item.style) + "</select>" +
+            '<input class="edit-rate" type="number" min="0" step="1" value="' + escapeHtml(item.rate) + '">' +
+            editSaveCancel(kind, i) + "</div>";
+        }
+        return rateRowOpen(i) + '<span class="name">' + escapeHtml(item.name) + '</span><span class="price">' + T.taka + item.rate + unit + "</span>" + editAndDelete(kind, i) + "</div>";
+      }).join("");
+      return;
+    }
+    wrap.innerHTML = comboHeadHtml(kind) + groupByName(items).map((g) => {
+      const i = g.indices[0];
+      return comboRowHtml(kind, items[i], i, g.indices.map((idx) => items[idx]));
+    }).join("");
+    if (state.edit.kind === kind) renderEditPicks();
   }
 
   function computeCutList(item) {
@@ -1107,7 +1679,22 @@
     const wrap = $("cutting-list-wrap");
     const emptyEl = $("cutting-empty");
     const actionsEl = $("cutting-actions");
-    if (!state.items.length) {
+    const bar = $("cutting-quote-bar");
+    const items = state.cutQuote && state.cutQuote.items && state.cutQuote.items.length
+      ? state.cutQuote.items
+      : state.items;
+    if (bar) {
+      const on = !!(state.cutQuote && state.cutQuote.items && state.cutQuote.items.length);
+      bar.classList.toggle("hidden", !on);
+      if (on) {
+        if ($("cutting-quote-name")) $("cutting-quote-name").textContent = state.cutQuote.name || "";
+        if ($("cutting-quote-meta")) {
+          $("cutting-quote-meta").textContent = [state.cutQuote.phone, state.cutQuote.id].filter(Boolean).join(" · ");
+        }
+        if ($("btn-clear-cut-quote")) $("btn-clear-cut-quote").textContent = T.quoteCutClear;
+      }
+    }
+    if (!items.length) {
       wrap.innerHTML = "";
       emptyEl.classList.remove("hidden");
       actionsEl.classList.add("hidden");
@@ -1115,7 +1702,7 @@
     }
     emptyEl.classList.add("hidden");
     actionsEl.classList.remove("hidden");
-    wrap.innerHTML = state.items.map((item, i) => {
+    wrap.innerHTML = items.map((item, i) => {
       const type = getType(item.winType);
       return `
         <div class="window-item">
@@ -1138,18 +1725,30 @@
 
   function showError(message) {
     const el = $("err-msg");
+    if (!el) return;
     el.textContent = message;
     el.style.display = "block";
   }
 
   function hideError() {
-    $("err-msg").style.display = "none";
+    const el = $("err-msg");
+    if (el) el.style.display = "none";
+  }
+
+  function showStaffErr(message) {
+    const el = $("staff-err");
+    if (!el) return;
+    el.textContent = message || "";
+    el.style.display = message ? "block" : "none";
   }
 
   function addItem() {
-    const heightFt = toFeet($("in-h-ft").value, $("in-h-in").value);
-    const widthFt = toFeet($("in-w-ft").value, $("in-w-in").value);
-    const qty = Math.max(1, parseInt($("in-qty").value, 10) || 1);
+    const hFtEl = $("in-h-ft");
+    const wFtEl = $("in-w-ft");
+    const qtyEl = $("in-qty");
+    const heightFt = toFeet(hFtEl && hFtEl.value, $("in-h-in") && $("in-h-in").value);
+    const widthFt = toFeet(wFtEl && wFtEl.value, $("in-w-in") && $("in-w-in").value);
+    const qtyRaw = readNonNeg(qtyEl);
     const thickness = parseFloat($("sel-glass-thick") && $("sel-glass-thick").value) || 0;
     const company = selectedGlassCompany();
     const lock = selectedLock();
@@ -1167,11 +1766,20 @@
       showError(T.errAlu);
       return;
     }
+    const qtyOk = Number.isFinite(qtyRaw) && qtyRaw >= 1;
+    markInvalid(qtyEl, !qtyOk);
+    markInvalid(hFtEl, heightFt <= 0);
+    markInvalid(wFtEl, widthFt <= 0);
+    if (!qtyOk) {
+      showError(T.errNeedNumber);
+      return;
+    }
     if (heightFt <= 0 || widthFt <= 0) {
       showError(T.errSize);
       return;
     }
     hideError();
+    const qty = Math.max(1, Math.round(qtyRaw));
 
     const totalSqft = heightFt * widthFt * qty;
     const glassCost = totalSqft * (Number(company.rate) || 0);
@@ -1208,10 +1816,6 @@
     });
 
     storeSet(KEYS.items, state.items);
-    state.selectedKind = null;
-    state.selectedType = null;
-    renderKindPicker();
-    renderTypePicker();
     renderItems();
     clearInputs();
     renderLivePreview(true);
@@ -1237,6 +1841,7 @@
     storeSet(KEYS.items, state.items);
     renderKindPicker();
     renderTypePicker();
+    syncCalcDetails();
     renderItems();
     renderLivePreview(false);
   }
@@ -1251,14 +1856,21 @@
   }
 
   function addCompany() {
-    const name = $("new-company-name").value.trim();
-    const thickness = parseFloat($("new-company-thick") && $("new-company-thick").value);
-    const rate = parseFloat($("new-company-rate").value);
-    const color = normalizeColorId($("new-company-color") && $("new-company-color").value);
-    if (!name || Number.isNaN(thickness) || thickness <= 0 || Number.isNaN(rate) || rate < 0) return;
-    const existing = state.companies.find((c) => c.name === name && Number(c.thickness) === thickness && c.color === color);
-    if (existing) existing.rate = rate;
-    else state.companies.push({ name, thickness, rate, color });
+    const nameEl = $("new-company-name");
+    const rateEl = $("new-company-rate");
+    const name = cleanTextValue(nameEl && nameEl.value);
+    const rate = readNonNeg(rateEl);
+    const thicks = selectedThicks("company");
+    const colors = state.adminPick.companyColors.map(normalizeColorId);
+    markInvalid(nameEl, !name);
+    markInvalid(rateEl, Number.isNaN(rate));
+    if (!name) { flashNote(T.errNeedName, true); return; }
+    if (Number.isNaN(rate)) { flashNote(T.errNeedNumber, true); return; }
+    if (!thicks.length || !colors.length) { flashNote(T.errNeedPick, true); return; }
+    if (nameEl) nameEl.value = name;
+    thicks.forEach((thickness) => {
+      colors.forEach((color) => upsertCombo(state.companies, { name: name, thickness: thickness, rate: rate, color: color }));
+    });
     $("new-company-name").value = "";
     if ($("new-company-thick")) $("new-company-thick").value = "";
     $("new-company-rate").value = "";
@@ -1267,66 +1879,75 @@
     persistOwnerData();
   }
 
+  function removeNamedCombos(list, index) {
+    const item = list[index];
+    if (!item) return;
+    const name = item.name;
+    for (let i = list.length - 1; i >= 0; i--) {
+      if (list[i].name === name) list.splice(i, 1);
+    }
+  }
+
   function removeCompany(index) {
-    state.companies.splice(index, 1);
+    removeNamedCombos(state.companies, index);
     renderRateList("company-list", state.companies, "company");
     renderCompanySelect();
     persistOwnerData();
   }
 
   function addAluminium() {
-    const name = $("new-alu-name").value.trim();
-    const thickness = parseFloat($("new-alu-thick").value);
-    const rate = parseFloat($("new-alu-rate").value);
-    const color = normalizeAluColorId($("new-alu-color") && $("new-alu-color").value);
-    if (!name || Number.isNaN(thickness) || thickness <= 0 || Number.isNaN(rate) || rate < 0) return;
-    const existing = state.aluminium.find((a) => a.name === name && Number(a.thickness) === thickness && a.color === color);
-    if (existing) existing.rate = rate;
-    else state.aluminium.push({ name, thickness, rate, color });
+    const nameEl = $("new-alu-name");
+    const rateEl = $("new-alu-rate");
+    const name = cleanTextValue(nameEl && nameEl.value);
+    const rate = readNonNeg(rateEl);
+    const thicks = selectedThicks("alu");
+    const colors = state.adminPick.aluColors.map(normalizeAluColorId);
+    markInvalid(nameEl, !name);
+    markInvalid(rateEl, Number.isNaN(rate));
+    if (!name) { flashNote(T.errNeedName, true); return; }
+    if (Number.isNaN(rate)) { flashNote(T.errNeedNumber, true); return; }
+    if (!thicks.length || !colors.length) { flashNote(T.errNeedPick, true); return; }
+    if (nameEl) nameEl.value = name;
+    thicks.forEach((thickness) => {
+      colors.forEach((color) => upsertCombo(state.aluminium, { name: name, thickness: thickness, rate: rate, color: color }));
+    });
     $("new-alu-name").value = "";
-    $("new-alu-thick").value = "";
+    if ($("new-alu-thick")) $("new-alu-thick").value = "";
     $("new-alu-rate").value = "";
     refreshSheetSelects();
     persistOwnerData();
   }
 
   function removeAluminium(index) {
-    state.aluminium.splice(index, 1);
-    refreshSheetSelects();
-    persistOwnerData();
-  }
-
-  function addGlassThick() {
-    const mm = parseFloat($("new-glass-thick").value);
-    if (Number.isNaN(mm) || mm <= 0) return;
-    if (state.glassThicks.indexOf(mm) >= 0) return;
-    state.glassThicks.push(mm);
-    state.glassThicks.sort((a, b) => a - b);
-    $("new-glass-thick").value = "";
-    refreshSheetSelects();
-    persistOwnerData();
-  }
-
-  function removeGlassThick(index) {
-    state.glassThicks.splice(index, 1);
+    removeNamedCombos(state.aluminium, index);
     refreshSheetSelects();
     persistOwnerData();
   }
 
   function saveCharges() {
-    const net = parseFloat($("in-charge-net").value);
-    const extra = parseFloat($("in-charge-extra").value);
-    if (Number.isNaN(net) || net < 0 || Number.isNaN(extra) || extra < 0) return;
+    const netEl = $("in-charge-net");
+    const extraEl = $("in-charge-extra");
+    const net = readNonNeg(netEl);
+    const extra = readNonNeg(extraEl);
+    markInvalid(netEl, Number.isNaN(net));
+    markInvalid(extraEl, Number.isNaN(extra));
+    if (Number.isNaN(net) || Number.isNaN(extra)) { flashNote(T.errNeedNumber, true); return; }
     state.charges = { net, extra };
     persistOwnerData();
     flashSaved();
   }
 
   function addLock() {
-    const name = $("new-lock-name").value.trim();
-    const rate = parseFloat($("new-lock-rate").value);
+    const nameEl = $("new-lock-name");
+    const rateEl = $("new-lock-rate");
+    const name = cleanTextValue(nameEl && nameEl.value);
+    const rate = readNonNeg(rateEl);
     const style = $("new-lock-style") ? $("new-lock-style").value : "generic";
-    if (!name || Number.isNaN(rate) || rate < 0) return;
+    markInvalid(nameEl, !name);
+    markInvalid(rateEl, Number.isNaN(rate));
+    if (!name) { flashNote(T.errNeedName, true); return; }
+    if (Number.isNaN(rate)) { flashNote(T.errNeedNumber, true); return; }
+    if (nameEl) nameEl.value = name;
     state.locks.push({ name, rate, style });
     $("new-lock-name").value = "";
     $("new-lock-rate").value = "";
@@ -1351,7 +1972,7 @@
       shutterHoriz: numVal("in-cp-shutterhoriz"),
       glassGap: numVal("in-cp-glassgap")
     };
-    if (Object.values(next).some((v) => Number.isNaN(v) || v < 0)) return;
+    if (Object.values(next).some((v) => Number.isNaN(v) || v < 0)) { flashNote(T.errNeedNumber, true); return; }
     state.cutParams = next;
     persistOwnerData();
     renderItems();
@@ -1429,11 +2050,12 @@
     if (data.cutParams && typeof data.cutParams === "object") {
       state.cutParams = { ...DEFAULT_CUT, ...data.cutParams };
     }
-    state.quotes = isOwner() && Array.isArray(data.quotes) ? data.quotes : [];
+    state.quotes = isStaff() && Array.isArray(data.quotes) ? data.quotes : [];
     state.staff = isOwner() && Array.isArray(data.users) ? data.users : [];
     fillCutInputs();
     renderRateList("company-list", state.companies, "company");
     renderRateList("lock-list", state.locks, "lock");
+    renderAluList();
     refreshSheetSelects();
     renderStaffList();
     renderQuotes();
@@ -1453,6 +2075,9 @@
     if (Array.isArray(data.aluminium)) state.aluminium = normalizeAluminium(data.aluminium);
     if (Array.isArray(data.glassThicks)) state.glassThicks = data.glassThicks;
     state.charges = { net: 0, extra: 0 };
+    renderRateList("company-list", state.companies, "company");
+    renderRateList("lock-list", state.locks, "lock");
+    renderAluList();
     refreshSheetSelects();
     updateCatalogHint();
     return !!(state.companies.length || state.aluminium.length || state.glassThicks.length);
@@ -1477,6 +2102,7 @@
 
   function loadCatalog() {
     if (!sheetApiUrl()) return;
+    showLoader(true, T.loading);
     sheetRequest({ action: "catalog" }).then(function (data) {
       if (applyCatalog(data)) return;
       return fetchCatalogGet().then(applyCatalog);
@@ -1484,7 +2110,7 @@
       return fetchCatalogGet().then(applyCatalog).catch(function () {
         updateCatalogHint();
       });
-    });
+    }).finally(function () { showLoader(false); });
   }
 
 
@@ -1504,7 +2130,7 @@
       return;
     }
     wrap.innerHTML = state.staff.map((u, i) =>
-      rateRowOpen(i) + '<span class="name">' + escapeHtml(u.email) + " · " + escapeHtml(roleLabel(u.role)) + '</span><button type="button" class="danger-ghost icon-btn" data-action="remove-staff" data-index="' + i + '">' + ico("trash") + "<span>" + T.muchun + "</span></button></div>"
+      rateRowOpen(i) + '<span class="name">' + escapeHtml(u.email) + '</span><span class="role-pill' + (u.role === "owner" ? " is-owner" : "") + '">' + escapeHtml(roleLabel(u.role)) + '</span><span class="rate-actions"><button type="button" class="danger-ghost icon-btn" data-action="remove-staff" data-index="' + i + '">' + ico("trash") + "<span>" + T.muchun + "</span></button></span></div>"
     ).join("");
   }
 
@@ -1513,7 +2139,11 @@
     const email = String($("new-staff-email") && $("new-staff-email").value || "").trim().toLowerCase();
     const pin = String($("new-staff-pin") && $("new-staff-pin").value || "").trim();
     const role = $("new-staff-role") && $("new-staff-role").value === "owner" ? "owner" : "operator";
-    if (!ownerEmailOk(email) || !ownerPinOk(pin)) return;
+    if (!ownerEmailOk(email) || !ownerPinOk(pin)) {
+      showStaffErr(T.staffBad);
+      return;
+    }
+    showStaffErr("");
     const existing = state.staff.find((u) => u.email === email);
     if (existing) {
       existing.pin = pin;
@@ -1530,14 +2160,33 @@
   function removeStaff(index) {
     if (!isOwner()) return;
     const next = state.staff.filter((_, i) => i !== index);
-    if (!next.some((u) => u.role === "owner")) return;
+    if (!next.some((u) => u.role === "owner")) {
+      showStaffErr(T.staffNeedOwner);
+      return;
+    }
+    showStaffErr("");
     state.staff = next;
     renderStaffList();
     persistOwnerData();
   }
 
+  function staffForSave() {
+    const list = (state.staff || []).map((u) => ({
+      email: String(u.email || "").trim().toLowerCase(),
+      pin: String(u.pin || "").trim(),
+      role: u.role === "owner" ? "owner" : "operator"
+    }));
+    if (state.ownerEmail && state.ownerPin) {
+      const found = list.find((u) => u.email === state.ownerEmail);
+      if (!found) list.push({ email: state.ownerEmail, pin: state.ownerPin, role: "owner" });
+      else if (!found.pin) found.pin = state.ownerPin;
+    }
+    return list;
+  }
+
   function persistOwnerData() {
     if (!isOwner() || !state.ownerPin || !state.ownerEmail || !sheetApiUrl()) return;
+    showLoader(true, T.working);
     sheetRequest({
       action: "save",
       email: state.ownerEmail,
@@ -1545,12 +2194,15 @@
       companies: state.companies,
       locks: state.locks,
       aluminium: state.aluminium,
-      glassThicks: state.glassThicks,
       charges: state.charges,
       cutParams: state.cutParams,
-      users: state.staff
+      users: staffForSave()
     }).then((data) => {
       if (!data || !data.ok) throw new Error("save");
+      if (isOwner() && Array.isArray(data.users)) {
+        state.staff = data.users;
+        renderStaffList();
+      }
       flashSaved();
     }).catch(() => {
       const el = $("save-flash");
@@ -1559,7 +2211,7 @@
         el.classList.add("show");
         setTimeout(() => el.classList.remove("show"), 1800);
       }
-    });
+    }).finally(() => showLoader(false));
   }
 
   function isStaff() {
@@ -1570,45 +2222,113 @@
     return state.role === "owner";
   }
 
-  function isOwnerUnlocked() {
-    return isStaff();
+  function sessionKey(email) {
+    return String(email || "mtg").toLowerCase() + "|mtg-s2";
   }
 
-  function saveSession(email, pin) {
-    storeSet(KEYS.session, { email: String(email || "").toLowerCase(), pin: String(pin || "") });
+  function encodePin(pin, email) {
+    const raw = String(pin || "");
+    const key = sessionKey(email);
+    let out = "";
+    for (let i = 0; i < raw.length; i++) {
+      out += String.fromCharCode(raw.charCodeAt(i) ^ key.charCodeAt(i % key.length) ^ ((i + 11) & 255));
+    }
+    return btoa(out);
+  }
+
+  function decodePin(token, email) {
+    try {
+      const bin = atob(String(token || ""));
+      const key = sessionKey(email);
+      let out = "";
+      for (let i = 0; i < bin.length; i++) {
+        out += String.fromCharCode(bin.charCodeAt(i) ^ key.charCodeAt(i % key.length) ^ ((i + 11) & 255));
+      }
+      return /^\d{4,8}$/.test(out) ? out : "";
+    } catch (_) {
+      return "";
+    }
+  }
+
+  function saveSession(email, pin, role) {
+    const e = String(email || "").toLowerCase();
+    const p = String(pin || "");
+    if (!e || !p) return;
+    storeSet(KEYS.session, {
+      v: 2,
+      e: e,
+      r: role === "operator" ? "operator" : "owner",
+      k: encodePin(p, e)
+    });
+  }
+
+  function readSession(raw) {
+    if (!raw || typeof raw !== "object") return null;
+    if (raw.v === 2 && raw.e && raw.k) {
+      const pin = decodePin(raw.k, raw.e);
+      if (!pin) return null;
+      return { email: String(raw.e).toLowerCase(), pin: pin, role: raw.r === "operator" ? "operator" : "owner" };
+    }
+    if (raw.email && raw.pin) {
+      const email = String(raw.email).toLowerCase();
+      const pin = String(raw.pin);
+      const role = raw.role === "operator" ? "operator" : "owner";
+      if (!ownerPinOk(pin)) return null;
+      saveSession(email, pin, role);
+      return { email: email, pin: pin, role: role };
+    }
+    return null;
+  }
+
+  function applyLocalSession(saved) {
+    if (!saved || !saved.email || !saved.pin) return false;
+    state.ownerEmail = saved.email;
+    state.ownerPin = saved.pin;
+    state.role = saved.role === "operator" ? "operator" : "owner";
+    state.ownerUnlocked = true;
+    saveSession(saved.email, saved.pin, state.role);
+    updateRoleUi();
+    return true;
   }
 
   function clearSession() {
     try { localStorage.removeItem(KEYS.session); } catch (_) { /* ignore */ }
   }
 
+  function clearLoginFields() {
+    if ($("owner-pin")) $("owner-pin").value = "";
+    if ($("owner-email")) $("owner-email").value = "";
+  }
+
   function applyLoginSuccess(data, email, pin, nextTab) {
     state.ownerEmail = String(email || "").toLowerCase();
     state.ownerPin = String(pin || "");
     state.role = data.role === "operator" ? "operator" : "owner";
-    saveSession(state.ownerEmail, state.ownerPin);
+    saveSession(state.ownerEmail, state.ownerPin, state.role);
+    clearLoginFields();
     applyOwnerData(data);
     setOwnerUnlocked(true);
     $("owner-gate").classList.add("hidden");
-    var tab = nextTab || state.pendingOwnerTab || (state.role === "owner" ? "rates" : "cutting");
-    if (tab === "rates" && state.role !== "owner") tab = "cutting";
+    var tab = nextTab || state.pendingOwnerTab || "rates";
     if ((tab === "cutting" || tab === "rates") && !isStaff()) tab = "calc";
     switchTab(tab);
   }
 
   function restoreSession(saved, nextTab) {
     if (!saved || !saved.email || !saved.pin || !sheetApiUrl()) return Promise.resolve(false);
+    showLoader(true, T.working);
     return sheetRequest({ action: "unlock", email: saved.email, pin: saved.pin }).then((data) => {
       if (!data || !data.ok) {
-        clearSession();
+        const authFail = data && (data.error === "locked" || data.error === "needemail" || data.error === "required" || data.error === "pin" || data.ok === false);
+        if (authFail) {
+          clearSession();
+          setOwnerUnlocked(false);
+        }
         return false;
       }
       applyLoginSuccess(data, saved.email, saved.pin, nextTab);
       return true;
-    }).catch(() => {
-      clearSession();
-      return false;
-    });
+    }).catch(() => false).finally(() => showLoader(false));
   }
 
   function setOwnerUnlocked(on) {
@@ -1623,12 +2343,18 @@
   }
 
   function updateRoleUi() {
-    document.body.classList.toggle("is-staff", isStaff());
+    const staff = isStaff();
+    document.documentElement.classList.toggle("has-session", staff);
+    document.documentElement.classList.toggle("is-staff", staff);
+    document.documentElement.classList.toggle("is-owner", isOwner());
+    document.body.classList.toggle("is-staff", staff);
     if ($("btn-staff-login")) $("btn-staff-login").classList.toggle("hidden", isStaff());
     if ($("btn-owner-lock")) $("btn-owner-lock").classList.toggle("hidden", !isStaff());
     if ($("nav-cutting")) $("nav-cutting").classList.toggle("tab-hidden", !isStaff());
-    if ($("nav-rates")) $("nav-rates").classList.toggle("tab-hidden", !isOwner());
-    if ($("staff-card")) $("staff-card").classList.toggle("hidden", !isOwner());
+    if ($("nav-rates")) $("nav-rates").classList.toggle("tab-hidden", !isStaff());
+    if ($("admin-tab-staff")) $("admin-tab-staff").classList.toggle("hidden", !isOwner());
+    if (isStaff() && !isOwner()) switchAdminPanel("quotes");
+    else if (!isOwner() && state.adminPanel === "staff") switchAdminPanel("glass");
     updateQuoteCard();
     renderQuotes();
   }
@@ -1639,36 +2365,54 @@
 
   function fillQuoteLabels() {
     if ($("staff-login-label")) $("staff-login-label").textContent = T.staffLogin;
-    if ($("quote-title")) $("quote-title").textContent = T.quoteTitle;
+    setHeading("quote-title", T.quoteTitle);
     if ($("quote-hint")) $("quote-hint").textContent = T.quoteHint;
     if ($("quote-name-label")) $("quote-name-label").textContent = T.quoteName;
     if ($("quote-phone-label")) $("quote-phone-label").textContent = T.quotePhone;
     if ($("btn-send-quote")) $("btn-send-quote").textContent = T.quoteSend;
-    if ($("quotes-title")) $("quotes-title").textContent = T.quotesTitle;
+    setHeading("quotes-title", T.quotesTitle);
     if ($("glass-thick-label")) $("glass-thick-label").textContent = T.glassThick;
     if ($("alu-company-label")) $("alu-company-label").textContent = T.aluCompany;
     if ($("alu-thick-label")) $("alu-thick-label").textContent = T.aluThick;
     if ($("alu-color-label")) $("alu-color-label").textContent = T.aluColor;
-    if ($("alu-rates-title")) $("alu-rates-title").textContent = T.aluRatesTitle;
+    setHeading("alu-rates-title", T.aluRatesTitle);
     if ($("alu-rates-hint")) $("alu-rates-hint").textContent = T.aluRatesHint;
-    if ($("thick-rates-title")) $("thick-rates-title").textContent = T.thickRatesTitle;
-    if ($("thick-rates-hint")) $("thick-rates-hint").textContent = T.thickRatesHint;
-    if ($("charges-title")) $("charges-title").textContent = T.chargesTitle;
+    setHeading("charges-title", T.chargesTitle);
     if ($("charges-hint")) $("charges-hint").textContent = T.chargesHint;
     if ($("charge-net-label")) $("charge-net-label").textContent = T.chargeNet;
     if ($("charge-extra-label")) $("charge-extra-label").textContent = T.chargeExtra;
-    if ($("btn-add-alu-label")) $("btn-add-alu-label").textContent = T.addBtn;
-    if ($("btn-add-thick-label")) $("btn-add-thick-label").textContent = T.addBtn;
+    setAddLabels();
     if ($("btn-save-charges-label")) $("btn-save-charges-label").textContent = T.saveBtn;
     if ($("new-alu-name")) $("new-alu-name").placeholder = T.aluNamePh;
     if ($("new-alu-thick")) $("new-alu-thick").placeholder = T.aluThickPh;
     if ($("new-alu-rate")) $("new-alu-rate").placeholder = T.aluRatePh;
     if ($("new-company-thick")) $("new-company-thick").placeholder = T.glassThickPh;
     if ($("company-rates-hint")) $("company-rates-hint").textContent = T.companyRatesHint;
-    fillCompanyColorSelect();
-    fillAluColorSelect();
+    var multi = " (" + "\u098f\u0995\u09be\u09a7\u09bf\u0995" + ")";
+    if ($("company-name-label")) $("company-name-label").textContent = T.aluNamePh;
+    if ($("company-rate-label")) $("company-rate-label").textContent = T.aluRatePh;
+    if ($("alu-name-label")) $("alu-name-label").textContent = T.aluNamePh;
+    if ($("alu-rate-label")) $("alu-rate-label").textContent = T.aluRatePh;
+    if ($("lock-name-label")) $("lock-name-label").textContent = T.lock;
+    if ($("lock-style-label")) $("lock-style-label").textContent = T.dhoron;
+    if ($("lock-rate-label")) $("lock-rate-label").textContent = T.aluRatePh;
+    if ($("company-thick-pick-label")) $("company-thick-pick-label").textContent = T.thickness + multi;
+    if ($("company-color-pick-label")) $("company-color-pick-label").textContent = T.glassColor + multi;
+    if ($("alu-thick-pick-label")) $("alu-thick-pick-label").textContent = T.aluThick + multi;
+    if ($("alu-color-pick-label")) $("alu-color-pick-label").textContent = T.aluColor + multi;
+    renderAdminPicks();
     if ($("nav-rates-label")) $("nav-rates-label").textContent = T.admin;
-    if ($("staff-title")) $("staff-title").textContent = T.staffTitle;
+    if ($("admin-tab-glass")) $("admin-tab-glass").textContent = T.tabGlass;
+    if ($("admin-tab-alu")) $("admin-tab-alu").textContent = T.tabAlu;
+    if ($("admin-tab-lock")) $("admin-tab-lock").textContent = T.tabLock;
+    if ($("admin-tab-charges")) $("admin-tab-charges").textContent = T.tabCharges;
+    if ($("admin-tab-staff")) $("admin-tab-staff").textContent = T.tabStaff;
+    if ($("admin-tab-cut")) $("admin-tab-cut").textContent = T.tabCut;
+    if ($("admin-tab-quotes")) $("admin-tab-quotes").textContent = T.tabQuotes;
+    if ($("staff-email-label")) $("staff-email-label").textContent = T.staffEmailPh;
+    if ($("staff-pin-label")) $("staff-pin-label").textContent = T.ownerPinLabel;
+    if ($("staff-role-label")) $("staff-role-label").textContent = T.dhoron;
+    setHeading("staff-title", T.staffTitle);
     if ($("staff-hint")) $("staff-hint").textContent = T.staffHint;
     if ($("new-staff-email")) $("new-staff-email").placeholder = T.staffEmailPh;
     if ($("new-staff-pin")) $("new-staff-pin").placeholder = T.staffPinPh;
@@ -1677,23 +2421,134 @@
     if ($("btn-add-staff-label")) $("btn-add-staff-label").textContent = T.addBtn;
   }
 
+  function parseSizeFt(size) {
+    const parts = String(size || "").split(/\s*x\s*/i);
+    const one = (s) => {
+      const m = String(s || "").match(/(\d+(?:\.\d+)?)(?:\s*(?:ft|\u09ab\u09c1\u099f))?\s*(?:(\d+(?:\.\d+)?))?/i);
+      if (!m) return 0;
+      return Number(m[1] || 0) + (Number(m[2] || 0) / 12);
+    };
+    return { heightFt: one(parts[0]), widthFt: one(parts[1]) };
+  }
+
+  function typeIdFromQuote(it) {
+    const raw = String(it && (it.typeId || it.winType) || "").trim();
+    if (raw && ALL_TYPES.some((t) => t.id === raw)) return raw;
+    const s = String(it && it.type || "").toLowerCase();
+    const exact = ALL_TYPES.find((t) => (t.label + " " + t.sub).toLowerCase() === s);
+    if (exact) return exact.id;
+    const door = s.indexOf("door") >= 0 || s.indexOf("\u09a6\u09b0\u099c\u09be") >= 0;
+    if (door) {
+      if (s.indexOf("slid") >= 0 || s.indexOf("\u09b8\u09cd\u09b2\u09be\u0987\u09a1") >= 0) return "door-sliding";
+      if (s.indexOf("double") >= 0 || s.indexOf("\u09a1\u09be\u09ac\u09b2") >= 0) return "door-double";
+      return "door-single";
+    }
+    if (/4|\u09ea/.test(s)) return "sliding4";
+    if (/3|\u09e9/.test(s)) return "sliding3";
+    if (/2|\u09e8/.test(s) || s.indexOf("slid") >= 0) return "sliding2";
+    return "fixed";
+  }
+
+  function colorIdFromQuote(it) {
+    const id = String(it && (it.colorId || "") || "").trim().toLowerCase();
+    if (GLASS_COLORS.some((c) => c.id === id)) return id;
+    const s = String(it && it.color || "").trim();
+    const found = GLASS_COLORS.find((c) => T[c.labelKey] === s || c.id === s.toLowerCase());
+    return found ? found.id : "clear";
+  }
+
+  function quoteLinesToItems(q) {
+    return (q && q.lines || []).map((it) => {
+      const parsed = parseSizeFt(it.size);
+      const heightFt = Number(it.heightFt) > 0 ? Number(it.heightFt) : parsed.heightFt;
+      const widthFt = Number(it.widthFt) > 0 ? Number(it.widthFt) : parsed.widthFt;
+      const qty = Math.max(1, Number(it.qty) || 1);
+      return {
+        heightFt: heightFt,
+        widthFt: widthFt,
+        qty: qty,
+        thickness: Number(it.glassMm || it.thickness) || 0,
+        aluName: it.aluminium || "",
+        aluThick: it.aluMm || "",
+        aluColor: normalizeAluColorId(it.aluColor),
+        companyName: it.company || "",
+        companyRate: 0,
+        glassColor: colorIdFromQuote(it),
+        lockName: it.lock && it.lock !== "-" ? it.lock : null,
+        lockRate: 0,
+        lockStyle: it.lockStyle || lockStyleOf({ name: it.lock, style: it.lockStyle }),
+        hasNet: !!it.net,
+        netCost: 0,
+        frameRate: 0,
+        extra: 0,
+        totalSqft: heightFt * widthFt * qty,
+        glassCost: 0,
+        lockCost: 0,
+        frameCost: 0,
+        subtotal: Number(it.total) || 0,
+        winType: typeIdFromQuote(it)
+      };
+    }).filter((it) => it.heightFt > 0 && it.widthFt > 0);
+  }
+
+  function toggleQuote(id) {
+    state.quoteOpenId = state.quoteOpenId === id ? "" : id;
+    renderQuotes();
+  }
+
+  function openQuoteCutting(id) {
+    const q = state.quotes.find((x) => x.id === id);
+    if (!q) return;
+    const items = quoteLinesToItems(q);
+    if (!items.length) {
+      flashNote(T.quoteNoCut, true);
+      return;
+    }
+    state.cutQuote = { id: q.id, name: q.name, phone: q.phone, items: items };
+    switchTab("cutting");
+  }
+
+  function clearQuoteCutting() {
+    state.cutQuote = null;
+    renderCuttingTab();
+  }
+
   function renderQuotes() {
     var card = $("quotes-card");
     var list = $("quotes-list");
     if (!card || !list) return;
-    if (!isOwner()) {
-      card.classList.add("hidden");
+    if ($("admin-tab-quotes")) $("admin-tab-quotes").classList.toggle("hidden", !isStaff());
+    if (!isStaff()) {
+      if (state.adminPanel !== "quotes") card.classList.add("hidden");
       return;
     }
-    card.classList.remove("hidden");
     if (!state.quotes.length) {
       list.innerHTML = '<div class="empty-note">' + T.quotesEmpty + "</div>";
+      if (state.adminPanel === "quotes") card.classList.remove("hidden");
       return;
     }
     list.innerHTML = state.quotes.map(function (q) {
-      return '<div class="quote-row"><strong>' + escapeHtml(q.name) + " · " + escapeHtml(q.phone) +
-        "</strong><span>" + escapeHtml(q.time) + " · " + q.items + " · " + fmt(q.sqft) + T.sqLabel +
-        (q.total ? " · " + money(q.total) : "") + " · " + escapeHtml(q.status) + "</span></div>";
+      const open = state.quoteOpenId === q.id;
+      const lines = (q.lines || []).map(function (it) {
+        return '<div class="quote-line"><strong>' + escapeHtml(it.type || "") + "</strong>" +
+          '<span>' + escapeHtml(it.size || "") + " \u00b7 " + (it.qty || 1) + " " + T.ti + "</span>" +
+          '<span>' + escapeHtml([it.company, it.glassMm ? it.glassMm + T.mm : "", it.color].filter(Boolean).join(" \u00b7 ")) + "</span>" +
+          '<span>' + escapeHtml([it.aluminium, it.aluMm ? it.aluMm + T.mm : "", it.aluColor].filter(Boolean).join(" \u00b7 ")) + "</span>" +
+          '<span>' + escapeHtml([(it.lock && it.lock !== "-" ? it.lock : T.noLock), it.net ? T.net + " " + T.netYes : T.net + " " + T.netNo].join(" \u00b7 ")) +
+          (it.total ? " \u00b7 " + money(it.total) : "") + "</span></div>";
+      }).join("");
+      return '<div class="quote-card' + (open ? " is-open" : "") + '" data-quote-id="' + escapeHtml(q.id) + '">' +
+        '<div class="quote-row" data-action="toggle-quote" data-id="' + escapeHtml(q.id) + '">' +
+        '<span class="quote-mark"></span><div class="quote-main"><strong>' +
+        escapeHtml(q.name) + '</strong><span class="quote-phone">' + escapeHtml(q.phone) +
+        '</span></div><div class="quote-stats"><span>' + escapeHtml(q.time) + "</span><span>" +
+        (q.lines && q.lines.length ? q.lines.length : q.items) + " \u00b7 " + fmt(q.sqft) + T.sqLabel +
+        (q.total ? " \u00b7 " + money(q.total) : "") +
+        '</span></div><span class="quote-status">' + escapeHtml(q.status) + "</span></div>" +
+        (open ? '<div class="quote-detail">' + (lines || '<div class="empty-note">' + T.quotesEmpty + "</div>") +
+          '<button type="button" class="icon-btn secondary quote-cut-btn" data-action="quote-cut" data-id="' +
+          escapeHtml(q.id) + '">' + ico("cut") + "<span>" + T.cutInfo + "</span></button></div>" : "") +
+        "</div>";
     }).join("");
   }
 
@@ -1711,8 +2566,12 @@
       err.style.display = "block";
       return;
     }
-    var name = $("quote-name").value.trim();
-    var phone = $("quote-phone").value.trim();
+    var nameEl = $("quote-name");
+    var phoneEl = $("quote-phone");
+    var name = cleanTextValue(nameEl && nameEl.value);
+    var phone = String(phoneEl && phoneEl.value || "").replace(/\D/g, "");
+    markInvalid(nameEl, name.length < 2);
+    markInvalid(phoneEl, !quotePhoneOk(phone));
     if (name.length < 2) {
       err.textContent = T.quoteNameNeed;
       err.style.display = "block";
@@ -1731,6 +2590,7 @@
     err.style.display = "none";
     var btn = $("btn-send-quote");
     btn.disabled = true;
+    showLoader(true, T.working);
     sheetRequest({
       action: "quote",
       name: name,
@@ -1739,9 +2599,11 @@
         var type = getType(i.winType);
         return {
           type: type.label + " " + type.sub,
+          typeId: i.winType,
           heightFt: i.heightFt,
           widthFt: i.widthFt,
           qty: i.qty,
+          lockStyle: i.lockStyle || "",
           thickness: i.thickness,
           color: colorLabel(i.glassColor),
           colorId: i.glassColor,
@@ -1757,6 +2619,7 @@
       })
     }).then(function (data) {
       btn.disabled = false;
+      showLoader(false);
       if (!data || !data.ok) {
         var msg = T.quoteFail;
         if (data && data.error === "phone") msg = T.quotePhoneBad;
@@ -1769,6 +2632,7 @@
       okEl.classList.remove("hidden");
     }).catch(function () {
       btn.disabled = false;
+      showLoader(false);
       err.textContent = T.quoteFail;
       err.style.display = "block";
     });
@@ -1781,7 +2645,7 @@
     $("owner-email-label").textContent = T.ownerEmailLabel;
     $("owner-pin-label").textContent = T.ownerPinLabel;
     $("btn-owner-ok").textContent = T.ownerOpen;
-    $("owner-pin2-wrap").classList.add("hidden");
+    if ($("owner-pin2-wrap")) $("owner-pin2-wrap").classList.add("hidden");
     $("owner-gate-err").style.display = "none";
     $("owner-email").value = "";
     $("owner-pin").value = "";
@@ -1838,8 +2702,10 @@
       return;
     }
     $("btn-owner-ok").disabled = true;
+    showLoader(true, T.working);
     sheetRequest({ action: "unlock", email: email, pin: pin }).then((data) => {
       $("btn-owner-ok").disabled = false;
+      showLoader(false);
       if (!data || !data.ok) {
         var msg = T.ownerPinWrong;
         if (data && data.error === "locked") msg = T.ownerLocked;
@@ -1852,6 +2718,7 @@
       applyLoginSuccess(data, email, pin);
     }).catch(() => {
       $("btn-owner-ok").disabled = false;
+      showLoader(false);
       err.textContent = T.ownerNetErr;
       err.style.display = "block";
     });
@@ -1881,13 +2748,10 @@
   }
 
   function switchTab(tab) {
-    if (tab === "rates" && !isOwner()) {
-      if (!isStaff()) {
-        persistActiveTab(tab);
-        showOwnerGate(tab);
-        return;
-      }
-      tab = "calc";
+    if (tab === "rates" && !isStaff()) {
+      persistActiveTab(tab);
+      showOwnerGate(tab);
+      return;
     }
     if (tab === "cutting" && !isStaff()) {
       persistActiveTab(tab);
@@ -1908,7 +2772,10 @@
     $("tab-cutting").classList.toggle("hidden", tab !== "cutting");
     $("tab-rates").classList.toggle("hidden", tab !== "rates");
     if (tab === "cutting") renderCuttingTab();
-    if (tab === "rates") renderQuotes();
+    if (tab === "rates") {
+      renderQuotes();
+      switchAdminPanel(state.adminPanel || "glass");
+    }
     var body = document.querySelector(".app-body");
     if (body) body.scrollTop = 0;
   }
@@ -1965,6 +2832,22 @@
     $("btn-clear").addEventListener("click", clearAll);
     $("btn-print").addEventListener("click", () => window.print());
     $("btn-print-cutting").addEventListener("click", () => window.print());
+    bindAdminPicks();
+    bindEditPicks("company-list");
+    bindEditPicks("alu-list");
+    function ensureCancel(afterId, cancelId) {
+      if ($(cancelId) || !$(afterId)) return;
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.id = cancelId;
+      btn.className = "icon-btn ghost compact hidden";
+      btn.textContent = T.cancelBtn;
+      $(afterId).insertAdjacentElement("afterend", btn);
+      btn.addEventListener("click", function () { cancelEdit(); });
+    }
+    ensureCancel("btn-add-company", "btn-cancel-company");
+    ensureCancel("btn-add-alu", "btn-cancel-alu");
+    setAddLabels();
     $("btn-add-company").addEventListener("click", addCompany);
     $("btn-add-lock").addEventListener("click", addLock);
     $("btn-add-alu").addEventListener("click", addAluminium);
@@ -1972,6 +2855,15 @@
     $("btn-save-charges").addEventListener("click", saveCharges);
     $("btn-save-cut").addEventListener("click", saveCutParams);
 
+    if ($("quotes-list")) {
+      $("quotes-list").addEventListener("click", (e) => {
+        const btn = e.target.closest("[data-action]");
+        if (!btn) return;
+        if (btn.dataset.action === "toggle-quote") toggleQuote(btn.dataset.id);
+        if (btn.dataset.action === "quote-cut") openQuoteCutting(btn.dataset.id);
+      });
+    }
+    if ($("btn-clear-cut-quote")) $("btn-clear-cut-quote").addEventListener("click", clearQuoteCutting);
     $("item-list").addEventListener("click", (e) => {
       const btn = e.target.closest("[data-action]");
       if (!btn) return;
@@ -1979,17 +2871,17 @@
       if (btn.dataset.action === "remove-item") removeItem(index);
       if (btn.dataset.action === "toggle-cut") toggleCutList(index);
     });
-    $("company-list").addEventListener("click", (e) => {
-      const btn = e.target.closest("[data-action='remove-company']");
-      if (btn) removeCompany(Number(btn.dataset.index));
-    });
-    $("lock-list").addEventListener("click", (e) => {
-      const btn = e.target.closest("[data-action='remove-lock']");
-      if (btn) removeLock(Number(btn.dataset.index));
-    });
-    $("alu-list").addEventListener("click", (e) => {
-      const btn = e.target.closest("[data-action='remove-alu']");
-      if (btn) removeAluminium(Number(btn.dataset.index));
+    $("company-list").addEventListener("click", (e) => handleRateListClick("company", e));
+    $("lock-list").addEventListener("click", (e) => handleRateListClick("lock", e));
+    $("alu-list").addEventListener("click", (e) => handleRateListClick("alu", e));
+    ["company-list", "alu-list", "lock-list"].forEach(function (id) {
+      $(id).addEventListener("keydown", function (e) {
+        if (e.key !== "Enter") return;
+        const row = e.target.closest(".rate-row.editing");
+        if (!row) return;
+        const kind = id === "company-list" ? "company" : id === "alu-list" ? "alu" : "lock";
+        saveEdited(kind, Number(row.dataset.index));
+      });
     });
     if ($("staff-list")) {
       $("staff-list").addEventListener("click", (e) => {
@@ -1998,19 +2890,22 @@
       });
     }
     bindSortable("company-list", () => state.companies, () => {
+      cancelEdit(true);
       renderRateList("company-list", state.companies, "company");
       renderCompanySelect();
       persistOwnerData();
-    });
+    }, true);
     bindSortable("lock-list", () => state.locks, () => {
+      cancelEdit(true);
       renderRateList("lock-list", state.locks, "lock");
       renderLockSelect();
       persistOwnerData();
     });
     bindSortable("alu-list", () => state.aluminium, () => {
+      cancelEdit(true);
       refreshSheetSelects();
       persistOwnerData();
-    });
+    }, true);
     bindSortable("staff-list", () => state.staff, () => {
       renderStaffList();
       persistOwnerData();
@@ -2018,14 +2913,17 @@
     document.querySelectorAll(".tab-btn").forEach((btn) => {
       btn.addEventListener("click", () => switchTab(btn.dataset.tab));
     });
+    if ($("admin-tabs")) {
+      $("admin-tabs").addEventListener("click", function (e) {
+        const btn = e.target.closest(".admin-tab");
+        if (btn && btn.dataset.admin) switchAdminPanel(btn.dataset.admin);
+      });
+    }
     $("btn-owner-ok").addEventListener("click", submitOwnerPin);
     $("owner-email").addEventListener("keydown", (e) => {
       if (e.key === "Enter") $("owner-pin").focus();
     });
     $("owner-pin").addEventListener("keydown", (e) => {
-      if (e.key === "Enter") submitOwnerPin();
-    });
-    $("owner-pin-2").addEventListener("keydown", (e) => {
       if (e.key === "Enter") submitOwnerPin();
     });
     $("btn-owner-lock").addEventListener("click", lockOwner);
@@ -2055,12 +2953,23 @@
     fillCutInputs();
 
     bindEvents();
+    bindFieldGuards();
     fillQuoteLabels();
-    setOwnerUnlocked(false);
     $("owner-lock-label").textContent = T.ownerLock;
+    const savedPanel = await storeGet(KEYS.adminPanel);
+    if (savedPanel) state.adminPanel = savedPanel;
+    const savedTab = await storeGet(KEYS.tab);
+    const session = readSession(await storeGet(KEYS.session));
+    const tab = savedTab === "cutting" || savedTab === "rates" || savedTab === "calc" ? savedTab : "calc";
+    if (session) {
+      applyLocalSession(session);
+    } else {
+      setOwnerUnlocked(false);
+    }
     loadCatalog();
     renderKindPicker();
     renderTypePicker();
+    syncCalcDetails();
     renderColorGrid();
     renderRateList("company-list", state.companies, "company");
     renderRateList("lock-list", state.locks, "lock");
@@ -2068,14 +2977,14 @@
     renderItems();
     renderLivePreview(false);
     setupPwa();
-    const savedTab = await storeGet(KEYS.tab);
-    const session = await storeGet(KEYS.session);
-    const tab = savedTab === "cutting" || savedTab === "rates" || savedTab === "calc" ? savedTab : "calc";
-    if (session && session.email && session.pin) {
-      const ok = await restoreSession(session, tab);
-      if (!ok) switchTab("calc");
+    if (session) {
+      const next = tab === "rates" || tab === "cutting" || tab === "calc" ? tab : "calc";
+      switchTab(next);
+      const ok = await restoreSession(session, next);
+      if (!ok && isStaff()) switchTab(next);
+      else if (!ok && !isStaff()) switchTab("calc");
     } else {
-      switchTab(tab === "calc" ? "calc" : "calc");
+      switchTab("calc");
     }
   }
 
