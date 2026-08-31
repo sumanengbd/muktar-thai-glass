@@ -2,15 +2,14 @@
  * Bind this script to a PRIVATE Google Sheet (Extensions > Apps Script).
  *
  * Tabs (created on setup / first request):
- *   Config      key | value   (optional fallback owner pin + email)
  *   Users       email | pin | role   (owner | operator)
- *   Companies      name | thickness | rate | color   (one row per company; mm/color use | )
- *   Aluminium      name | thickness | rate | color   (one row per company; mm/color use | )
+ *   Companies      name | thickness | rate | color
+ *   Aluminium      name | thickness | rate | color
  *   Locks          name | rate | style
  *   Charges        key | value   (net, extra)
+ *   Shop           key | value   (name, slogan, logo)
  *   CutParams      key | value
- *   Quotes         id | time | name | phone | items | sqft | total | status
- *   QuoteItems     line fields including aluminium + thickness
+ *   Quotes         one row per window/door (id + customer + line)
  *
  * Deploy: Deploy > New deployment > Web app
  *   Execute as: Me
@@ -71,6 +70,7 @@ function doPost(e) {
       writeCut_(body.cutParams || {});
       if (Array.isArray(body.glassThicks)) writeGlassThicks_(body.glassThicks);
       if (Array.isArray(body.users)) writeUsers_(body.users, user);
+      if (body.shop && typeof body.shop === "object") writeShop_(body.shop);
     }
     return json_({
       ok: true,
@@ -80,6 +80,7 @@ function doPost(e) {
       aluminium: readAluminium_(),
       glassThicks: readGlassThicks_(),
       charges: readCharges_(),
+      shop: readShop_(),
       cutParams: readCut_(),
       quotes: (user.role === "owner" || user.role === "operator") ? readQuotes_() : [],
       users: user.role === "owner" ? readUsers_() : []
@@ -102,18 +103,125 @@ function nowText_() {
   return Utilities.formatDate(new Date(), TZ, "yyyy-MM-dd HH:mm");
 }
 
+function dummyGlassSeed_() {
+  var prices = {
+    "Clear Float": { "4": 110, "5": 130, "6": 150, "8": 180, "10": 205, "12": 230 },
+    Tinted: { "5": 145, "6": 165 },
+    Reflective: { "5": 170, "5.5": 180, "6": 190 },
+    Tempered: { "5": 165, "6": 190, "8": 230 }
+  };
+  var brands = [
+    {
+      name: "PHP Float Glass",
+      colors: {
+        "Clear Float": ["clear"],
+        Tinted: ["blue", "green", "bronze", "gray"],
+        Reflective: ["blue", "green", "bronze", "gray"],
+        Tempered: ["clear", "blue", "green", "bronze", "gray"]
+      }
+    },
+    {
+      name: "Nasir Glass",
+      colors: {
+        "Clear Float": ["clear"],
+        Tinted: ["bronze", "gray", "blue", "green", "black"],
+        Reflective: ["bronze", "gray", "blue", "green", "frosted"],
+        Tempered: ["clear", "bronze", "gray", "blue", "green", "black"]
+      }
+    }
+  ];
+  var types = ["Clear Float", "Tinted", "Tempered", "Reflective"];
+  var rows = [["name", "thickness", "rate", "color"]];
+  for (var b = 0; b < brands.length; b++) {
+    for (var t = 0; t < types.length; t++) {
+      var type = types[t];
+      var name = brands[b].name + " · " + type;
+      var rateMap = prices[type];
+      var colors = brands[b].colors[type] || ["clear"];
+      var thicks = Object.keys(rateMap);
+      for (var i = 0; i < thicks.length; i++) {
+        for (var c = 0; c < colors.length; c++) {
+          rows.push([name, Number(thicks[i]), rateMap[thicks[i]], colors[c]]);
+        }
+      }
+    }
+  }
+  return rows;
+}
+
+function dummyAluSeed_() {
+  var profiles = [
+    { type: "Standard", thickness: 1.2, rate: 125 },
+    { type: "Sliding", thickness: 1.2, rate: 175 },
+    { type: "Heavy Duty", thickness: 1.5, rate: 200 },
+    { type: "Heavy Duty", thickness: 1.8, rate: 250 },
+    { type: "Commercial", thickness: 2, rate: 300 }
+  ];
+  var brands = [
+    { name: "Chung Hua Aluminium", colors: ["silver", "bronze", "champagne", "black", "white", "brown"] },
+    { name: "KAI Aluminium", colors: ["silver", "bronze", "black", "champagne", "white", "brown"] },
+    { name: "PHP Aluminium", colors: ["silver", "bronze", "champagne", "black", "white"] }
+  ];
+  var rows = [["name", "thickness", "rate", "color"]];
+  for (var b = 0; b < brands.length; b++) {
+    for (var p = 0; p < profiles.length; p++) {
+      var name = brands[b].name + " · " + profiles[p].type;
+      var colors = brands[b].colors;
+      for (var c = 0; c < colors.length; c++) {
+        rows.push([name, profiles[p].thickness, profiles[p].rate, colors[c]]);
+      }
+    }
+  }
+  return rows;
+}
+
+function dummyLockSeed_() {
+  return [
+    ["name", "rate", "style"],
+    ["Crescent Lock", 200, "sliding"],
+    ["Heavy Duty Crescent Lock", 400, "sliding"],
+    ["Hook Lock", 250, "sliding"],
+    ["Keyed Sliding Window Lock", 500, "sliding"],
+    ["Casement Handle", 400, "casement"],
+    ["Multi Point Handle", 800, "casement"],
+    ["Espagnolette Lock", 1000, "casement"],
+    ["Window Stay", 250, "casement"],
+    ["Friction Stay", 500, "casement"],
+    ["Basic Aluminium Door Lock", 450, "generic"],
+    ["Mortise Lock", 800, "deadbolt"],
+    ["Heavy Duty Mortise Lock", 1500, "deadbolt"],
+    ["Cylinder Lock", 700, "deadbolt"],
+    ["Door Handle Set", 700, "knob"],
+    ["Sliding Door Hook Lock", 500, "sliding"],
+    ["Multi Point Lock", 2500, "deadbolt"]
+  ];
+}
+
 var SHEET_STYLE_ = [
-  ["Config", "#6b7280", 2],
   ["Users", "#5b4d9a", 3],
   ["Companies", "#0e6b86", 4],
   ["Aluminium", "#3d6f8a", 4],
   ["Locks", "#d28a1a", 3],
   ["Charges", "#2f8f5b", 2],
+  ["Shop", "#0a4456", 2],
   ["CutParams", "#2a5f73", 2],
-  ["Quotes", "#c17a20", 8],
-  ["QuoteItems", "#f2a93b", 20],
+  ["Quotes", "#c17a20", 24],
   ["GlassThickness", "#0e6b86", 1]
 ];
+
+function quotesHeader_() {
+  return [
+    "id", "time", "name", "phone", "status", "items", "sqft", "total",
+    "type", "size", "qty", "color", "company", "lock", "net", "line_total",
+    "aluminium", "alu_mm", "glass_mm", "alu_color", "type_id", "height_ft", "width_ft", "lock_style"
+  ];
+}
+
+function deleteSheetIfExists_(book, name) {
+  var sh = book.getSheetByName(name);
+  if (!sh || book.getSheets().length <= 1) return;
+  book.deleteSheet(sh);
+}
 
 function styleSheet_(sh, tabColor, cols) {
   if (!sh) return;
@@ -146,8 +254,8 @@ function styleAllSheets_() {
   }
 }
 
-function configValue_(key) {
-  var sh = ss_().getSheetByName("Config");
+function readOldConfig_(book, key) {
+  var sh = book.getSheetByName("Config");
   if (!sh) return "";
   var a1 = String(sh.getRange("A1").getValue() || "").trim().toLowerCase();
   if (a1 === "key") {
@@ -166,29 +274,13 @@ function configValue_(key) {
   return "";
 }
 
-function ensureConfigSheet_(book) {
-  var config = book.getSheetByName("Config") || book.insertSheet("Config");
-  var a1 = String(config.getRange("A1").getValue() || "").trim().toLowerCase();
-  if (a1 === "key") return config;
-  var oldPin = a1 === "pin" ? String(config.getRange("B1").getValue() || "").trim() : "";
-  var oldEmail = a1 === "pin" ? String(config.getRange("B2").getValue() || "").trim() : "";
-  config.clear();
-  config.getRange(1, 1, 3, 2).setValues([
-    ["key", "value"],
-    ["pin", oldPin || "1234"],
-    ["email", oldEmail]
-  ]);
-  return config;
-}
-
 function ensureSheets_() {
   var book = ss_();
-  ensureConfigSheet_(book);
 
   var users = book.getSheetByName("Users") || book.insertSheet("Users");
   if (users.getLastRow() < 2) {
-    var ownerEmail = configValue_("email") || "owner@gmail.com";
-    var ownerPin = configValue_("pin") || "1234";
+    var ownerEmail = readOldConfig_(book, "email") || "sumanengbd@gmail.com";
+    var ownerPin = readOldConfig_(book, "pin") || "123456";
     users.clear();
     users.getRange(1, 1, 3, 3).setValues([
       ["email", "pin", "role"],
@@ -196,31 +288,26 @@ function ensureSheets_() {
       ["operator@gmail.com", "1234", "operator"]
     ]);
   }
+  deleteSheetIfExists_(book, "Config");
 
   var companies = book.getSheetByName("Companies") || book.insertSheet("Companies");
   if (companies.getLastRow() < 2) {
+    var glassRows = dummyGlassSeed_();
     companies.clear();
-    companies.getRange(1, 1, 2, 4).setValues([
-      ["name", "thickness", "rate", "color"],
-      ["Thai Glass", 5, 95, "clear"]
-    ]);
+    companies.getRange(1, 1, glassRows.length, 4).setValues(glassRows);
   }
   ensureCompanyShape_();
   var locks = book.getSheetByName("Locks") || book.insertSheet("Locks");
   if (locks.getLastRow() < 2) {
+    var lockRows = dummyLockSeed_();
     locks.clear();
-    locks.getRange(1, 1, 2, 3).setValues([
-      ["name", "rate", "style"],
-      ["Sliding lock", 250, "sliding"]
-    ]);
+    locks.getRange(1, 1, lockRows.length, 3).setValues(lockRows);
   }
   var alu = book.getSheetByName("Aluminium") || book.insertSheet("Aluminium");
   if (alu.getLastRow() < 2) {
+    var aluRows = dummyAluSeed_();
     alu.clear();
-    alu.getRange(1, 1, 2, 4).setValues([
-      ["name", "thickness", "rate", "color"],
-      ["Local", 1.0, 180, "silver"]
-    ]);
+    alu.getRange(1, 1, aluRows.length, 4).setValues(aluRows);
   }
   ensureAluColorColumn_();
   var charges = book.getSheetByName("Charges") || book.insertSheet("Charges");
@@ -232,6 +319,17 @@ function ensureSheets_() {
       ["extra", 0]
     ]);
   }
+  var shop = book.getSheetByName("Shop") || book.insertSheet("Shop");
+  if (shop.getLastRow() < 2) {
+    shop.clear();
+    shop.getRange(1, 1, 4, 2).setValues([
+      ["key", "value"],
+      ["name", ""],
+      ["slogan", ""],
+      ["logo", ""]
+    ]);
+  }
+
   var cut = book.getSheetByName("CutParams") || book.insertSheet("CutParams");
   if (cut.getLastRow() < 2) {
     cut.clear();
@@ -244,14 +342,7 @@ function ensureSheets_() {
     ]);
   }
 
-  var quotes = book.getSheetByName("Quotes") || book.insertSheet("Quotes");
-  if (quotes.getLastRow() < 1) {
-    quotes.getRange(1, 1, 1, 8).setValues([[
-      "id", "time", "name", "phone", "items", "sqft", "total", "status"
-    ]]);
-  }
-  var qitems = book.getSheetByName("QuoteItems") || book.insertSheet("QuoteItems");
-  ensureQuoteItemHeader_(qitems);
+  migrateQuoteSheets_(book);
   styleAllSheets_();
 }
 
@@ -325,11 +416,6 @@ function findUser_(email, pin) {
   for (var i = 0; i < users.length; i++) {
     if (users[i].email === email && users[i].pin === pin) return users[i];
   }
-  var cfgEmail = String(configValue_("email") || "").trim().toLowerCase();
-  var cfgPin = String(configValue_("pin") || "").trim();
-  if (cfgEmail && cfgPin && email === cfgEmail && pin === cfgPin) {
-    return { email: email, pin: pin, role: "owner" };
-  }
   return null;
 }
 
@@ -344,18 +430,17 @@ function tryRead_(fn, fallback) {
 function publicCatalog_() {
   return {
     ok: true,
-    companies: tryRead_(publicCompanies_, []),
-    locks: tryRead_(publicLocks_, []),
-    aluminium: tryRead_(publicAluminium_, []),
+    companies: tryRead_(readCompanies_, []),
+    locks: tryRead_(readLocks_, []),
+    aluminium: tryRead_(readAluminium_, []),
     glassThicks: tryRead_(glassThicksFromCompanies_, []),
-    charges: { net: 0, extra: 0 }
+    charges: tryRead_(readCharges_, { net: 0, extra: 0 }),
+    shop: tryRead_(readShop_, { name: "", slogan: "", logo: "" })
   };
 }
 
 function publicCompanies_() {
-  return readCompanies_().map(function (c) {
-    return { name: c.name, thickness: c.thickness, rate: 0, color: c.color };
-  });
+  return readCompanies_();
 }
 
 function glassThicksFromCompanies_() {
@@ -373,23 +458,40 @@ function glassThicksFromCompanies_() {
 }
 
 function publicLocks_() {
-  return readLocks_().map(function (l) {
-    return { name: l.name, rate: 0, style: l.style };
-  });
+  return readLocks_();
 }
 
 function publicAluminium_() {
-  return readAluminium_().map(function (a) {
-    return { name: a.name, thickness: a.thickness, rate: 0, color: a.color };
-  });
+  return readAluminium_();
 }
 
 function ftLabel_(ft) {
-  var n = Number(ft) || 0;
-  var whole = Math.floor(n + 1e-9);
-  var inch = Math.round((n - whole) * 12);
-  if (inch >= 12) return String(whole + 1) + " ft";
-  return inch > 0 ? whole + " ft " + inch + " in" : whole + " ft";
+  var safe = Math.max(0, Number(ft) || 0);
+  var tenthMm = Math.round(safe * 3048);
+  var wholeFt = Math.floor(tenthMm / 3048);
+  tenthMm -= wholeFt * 3048;
+  var inch = Math.floor(tenthMm / 254);
+  tenthMm -= inch * 254;
+  var mm = Math.round(tenthMm / 10);
+  if (mm >= 25) {
+    mm -= 25;
+    inch += 1;
+  }
+  if (inch >= 12) {
+    inch -= 12;
+    wholeFt += 1;
+  }
+  var s = wholeFt + " ft";
+  if (inch > 0) s += " " + inch + " in";
+  if (mm > 0) s += " " + mm + " mm";
+  return s;
+}
+
+function cellTime_(v) {
+  if (Object.prototype.toString.call(v) === "[object Date]" && !isNaN(v.getTime())) {
+    return Utilities.formatDate(v, TZ, "yyyy-MM-dd HH:mm");
+  }
+  return String(v || "");
 }
 
 function handleQuote_(body) {
@@ -414,6 +516,8 @@ function handleQuote_(body) {
     var h = Number(it.heightFt) || 0;
     var w = Number(it.widthFt) || 0;
     var qty = Math.max(1, parseInt(it.qty, 10) || 1);
+    if (qty > 99) qty = 99;
+    if (!(h > 0) || !(w > 0) || h > 40 || w > 40) continue;
     var priced = priceItem_(it, h, w, qty);
     sqft += priced.sqft;
     total += priced.total;
@@ -428,7 +532,9 @@ function handleQuote_(body) {
     var aluColor = String(it.aluColorLabel || it.aluColor || "").trim();
     var glassMm = String(it.thickness || it.glass_mm || "").trim();
     itemRows.push([
-      id, time, name, phone, type, size, qty, color, company, lock, net, priced.total, alu, aluMm, glassMm, aluColor,
+      id, time, name, phone, "New", 0, 0, 0,
+      type, size, qty, color, company, lock, net, priced.total,
+      alu, aluMm, glassMm, aluColor,
       String(it.typeId || it.winType || ""),
       h,
       w,
@@ -436,71 +542,173 @@ function handleQuote_(body) {
     ]);
   }
 
-  var quotes = ss_().getSheetByName("Quotes");
-  quotes.appendRow([id, time, name, phone, items.length, Math.round(sqft * 100) / 100, Math.round(total * 100) / 100, "New"]);
+  if (!itemRows.length) return json_({ ok: false, error: "items" });
 
-  var qitems = ss_().getSheetByName("QuoteItems");
-  ensureQuoteItemHeader_(qitems);
-  if (itemRows.length) {
-    qitems.getRange(qitems.getLastRow() + 1, 1, itemRows.length, 20).setValues(itemRows);
+  var qSqft = Math.round(sqft * 100) / 100;
+  var qTotal = Math.round(total * 100) / 100;
+  for (var r = 0; r < itemRows.length; r++) {
+    itemRows[r][5] = itemRows.length;
+    itemRows[r][6] = qSqft;
+    itemRows[r][7] = qTotal;
   }
+
+  var quotes = ss_().getSheetByName("Quotes") || ss_().insertSheet("Quotes");
+  ensureQuotesHeader_(quotes);
+  quotes.getRange(quotes.getLastRow() + 1, 1, itemRows.length, 24).setValues(itemRows);
 
   return json_({ ok: true, id: id });
 }
 
-function readQuoteItems_() {
-  var sh = ss_().getSheetByName("QuoteItems");
-  var map = {};
-  if (!sh) return map;
-  var rows = sh.getDataRange().getValues();
-  for (var i = 1; i < rows.length; i++) {
-    var id = String(rows[i][0] || "").trim();
-    if (!id) continue;
-    if (!map[id]) map[id] = [];
-    map[id].push({
-      type: String(rows[i][4] || ""),
-      size: String(rows[i][5] || ""),
-      qty: Number(rows[i][6]) || 1,
-      color: String(rows[i][7] || ""),
-      company: String(rows[i][8] || ""),
-      lock: String(rows[i][9] || ""),
-      net: String(rows[i][10] || "").toLowerCase() === "yes",
-      total: Number(rows[i][11]) || 0,
-      aluminium: String(rows[i][12] || ""),
-      aluMm: String(rows[i][13] || ""),
-      glassMm: String(rows[i][14] || ""),
-      aluColor: String(rows[i][15] || ""),
-      typeId: String(rows[i][16] || ""),
-      heightFt: Number(rows[i][17]) || 0,
-      widthFt: Number(rows[i][18]) || 0,
-      lockStyle: String(rows[i][19] || "")
-    });
+function isMergedQuotes_(sh) {
+  return String(sh.getRange(1, 5).getValue() || "").trim().toLowerCase() === "status";
+}
+
+function ensureQuotesHeader_(sh) {
+  if (!sh) return;
+  if (!isMergedQuotes_(sh)) {
+    migrateQuoteSheets_(ss_());
+    return;
   }
-  return map;
+  styleSheetByName_("Quotes");
+}
+
+function migrateQuoteSheets_(book) {
+  var quotes = book.getSheetByName("Quotes");
+  var qitems = book.getSheetByName("QuoteItems");
+  if (quotes && isMergedQuotes_(quotes)) {
+    deleteSheetIfExists_(book, "QuoteItems");
+    return;
+  }
+
+  var linesById = {};
+  var order = [];
+  function addId(id) {
+    if (!id || linesById[id]) return;
+    linesById[id] = [];
+    order.push(id);
+  }
+
+  if (qitems && qitems.getLastRow() >= 2) {
+    var ir = qitems.getDataRange().getValues();
+    for (var i = 1; i < ir.length; i++) {
+      var iid = String(ir[i][0] || "").trim();
+      if (!iid) continue;
+      addId(iid);
+      linesById[iid].push(ir[i]);
+    }
+  }
+
+  var summaries = {};
+  if (quotes && quotes.getLastRow() >= 2) {
+    var qr = quotes.getDataRange().getValues();
+    for (var j = 1; j < qr.length; j++) {
+      var qid = String(qr[j][0] || "").trim();
+      if (!qid) continue;
+      addId(qid);
+      summaries[qid] = {
+        time: qr[j][1],
+        name: qr[j][2],
+        phone: qr[j][3],
+        items: qr[j][4],
+        sqft: qr[j][5],
+        total: qr[j][6],
+        status: qr[j][7] || "New"
+      };
+    }
+  }
+
+  var out = [quotesHeader_()];
+  for (var k = 0; k < order.length; k++) {
+    var id = order[k];
+    var sum = summaries[id] || {};
+    var lines = linesById[id] || [];
+    var time = sum.time || (lines[0] && lines[0][1]) || "";
+    var name = sum.name || (lines[0] && lines[0][2]) || "";
+    var phone = sum.phone || (lines[0] && lines[0][3]) || "";
+    var status = sum.status || "New";
+    var items = lines.length || Number(sum.items) || 0;
+    var sqft = Number(sum.sqft) || 0;
+    var total = Number(sum.total) || 0;
+    if (!lines.length) {
+      out.push([id, time, name, phone, status, items, sqft, total, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]);
+      continue;
+    }
+    for (var L = 0; L < lines.length; L++) {
+      var row = lines[L];
+      out.push([
+        id, time, name, phone, status, items, sqft, total,
+        row[4], row[5], row[6], row[7], row[8], row[9], row[10], row[11],
+        row[12], row[13], row[14], row[15], row[16], row[17], row[18], row[19]
+      ]);
+    }
+  }
+
+  if (!quotes) quotes = book.insertSheet("Quotes");
+  quotes.clear();
+  quotes.getRange(1, 1, out.length, 24).setValues(out);
+  deleteSheetIfExists_(book, "QuoteItems");
 }
 
 function readQuotes_() {
   var sh = ss_().getSheetByName("Quotes");
   if (!sh) return [];
   var rows = sh.getDataRange().getValues();
-  var lines = readQuoteItems_();
-  var out = [];
+  if (rows.length < 2) return [];
+  var map = {};
+  var order = [];
   for (var i = 1; i < rows.length; i++) {
-    if (!rows[i][0]) continue;
-    var id = String(rows[i][0]);
-    out.push({
-      id: id,
-      time: String(rows[i][1]),
-      name: String(rows[i][2]),
-      phone: String(rows[i][3]),
-      items: Number(rows[i][4]) || 0,
-      sqft: Number(rows[i][5]) || 0,
-      total: Number(rows[i][6]) || 0,
-      status: String(rows[i][7] || "New"),
-      lines: lines[id] || []
+    var id = String(rows[i][0] || "").trim();
+    if (!id) continue;
+    if (!map[id]) {
+      map[id] = {
+        id: id,
+        time: cellTime_(rows[i][1]),
+        name: String(rows[i][2] || ""),
+        phone: String(rows[i][3] || ""),
+        status: String(rows[i][4] || "New"),
+        items: Number(rows[i][5]) || 0,
+        sqft: Number(rows[i][6]) || 0,
+        total: Number(rows[i][7]) || 0,
+        lines: []
+      };
+      order.push(id);
+    }
+    var type = String(rows[i][8] || "");
+    if (!type && !rows[i][9] && !rows[i][21]) continue;
+    map[id].lines.push({
+      type: type,
+      size: String(rows[i][9] || ""),
+      qty: Number(rows[i][10]) || 1,
+      color: String(rows[i][11] || ""),
+      company: String(rows[i][12] || ""),
+      lock: String(rows[i][13] || ""),
+      net: String(rows[i][14] || "").toLowerCase() === "yes",
+      total: Number(rows[i][15]) || 0,
+      aluminium: String(rows[i][16] || ""),
+      aluMm: String(rows[i][17] || ""),
+      glassMm: String(rows[i][18] || ""),
+      aluColor: String(rows[i][19] || ""),
+      typeId: String(rows[i][20] || ""),
+      heightFt: Number(rows[i][21]) || 0,
+      widthFt: Number(rows[i][22]) || 0,
+      lockStyle: String(rows[i][23] || "")
     });
   }
-  return out.reverse().slice(0, 40);
+  return order.reverse().slice(0, 40).map(function (id) {
+    var q = map[id];
+    if (!q.items) q.items = q.lines.length;
+    if (!q.sqft) {
+      q.sqft = q.lines.reduce(function (sum, it) {
+        return sum + ((Number(it.heightFt) || 0) * (Number(it.widthFt) || 0) * (Number(it.qty) || 1));
+      }, 0);
+    }
+    if (!q.total) {
+      q.total = q.lines.reduce(function (sum, it) {
+        return sum + (Number(it.total) || 0);
+      }, 0);
+    }
+    return q;
+  });
 }
 
 function props_() {
@@ -694,14 +902,20 @@ function readCut_() {
   };
 }
 
-function writeCompanies_(list) {
-  var sh = ss_().getSheetByName("Companies");
-  sh.clear();
+function writeComboRows_(sh, list, colorFn, defaultThick) {
   var rows = [["name", "thickness", "rate", "color"]];
-  groupCombos_(list, normalizeColorId_, 5).forEach(function (g) {
-    rows.push([g.name, joinPipe_(g.thicks), Number(g.rate) || 0, joinPipe_(g.colors)]);
+  (list || []).forEach(function (row) {
+    if (!row || !String(row.name || "").trim()) return;
+    expandComboRow_(String(row.name).trim(), row.thickness, row.rate, row.color, colorFn, defaultThick).forEach(function (x) {
+      rows.push([x.name, x.thickness, Number(x.rate) || 0, x.color]);
+    });
   });
+  sh.clear();
   sh.getRange(1, 1, rows.length, 4).setValues(rows);
+}
+
+function writeCompanies_(list) {
+  writeComboRows_(ss_().getSheetByName("Companies"), list, normalizeColorId_, 5);
   styleSheetByName_("Companies");
 }
 
@@ -714,15 +928,6 @@ function writeLocks_(list) {
   });
   sh.getRange(1, 1, rows.length, 3).setValues(rows);
   styleSheetByName_("Locks");
-}
-
-function ensureQuoteItemHeader_(sh) {
-  sh.getRange(1, 1, 1, 20).setValues([[
-    "quote_id", "time", "name", "phone", "type", "size", "qty", "color", "company",
-    "lock", "net", "line_total", "aluminium", "alu_mm", "glass_mm", "alu_color",
-    "type_id", "height_ft", "width_ft", "lock_style"
-  ]]);
-  styleSheet_(sh, "#f2a93b", 20);
 }
 
 var ALU_COLOR_IDS = ["silver", "bronze", "black", "white", "champagne", "brown"];
@@ -766,13 +971,7 @@ function readAluminium_() {
 }
 
 function writeAluminium_(list) {
-  var sh = ss_().getSheetByName("Aluminium");
-  sh.clear();
-  var rows = [["name", "thickness", "rate", "color"]];
-  groupCombos_(list, normalizeAluColorId_, 1).forEach(function (g) {
-    rows.push([g.name, joinPipe_(g.thicks), Number(g.rate) || 0, joinPipe_(g.colors)]);
-  });
-  sh.getRange(1, 1, rows.length, 4).setValues(rows);
+  writeComboRows_(ss_().getSheetByName("Aluminium"), list, normalizeAluColorId_, 1);
   styleSheetByName_("Aluminium");
 }
 
@@ -814,6 +1013,40 @@ function readCharges_() {
     out[String(rows[i][0])] = Number(rows[i][1]) || 0;
   }
   return { net: Number(out.net) || 0, extra: Number(out.extra) || 0 };
+}
+
+function readShop_() {
+  var sh = ss_().getSheetByName("Shop");
+  var out = { name: "", slogan: "", logo: "" };
+  if (!sh) return out;
+  var rows = sh.getDataRange().getValues();
+  for (var i = 1; i < rows.length; i++) {
+    var k = String(rows[i][0] || "").trim().toLowerCase();
+    var v = String(rows[i][1] || "").trim();
+    if (k === "name" || k === "slogan" || k === "logo") out[k] = v;
+  }
+  return out;
+}
+
+function safeShopLogo_(logo) {
+  var v = String(logo || "").trim();
+  if (!v) return "";
+  if (v.indexOf("data:image/") === 0 && v.length <= 49000) return v;
+  if (v.indexOf("images/") === 0 && v.length < 200) return v;
+  return "";
+}
+
+function writeShop_(shop) {
+  var book = ss_();
+  var sh = book.getSheetByName("Shop") || book.insertSheet("Shop");
+  sh.clear();
+  sh.getRange(1, 1, 4, 2).setValues([
+    ["key", "value"],
+    ["name", String(shop && shop.name || "").trim().slice(0, 80)],
+    ["slogan", String(shop && shop.slogan || "").trim().slice(0, 140)],
+    ["logo", safeShopLogo_(shop && shop.logo)]
+  ]);
+  styleSheetByName_("Shop");
 }
 
 function writeCharges_(charges) {
