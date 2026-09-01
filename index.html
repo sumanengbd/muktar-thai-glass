@@ -17,11 +17,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://script.google.com">
   <link rel="dns-prefetch" href="https://script.google.com">
-  <link rel="preload" href="css/style.css?v=92" as="style">
+  <link rel="preload" href="css/style.css?v=117" as="style">
   <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
   <script>(function(){try{var s=JSON.parse(localStorage.getItem("glasscalc:session")||"null");if(!s)return;var role=s.r||s.role;if(!(s.k||s.pin))return;document.documentElement.classList.add("has-session","is-staff");if(role==="owner"||(!role&&(s.k||s.pin)))document.documentElement.classList.add("is-owner");}catch(e){}})();</script>
-  <link rel="stylesheet" href="css/style.css?v=92">
+  <link rel="stylesheet" href="css/style.css?v=117">
 </head>
 <body>
   <div class="app">
@@ -45,6 +45,7 @@
         <h1>মুক্তার থাই এস.এস গ্যালারী এন্ড গ্লাস হাউজ</h1>
         <p>থাই কাঁচ জানালা ও দরজা ক্যালকুলেটর  -  মাপ দেখে ভিজুয়াল সহ দাম হিসাব করুন</p>
       </div>
+      <div class="app-bar-actions">
       <button type="button" class="install-btn" id="btn-staff-login"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg><span id="staff-login-label"></span></button>
       <div class="user-menu hidden" id="user-menu">
         <button type="button" class="user-menu-toggle" id="btn-user-menu" aria-expanded="false" aria-haspopup="true">
@@ -62,14 +63,16 @@
           <button type="button" class="user-menu-item is-lock" id="btn-owner-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span id="owner-lock-label"></span></button>
         </div>
       </div>
-      <button type="button" class="install-btn" id="btn-install"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v10"/><path d="M8 10l4 4 4-4"/><path d="M5 18h14"/></svg><span>ইনস্টল</span></button>
+      <button type="button" class="install-btn" id="btn-install"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v10"/><path d="M8 10l4 4 4-4"/><path d="M5 18h14"/></svg><span id="install-label">ইনস্টল</span></button>
+      <button type="button" class="lang-btn" id="btn-lang" title="Language">EN</button>
+      </div>
     </header>
     <p class="install-tip hidden" id="install-tip">iPhone / iPad: Share → Add to Home Screen</p>
     <main class="app-body">
       <div id="tab-calc" class="app-page">
       <div class="calc-layout">
         <div class="card">
-          <h2>নতুন জানালা / দরজা যোগ করুন <span class="badge">Add Item</span></h2>
+          <h2 id="add-card-title">নতুন জানালা / দরজা যোগ করুন <span class="badge">Add Item</span></h2>
           <div class="type-section">
             <h3 id="kind-heading"></h3>
             <div class="kind-row" id="kind-picker"></div>
@@ -79,25 +82,26 @@
             <div class="type-grid" id="type-list"></div>
           </div>
           <div id="calc-details" class="calc-details is-locked">
-          <div class="field field-full"><label for="in-qty">পরিমাণ (সংখ্যা)</label><input type="number" min="1" step="1" id="in-qty" value="" placeholder="1" max="99" disabled></div>
+          <div class="field field-full"><label for="in-qty" id="qty-label">পরিমাণ (সংখ্যা)</label><input type="number" min="1" step="1" id="in-qty" value="" placeholder="1" max="99" disabled></div>
+          <div class="field field-full"><label for="in-room" id="room-label">রুম / ফ্লোর</label><input type="text" id="in-room" maxlength="40" autocomplete="off" disabled></div>
           <div class="size-row">
           <div class="grid3">
-            <div class="field"><label for="in-h-ft">উচ্চতা (ফুট)</label><input type="number" min="0" step="0.1" id="in-h-ft" placeholder="৫" max="40" disabled></div>
-            <div class="field"><label for="in-h-in">উচ্চতা (ইঞ্চি)</label><input type="number" min="0" max="11.9" step="0.1" id="in-h-in" placeholder="৬" disabled></div>
-            <div class="field"><label for="in-h-mm">উচ্চতা (মিমি)</label><input type="number" min="0" max="99" step="1" id="in-h-mm" placeholder="0" disabled></div>
+            <div class="field"><label for="in-h-ft" id="h-ft-label">উচ্চতা (ফুট)</label><input type="number" min="0" step="0.1" id="in-h-ft" placeholder="৫" max="40" disabled></div>
+            <div class="field"><label for="in-h-in" id="h-in-label">উচ্চতা (ইঞ্চি)</label><input type="number" min="0" max="11.9" step="0.1" id="in-h-in" placeholder="৬" disabled></div>
+            <div class="field"><label for="in-h-mm" id="h-mm-label">উচ্চতা (মিমি)</label><input type="number" min="0" max="99" step="1" id="in-h-mm" placeholder="0" disabled></div>
           </div>
           <div class="grid3">
-            <div class="field"><label for="in-w-ft">প্রস্থ (ফুট)</label><input type="number" min="0" step="0.1" id="in-w-ft" placeholder="৪" max="40" disabled></div>
-            <div class="field"><label for="in-w-in">প্রস্থ (ইঞ্চি)</label><input type="number" min="0" max="11.9" step="0.1" id="in-w-in" placeholder="0" disabled></div>
-            <div class="field"><label for="in-w-mm">প্রস্থ (মিমি)</label><input type="number" min="0" max="99" step="1" id="in-w-mm" placeholder="0" disabled></div>
+            <div class="field"><label for="in-w-ft" id="w-ft-label">প্রস্থ (ফুট)</label><input type="number" min="0" step="0.1" id="in-w-ft" placeholder="৪" max="40" disabled></div>
+            <div class="field"><label for="in-w-in" id="w-in-label">প্রস্থ (ইঞ্চি)</label><input type="number" min="0" max="11.9" step="0.1" id="in-w-in" placeholder="0" disabled></div>
+            <div class="field"><label for="in-w-mm" id="w-mm-label">প্রস্থ (মিমি)</label><input type="number" min="0" max="99" step="1" id="in-w-mm" placeholder="0" disabled></div>
           </div>
           </div>
           <div class="grid2 opt-row">
-            <div class="field"><label for="sel-company">কাঁচের কোম্পানি</label><select id="sel-company"></select></div>
+            <div class="field"><label for="sel-company" id="glass-company-label">কাঁচের কোম্পানি</label><select id="sel-company"></select></div>
             <div class="field"><label for="sel-glass-thick" id="glass-thick-label"></label><select id="sel-glass-thick"></select></div>
           </div>
           <div class="field field-colors field-full">
-            <label>কাঁচের রং</label>
+            <label id="glass-color-label">কাঁচের রং</label>
             <div class="color-grid" id="color-grid"></div>
           </div>
           <div class="grid2 opt-row">
@@ -109,9 +113,9 @@
             <div class="color-grid" id="alu-color-grid"></div>
           </div>
           <div class="grid2">
-            <div class="field"><label for="sel-lock">লক এর ধরন</label><select id="sel-lock"></select></div>
+            <div class="field"><label for="sel-lock" id="lock-type-label">লক এর ধরন</label><select id="sel-lock"></select></div>
             <div class="field">
-              <label>মশারি নেট</label>
+              <label id="net-label">মশারি নেট</label>
               <div class="choice-row">
                 <button type="button" class="choice-btn active" data-net="0" id="btn-net-no">নেই</button>
                 <button type="button" class="choice-btn" data-net="1" id="btn-net-yes">আছে</button>
@@ -121,12 +125,12 @@
           <p class="hint hidden" id="catalog-hint"></p>
           <div id="live-price" class="live-price hidden" aria-live="polite"></div>
           <div class="err" id="err-msg">উচ্চতা ও প্রস্থ সঠিকভাবে দিন।</div>
-          <button type="button" class="icon-btn primary" id="btn-add" disabled><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg><span>যোগ করুন ও হিসাব করুন</span></button>
+          <div class="add-item-row"><button type="button" class="icon-btn primary" id="btn-add" disabled><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg><span id="btn-add-label">যোগ করুন ও হিসাব করুন</span></button><button type="button" class="icon-btn secondary hidden" id="btn-cancel-item"></button></div>
           </div>
         </div>
 
         <aside class="card preview-card">
-          <h2>ভিজুয়াল প্রিভিউ <span class="badge">Live</span></h2>
+          <h2 id="preview-title">ভিজুয়াল প্রিভিউ <span class="badge">Live</span></h2>
           <div class="preview-stage" id="live-preview"></div>
           <div class="preview-meta">
             <div><span>ধরন</span><strong id="preview-kind">জানালা</strong></div>
@@ -143,22 +147,22 @@
       </div>
 
       <div class="card hidden" id="list-card">
-        <h2>জানালা / দরজার তালিকা <span class="badge">List</span></h2>
+        <h2 id="list-title">জানালা / দরজার তালিকা <span class="badge">List</span></h2>
         <div id="item-list"></div>
-        <div class="empty-note" id="empty-note">এখনও কোনো জানালা বা দরজা যোগ করা হয়নি।</div>
+        <div class="empty-note" id="empty-note"></div>
       </div>
 
       <div class="summary hidden" id="summary-card">
-        <div class="summary-line"><span>মোট বর্গফুট</span><span id="sum-sqft">0</span></div>
-        <div class="summary-line staff-money"><span>কাঁচের দাম</span><span id="sum-glass">৳0</span></div>
-        <div class="summary-line staff-money"><span>লকের দাম</span><span id="sum-lock">৳0</span></div>
-        <div class="summary-line staff-money"><span>ফ্রেম এর দাম</span><span id="sum-frame">৳0</span></div>
-        <div class="summary-line staff-money"><span>মশারি নেট</span><span id="sum-net">৳0</span></div>
-        <div class="summary-line staff-money"><span>ইনস্টলেশন / অন্যান্য</span><span id="sum-extra">৳0</span></div>
-        <div class="summary-line grand staff-money"><span>সর্বমোট</span><span id="sum-total">৳0</span></div>
+        <div class="summary-line"><span id="sum-sqft-label">মোট বর্গফুট</span><span id="sum-sqft">0</span></div>
+        <div class="summary-line staff-money"><span id="sum-glass-label">কাঁচের দাম</span><span id="sum-glass">৳0</span></div>
+        <div class="summary-line staff-money"><span id="sum-lock-label">লকের দাম</span><span id="sum-lock">৳0</span></div>
+        <div class="summary-line staff-money"><span id="sum-frame-label">ফ্রেম এর দাম</span><span id="sum-frame">৳0</span></div>
+        <div class="summary-line staff-money"><span id="sum-net-label">মশারি নেট</span><span id="sum-net">৳0</span></div>
+        <div class="summary-line staff-money"><span id="sum-extra-label">ইনস্টলেশন / অন্যান্য</span><span id="sum-extra">৳0</span></div>
+        <div class="summary-line grand staff-money"><span id="sum-total-label">সর্বমোট</span><span id="sum-total">৳0</span></div>
         <div class="actions-row">
-          <button type="button" class="icon-btn secondary" id="btn-clear"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3 7 5 7 21 7"/><path d="M8 7V5h8v2"/><path d="M6 7l1 14h10l1-14"/><path d="M10 11v6"/><path d="M14 11v6"/></svg><span>তালিকা খালি করুন</span></button>
-          <button type="button" class="icon-btn secondary" id="btn-print"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V4h12v5"/><path d="M6 18H5a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-1"/><rect x="6" y="14" width="12" height="7" rx="1"/></svg><span>প্রিন্ট / PDF</span></button>
+          <button type="button" class="icon-btn secondary" id="btn-clear"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3 7 5 7 21 7"/><path d="M8 7V5h8v2"/><path d="M6 7l1 14h10l1-14"/><path d="M10 11v6"/><path d="M14 11v6"/></svg><span id="btn-clear-label">তালিকা খালি করুন</span></button>
+          <button type="button" class="icon-btn secondary" id="btn-print"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V4h12v5"/><path d="M6 18H5a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-1"/><rect x="6" y="14" width="12" height="7" rx="1"/></svg><span id="btn-print-label">প্রিন্ট / PDF</span></button>
         </div>
       </div>
       <div class="card hidden" id="quote-card">
@@ -171,18 +175,25 @@
         <div class="err" id="quote-err" style="display:none"></div>
         <p class="hint quote-ok hidden" id="quote-ok"></p>
         <button type="button" class="icon-btn primary" id="btn-send-quote"></button>
+        <div class="quote-share hidden" id="quote-share">
+          <p id="quote-share-title"></p>
+          <input type="text" id="quote-share-link" readonly>
+          <div class="quote-share-btns">
+            <button type="button" class="icon-btn secondary compact" id="btn-copy-link"></button>
+          </div>
+        </div>
       </div>
     </div>
       <div id="tab-cutting" class="app-page hidden">
       <div class="card">
-        <h2>মিস্ত্রির জন্য কাটিং লিস্ট <span class="badge">Cutting List</span></h2>
+        <h2 id="cut-title">মিস্ত্রির জন্য কাটিং লিস্ট <span class="badge">Cutting List</span></h2>
         <div id="cutting-quote-bar" class="cutting-quote-bar hidden"><div><strong id="cutting-quote-name"></strong><span id="cutting-quote-meta"></span></div><button type="button" class="icon-btn secondary compact" id="btn-clear-cut-quote"></button></div>
         <p class="hint">প্রতিটি জানালা/দরজার জন্য কোনো পার্টস কতটুকু মাপে কাটতে হবে তার তালিকা।</p>
         <p class="hint warn">একটা সাধারণ হিসাব  -  শাটার এর ওভারল্যাপ, ট্র্যাক গভীরতা বা প্রোফাইল অনুযায়ী প্রকৃত মাপ কিছুটা ভিন্ন হতে পারে।</p>
         <div id="cutting-list-wrap"></div>
-        <div class="empty-note" id="cutting-empty">এখনও কোনো জানালা বা দরজা যোগ করা হয়নি।</div>
+        <div class="empty-note" id="cutting-empty"></div>
         <div class="actions-row hidden" id="cutting-actions">
-          <button type="button" class="icon-btn secondary" id="btn-print-cutting"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V4h12v5"/><path d="M6 18H5a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-1"/><rect x="6" y="14" width="12" height="7" rx="1"/></svg><span>প্রিন্ট / PDF</span></button>
+          <button type="button" class="icon-btn secondary" id="btn-print-cutting"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V4h12v5"/><path d="M6 18H5a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-1"/><rect x="6" y="14" width="12" height="7" rx="1"/></svg><span id="btn-print-cut-label">প্রিন্ট / PDF</span></button>
         </div>
       </div>
     </div>
@@ -220,7 +231,10 @@
       </div>
         <div class="card admin-block admin-tone-quotes hidden" id="quotes-card" data-admin-panel="quotes"><span class="admin-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7h8M8 12h8M8 17h5"/><rect x="4" y="3" width="16" height="18" rx="3"/></svg></span>
         <h2 id="quotes-title"><span class="title-text"></span> <span class="badge">Quotes</span></h2>
-        <div class="admin-pane"><div id="quotes-list"></div></div>
+        <div class="admin-pane">
+          <div class="field quote-search-field"><input type="search" id="quote-search" autocomplete="off"></div>
+          <div id="quotes-list"></div>
+        </div>
       </div>
         <div class="card admin-block admin-tone-glass hidden" data-admin-panel="glass"><span class="admin-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 10h16M10 4v16"/></svg></span>
         <h2>কাঁচের কোম্পানি ও রেট <span class="badge">৳ / বর্গফুট</span></h2>
@@ -285,6 +299,14 @@
       <p id="print-thanks"></p>
       <p id="print-note"></p>
     </footer>
+    <div id="quote-view" class="owner-gate hidden">
+      <div class="owner-gate-card quote-view-card">
+        <h2 id="quote-view-title"></h2>
+        <div id="quote-view-body"></div>
+        <div class="quote-share-btns" id="quote-view-actions"></div>
+        <button type="button" class="icon-btn secondary" id="btn-quote-view-close"></button>
+      </div>
+    </div>
     <div id="owner-gate" class="owner-gate hidden">
       <div class="owner-gate-card">
         <h2 id="owner-gate-title"></h2>
@@ -299,14 +321,14 @@
     </main>
     <nav class="bottom-nav" data-active="calc" style="--i:0" aria-label="ক্যালকুলেটর">
       <div class="nav-dock">
-        <button type="button" class="tab-btn active" data-tab="calc" id="nav-calc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="3" width="16" height="18" rx="3"/><path d="M8 8h8M8 12h8M8 16h4"/></svg><span>ক্যালকুলেটর</span></button>
-        <button type="button" class="tab-btn" data-tab="cutting" id="nav-cutting"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h10"/><circle cx="18" cy="17" r="2.2"/></svg><span>কাটিং</span></button>
+        <button type="button" class="tab-btn active" data-tab="calc" id="nav-calc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="3" width="16" height="18" rx="3"/><path d="M8 8h8M8 12h8M8 16h4"/></svg><span id="nav-calc-label">ক্যালকুলেটর</span></button>
+        <button type="button" class="tab-btn" data-tab="cutting" id="nav-cutting"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h10"/><circle cx="18" cy="17" r="2.2"/></svg><span id="nav-cut-label">কাটিং</span></button>
         <button type="button" class="tab-btn" data-tab="rates" id="nav-rates"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><path d="M12 7v10M9.5 9.5c.8-1 4.2-1.2 4.2 1.3 0 2.4-4.2 1.8-4.2 4.2.1 1.8 3.2 1.8 4.4.7"/></svg><span id="nav-rates-label"></span></button>
       </div>
     </nav>
   </div>
   <div id="app-loader" class="app-loader hidden" aria-live="polite"><div class="app-loader-box"><span class="app-spinner"></span><p id="app-loader-text"></p></div></div>
   <script src="js/config.js?v=23"></script>
-  <script src="js/calculator.js?v=92"></script>
+  <script src="js/calculator.js?v=117"></script>
 </body>
 </html>

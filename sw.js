@@ -1,13 +1,13 @@
-const CACHE = "mtg-app-v92";
+const CACHE = "mtg-app-v117";
 const ASSETS = [
   "./",
   "./index.html",
   "./css/style.css",
-  "./css/style.css?v=92",
+  "./css/style.css?v=117",
   "./js/config.js",
   "./js/config.js?v=23",
   "./js/calculator.js",
-  "./js/calculator.js?v=92",
+  "./js/calculator.js?v=117",
   "./manifest.webmanifest",
   "./images/logo.svg",
   "./images/icon-192.png",

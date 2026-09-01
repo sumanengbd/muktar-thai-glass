@@ -179,15 +179,319 @@
   "statAlu": "\u0986\u09b2\u09c1\u09ae\u09bf\u09a8\u09bf\u09df\u09be\u09ae",
   "statLocks": "\u09b2\u0995",
   "statStaff": "\u09b8\u09cd\u099f\u09be\u09ab",
-  "homeQuick": "\u09a6\u09cd\u09b0\u09c1\u09a4 \u0995\u09be\u099c"
+  "homeQuick": "\u09a6\u09cd\u09b0\u09c1\u09a4 \u0995\u09be\u099c",
+  "statusNew": "নতুন",
+  "statusCalled": "ফোন করা হয়েছে",
+  "statusBooked": "বুকড",
+  "statusDelivered": "ডেলিভারি",
+  "waCustomer": "কাস্টমারকে WhatsApp",
+  "waOwner": "মালিককে WhatsApp",
+  "waNow": "WhatsApp কোট",
+  "quoteSearchPh": "নাম বা মোবাইল খুঁজুন",
+  "quoteLink": "কোট লিংক",
+  "quoteLinkCopy": "লিংক কপি",
+  "quoteLinkCopied": "কপি হয়েছে",
+  "quoteViewTitle": "আপনার কোট",
+  "quoteNotFound": "কোট পাওয়া যায়নি।",
+  "roomLabel": "রুম / ফ্লোর",
+  "roomPh": "যেমনঃ ২য় তলা বেডরুম",
+  "updateItem": "আপডেট করুন",
+  "addItemBtn": "যোগ করুন ও হিসাব করুন",
+  "stockOut": "স্টকে নেই",
+  "stockIn": "স্টকে আছে",
+  "shopWa": "মালিকের WhatsApp",
+  "shopWaHint": "নতুন কোট এলে এই নম্বরে অ্যালার্ট যাবে।",
+  "assignStaff": "স্টাফ",
+  "assignNone": "অ্যাসাইন নেই",
+  "quoteShareTitle": "কাস্টমারকে পাঠান",
+  "itemOutWarn": "এই থিকনেস এখন স্টকে নেই।",
+  "qtyLabel": "পরিমাণ (সংখ্যা)",
+  "hFt": "উচ্চতা (ফুট)",
+  "hIn": "উচ্চতা (ইঞ্চি)",
+  "hMm": "উচ্চতা (মিমি)",
+  "wFt": "প্রস্থ (ফুট)",
+  "wIn": "প্রস্থ (ইঞ্চি)",
+  "wMm": "প্রস্থ (মিমি)",
+  "glassCompany": "কাঁচের কোম্পানি",
+  "lockType": "লক এর ধরন",
+  "addCardTitle": "নতুন জানালা / দরজা যোগ করুন",
+  "previewTitle": "ভিজুয়াল প্রিভিউ",
+  "previewKind": "ধরন",
+  "previewModel": "মডেল",
+  "previewSize": "মাপ",
+  "previewColor": "রং",
+  "previewLock": "লক",
+  "previewNet": "নেট",
+  "previewCaption": "উচ্চতা ও প্রস্থ লিখলে ছবির অনুপাত বদলাবে  -  কাস্টমার সহজে বুঝতে পারবেন।",
+  "listTitle": "জানালা / দরজার তালিকা",
+  "emptyItems": "এখনও কোনো জানালা বা দরজা যোগ করা হয়নি।",
+  "sumSqft": "মোট বর্গফুট",
+  "sumGlass": "কাঁচের দাম",
+  "sumLock": "লকের দাম",
+  "sumFrame": "ফ্রেম এর দাম",
+  "sumNet": "মশারি নেট",
+  "sumExtra": "ইনস্টলেশন / অন্যান্য",
+  "sumTotal": "সর্বমোট",
+  "clearList": "তালিকা খালি করুন",
+  "printPdf": "প্রিন্ট / PDF",
+  "cutTitle": "মিস্ত্রির জন্য কাটিং লিস্ট",
+  "navCalc": "ক্যালকুলেটর",
+  "navCut": "কাটিং",
+  "installBtn": "ইনস্টল",
+  "closeBtn": "বন্ধ করুন",
+  "quotesOf": "কোট"
 };
+  const EN = {
+    shop: "Muktar Thai S.S Gallery & Glass House",
+    janala: "Window",
+    dorja: "Door",
+    fut: "ft",
+    inchi: "in",
+    fixedFrame: "Fixed frame",
+    oneGlass: "1 glass",
+    sliding: "Sliding",
+    s2: "2 shutters",
+    s3: "3 shutters",
+    s4: "4 shutters",
+    doorSingle: "Single door",
+    oneLeaf: "1 leaf",
+    doorDouble: "Double door",
+    twoLeaf: "2 leaves",
+    doorSliding: "Sliding door",
+    caseLock: "Casement handle lock",
+    noLock: "No lock",
+    emptyRates: "Nothing added yet.",
+    perSq: "/sqft",
+    muchun: "Delete",
+    outerTB: "Outer frame - top/bottom (O/H, B)",
+    outerLR: "Outer frame - left/right (S/L)",
+    glass: "Glass",
+    shutterTB: "Shutter frame",
+    shutterLR: "Shutter frame - left/right",
+    glassEach: "Glass (each shutter)",
+    parts: "Parts",
+    map: "Size",
+    songkha: "Qty",
+    piece: "pcs",
+    errCompany: "Add at least one glass company from Admin first.",
+    errSize: "Enter height and width correctly.",
+    cutShow: "Show cutting list",
+    cutHide: "Hide cutting list",
+    subtotal: "Subtotal",
+    outerSize: "Outer size",
+    glassGap: "Glass gap",
+    typeEnterSize: "Enter size",
+    taka: "Tk ",
+    sqLabel: " sqft",
+    thickness: "Thickness",
+    mm: "mm",
+    ti: "pcs",
+    kach: "Glass",
+    lock: "Lock",
+    perSqftSlash: "/sqft",
+    net: "Mosquito net",
+    netNo: "No",
+    netYes: "Yes",
+    glassColor: "Glass color",
+    colorClear: "Clear",
+    colorGreen: "Green",
+    colorBlue: "Blue",
+    colorBronze: "Bronze",
+    colorGray: "Gray",
+    colorBlack: "Black",
+    colorFrosted: "Frosted",
+    deadbolt: "Deadbolt",
+    knob: "Knob lock",
+    generic: "Generic",
+    dhoron: "Type",
+    winTypes: "Window types",
+    doorTypes: "Door types",
+    errKind: "Select window or door first.",
+    ownerUnlockHint: "Enter both email and PIN.",
+    ownerPinLabel: "PIN",
+    ownerOpen: "Open",
+    ownerPinBad: "PIN must be 4 to 8 digits.",
+    ownerPinWrong: "Wrong email or PIN.",
+    ownerLock: "Lock",
+    ownerEmailLabel: "Email",
+    ownerEmailNeed: "Enter email.",
+    ownerPinNeed: "Enter PIN.",
+    ownerEmailBad: "Enter a valid email.",
+    ownerNeedEmail: "Put email and PIN on the Users sheet.",
+    ownerNeedApi: "Put the Google Apps Script URL in js/config.js.",
+    ownerNetErr: "Could not open the sheet. Check internet.",
+    ownerSaveFail: "Save to sheet failed.",
+    ownerLocked: "Too many wrong tries. Try later.",
+    staffLogin: "Staff login",
+    quoteTitle: "Send to owner",
+    quoteHint: "Enter name and mobile. The quote is saved to the sheet.",
+    quoteName: "Name",
+    quotePhone: "Mobile",
+    quoteSend: "Send",
+    quoteNameNeed: "Enter a name.",
+    quotePhoneBad: "Enter a valid mobile number.",
+    quoteEmpty: "Add a window or door first.",
+    quoteOk: "Sent to the owner.",
+    quoteFail: "Could not send.",
+    quotesTitle: "Visitor quotes",
+    quotesEmpty: "No quotes yet.",
+    errAlu: "Select aluminium company and thickness.",
+    aluShort: "Aluminium",
+    glassThick: "Glass thickness (mm)",
+    aluCompany: "Aluminium company",
+    aluThick: "Aluminium thickness",
+    aluRatesTitle: "Aluminium company, thickness and color",
+    aluRatesHint: "One company per row. Multiple thickness and color stay as | on the sheet.",
+    chargesTitle: "Net and installation rates",
+    chargesHint: "Charge per window/door. Comes from the sheet.",
+    chargeNet: "Net (Tk / pc)",
+    chargeExtra: "Installation (Tk / pc)",
+    editBtn: "Edit",
+    updateBtn: "Update",
+    cancelBtn: "Cancel",
+    addBtn: "Add",
+    saveBtn: "Save",
+    aluNamePh: "Company",
+    aluThickPh: "mm",
+    aluRatePh: "Rate",
+    glassThickPh: "mm",
+    companyRatesHint: "One company per row. Multiple thickness and color stay as | on the sheet.",
+    aluColor: "Aluminium color",
+    aluSilver: "Silver",
+    aluWhite: "White",
+    aluChampagne: "Champagne",
+    aluBrown: "Brown",
+    catalogEmpty: "List did not load from the sheet. Check internet and refresh.",
+    admin: "Admin",
+    calcTab: "Calculator",
+    pickHint: "Choose",
+    working: "Working...",
+    loading: "Loading...",
+    tabGlass: "Glass companies",
+    tabAlu: "Aluminium",
+    tabLock: "Lock prices",
+    tabCharges: "Net and install",
+    tabStaff: "Staff accounts",
+    tabCut: "Cutting formula",
+    tabQuotes: "Visitor quotes",
+    staffTitle: "Staff accounts",
+    staffHint: "Owner can add staff. They log in with email and PIN. Drag to reorder.",
+    staffEmailPh: "Email",
+    staffPinPh: "PIN 4-8 digits",
+    roleStaff: "Staff",
+    roleOwner: "Owner",
+    staffNeedOwner: "Keep at least one owner.",
+    staffBad: "Enter a valid email and 4-8 digit PIN.",
+    errNeedName: "Enter a name.",
+    errNeedNumber: "Enter a valid number.",
+    errNeedPick: "Select thickness and color.",
+    cutInfo: "Cutting details",
+    quoteCutClear: "Current list",
+    quoteNoCut: "This quote has no size.",
+    costGlass: "Glass cost",
+    costFrame: "Frame cost",
+    costLock: "Lock cost",
+    costNet: "Mosquito net",
+    costExtra: "Installation",
+    costTotal: "Total",
+    livePrice: "Price estimate",
+    printKicker: "Quote / estimate",
+    printCutKicker: "Cutting list",
+    printSub: "Thai glass window and door estimate",
+    printDate: "Date",
+    printThanks: "Thank you",
+    printNote: "This is an estimate. Final price depends on measurement and materials.",
+    printCustomer: "Customer",
+    shopSlogan: "Thai glass window and door calculator - see the size and estimate the price",
+    tabHome: "Home",
+    homeTitle: "Shop details",
+    homeHello: "Welcome",
+    shopName: "Shop name",
+    shopSloganLabel: "Slogan",
+    shopLogo: "Logo",
+    shopLogoPick: "Choose image",
+    shopLogoReset: "Default",
+    shopHint: "Name, slogan and logo show in the header and print.",
+    shopLogoBad: "Image is too large.",
+    statQuotes: "Quotes",
+    statToday: "Today's quotes",
+    statGlass: "Glass companies",
+    statAlu: "Aluminium",
+    statLocks: "Locks",
+    statStaff: "Staff",
+    homeQuick: "Quick actions",
+    statusNew: "New",
+    statusCalled: "Called",
+    statusBooked: "Booked",
+    statusDelivered: "Delivered",
+    waCustomer: "WhatsApp customer",
+    waOwner: "WhatsApp owner",
+    waNow: "WhatsApp quote",
+    quoteSearchPh: "Search name or mobile",
+    quoteLink: "Quote link",
+    quoteLinkCopy: "Copy link",
+    quoteLinkCopied: "Copied",
+    quoteViewTitle: "Your quote",
+    quoteNotFound: "Quote not found.",
+    roomLabel: "Room / floor",
+    roomPh: "e.g. 2nd floor bedroom",
+    updateItem: "Update item",
+    addItemBtn: "Add and calculate",
+    stockOut: "Out of stock",
+    stockIn: "In stock",
+    shopWa: "Owner WhatsApp",
+    shopWaHint: "New quotes will alert this number.",
+    assignStaff: "Staff",
+    assignNone: "Unassigned",
+    quoteShareTitle: "Send to customer",
+    itemOutWarn: "This thickness is out of stock.",
+    qtyLabel: "Quantity",
+    hFt: "Height (ft)",
+    hIn: "Height (in)",
+    hMm: "Height (mm)",
+    wFt: "Width (ft)",
+    wIn: "Width (in)",
+    wMm: "Width (mm)",
+    glassCompany: "Glass company",
+    lockType: "Lock type",
+    addCardTitle: "Add a new window / door",
+    previewTitle: "Live preview",
+    previewKind: "Kind",
+    previewModel: "Model",
+    previewSize: "Size",
+    previewColor: "Color",
+    previewLock: "Lock",
+    previewNet: "Net",
+    previewCaption: "The picture ratio changes with height and width so the customer can see it.",
+    listTitle: "Window / door list",
+    emptyItems: "No window or door added yet.",
+    sumSqft: "Total sqft",
+    sumGlass: "Glass cost",
+    sumLock: "Lock cost",
+    sumFrame: "Frame cost",
+    sumNet: "Mosquito net",
+    sumExtra: "Installation / other",
+    sumTotal: "Grand total",
+    clearList: "Clear list",
+    printPdf: "Print / PDF",
+    cutTitle: "Cutting list for the fitter",
+    navCalc: "Calculator",
+    navCut: "Cutting",
+    installBtn: "Install",
+    closeBtn: "Close",
+    quotesOf: "quotes"
+  };
+  const BN = {};
+  Object.keys(T).forEach(function (k) { BN[k] = T[k]; });
+
   const KEYS = {
     items: "glasscalc:items",
     tab: "glasscalc:tab",
     session: "glasscalc:session",
     adminPanel: "glasscalc:adminPanel",
     catalog: "glasscalc:catalog",
-    shop: "glasscalc:shop"
+    shop: "glasscalc:shop",
+    lang: "glasscalc:lang"
   };
 
   const PRODUCT_TYPES = {
@@ -247,14 +551,311 @@
     quotes: [],
     staff: [],
     edit: { kind: "", index: -1, name: "", rate: null, thicks: [], colors: [] },
-    adminPick: { companyThicks: [5], companyColors: ["clear"], aluThicks: [1], aluColors: ["silver"] },
+    adminPick: { companyThicks: [5], companyColors: ["clear"], companyOut: [], aluThicks: [1], aluColors: ["silver"] },
     shop: { name: "", slogan: "", logo: "" },
     adminPanel: "home",
     quoteOpenId: "",
-    cutQuote: null
+    cutQuote: null,
+    lang: "bn",
+    editItemIndex: -1,
+    quoteSearch: ""
   };
 
   const $ = (id) => document.getElementById(id);
+
+  function applyLang(lang, skipRender) {
+    state.lang = lang === "en" ? "en" : "bn";
+    const src = state.lang === "en" ? EN : BN;
+    Object.keys(BN).forEach(function (k) { T[k] = src[k] != null ? src[k] : BN[k]; });
+    Object.keys(src).forEach(function (k) { if (T[k] == null) T[k] = src[k]; });
+    storeSet(KEYS.lang, state.lang);
+    document.documentElement.lang = state.lang === "en" ? "en" : "bn";
+    document.documentElement.classList.toggle("lang-en", state.lang === "en");
+    if ($("btn-lang")) $("btn-lang").textContent = state.lang === "en" ? "বাংলা" : "EN";
+    refreshTypeLabels();
+    if (!skipRender) {
+      fillQuoteLabels();
+      renderKindPicker();
+      renderTypePicker();
+      refreshSheetSelects();
+      renderItems();
+      renderCuttingTab();
+      renderLivePreview(true);
+      updateAddItemBtn();
+    }
+  }
+
+  function refreshTypeLabels() {
+    const w = PRODUCT_TYPES.windows;
+    const d = PRODUCT_TYPES.doors;
+    if (!w || !d) return;
+    w[0].label = T.fixedFrame; w[0].sub = T.oneGlass;
+    w[1].label = T.sliding; w[1].sub = T.s2;
+    w[2].label = T.sliding; w[2].sub = T.s3;
+    w[3].label = T.sliding; w[3].sub = T.s4;
+    d[0].label = T.doorSingle; d[0].sub = T.oneLeaf;
+    d[1].label = T.doorDouble; d[1].sub = T.twoLeaf;
+    d[2].label = T.doorSliding; d[2].sub = T.s2;
+  }
+
+  function fillCalcLabels() {
+    const set = function (id, text) { if ($(id)) $(id).textContent = text; };
+    set("qty-label", T.qtyLabel);
+    set("room-label", T.roomLabel);
+    if ($("in-room")) $("in-room").placeholder = T.roomPh;
+    set("h-ft-label", T.hFt);
+    set("h-in-label", T.hIn);
+    set("h-mm-label", T.hMm);
+    set("w-ft-label", T.wFt);
+    set("w-in-label", T.wIn);
+    set("w-mm-label", T.wMm);
+    set("glass-company-label", T.glassCompany);
+    set("glass-color-label", T.glassColor);
+    set("lock-type-label", T.lockType);
+    set("net-label", T.net);
+    set("btn-net-no", T.netNo);
+    set("btn-net-yes", T.netYes);
+    setHeading("add-card-title", T.addCardTitle);
+    setHeading("preview-title", T.previewTitle);
+    setHeading("list-title", T.listTitle);
+    setHeading("cut-title", T.cutTitle);
+    set("empty-note", T.emptyItems);
+    set("cutting-empty", T.emptyItems);
+    set("sum-sqft-label", T.sumSqft);
+    set("sum-glass-label", T.sumGlass);
+    set("sum-lock-label", T.sumLock);
+    set("sum-frame-label", T.sumFrame);
+    set("sum-net-label", T.sumNet);
+    set("sum-extra-label", T.sumExtra);
+    set("sum-total-label", T.sumTotal);
+    set("btn-clear-label", T.clearList);
+    set("btn-print-label", T.printPdf);
+    set("btn-print-cut-label", T.printPdf);
+    set("install-label", T.installBtn);
+    if ($("btn-install")) {
+      $("btn-install").title = T.installBtn;
+      $("btn-install").setAttribute("aria-label", T.installBtn);
+    }
+    if ($("btn-staff-login")) {
+      $("btn-staff-login").title = T.staffLogin;
+      $("btn-staff-login").setAttribute("aria-label", T.staffLogin);
+    }
+    set("nav-calc-label", T.navCalc);
+    set("nav-cut-label", T.navCut);
+    set("quote-share-title", T.quoteShareTitle);
+    set("btn-copy-link", T.quoteLinkCopy);
+    if ($("quote-search")) $("quote-search").placeholder = T.quoteSearchPh;
+    if ($("btn-cancel-item")) $("btn-cancel-item").textContent = T.cancelBtn;
+    if ($("btn-quote-view-close")) $("btn-quote-view-close").textContent = T.closeBtn;
+    if ($("quote-view-title")) $("quote-view-title").textContent = T.quoteViewTitle;
+    updateAddItemBtn();
+  }
+
+  function glassMmOut(name, mm) {
+    return state.companies.some(function (c) {
+      return c.name === name && String(c.thickness) === String(mm) && c.out;
+    });
+  }
+
+  function toggleGlassStock(name, mm) {
+    if (!isOwner()) return;
+    const next = !glassMmOut(name, mm);
+    state.companies.forEach(function (c) {
+      if (c.name === name && String(c.thickness) === String(mm)) c.out = next;
+    });
+    renderRateList("company-list", state.companies, "company");
+    renderCompanySelect();
+    persistOwnerData();
+  }
+
+  function statusLabel(s) {
+    const v = String(s || "new").toLowerCase();
+    if (v === "called") return T.statusCalled;
+    if (v === "booked") return T.statusBooked;
+    if (v === "delivered") return T.statusDelivered;
+    return T.statusNew;
+  }
+
+  function quotePublicUrl(id) {
+    const base = String(location.origin + location.pathname).replace(/index\.html$/i, "");
+    return base + (base.charAt(base.length - 1) === "/" ? "" : "/") + "?q=" + encodeURIComponent(id);
+  }
+
+  function phoneKey(p) {
+    let n = String(p || "").replace(/\D/g, "");
+    if (n.indexOf("88") === 0 && n.length > 11) n = n.slice(2);
+    return n;
+  }
+
+  function feetParts(ft) {
+    const safe = Math.max(0, Number(ft) || 0);
+    let tenthMm = Math.round(safe * 3048);
+    let wholeFt = Math.floor(tenthMm / 3048);
+    tenthMm -= wholeFt * 3048;
+    let inch = Math.floor(tenthMm / 254);
+    tenthMm -= inch * 254;
+    let mm = Math.round(tenthMm / 10);
+    if (mm >= 25) { mm -= 25; inch += 1; }
+    if (inch >= 12) { inch -= 12; wholeFt += 1; }
+    return { ft: wholeFt, inch: inch, mm: mm };
+  }
+
+  function fillSizeInputs(axis, ft) {
+    const p = feetParts(ft);
+    const a = axis === "w" ? "w" : "h";
+    if ($("in-" + a + "-ft")) $("in-" + a + "-ft").value = p.ft ? String(p.ft) : "";
+    if ($("in-" + a + "-in")) $("in-" + a + "-in").value = p.inch ? String(p.inch) : "";
+    if ($("in-" + a + "-mm")) $("in-" + a + "-mm").value = p.mm ? String(p.mm) : "";
+  }
+
+  function updateAddItemBtn() {
+    if ($("btn-add-label")) $("btn-add-label").textContent = state.editItemIndex >= 0 ? T.updateItem : T.addItemBtn;
+    if ($("btn-cancel-item")) $("btn-cancel-item").classList.toggle("hidden", state.editItemIndex < 0);
+  }
+
+  function startEditItem(index) {
+    const item = state.items[index];
+    if (!item) return;
+    state.editItemIndex = index;
+    state.selectedKind = String(item.winType || "").indexOf("door") === 0 ? "door" : "window";
+    state.selectedType = item.winType;
+    state.glassColor = normalizeColorId(item.glassColor);
+    state.aluColor = normalizeAluColorId(item.aluColor);
+    state.hasNet = !!item.hasNet;
+    fillSizeInputs("h", item.heightFt);
+    fillSizeInputs("w", item.widthFt);
+    if ($("in-qty")) $("in-qty").value = String(item.qty || 1);
+    if ($("in-room")) $("in-room").value = item.room || "";
+    renderKindPicker();
+    renderTypePicker();
+    refreshSheetSelects();
+    if ($("sel-company") && item.companyName) $("sel-company").value = item.companyName;
+    renderGlassThickSelect();
+    if ($("sel-glass-thick") && item.thickness) $("sel-glass-thick").value = String(item.thickness);
+    if ($("sel-alu-company") && item.aluName) $("sel-alu-company").value = item.aluName;
+    renderAluThickSelect();
+    if ($("sel-alu-thick") && item.aluThick) $("sel-alu-thick").value = String(item.aluThick);
+    if (item.lockName) {
+      const li = state.locks.findIndex(function (l) { return l.name === item.lockName; });
+      if ($("sel-lock") && li >= 0) $("sel-lock").value = String(li);
+    } else if ($("sel-lock")) $("sel-lock").value = "-1";
+    setNet(!!item.hasNet);
+    updateAddItemBtn();
+    syncCalcDetails();
+    renderLivePreview(true);
+    const card = document.querySelector("#tab-calc .card");
+    if (card) card.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  function showQuoteShare(id) {
+    const box = $("quote-share");
+    if (!box || !id) return;
+    if ($("quote-share-link")) $("quote-share-link").value = quotePublicUrl(id);
+    box.classList.remove("hidden");
+  }
+
+  function copyQuoteLink() {
+    const el = $("quote-share-link");
+    if (!el || !el.value) return;
+    const done = function () {
+      if ($("btn-copy-link")) $("btn-copy-link").textContent = T.quoteLinkCopied;
+      setTimeout(function () {
+        if ($("btn-copy-link")) $("btn-copy-link").textContent = T.quoteLinkCopy;
+      }, 1400);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(el.value).then(done).catch(function () {
+        el.select();
+        document.execCommand("copy");
+        done();
+      });
+    } else {
+      el.select();
+      document.execCommand("copy");
+      done();
+    }
+  }
+
+  function staffOptions(selected) {
+    const list = [];
+    (state.staff || []).forEach(function (u) {
+      if (u && u.email) list.push(String(u.email).toLowerCase());
+    });
+    if (state.ownerEmail && list.indexOf(String(state.ownerEmail).toLowerCase()) < 0) {
+      list.unshift(String(state.ownerEmail).toLowerCase());
+    }
+    const cur = String(selected || "").toLowerCase();
+    return '<option value="">' + escapeHtml(T.assignNone) + "</option>" + list.map(function (email) {
+      return '<option value="' + escapeHtml(email) + '"' + (email === cur ? " selected" : "") + ">" + escapeHtml(shortEmail(email)) + "</option>";
+    }).join("");
+  }
+
+  function statusOptions(selected) {
+    const cur = String(selected || "new").toLowerCase() === "new" || !selected ? "new" : String(selected).toLowerCase();
+    return [["new", T.statusNew], ["called", T.statusCalled], ["booked", T.statusBooked], ["delivered", T.statusDelivered]].map(function (x) {
+      return '<option value="' + x[0] + '"' + (x[0] === cur ? " selected" : "") + ">" + x[1] + "</option>";
+    }).join("");
+  }
+
+  function patchQuote(id, fields) {
+    if (!isStaff() || !sheetApiUrl()) return;
+    sheetRequest(Object.assign({
+      action: "quotePatch",
+      email: state.ownerEmail,
+      pin: state.ownerPin,
+      id: id
+    }, fields)).then(function (data) {
+      if (data && data.ok && Array.isArray(data.quotes)) {
+        state.quotes = data.quotes;
+        renderQuotes();
+        renderHome();
+      }
+    }).catch(function () {});
+  }
+
+  function fetchQuoteGet(id) {
+    const url = sheetApiUrl();
+    if (!url) return Promise.reject(new Error("noapi"));
+    const sep = url.indexOf("?") >= 0 ? "&" : "?";
+    return fetch(url + sep + "action=quote&id=" + encodeURIComponent(id), {
+      method: "GET",
+      redirect: "follow"
+    }).then(function (res) { return res.json(); });
+  }
+
+  function closeQuoteView() {
+    if ($("quote-view")) $("quote-view").classList.add("hidden");
+  }
+
+  function renderQuoteView(q) {
+    const box = $("quote-view");
+    const body = $("quote-view-body");
+    if (!box || !body) return;
+    if ($("quote-view-title")) $("quote-view-title").textContent = T.quoteViewTitle;
+    if (!q) {
+      body.innerHTML = '<div class="empty-note">' + T.quoteNotFound + "</div>";
+      box.classList.remove("hidden");
+      return;
+    }
+    const lines = (q.lines || []).map(function (it) {
+      return '<div class="quote-line"><strong>' + escapeHtml([it.room, it.type].filter(Boolean).join(" · ")) + "</strong>" +
+        "<span>" + escapeHtml(it.size || "") + " · " + (it.qty || 1) + " " + T.ti + "</span>" +
+        "<span>" + (it.total ? money(it.total) : "") + "</span></div>";
+    }).join("");
+    body.innerHTML = "<p><strong>" + escapeHtml(q.name || "") + "</strong> · " + escapeHtml(q.phone || "") + "</p>" +
+      "<p>" + escapeHtml(q.id || "") + " · " + fmt(quoteSqft(q)) + T.sqLabel + " · " + money(quoteTotal(q)) + "</p>" +
+      (lines || "");
+    box.classList.remove("hidden");
+  }
+
+  function loadPublicQuote(id) {
+    if (!id || !sheetApiUrl()) return;
+    fetchQuoteGet(id).then(function (data) {
+      if (data && data.ok && data.quote) renderQuoteView(data.quote);
+      else renderQuoteView(null);
+    }).catch(function () { renderQuoteView(null); });
+  }
+
 
   function setHeading(id, text) {
     const el = $(id);
@@ -265,6 +866,9 @@
       span.className = "title-text";
       el.insertBefore(span, el.firstChild);
     }
+    [...el.childNodes].forEach((n) => {
+      if (n.nodeType === 3) n.textContent = " ";
+    });
     span.textContent = text;
   }
 
@@ -375,7 +979,7 @@
       const rate = Number(row.rate);
       const useRate = Number.isFinite(rate) && rate >= 0 ? rate : 0;
       useThicks.forEach((thickness) => {
-        useColors.forEach((color) => out.push({ name: name, thickness: thickness, rate: useRate, color: color }));
+        useColors.forEach((color) => out.push({ name: name, thickness: thickness, rate: useRate, color: color, out: !!row.out }));
       });
     });
     return out;
@@ -606,8 +1210,10 @@
 
   function upsertCombo(list, row) {
     const existing = list.find((x) => x.name === row.name && Number(x.thickness) === Number(row.thickness) && x.color === row.color);
-    if (existing) existing.rate = row.rate;
-    else list.push(row);
+    if (existing) {
+      existing.rate = row.rate;
+      if (Object.prototype.hasOwnProperty.call(row, "out")) existing.out = !!row.out;
+    } else list.push(row);
   }
 
   function uniqueNums(arr) {
@@ -627,17 +1233,24 @@
     return out;
   }
 
-  function replaceCombos(list, oldName, name, thicks, colors, rate, clickedRate) {
+  function replaceCombos(list, oldName, name, thicks, colors, rate, clickedRate, outMms) {
     const old = list.filter((x) => x.name === oldName);
     const rateMap = {};
-    old.forEach((x) => { rateMap[Number(x.thickness) + "|" + x.color] = x.rate; });
+    const outMap = {};
+    old.forEach((x) => {
+      rateMap[Number(x.thickness) + "|" + x.color] = x.rate;
+      outMap[Number(x.thickness)] = !!x.out;
+    });
     const rateChanged = Number(rate) !== Number(clickedRate);
     const next = [];
     thicks.forEach((thickness) => {
       colors.forEach((color) => {
         const key = Number(thickness) + "|" + color;
         const useRate = rateChanged || rateMap[key] == null ? rate : rateMap[key];
-        next.push({ name: name, thickness: thickness, rate: useRate, color: color });
+        const useOut = Array.isArray(outMms)
+          ? outMms.some(function (m) { return Number(m) === Number(thickness); })
+          : !!outMap[Number(thickness)];
+        next.push({ name: name, thickness: thickness, rate: useRate, color: color, out: useOut });
       });
     });
     const kept = list.filter((x) => x.name !== oldName);
@@ -751,7 +1364,7 @@
   function formatQuoteTime(raw) {
     const d = quoteTimeDate(raw);
     if (!d) return String(raw || "");
-    return d.toLocaleString("bn-BD", {
+    return d.toLocaleString(state.lang === "en" ? "en-GB" : "bn-BD", {
       day: "numeric",
       month: "short",
       year: "numeric",
@@ -847,6 +1460,7 @@
     if ($("btn-shop-logo")) $("btn-shop-logo").textContent = T.shopLogoPick;
     if ($("btn-shop-logo-reset")) $("btn-shop-logo-reset").textContent = T.shopLogoReset;
     if ($("btn-save-shop")) $("btn-save-shop").textContent = T.saveBtn;
+    fillCalcLabels();
     if ($("shop-name") && document.activeElement !== $("shop-name")) $("shop-name").value = shop.name;
     if ($("shop-slogan") && document.activeElement !== $("shop-slogan")) $("shop-slogan").value = shop.slogan;
     if ($("shop-logo-preview")) $("shop-logo-preview").src = shop.logo;
@@ -939,12 +1553,20 @@
     return values.length ? values.join(", ") : T.pickHint;
   }
 
-  function renderThickPanel(wrapId, presets, selected, inputId, kind) {
+  function renderThickPanel(wrapId, presets, selected, inputId, kind, outMms) {
     const wrap = $(wrapId);
     if (!wrap) return;
-    const opts = mergeThicks(presets, selected).map((mm) =>
-      '<button type="button" class="msel-opt' + (selected.some((t) => Number(t) === Number(mm)) ? " active" : "") + '" data-mm="' + mm + '"><span class="msel-check"></span>' + mm + T.mm + "</button>"
-    ).join("");
+    const outs = outMms || [];
+    const opts = mergeThicks(presets, selected).map(function (mm) {
+      const on = selected.some(function (t) { return Number(t) === Number(mm); });
+      const out = outs.some(function (t) { return Number(t) === Number(mm); });
+      var html = '<button type="button" class="msel-opt' + (on ? " active" : "") + '" data-mm="' + mm + '"><span class="msel-check"></span>' + mm + T.mm + "</button>";
+      if (kind === "company") {
+        html = '<div class="msel-thick-row">' + html +
+          '<button type="button" class="msel-stock' + (out ? " is-out" : " active") + '" data-stock-mm="' + mm + '"><span class="msel-check"></span>' + (out ? T.stockOut : T.stockIn) + "</button></div>";
+      }
+      return html;
+    }).join("");
     wrap.innerHTML = '<div class="msel-opts">' + opts + '</div><div class="msel-custom"><input type="number" id="' + inputId + '" min="0" step="' + (kind === "alu" ? "0.1" : "0.5") + '" placeholder="' + T.mm + '"><button type="button" class="msel-add-mm" data-thick-kind="' + kind + '">+</button></div>';
   }
 
@@ -958,7 +1580,7 @@
 
   function renderAdminPicks() {
     const pick = state.adminPick;
-    renderThickPanel("new-company-thicks", GLASS_THICK_PRESETS, pick.companyThicks, "new-company-thick", "company");
+    renderThickPanel("new-company-thicks", GLASS_THICK_PRESETS, pick.companyThicks, "new-company-thick", "company", pick.companyOut || []);
     renderColorPanel("new-company-colors", GLASS_COLORS, pick.companyColors);
     renderThickPanel("new-alu-thicks", ALU_THICK_PRESETS, pick.aluThicks, "new-alu-thick", "alu");
     renderColorPanel("new-alu-colors", ALU_COLORS, pick.aluColors);
@@ -977,6 +1599,18 @@
         const addMm = e.target.closest(".msel-add-mm");
         if (addMm) {
           addThickPick(addMm.dataset.thickKind || kind);
+          return;
+        }
+        const stock = e.target.closest(".msel-stock");
+        if (stock && kind === "company") {
+          if (!state.adminPick.companyOut) state.adminPick.companyOut = [];
+          const mm = stock.dataset.stockMm;
+          togglePick(state.adminPick.companyOut, mm, true);
+          if (state.adminPick.companyThicks.every(function (t) { return Number(t) !== Number(mm); })) {
+            state.adminPick.companyThicks.push(Number(mm));
+            state.adminPick.companyThicks.sort(function (a, b) { return a - b; });
+          }
+          renderAdminPicks();
           return;
         }
         const btn = e.target.closest(".msel-opt");
@@ -1095,129 +1729,295 @@
     return parseFloat($(id).value);
   }
 
-  function drawLock(style, x, y, boxW, boxH, compact) {
-    if (style === "none") return "";
-    const s = compact ? 0.72 : 1;
-    const cx = x + boxW - (compact ? 11 : 20);
-    const cy = y + boxH * 0.46;
+  function glassTint(color) {
+    const map = {
+      clear: { fill: "#5aa8c4", op: 0.28 },
+      green: { fill: "#1f6a3c", op: 0.5 },
+      blue: { fill: "#163f88", op: 0.5 },
+      bronze: { fill: "#6a3810", op: 0.52 },
+      gray: { fill: "#2f3840", op: 0.52 },
+      black: { fill: "#0b1016", op: 0.7 },
+      frosted: { fill: "#e7eef2", op: 0.8 }
+    };
+    return map[color && color.id] || map.clear;
+  }
+
+  function drawOutdoor(x, y, w, h, uid) {
+    const gnd = y + h * 0.66;
+    const sunX = x + w * 0.8;
+    const sunY = y + h * 0.14;
+    function tree(cx, baseY, sc) {
+      return (
+        '<rect x="' + (cx - 1.4 * sc) + '" y="' + (baseY - 8 * sc) + '" width="' + (2.8 * sc) + '" height="' + (10 * sc) + '" fill="#5a3d28"/>' +
+        '<ellipse cx="' + cx + '" cy="' + (baseY - 16 * sc) + '" rx="' + (9 * sc) + '" ry="' + (8 * sc) + '" fill="#2f5a32"/>' +
+        '<ellipse cx="' + (cx - 5 * sc) + '" cy="' + (baseY - 11 * sc) + '" rx="' + (6.5 * sc) + '" ry="' + (6 * sc) + '" fill="#3d7040"/>' +
+        '<ellipse cx="' + (cx + 5 * sc) + '" cy="' + (baseY - 11 * sc) + '" rx="' + (6 * sc) + '" ry="' + (5.5 * sc) + '" fill="#4a7d45"/>'
+      );
+    }
+    const sc = Math.max(0.7, Math.min(w, h) / 90);
+    return (
+      '<rect x="' + x + '" y="' + y + '" width="' + w + '" height="' + h + '" fill="url(#' + uid + 'sky)"/>' +
+      '<ellipse cx="' + sunX + '" cy="' + sunY + '" rx="' + (w * 0.16) + '" ry="' + (h * 0.1) + '" fill="#fff7d2" opacity="0.35"/>' +
+      '<ellipse cx="' + sunX + '" cy="' + sunY + '" rx="' + Math.max(6, w * 0.055) + '" ry="' + Math.max(5, h * 0.04) + '" fill="#ffe9a0"/>' +
+      '<ellipse cx="' + (x + w * 0.22) + '" cy="' + (y + h * 0.16) + '" rx="' + (w * 0.12) + '" ry="' + (h * 0.035) + '" fill="#fff" opacity="0.55"/>' +
+      '<ellipse cx="' + (x + w * 0.3) + '" cy="' + (y + h * 0.145) + '" rx="' + (w * 0.08) + '" ry="' + (h * 0.028) + '" fill="#fff" opacity="0.4"/>' +
+      '<ellipse cx="' + (x + w * 0.58) + '" cy="' + (y + h * 0.2) + '" rx="' + (w * 0.1) + '" ry="' + (h * 0.03) + '" fill="#fff" opacity="0.35"/>' +
+      '<path d="M ' + x + " " + (gnd - h * 0.08) + " C " + (x + w * 0.2) + " " + (gnd - h * 0.22) + " " + (x + w * 0.48) + " " + (gnd - h * 0.1) + " " + (x + w) + " " + (gnd - h * 0.18) + " L " + (x + w) + " " + gnd + " L " + x + " " + gnd + ' Z" fill="#6d8a5c" opacity="0.55"/>' +
+      '<path d="M ' + x + " " + (gnd + h * 0.02) + " C " + (x + w * 0.26) + " " + (gnd - h * 0.14) + " " + (x + w * 0.55) + " " + (gnd + h * 0.04) + " " + (x + w) + " " + (gnd - h * 0.06) + " L " + (x + w) + " " + (y + h) + " L " + x + " " + (y + h) + ' Z" fill="#4e6d3f"/>' +
+      '<path d="M ' + x + " " + gnd + " C " + (x + w * 0.3) + " " + (gnd - h * 0.16) + " " + (x + w * 0.62) + " " + (gnd + h * 0.02) + " " + (x + w) + " " + (gnd - h * 0.1) + " L " + (x + w) + " " + (gnd + h * 0.12) + " L " + x + " " + (gnd + h * 0.1) + ' Z" fill="#7fa35f"/>' +
+      '<rect x="' + (x + w * 0.08) + '" y="' + (gnd - h * 0.3) + '" width="' + (w * 0.16) + '" height="' + (h * 0.3) + '" fill="#d2c0a8"/>' +
+      '<rect x="' + (x + w * 0.1) + '" y="' + (gnd - h * 0.32) + '" width="' + (w * 0.12) + '" height="' + (h * 0.03) + '" fill="#bfa88c"/>' +
+      '<rect x="' + (x + w * 0.105) + '" y="' + (gnd - h * 0.24) + '" width="' + (w * 0.04) + '" height="' + (h * 0.05) + '" fill="#8ec8dc"/>' +
+      '<rect x="' + (x + w * 0.155) + '" y="' + (gnd - h * 0.24) + '" width="' + (w * 0.04) + '" height="' + (h * 0.05) + '" fill="#7eb8d0"/>' +
+      '<rect x="' + (x + w * 0.105) + '" y="' + (gnd - h * 0.16) + '" width="' + (w * 0.04) + '" height="' + (h * 0.05) + '" fill="#7eb8d0"/>' +
+      '<rect x="' + (x + w * 0.155) + '" y="' + (gnd - h * 0.16) + '" width="' + (w * 0.04) + '" height="' + (h * 0.05) + '" fill="#8ec8dc"/>' +
+      '<rect x="' + (x + w * 0.28) + '" y="' + (gnd - h * 0.22) + '" width="' + (w * 0.13) + '" height="' + (h * 0.22) + '" fill="#c4ae93"/>' +
+      '<rect x="' + (x + w * 0.3) + '" y="' + (gnd - h * 0.17) + '" width="' + (w * 0.035) + '" height="' + (h * 0.04) + '" fill="#9fd4ea"/>' +
+      '<rect x="' + (x + w * 0.345) + '" y="' + (gnd - h * 0.17) + '" width="' + (w * 0.035) + '" height="' + (h * 0.04) + '" fill="#8ec8dc"/>' +
+      tree(x + w * 0.58, gnd + 2, sc) +
+      tree(x + w * 0.74, gnd + 4, sc * 1.15) +
+      '<rect x="' + x + '" y="' + (gnd + h * 0.1) + '" width="' + w + '" height="' + (h * 0.08) + '" fill="#6a8a4e" opacity="0.35"/>'
+    );
+  }
+
+  function drawLock(style, cx, cy, s, uid) {
+    if (!style || style === "none") return "";
+    const m = uid + "hwm";
+    const g = uid + "hwg";
     if (style === "sliding") {
-      return `<g class="viz-lock">
-        <rect x="${cx - 4 * s}" y="${cy - 16 * s}" width="${8 * s}" height="${32 * s}" rx="2" fill="#2c4a58"/>
-        <circle cx="${cx}" cy="${cy}" r="${3.2 * s}" fill="#d9b56a"/>
-      </g>`;
+      return '<g class="viz-lock">' +
+        '<rect x="' + (cx - 5.1 * s) + '" y="' + (cy - 19 * s) + '" width="' + (10.2 * s) + '" height="' + (38 * s) + '" rx="' + (2.1 * s) + '" fill="url(#' + m + ')" stroke="rgba(16,24,32,0.32)" stroke-width="' + (0.65 * s) + '"/>' +
+        '<rect x="' + (cx - 3 * s) + '" y="' + (cy - 15 * s) + '" width="' + (6 * s) + '" height="' + (30 * s) + '" rx="' + (1.4 * s) + '" fill="#15222a" opacity="0.4"/>' +
+        '<rect x="' + (cx - 2.1 * s) + '" y="' + (cy - 5 * s) + '" width="' + (4.2 * s) + '" height="' + (10.5 * s) + '" rx="' + (1 * s) + '" fill="url(#' + g + ')"/>' +
+        "</g>";
     }
     if (style === "casement") {
-      return `<g class="viz-lock">
-        <circle cx="${cx}" cy="${cy}" r="${5.5 * s}" fill="#c5c9ce" stroke="#5a6168"/>
-        <rect x="${cx - 2 * s}" y="${cy - 20 * s}" width="${4 * s}" height="${16 * s}" rx="2" fill="#c5c9ce"/>
-        <rect x="${cx - 10 * s}" y="${cy - 22 * s}" width="${12 * s}" height="${4 * s}" rx="2" fill="#aeb3b8"/>
-      </g>`;
+      return '<g class="viz-lock">' +
+        '<rect x="' + (cx - 6.8 * s) + '" y="' + (cy - 9 * s) + '" width="' + (13.6 * s) + '" height="' + (18 * s) + '" rx="' + (2.3 * s) + '" fill="url(#' + m + ')" stroke="rgba(16,24,32,0.28)" stroke-width="' + (0.55 * s) + '"/>' +
+        '<circle cx="' + cx + '" cy="' + cy + '" r="' + (3.7 * s) + '" fill="url(#' + g + ')"/>' +
+        '<path d="M ' + (cx + 2.1 * s) + " " + cy + " C " + (cx + 15 * s) + " " + (cy - 10.5 * s) + " " + (cx + 23 * s) + " " + (cy - 2.6 * s) + " " + (cx + 17.2 * s) + " " + (cy + 3.1 * s) + " C " + (cx + 13.4 * s) + " " + (cy + 5.8 * s) + " " + (cx + 7.6 * s) + " " + (cy + 2.3 * s) + " " + (cx + 2.8 * s) + " " + (cy + 1.1 * s) + ' Z" fill="url(#' + g + ')" stroke="#6b5420" stroke-width="' + (0.5 * s) + '"/>' +
+        "</g>";
     }
     if (style === "deadbolt") {
-      return `<g class="viz-lock">
-        <rect x="${cx - 9 * s}" y="${cy - 8 * s}" width="${18 * s}" height="${16 * s}" rx="3" fill="#8a7340"/>
-        <circle cx="${cx}" cy="${cy}" r="${3.4 * s}" fill="#1f2d3a"/>
-        <circle cx="${cx}" cy="${cy}" r="${1.4 * s}" fill="#d9b56a"/>
-      </g>`;
+      return '<g class="viz-lock">' +
+        '<rect x="' + (cx - 10 * s) + '" y="' + (cy - 11 * s) + '" width="' + (20 * s) + '" height="' + (22 * s) + '" rx="' + (3 * s) + '" fill="url(#' + m + ')" stroke="rgba(16,24,32,0.28)" stroke-width="' + (0.55 * s) + '"/>' +
+        '<circle cx="' + cx + '" cy="' + cy + '" r="' + (5.1 * s) + '" fill="url(#' + g + ')"/>' +
+        '<circle cx="' + cx + '" cy="' + cy + '" r="' + (1.6 * s) + '" fill="#1f2d3a"/>' +
+        "</g>";
     }
     if (style === "knob") {
-      return `<g class="viz-lock">
-        <circle cx="${cx}" cy="${cy}" r="${7 * s}" fill="#d9b56a" stroke="#8a6d28"/>
-        <circle cx="${cx}" cy="${cy}" r="${3 * s}" fill="#f3e2a8"/>
-      </g>`;
+      return '<g class="viz-lock">' +
+        '<rect x="' + (cx - 4.6 * s) + '" y="' + (cy - 5 * s) + '" width="' + (6.2 * s) + '" height="' + (10 * s) + '" rx="' + (1.3 * s) + '" fill="url(#' + m + ')"/>' +
+        '<circle cx="' + (cx + 5.2 * s) + '" cy="' + cy + '" r="' + (7.8 * s) + '" fill="url(#' + g + ')" stroke="#8a6d28" stroke-width="' + (0.65 * s) + '"/>' +
+        '<circle cx="' + (cx + 5.2 * s) + '" cy="' + cy + '" r="' + (3 * s) + '" fill="#f6e7b0"/>' +
+        "</g>";
     }
-    return `<g class="viz-lock">
-      <rect x="${cx - 6 * s}" y="${cy - 4 * s}" width="${12 * s}" height="${10 * s}" rx="2" fill="#4d6472"/>
-      <path d="M ${cx - 3.5 * s} ${cy - 4 * s} v ${-5 * s} a ${3.5 * s} ${3.5 * s} 0 1 1 ${7 * s} 0 v ${5 * s}" fill="none" stroke="#4d6472" stroke-width="${1.6 * s}"/>
-    </g>`;
+    return '<g class="viz-lock">' +
+      '<rect x="' + (cx - 6.4 * s) + '" y="' + (cy - 4.8 * s) + '" width="' + (12.8 * s) + '" height="' + (10.6 * s) + '" rx="' + (2 * s) + '" fill="url(#' + m + ')"/>' +
+      '<path d="M ' + (cx - 3.5 * s) + " " + (cy - 4.8 * s) + " v " + (-5.8 * s) + " a " + (3.5 * s) + " " + (3.5 * s) + " 0 1 1 " + (7 * s) + " 0 v " + (5.8 * s) + '" fill="none" stroke="url(#' + m + ')" stroke-width="' + (1.7 * s) + '"/>' +
+      "</g>";
   }
 
   function buildDiagram(opts) {
     const type = getType(opts.typeId);
     const color = getColor(opts.glassColor);
     const aluC = getAluColor(opts.aluColor);
+    const tint = glassTint(color);
     const isDoor = type.kind === "door";
+    const isSliding = String(type.id).indexOf("sliding") !== -1;
     const h = opts.heightFt > 0 ? opts.heightFt : (isDoor ? 7 : 5);
     const w = opts.widthFt > 0 ? opts.widthFt : (isDoor ? 3.5 : 4);
-    const shutters = type.shutters;
+    const shutters = Math.max(1, type.shutters || 1);
     const compact = Boolean(opts.compact);
-    const boxH = compact ? 118 : 240;
-    const boxW = Math.max(compact ? 48 : 80, Math.min(compact ? 88 : 300, boxH * (w / h)));
-    const padL = compact ? 8 : 54;
-    const padR = compact ? 8 : 14;
-    const padT = compact ? 8 : 16;
-    const padB = compact ? 8 : 42;
+    const boxH = compact ? 118 : 252;
+    const boxW = Math.max(compact ? 50 : 86, Math.min(compact ? 90 : 292, boxH * (w / h)));
+    const padL = compact ? 6 : 52;
+    const padR = compact ? 8 : 28;
+    const padT = compact ? 6 : 20;
+    const padB = compact ? 8 : 50;
     const svgW = boxW + padL + padR;
     const svgH = boxH + padT + padB;
     const x = padL;
     const y = padT;
     const uid = "g" + Math.random().toString(36).slice(2, 8);
-    const frame = 8;
-    const paneGap = shutters > 1 ? 6 : 0;
+    const frame = compact ? 5 : 10;
+    const sash = compact ? 2.5 : 4.4;
+    const overlap = isSliding && shutters > 1 ? (compact ? 7 : 13) : 0;
+    const paneGap = !isSliding && shutters > 1 ? (compact ? 4 : 7) : 0;
+    const innerX = x + frame;
+    const innerY = y + frame;
     const innerW = boxW - frame * 2;
-    const innerH = boxH - frame * 2 - (isDoor ? 10 : 0);
-    const paneW = (innerW - paneGap * (shutters - 1)) / shutters;
+    const innerH = boxH - frame * 2;
+    const paneW = (innerW + overlap * (shutters - 1) - paneGap * (shutters - 1)) / shutters;
+    const hasKick = isDoor && type.id !== "door-sliding";
+    const glassH = hasKick ? innerH * 0.62 : innerH;
+    const lockS = compact ? 0.58 : 1;
+    const clipId = uid + "open";
+
+    let defs = "" +
+      '<linearGradient id="' + uid + 'aluV" x1="0" y1="0" x2="0" y2="1">' +
+        '<stop offset="0%" stop-color="' + aluC.light + '"/>' +
+        '<stop offset="42%" stop-color="' + aluC.mid + '"/>' +
+        '<stop offset="100%" stop-color="' + aluC.dark + '"/>' +
+      "</linearGradient>" +
+      '<linearGradient id="' + uid + 'aluH" x1="0" y1="0" x2="1" y2="0">' +
+        '<stop offset="0%" stop-color="' + aluC.light + '"/>' +
+        '<stop offset="50%" stop-color="' + aluC.mid + '"/>' +
+        '<stop offset="100%" stop-color="' + aluC.dark + '"/>' +
+      "</linearGradient>" +
+      '<linearGradient id="' + uid + 'sheen" x1="0" y1="0" x2="1" y2="1">' +
+        '<stop offset="0%" stop-color="#fff" stop-opacity="0.5"/>' +
+        '<stop offset="28%" stop-color="#fff" stop-opacity="0.12"/>' +
+        '<stop offset="100%" stop-color="#fff" stop-opacity="0"/>' +
+      "</linearGradient>" +
+      '<radialGradient id="' + uid + 'glow" cx="78%" cy="16%" r="42%">' +
+        '<stop offset="0%" stop-color="#fff7d0" stop-opacity="0.55"/>' +
+        '<stop offset="100%" stop-color="#fff7d0" stop-opacity="0"/>' +
+      "</radialGradient>" +
+      '<linearGradient id="' + uid + 'sky" x1="0" y1="0" x2="0" y2="1">' +
+        '<stop offset="0%" stop-color="#8ec8ea"/>' +
+        '<stop offset="48%" stop-color="#c7e6f6"/>' +
+        '<stop offset="100%" stop-color="#e7f3d8"/>' +
+      "</linearGradient>" +
+      '<linearGradient id="' + uid + 'wall" x1="0" y1="0" x2="0" y2="1">' +
+        '<stop offset="0%" stop-color="#efe7db"/>' +
+        '<stop offset="70%" stop-color="#e4d8c8"/>' +
+        '<stop offset="100%" stop-color="#cbb8a2"/>' +
+      "</linearGradient>" +
+      '<linearGradient id="' + uid + 'hwm" x1="0" y1="0" x2="1" y2="1">' +
+        '<stop offset="0%" stop-color="#f3f5f6"/>' +
+        '<stop offset="100%" stop-color="#6b7780"/>' +
+      "</linearGradient>" +
+      '<linearGradient id="' + uid + 'hwg" x1="0" y1="0" x2="0" y2="1">' +
+        '<stop offset="0%" stop-color="#f7e7b2"/>' +
+        '<stop offset="55%" stop-color="#d4b56a"/>' +
+        '<stop offset="100%" stop-color="#8a6d28"/>' +
+      "</linearGradient>" +
+      '<pattern id="' + uid + 'net" width="5" height="5" patternUnits="userSpaceOnUse">' +
+        '<path d="M0 0 H5 M0 0 V5" stroke="#1a3324" stroke-width="0.35" opacity="0.45"/>' +
+      "</pattern>" +
+      '<pattern id="' + uid + 'brush" width="4" height="10" patternUnits="userSpaceOnUse">' +
+        '<rect width="4" height="10" fill="' + aluC.mid + '"/>' +
+        '<path d="M0 0 L4 10" stroke="' + aluC.light + '" stroke-width="0.45" opacity="0.35"/>' +
+        '<path d="M2 0 L4 5" stroke="' + aluC.dark + '" stroke-width="0.25" opacity="0.2"/>' +
+      "</pattern>" +
+      '<filter id="' + uid + 'sh" x="-18%" y="-12%" width="136%" height="140%">' +
+        '<feDropShadow dx="0" dy="7" stdDeviation="6" flood-color="#2a2218" flood-opacity="0.26"/>' +
+      "</filter>" +
+      '<clipPath id="' + clipId + '"><rect x="' + innerX + '" y="' + innerY + '" width="' + innerW + '" height="' + innerH + '"/></clipPath>';
+
+    let scene = "";
+    if (!compact) {
+      scene += '<rect x="0" y="0" width="' + svgW + '" height="' + svgH + '" fill="url(#' + uid + 'wall)"/>';
+      scene += '<rect x="0" y="0" width="' + svgW + '" height="' + (svgH * 0.22) + '" fill="#fff" opacity="0.18"/>';
+      scene += '<rect x="0" y="' + (svgH - 18) + '" width="' + svgW + '" height="18" fill="#9a8772" opacity="0.35"/>';
+    }
+
+    const depth = compact ? 4 : 11;
+    if (!compact) {
+      scene += '<rect x="' + (x - 7) + '" y="' + (y - 7) + '" width="' + (boxW + 14) + '" height="' + (boxH + 16) + '" rx="3" fill="#b9a48c" opacity="0.4"/>';
+      scene += '<rect x="' + (x - 4) + '" y="' + (y - 4) + '" width="' + (boxW + 8) + '" height="' + (boxH + 10) + '" rx="2.4" fill="#8f7a64" opacity="0.22"/>';
+    }
+    scene += '<path d="M ' + (x + boxW) + " " + y + " L " + (x + boxW + depth) + " " + (y + depth * 0.35) + " L " + (x + boxW + depth) + " " + (y + boxH + depth * 0.35) + " L " + (x + boxW) + " " + (y + boxH) + ' Z" fill="' + aluC.dark + '"/>';
+    scene += '<path d="M ' + x + " " + (y + boxH) + " L " + (x + boxW) + " " + (y + boxH) + " L " + (x + boxW + depth) + " " + (y + boxH + depth * 0.35) + " L " + (x + depth) + " " + (y + boxH + depth * 0.35) + ' Z" fill="' + aluC.mid + '"/>';
+    scene += '<g filter="url(#' + uid + 'sh)">';
+    scene += '<rect x="' + x + '" y="' + y + '" width="' + boxW + '" height="' + boxH + '" rx="1.8" fill="url(#' + uid + 'brush)"/>';
+    scene += "</g>";
+    scene += '<rect x="' + (x + 2.2) + '" y="' + (y + 2.2) + '" width="' + (boxW - 4.4) + '" height="' + (boxH - 4.4) + '" rx="1.2" fill="url(#' + uid + 'aluV)"/>';
+    scene += '<rect x="' + (x + 1.4) + '" y="' + (y + 1.4) + '" width="' + (boxW - 2.8) + '" height="2.4" fill="#fff" opacity="0.38"/>';
+    scene += '<rect x="' + (x + 1.4) + '" y="' + (y + 1.4) + '" width="2.2" height="' + (boxH - 2.8) + '" fill="#fff" opacity="0.2"/>';
+    scene += '<rect x="' + (x + 2) + '" y="' + (y + boxH - 3.4) + '" width="' + (boxW - 4) + '" height="2" fill="#000" opacity="0.18"/>';
+
+    scene += '<g clip-path="url(#' + clipId + ')">' + drawOutdoor(innerX, innerY, innerW, innerH, uid) + "</g>";
+    scene += '<rect x="' + innerX + '" y="' + innerY + '" width="' + innerW + '" height="' + innerH + '" fill="#041018" opacity="0.08"/>';
+
+    const order = [];
+    for (let i = 0; i < shutters; i += 1) order.push(i);
+    if (isSliding && shutters === 2) order.reverse();
 
     let panes = "";
-    for (let i = 0; i < shutters; i += 1) {
-      const px = x + frame + i * (paneW + paneGap);
-      const py = y + frame;
-      const glassH = isDoor && type.id !== "door-sliding" ? innerH * 0.68 : innerH;
-      panes += `<rect class="viz-glass" x="${px}" y="${py}" width="${paneW}" height="${glassH}" fill="url(#${uid})"/>`;
+    order.forEach(function (i) {
+      const px = innerX + i * (paneW - overlap + paneGap);
+      const py = innerY;
+      const paneClip = uid + "p" + i;
+      defs += '<clipPath id="' + paneClip + '"><rect x="' + px + '" y="' + py + '" width="' + paneW + '" height="' + glassH + '" rx="0.8"/></clipPath>';
+      panes += '<rect x="' + px + '" y="' + py + '" width="' + paneW + '" height="' + sash + '" fill="url(#' + uid + 'aluH)"/>';
+      panes += '<rect x="' + px + '" y="' + (py + glassH - sash) + '" width="' + paneW + '" height="' + sash + '" fill="url(#' + uid + 'aluH)"/>';
+      panes += '<rect x="' + px + '" y="' + py + '" width="' + sash + '" height="' + glassH + '" fill="url(#' + uid + 'aluV)"/>';
+      panes += '<rect x="' + (px + paneW - sash) + '" y="' + py + '" width="' + sash + '" height="' + glassH + '" fill="url(#' + uid + 'aluV)"/>';
+      panes += '<rect x="' + (px + sash) + '" y="' + (py + sash) + '" width="' + Math.max(2, paneW - sash * 2) + '" height="' + Math.max(2, glassH - sash * 2) + '" fill="' + tint.fill + '" opacity="' + tint.op + '"/>';
+      panes += '<g clip-path="url(#' + paneClip + ')">';
+      panes += '<rect x="' + px + '" y="' + py + '" width="' + paneW + '" height="' + glassH + '" fill="url(#' + uid + 'sheen)"/>';
+      panes += '<rect x="' + px + '" y="' + py + '" width="' + paneW + '" height="' + glassH + '" fill="url(#' + uid + 'glow)" opacity="0.45"/>';
+      panes += '<path d="M ' + (px + paneW * 0.07) + " " + (py + sash + 1) + " L " + (px + paneW * 0.4) + " " + (py + sash + 1) + " L " + (px + paneW * 0.2) + " " + (py + glassH - sash) + " L " + (px + sash + 1) + " " + (py + glassH - sash) + ' Z" fill="#fff" opacity="' + (color.id === "frosted" ? 0.26 : 0.2) + '"/>';
+      panes += '<rect x="' + (px + sash + 0.6) + '" y="' + (py + sash + 0.6) + '" width="1.5" height="' + Math.max(2, glassH - sash * 2 - 1.2) + '" fill="#fff" opacity="0.28"/>';
       if (opts.hasNet) {
-        panes += `<rect class="viz-net" x="${px}" y="${py}" width="${paneW}" height="${glassH}" fill="url(#${uid}net)" opacity="0.85"/>`;
+        panes += '<rect x="' + px + '" y="' + py + '" width="' + paneW + '" height="' + glassH + '" fill="url(#' + uid + 'net)" opacity="0.8"/>';
       }
       if (color.id === "frosted") {
-        panes += `<rect x="${px}" y="${py}" width="${paneW}" height="${glassH}" fill="#fff" opacity="0.28"/>`;
+        panes += '<rect x="' + px + '" y="' + py + '" width="' + paneW + '" height="' + glassH + '" fill="#fff" opacity="0.2"/>';
       }
-      if (isDoor && type.id !== "door-sliding") {
-        panes += `<rect x="${px}" y="${py + glassH + 4}" width="${paneW}" height="${innerH - glassH - 4}" fill="${aluC.mid}"/>`;
+      panes += "</g>";
+      panes += '<rect x="' + (px + 0.7) + '" y="' + (py + 0.7) + '" width="' + (paneW - 1.4) + '" height="' + (glassH - 1.4) + '" fill="none" stroke="' + aluC.dark + '" stroke-width="0.8" opacity="0.35"/>';
+      if (hasKick) {
+        const ky = py + glassH + 1.5;
+        const kh = innerH - glassH - 1.5;
+        panes += '<rect x="' + px + '" y="' + ky + '" width="' + paneW + '" height="' + kh + '" fill="url(#' + uid + 'aluV)"/>';
+        panes += '<rect x="' + (px + sash + 1.5) + '" y="' + (ky + 5) + '" width="' + Math.max(4, paneW - sash * 2 - 3) + '" height="' + Math.max(8, kh - 10) + '" rx="1.4" fill="' + aluC.dark + '" opacity="0.22"/>';
+        panes += '<rect x="' + (px + sash + 3) + '" y="' + (ky + 7) + '" width="' + Math.max(2, paneW - sash * 2 - 6) + '" height="' + Math.max(4, kh - 14) + '" rx="1" fill="' + aluC.light + '" opacity="0.12"/>';
       }
-      if (i < shutters - 1) {
-        panes += `<rect x="${px + paneW}" y="${y}" width="${paneGap}" height="${boxH}" fill="${aluC.mid}"/>`;
-      }
-    }
+    });
 
     let extras = "";
-    if (isDoor && (type.id === "door-single" || type.id === "door-double")) {
-      extras += `<rect x="${x}" y="${y + boxH - 6}" width="${boxW}" height="6" fill="#3d5c6a"/>`;
+    if (isSliding) {
+      extras += '<rect x="' + innerX + '" y="' + (innerY + innerH - 3.2) + '" width="' + innerW + '" height="3.2" fill="' + aluC.dark + '" opacity="0.55"/>';
+      extras += '<rect x="' + innerX + '" y="' + (innerY + innerH - 2.1) + '" width="' + innerW + '" height="1" fill="#111" opacity="0.25"/>';
     }
-    extras += drawLock(opts.lockStyle || "none", x, y, boxW, boxH, compact);
+    extras += '<rect x="' + x + '" y="' + y + '" width="' + boxW + '" height="' + boxH + '" rx="2.4" fill="none" stroke="' + aluC.dark + '" stroke-width="1.6"/>';
+
+    const sillH = compact ? 3.5 : 7;
+    const sillOver = compact ? 3 : 6;
+    extras += '<rect x="' + (x - sillOver) + '" y="' + (y + boxH - 1) + '" width="' + (boxW + sillOver * 2) + '" height="' + sillH + '" rx="1" fill="url(#' + uid + 'aluH)"/>';
+    extras += '<rect x="' + (x - sillOver) + '" y="' + (y + boxH - 1) + '" width="' + (boxW + sillOver * 2) + '" height="1.4" fill="#fff" opacity="0.22"/>';
+
+    let lx;
+    let ly = y + (hasKick ? boxH * 0.4 : boxH * 0.48);
+    if (isSliding && shutters > 1) {
+      lx = innerX + paneW - overlap * 0.5;
+    } else if (type.id === "door-double") {
+      lx = x + boxW * 0.5 - (compact ? 6 : 10);
+    } else {
+      lx = x + boxW - frame - (compact ? 8 : 14);
+    }
+    extras += drawLock(opts.lockStyle || "none", lx, ly, lockS, uid);
 
     let dims = "";
     if (!compact) {
-      const hx = 18;
-      dims += `
-        <line x1="${hx}" y1="${y}" x2="${hx}" y2="${y + boxH}" stroke="#1f6f92" stroke-width="1.2"/>
-        <line x1="${hx - 4}" y1="${y}" x2="${hx + 4}" y2="${y}" stroke="#1f6f92"/>
-        <line x1="${hx - 4}" y1="${y + boxH}" x2="${hx + 4}" y2="${y + boxH}" stroke="#1f6f92"/>
-        <text x="${hx - 8}" y="${y + boxH / 2}" fill="#134a63" font-size="11" font-family="Hind Siliguri, sans-serif" text-anchor="middle" transform="rotate(-90 ${hx - 8} ${y + boxH / 2})">${escapeHtml(ftInLabel(h))}</text>
-        <line x1="${x}" y1="${y + boxH + 22}" x2="${x + boxW}" y2="${y + boxH + 22}" stroke="#1f6f92" stroke-width="1.2"/>
-        <line x1="${x}" y1="${y + boxH + 18}" x2="${x}" y2="${y + boxH + 26}" stroke="#1f6f92"/>
-        <line x1="${x + boxW}" y1="${y + boxH + 18}" x2="${x + boxW}" y2="${y + boxH + 26}" stroke="#1f6f92"/>
-        <text x="${x + boxW / 2}" y="${y + boxH + 38}" fill="#134a63" font-size="11" font-family="Hind Siliguri, sans-serif" text-anchor="middle">${escapeHtml(ftInLabel(w))}</text>
-      `;
+      const hx = 20;
+      const labelH = escapeHtml(ftInLabel(h));
+      const labelW = escapeHtml(ftInLabel(w));
+      dims +=
+        '<line x1="' + hx + '" y1="' + y + '" x2="' + hx + '" y2="' + (y + boxH) + '" stroke="#0a4456" stroke-width="1.1"/>' +
+        '<line x1="' + (hx - 4) + '" y1="' + y + '" x2="' + (hx + 4) + '" y2="' + y + '" stroke="#0a4456"/>' +
+        '<line x1="' + (hx - 4) + '" y1="' + (y + boxH) + '" x2="' + (hx + 4) + '" y2="' + (y + boxH) + '" stroke="#0a4456"/>' +
+        '<rect x="' + (hx - 20) + '" y="' + (y + boxH / 2 - 14) + '" width="26" height="28" rx="8" fill="#0a4456"/>' +
+        '<text x="' + (hx - 7) + '" y="' + (y + boxH / 2 + 1) + '" fill="#fff" font-size="9.5" font-family="Hind Siliguri, sans-serif" text-anchor="middle" dominant-baseline="middle" transform="rotate(-90 ' + (hx - 7) + " " + (y + boxH / 2) + ')">' + labelH + "</text>" +
+        '<line x1="' + x + '" y1="' + (y + boxH + 26) + '" x2="' + (x + boxW) + '" y2="' + (y + boxH + 26) + '" stroke="#0a4456" stroke-width="1.1"/>' +
+        '<line x1="' + x + '" y1="' + (y + boxH + 22) + '" x2="' + x + '" y2="' + (y + boxH + 30) + '" stroke="#0a4456"/>' +
+        '<line x1="' + (x + boxW) + '" y1="' + (y + boxH + 22) + '" x2="' + (x + boxW) + '" y2="' + (y + boxH + 30) + '" stroke="#0a4456"/>' +
+        '<rect x="' + (x + boxW / 2 - 36) + '" y="' + (y + boxH + 17) + '" width="72" height="17" rx="8" fill="#0a4456"/>' +
+        '<text x="' + (x + boxW / 2) + '" y="' + (y + boxH + 26) + '" fill="#fff" font-size="9.5" font-family="Hind Siliguri, sans-serif" text-anchor="middle" dominant-baseline="middle">' + labelW + "</text>";
     }
 
-    return `
-      <svg viewBox="0 0 ${svgW} ${svgH}" xmlns="http://www.w3.org/2000/svg" role="img">
-        <defs>
-          <linearGradient id="${uid}" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="${color.light}"/>
-            <stop offset="48%" stop-color="${color.mid}"/>
-            <stop offset="100%" stop-color="${color.dark}"/>
-          </linearGradient>
-          <pattern id="${uid}net" width="7" height="7" patternUnits="userSpaceOnUse">
-            <path d="M0 0 L7 7 M7 0 L0 7" stroke="#1d3d2c" stroke-width="0.55" opacity="0.55"/>
-          </pattern>
-        </defs>
-        <rect x="${x}" y="${y}" width="${boxW}" height="${boxH}" rx="3" fill="${aluC.mid}"/>
-        ${panes}
-        ${extras}
-        <rect x="${x}" y="${y}" width="${boxW}" height="${boxH}" rx="3" fill="none" stroke="${aluC.dark}" stroke-width="2"/>
-        ${dims}
-      </svg>
-    `;
+    return (
+      '<svg class="viz-unit" viewBox="0 0 ' + svgW + " " + svgH + '" xmlns="http://www.w3.org/2000/svg" role="img">' +
+        "<defs>" + defs + "</defs>" +
+        scene +
+        panes +
+        extras +
+        dims +
+      "</svg>"
+    );
   }
 
   function diagramOpts(extra) {
@@ -1440,12 +2240,14 @@
     const widthFt = inputSizeFt("w");
     const hasSize = hasQty && heightFt > 0 && widthFt > 0 && heightFt <= 40 && widthFt <= 40;
     const qtyBox = $("in-qty") && $("in-qty").closest(".field");
+    const roomBox = $("in-room") && $("in-room").closest(".field");
     const sizeBox = wrap.querySelector(".size-row");
     lockBox(qtyBox, !hasType);
+    lockBox(roomBox, !hasType);
     lockBox(sizeBox, !hasQty);
     let afterSize = false;
     [...wrap.children].forEach((child) => {
-      if (child === qtyBox) return;
+      if (child === qtyBox || child === roomBox) return;
       if (child.classList.contains("size-row")) {
         afterSize = true;
         return;
@@ -1502,7 +2304,8 @@
     el.innerHTML = thicks.map((mm) => {
       const exact = exactGlassCombo(name, mm, state.glassColor);
       const rows = exact ? [exact] : companyRows({ name: name, thick: mm });
-      return '<option value="' + mm + '">' + mm + " " + T.mm + rateSpan(rows) + "</option>";
+      const oos = glassMmOut(name, mm);
+      return '<option value="' + mm + '">' + mm + " " + T.mm + rateSpan(rows) + (oos ? " \u00b7 " + T.stockOut : "") + "</option>";
     }).join("");
     if (cur !== "") el.value = String(cur);
     else if (thicks.length) el.value = String(thicks[0]);
@@ -1627,7 +2430,7 @@
 
   function comboHeadHtml(kind) {
     const colorHead = kind === "alu" ? T.aluColor : T.glassColor;
-    return '<div class="rate-head"><span></span><span>' + T.aluNamePh + "</span><span>" + T.thickness + "</span><span>" + colorHead + "</span><span>" + T.aluRatePh + "</span><span></span></div>";
+    return '<div class="rate-head"><span class="drag-handle" aria-hidden="true"></span><span class="name">' + T.aluNamePh + "</span><span class=\"col-mm\">" + T.thickness + "</span><span class=\"col-color\">" + colorHead + "</span><span class=\"col-rate\">" + T.aluRatePh + "</span><span class=\"rate-actions\"></span></div>";
   }
 
   function joinPipe(parts) {
@@ -1649,7 +2452,12 @@
     const thicks = uniqueNums(rows.map((x) => x.thickness));
     const colors = uniqueIds(rows.map((x) => kind === "alu" ? normalizeAluColorId(x.color) : normalizeColorId(x.color)));
     const colorText = joinPipe(colors.map((id) => kind === "alu" ? aluColorLabel(id) : colorLabel(id)));
-    const thickText = joinPipe(thicks.map((mm) => mm + T.mm));
+    const thickText = kind === "company"
+      ? thicks.map(function (mm) {
+          const out = rows.some(function (r) { return Number(r.thickness) === Number(mm) && r.out; });
+          return '<span class="mm-stock' + (out ? " is-out" : "") + '">' + escapeHtml(mm + T.mm + " (" + (out ? T.stockOut : T.stockIn) + ")") + "</span>";
+        }).join("")
+      : escapeHtml(joinPipe(thicks.map((mm) => mm + T.mm)));
     const rateText = groupRateText(rows);
     const rateVal = state.edit.rate != null ? state.edit.rate : item.rate;
     const attrs = ' data-index="' + i + '" data-group="' + escapeHtml(item.name) + '"';
@@ -1657,16 +2465,17 @@
       return '<div class="rate-row is-combo editing"' + attrs + ">" +
         '<span class="drag-handle" aria-hidden="true">' + ico("grip") + "</span>" +
         '<input class="edit-name" type="text" value="' + escapeHtml(item.name) + '">' +
-        '<div class="msel" id="msel-edit-thick"><button type="button" class="msel-toggle" id="edit-thick-toggle"></button><div class="msel-panel" id="edit-thicks"></div></div>' +
-        '<div class="msel" id="msel-edit-color"><button type="button" class="msel-toggle" id="edit-color-toggle"></button><div class="msel-panel" id="edit-colors"></div></div>' +
+        '<div class="msel edit-thick" id="msel-edit-thick"><button type="button" class="msel-toggle" id="edit-thick-toggle"></button><div class="msel-panel" id="edit-thicks"></div></div>' +
+        '<div class="msel edit-color" id="msel-edit-color"><button type="button" class="msel-toggle" id="edit-color-toggle"></button><div class="msel-panel" id="edit-colors"></div></div>' +
         '<input class="edit-rate" type="number" min="0" step="1" value="' + escapeHtml(rateVal) + '">' +
         editSaveCancel(kind, i) + "</div>";
     }
+    const colorHead = kind === "alu" ? T.aluColor : T.glassColor;
     return '<div class="rate-row is-combo"' + attrs + '><span class="drag-handle" aria-hidden="true">' + ico("grip") + "</span>" +
       '<span class="name">' + escapeHtml(item.name) + "</span>" +
-      '<span class="col-mm">' + escapeHtml(thickText) + "</span>" +
-      '<span class="col-color">' + escapeHtml(colorText) + "</span>" +
-      '<span class="price">' + rateText + "</span>" +
+      '<span class="col-mm" data-label="' + escapeHtml(T.thickness) + '"><span class="col-val">' + thickText + "</span></span>" +
+      '<span class="col-color" data-label="' + escapeHtml(colorHead) + '"><span class="col-val">' + escapeHtml(colorText) + "</span></span>" +
+      '<span class="col-rate" data-label="' + escapeHtml(T.aluRatePh) + '"><span class="price">' + rateText + "</span></span>" +
       editAndDelete(kind, i) + "</div>";
   }
 
@@ -1677,7 +2486,7 @@
     const palette = kind === "alu" ? ALU_COLORS : GLASS_COLORS;
     const thicks = state.edit.thicks || [];
     const colors = state.edit.colors || [];
-    renderThickPanel("edit-thicks", presets, thicks, "edit-thick", kind === "alu" ? "alu" : "company");
+    renderThickPanel("edit-thicks", presets, thicks, "edit-thick", kind === "alu" ? "alu" : "company", kind === "company" ? (state.edit.outs || []) : []);
     renderColorPanel("edit-colors", palette, colors);
     if ($("edit-thick-toggle")) $("edit-thick-toggle").textContent = mselLabel(thicks.map((mm) => mm + T.mm));
     if ($("edit-color-toggle")) $("edit-color-toggle").textContent = mselLabel(colors.map((id) => kind === "alu" ? aluColorLabel(id) : colorLabel(id)));
@@ -1702,6 +2511,19 @@
       const addMm = e.target.closest(".msel-add-mm");
       if (addMm) {
         addEditThick();
+        return;
+      }
+      const stock = e.target.closest(".msel-stock");
+      if (stock) {
+        if (!state.edit.outs) state.edit.outs = [];
+        const mm = stock.dataset.stockMm;
+        togglePick(state.edit.outs, mm, true);
+        if (!state.edit.thicks) state.edit.thicks = [];
+        if (state.edit.thicks.every(function (t) { return Number(t) !== Number(mm); })) {
+          state.edit.thicks.push(Number(mm));
+          state.edit.thicks.sort(function (a, b) { return a - b; });
+        }
+        renderEditPicks();
         return;
       }
       const btn = e.target.closest(".msel-opt");
@@ -1854,18 +2676,19 @@
 
   function editAndDelete(kind, i) {
     return '<span class="rate-actions"><button type="button" class="icon-btn ghost compact" data-action="edit-' + kind + '" data-index="' + i + '">' + ico("pencil") + "<span>" + T.editBtn + "</span></button>" +
-      '<button type="button" class="danger-ghost icon-btn" data-action="remove-' + kind + '" data-index="' + i + '">' + ico("trash") + "<span>" + T.muchun + "</span></button></span>";
+      '<button type="button" class="danger-ghost icon-btn compact" data-action="remove-' + kind + '" data-index="' + i + '">' + ico("trash") + "<span>" + T.muchun + "</span></button></span>";
   }
 
   function cancelEdit(silent) {
     const was = state.edit.kind;
-    state.edit = { kind: "", index: -1, name: "", rate: null, thicks: [], colors: [] };
+    state.edit = { kind: "", index: -1, name: "", rate: null, thicks: [], colors: [], outs: [] };
     if (was === "company") {
       if ($("new-company-name")) $("new-company-name").value = "";
       if ($("new-company-rate")) $("new-company-rate").value = "";
       if ($("new-company-thick")) $("new-company-thick").value = "";
       state.adminPick.companyThicks = [5];
       state.adminPick.companyColors = ["clear"];
+      state.adminPick.companyOut = [];
     }
     if (was === "alu") {
       if ($("new-alu-name")) $("new-alu-name").value = "";
@@ -1899,7 +2722,8 @@
       name: item.name || "",
       rate: item.rate,
       thicks: uniqueNums(siblings.map((x) => x.thickness)),
-      colors: uniqueIds(siblings.map((x) => kind === "alu" ? normalizeAluColorId(x.color) : normalizeColorId(x.color)))
+      colors: uniqueIds(siblings.map((x) => kind === "alu" ? normalizeAluColorId(x.color) : normalizeColorId(x.color))),
+      outs: kind === "company" ? uniqueNums(siblings.filter(function (x) { return x.out; }).map(function (x) { return x.thickness; })) : []
     };
     if (kind === "company") renderRateList("company-list", state.companies, "company");
     else if (kind === "alu") renderAluList();
@@ -1928,7 +2752,7 @@
     if (kind === "lock") {
       const style = rowInput(row, "edit-style") || "generic";
       state.locks[index] = { name: name, rate: rate, style: style };
-      state.edit = { kind: "", index: -1, name: "", rate: null, thicks: [], colors: [] };
+      state.edit = { kind: "", index: -1, name: "", rate: null, thicks: [], colors: [], outs: [] };
       renderRateList("lock-list", state.locks, "lock");
       renderLockSelect();
       renderLivePreview(true);
@@ -1941,8 +2765,8 @@
     if (!Number.isNaN(extra) && extra > 0 && thicks.every((t) => Number(t) !== extra)) thicks.push(extra);
     const colors = (state.edit.colors || []).map((id) => kind === "alu" ? normalizeAluColorId(id) : normalizeColorId(id));
     if (!thicks.length || !colors.length) { flashNote(T.errNeedPick, true); return; }
-    replaceCombos(list, state.edit.name, name, thicks, colors, rate, state.edit.rate);
-    state.edit = { kind: "", index: -1, name: "", rate: null, thicks: [], colors: [] };
+    replaceCombos(list, state.edit.name, name, thicks, colors, rate, state.edit.rate, kind === "company" ? (state.edit.outs || []) : null);
+    state.edit = { kind: "", index: -1, name: "", rate: null, thicks: [], colors: [], outs: [] };
     if (kind === "company") {
       renderRateList("company-list", state.companies, "company");
       renderCompanySelect();
@@ -1962,7 +2786,7 @@
     else if (action === "save-" + kind) saveEdited(kind, index);
     else if (action === "cancel-edit") cancelEdit();
     else if (action === "remove-" + kind) {
-      if (state.edit.kind === kind) state.edit = { kind: "", index: -1, name: "", rate: null, thicks: [], colors: [] };
+      if (state.edit.kind === kind) state.edit = { kind: "", index: -1, name: "", rate: null, thicks: [], colors: [], outs: [] };
       if (kind === "company") removeCompany(index);
       else if (kind === "alu") removeAluminium(index);
       else if (kind === "lock") removeLock(index);
@@ -2247,6 +3071,7 @@
     listEl.innerHTML = state.items.map((item, i) => {
       const type = getType(item.winType);
       const extras = [
+        item.room || "",
         item.thickness ? T.thickness + " " + item.thickness + T.mm : "",
         colorLabel(item.glassColor),
         item.lockName ? T.lock + ": " + item.lockName : T.noLock,
@@ -2257,8 +3082,9 @@
           <div class="item-thumb">${itemDiagram(item, true)}</div>
           <div>
             <div class="item-head">
-              <span class="tag">${kindLabel(type.kind)} ${i + 1} x ${item.qty} - ${escapeHtml(type.label)}</span>
+              <span class="tag">${kindLabel(type.kind)} ${i + 1} x ${item.qty} - ${escapeHtml(type.label)}${item.room ? " · " + escapeHtml(item.room) : ""}</span>
               <span class="item-actions">
+              <button type="button" class="secondary icon-btn compact" data-action="edit-item" data-index="${i}">${T.editBtn}</button>
               ${isStaff() ? '<button type="button" class="secondary icon-btn compact cut-toggle" data-action="toggle-cut" data-index="' + i + '">' + cutToggleLabel(false) + '</button>' : ""}
               <button type="button" class="danger-ghost icon-btn compact" data-action="remove-item" data-index="${i}">${ico("trash")}<span>${T.muchun}</span></button>
               </span>
@@ -2319,7 +3145,7 @@
           <div class="item-thumb">${itemDiagram(item, true)}</div>
           <div>
             <div class="item-head">
-              <span class="tag">${kindLabel(type.kind)} ${i + 1} x ${item.qty} - ${escapeHtml(type.label)}</span>
+              <span class="tag">${kindLabel(type.kind)} ${i + 1} x ${item.qty} - ${escapeHtml(type.label)}${item.room ? " · " + escapeHtml(item.room) : ""}</span>
             </div>
             <div class="item-details">
               ${T.outerSize}: ${ftInLabel(item.heightFt)} x ${ftInLabel(item.widthFt)}
@@ -2408,7 +3234,7 @@
       lockRate: lock ? lock.rate : 0
     }, company, alu, lock);
 
-    state.items.push({
+    const nextItem = {
       heightFt,
       widthFt,
       qty,
@@ -2431,8 +3257,15 @@
       lockCost: priced.lockCost,
       frameCost: priced.frameCost,
       subtotal: priced.subtotal,
-      winType: state.selectedType
-    });
+      winType: state.selectedType,
+      room: cleanTextValue($("in-room") && $("in-room").value).slice(0, 40)
+    };
+    if (state.editItemIndex >= 0 && state.editItemIndex < state.items.length) {
+      state.items[state.editItemIndex] = nextItem;
+      state.editItemIndex = -1;
+    } else {
+      state.items.push(nextItem);
+    }
 
     storeSet(KEYS.items, state.items);
     renderItems();
@@ -2445,6 +3278,9 @@
       if ($(id)) $(id).value = "";
     });
     if ($("in-qty")) $("in-qty").value = "";
+    if ($("in-room")) $("in-room").value = "";
+    state.editItemIndex = -1;
+    updateAddItemBtn();
     syncCalcDetails();
   }
 
@@ -2489,8 +3325,15 @@
     if (Number.isNaN(rate)) { flashNote(T.errNeedNumber, true); return; }
     if (!thicks.length || !colors.length) { flashNote(T.errNeedPick, true); return; }
     if (nameEl) nameEl.value = name;
+    const outs = state.adminPick.companyOut || [];
     thicks.forEach((thickness) => {
-      colors.forEach((color) => upsertCombo(state.companies, { name: name, thickness: thickness, rate: rate, color: color }));
+      colors.forEach((color) => upsertCombo(state.companies, {
+        name: name,
+        thickness: thickness,
+        rate: rate,
+        color: color,
+        out: outs.some(function (m) { return Number(m) === Number(thickness); })
+      }));
     });
     $("new-company-name").value = "";
     if ($("new-company-thick")) $("new-company-thick").value = "";
@@ -3066,6 +3909,7 @@
       state.cutQuote = null;
       state.staff = [];
       state.quoteOpenId = "";
+      state.quoteSearch = "";
     }
     updateRoleUi();
   }
@@ -3397,7 +4241,8 @@
         lockCost: 0,
         frameCost: 0,
         subtotal: Number(it.total) || 0,
-        winType: typeIdFromQuote(it)
+        winType: typeIdFromQuote(it),
+        room: it.room || ""
       };
     }).filter((it) => it.heightFt > 0 && it.widthFt > 0);
   }
@@ -3433,33 +4278,60 @@
       if (state.adminPanel !== "quotes") card.classList.add("hidden");
       return;
     }
-    if (!state.quotes.length) {
+    var q = String(state.quoteSearch || "").trim().toLowerCase();
+    var filtered = (state.quotes || []).filter(function (row) {
+      if (!q) return true;
+      return [row.name, row.phone, row.id, row.assigned].some(function (v) {
+        return String(v || "").toLowerCase().indexOf(q) >= 0;
+      });
+    });
+    if (!filtered.length) {
       list.innerHTML = '<div class="empty-note">' + T.quotesEmpty + "</div>";
       if (state.adminPanel === "quotes") card.classList.remove("hidden");
       return;
     }
-    list.innerHTML = state.quotes.map(function (q) {
-      const open = state.quoteOpenId === q.id;
-      const lines = (q.lines || []).map(function (it) {
-        return '<div class="quote-line"><strong>' + escapeHtml(it.type || "") + "</strong>" +
-          '<span>' + escapeHtml(it.size || "") + " \u00b7 " + (it.qty || 1) + " " + T.ti + "</span>" +
-          '<span>' + escapeHtml([it.company, it.glassMm ? it.glassMm + T.mm : "", it.color].filter(Boolean).join(" \u00b7 ")) + "</span>" +
-          '<span>' + escapeHtml([it.aluminium, it.aluMm ? it.aluMm + T.mm : "", it.aluColor].filter(Boolean).join(" \u00b7 ")) + "</span>" +
-          '<span>' + escapeHtml([(it.lock && it.lock !== "-" ? it.lock : T.noLock), it.net ? T.net + " " + T.netYes : T.net + " " + T.netNo].join(" \u00b7 ")) +
-          (it.total ? " \u00b7 " + money(it.total) : "") + "</span></div>";
-      }).join("");
-      return '<div class="quote-card' + (open ? " is-open" : "") + '" data-quote-id="' + escapeHtml(q.id) + '">' +
-        '<div class="quote-row" data-action="toggle-quote" data-id="' + escapeHtml(q.id) + '">' +
-        '<span class="quote-mark"></span><div class="quote-main"><strong>' +
-        escapeHtml(q.name) + '</strong><span class="quote-phone">' + escapeHtml(q.phone) +
-        '</span></div><div class="quote-stats"><span>' + escapeHtml(formatQuoteTime(q.time)) + "</span><span>" +
-        (q.lines && q.lines.length ? q.lines.length : q.items) + " \u00b7 " + fmt(quoteSqft(q)) + T.sqLabel +
-        (quoteTotal(q) ? " \u00b7 " + money(quoteTotal(q)) : "") +
-        '</span></div><span class="quote-status">' + escapeHtml(q.status) + "</span></div>" +
-        (open ? '<div class="quote-detail">' + (lines || '<div class="empty-note">' + T.quotesEmpty + "</div>") +
-          '<button type="button" class="icon-btn secondary quote-cut-btn" data-action="quote-cut" data-id="' +
-          escapeHtml(q.id) + '">' + ico("cut") + "<span>" + T.cutInfo + "</span></button></div>" : "") +
-        "</div>";
+    var groups = [];
+    var map = {};
+    filtered.forEach(function (row) {
+      var key = phoneKey(row.phone) || row.id;
+      if (!map[key]) {
+        map[key] = { name: row.name, phone: row.phone, quotes: [] };
+        groups.push(map[key]);
+      }
+      map[key].quotes.push(row);
+      if (row.name) map[key].name = row.name;
+    });
+    list.innerHTML = groups.map(function (g) {
+      var head = g.quotes.length > 1
+        ? '<div class="quote-group-head"><strong>' + escapeHtml(g.name || "") + "</strong><span>" + escapeHtml(g.phone || "") + " \u00b7 " + g.quotes.length + " " + T.quotesOf + "</span></div>"
+        : "";
+      return '<div class="quote-group">' + head + g.quotes.map(function (row) {
+        const open = state.quoteOpenId === row.id;
+        const mine = String(row.assigned || "").toLowerCase() === String(state.ownerEmail || "").toLowerCase();
+        const lines = (row.lines || []).map(function (it) {
+          return '<div class="quote-line"><strong>' + escapeHtml([it.room, it.type].filter(Boolean).join(" \u00b7 ")) + "</strong>" +
+            '<span>' + escapeHtml(it.size || "") + " \u00b7 " + (it.qty || 1) + " " + T.ti + "</span>" +
+            '<span>' + escapeHtml([it.company, it.glassMm ? it.glassMm + T.mm : "", it.color].filter(Boolean).join(" \u00b7 ")) + "</span>" +
+            '<span>' + escapeHtml([it.aluminium, it.aluMm ? it.aluMm + T.mm : "", it.aluColor].filter(Boolean).join(" \u00b7 ")) + "</span>" +
+            '<span>' + escapeHtml([(it.lock && it.lock !== "-" ? it.lock : T.noLock), it.net ? T.net + " " + T.netYes : T.net + " " + T.netNo].join(" \u00b7 ")) +
+            (it.total ? " \u00b7 " + money(it.total) : "") + "</span></div>";
+        }).join("");
+        return '<div class="quote-card' + (open ? " is-open" : "") + (mine ? " is-mine" : "") + '" data-quote-id="' + escapeHtml(row.id) + '">' +
+          '<div class="quote-row" data-action="toggle-quote" data-id="' + escapeHtml(row.id) + '">' +
+          '<span class="quote-mark"></span><div class="quote-main"><strong>' +
+          escapeHtml(row.name) + '</strong><span class="quote-phone">' + escapeHtml(row.phone) +
+          '</span></div><div class="quote-stats"><span>' + escapeHtml(formatQuoteTime(row.time)) + "</span><span>" +
+          (row.lines && row.lines.length ? row.lines.length : row.items) + " \u00b7 " + fmt(quoteSqft(row)) + T.sqLabel +
+          (quoteTotal(row) ? " \u00b7 " + money(quoteTotal(row)) : "") +
+          '</span></div><span class="quote-status">' + escapeHtml(statusLabel(row.status)) + "</span></div>" +
+          (open ? '<div class="quote-detail">' + (lines || '<div class="empty-note">' + T.quotesEmpty + "</div>") +
+            '<div class="quote-tools">' +
+            '<label>' + T.dhoron + ' <select data-action="quote-status" data-id="' + escapeHtml(row.id) + '">' + statusOptions(row.status) + "</select></label>" +
+            '<label>' + T.assignStaff + ' <select data-action="quote-assign" data-id="' + escapeHtml(row.id) + '">' + staffOptions(row.assigned) + "</select></label>" +
+            '<button type="button" class="icon-btn secondary quote-cut-btn" data-action="quote-cut" data-id="' +
+            escapeHtml(row.id) + '">' + ico("cut") + "<span>" + T.cutInfo + "</span></button></div></div>" : "") +
+          "</div>";
+      }).join("") + "</div>";
     }).join("");
   }
 
@@ -3526,7 +4398,8 @@
           aluColorLabel: aluColorLabel(i.aluColor),
           lock: i.lockName || "",
           net: i.hasNet,
-          sqft: i.totalSqft
+          sqft: i.totalSqft,
+          room: i.room || ""
         };
       })
     }).then(function (data) {
@@ -3542,6 +4415,7 @@
       }
       okEl.textContent = T.quoteOk + (data.id ? " (" + data.id + ")" : "");
       okEl.classList.remove("hidden");
+      showQuoteShare(data.id);
     }).catch(function () {
       if (btn) btn.disabled = false;
       showLoader(false);
@@ -3700,7 +4574,7 @@
     if ($("print-sub")) $("print-sub").textContent = shopOf(state.shop).slogan;
     if ($("print-date-label")) $("print-date-label").textContent = T.printDate;
     if ($("print-date")) {
-      $("print-date").textContent = new Date().toLocaleDateString("bn-BD", {
+      $("print-date").textContent = new Date().toLocaleDateString(state.lang === "en" ? "en-GB" : "bn-BD", {
         day: "numeric",
         month: "long",
         year: "numeric"
@@ -3847,10 +4721,23 @@
 
     if ($("quotes-list")) {
       $("quotes-list").addEventListener("click", (e) => {
+        if (e.target.closest("select") || e.target.closest("a")) return;
         const btn = e.target.closest("[data-action]");
         if (!btn) return;
         if (btn.dataset.action === "toggle-quote") toggleQuote(btn.dataset.id);
         if (btn.dataset.action === "quote-cut") openQuoteCutting(btn.dataset.id);
+      });
+      $("quotes-list").addEventListener("change", (e) => {
+        const el = e.target.closest("select[data-action]");
+        if (!el) return;
+        if (el.dataset.action === "quote-status") patchQuote(el.dataset.id, { status: el.value });
+        if (el.dataset.action === "quote-assign") patchQuote(el.dataset.id, { assigned: el.value });
+      });
+    }
+    if ($("quote-search")) {
+      $("quote-search").addEventListener("input", function () {
+        state.quoteSearch = this.value || "";
+        renderQuotes();
       });
     }
     if ($("btn-clear-cut-quote")) $("btn-clear-cut-quote").addEventListener("click", clearQuoteCutting);
@@ -3859,9 +4746,19 @@
       if (!btn) return;
       const index = Number(btn.dataset.index);
       if (btn.dataset.action === "remove-item") removeItem(index);
+      if (btn.dataset.action === "edit-item") startEditItem(index);
       if (btn.dataset.action === "toggle-cut") toggleCutList(index);
     });
-    $("company-list").addEventListener("click", (e) => handleRateListClick("company", e));
+    if ($("btn-cancel-item")) $("btn-cancel-item").addEventListener("click", function () { clearInputs(); });
+    $("company-list").addEventListener("click", (e) => {
+      const stock = e.target.closest("[data-action='toggle-stock']");
+      if (stock) {
+        e.preventDefault();
+        toggleGlassStock(stock.dataset.name, stock.dataset.mm);
+        return;
+      }
+      handleRateListClick("company", e);
+    });
     $("lock-list").addEventListener("click", (e) => handleRateListClick("lock", e));
     $("alu-list").addEventListener("click", (e) => handleRateListClick("alu", e));
     ["company-list", "alu-list", "lock-list"].forEach(function (id) {
@@ -3948,6 +4845,13 @@
     $("quote-phone").addEventListener("keydown", function (e) {
       if (e.key === "Enter") sendQuote();
     });
+    if ($("btn-copy-link")) $("btn-copy-link").addEventListener("click", copyQuoteLink);
+    if ($("btn-lang")) {
+      $("btn-lang").addEventListener("click", function () {
+        applyLang(state.lang === "en" ? "bn" : "en");
+      });
+    }
+    if ($("btn-quote-view-close")) $("btn-quote-view-close").addEventListener("click", closeQuoteView);
   }
 
   async function init() {
@@ -3966,12 +4870,16 @@
     const savedShop = await storeGet(KEYS.shop);
     applyShop(savedShop || state.shop);
     state.items = (await storeGet(KEYS.items)) || [];
+    const savedLang = await storeGet(KEYS.lang);
+    applyLang(savedLang === "en" ? "en" : "bn", true);
 
     fillCutInputs();
 
     bindEvents();
     bindFieldGuards();
     fillQuoteLabels();
+    const publicId = new URLSearchParams(location.search).get("q");
+    if (publicId) loadPublicQuote(publicId);
     $("owner-lock-label").textContent = T.ownerLock;
     const savedPanel = await storeGet(KEYS.adminPanel);
     if (savedPanel) state.adminPanel = savedPanel;

@@ -9,7 +9,7 @@
  *   Charges        key | value   (net, extra)
  *   Shop           key | value   (name, slogan, logo)
  *   CutParams      key | value
- *   Quotes         one row per window/door (id + customer + line)
+ *   Quotes         one row per window/door (id + customer + line + room + assigned)
  *
  * Deploy: Deploy > New deployment > Web app
  *   Execute as: Me
@@ -31,6 +31,7 @@ function doGet(e) {
   try {
     var action = String((e && e.parameter && e.parameter.action) || "catalog").trim();
     if (action === "catalog") return json_(publicCatalog_());
+    if (action === "quote") return json_(publicQuote_(e && e.parameter && e.parameter.id));
     return json_({ ok: false, error: "method" });
   } catch (err) {
     return json_({ ok: false, error: "server" });
@@ -61,6 +62,12 @@ function doPost(e) {
       return json_({ ok: false, error: "pin" });
     }
     clearFails_();
+    if (action === "quotePatch") {
+      if (user.role !== "owner" && user.role !== "operator") {
+        return json_({ ok: false, error: "forbidden" });
+      }
+      return quotePatch_(body);
+    }
     if (action === "save") {
       if (user.role !== "owner") return json_({ ok: false, error: "forbidden" });
       writeCompanies_(body.companies || []);
@@ -199,13 +206,13 @@ function dummyLockSeed_() {
 
 var SHEET_STYLE_ = [
   ["Users", "#5b4d9a", 3],
-  ["Companies", "#0e6b86", 4],
+  ["Companies", "#0e6b86", 5],
   ["Aluminium", "#3d6f8a", 4],
   ["Locks", "#d28a1a", 3],
   ["Charges", "#2f8f5b", 2],
   ["Shop", "#0a4456", 2],
   ["CutParams", "#2a5f73", 2],
-  ["Quotes", "#c17a20", 24],
+  ["Quotes", "#c17a20", 26],
   ["GlassThickness", "#0e6b86", 1]
 ];
 
@@ -213,8 +220,15 @@ function quotesHeader_() {
   return [
     "id", "time", "name", "phone", "status", "items", "sqft", "total",
     "type", "size", "qty", "color", "company", "lock", "net", "line_total",
-    "aluminium", "alu_mm", "glass_mm", "alu_color", "type_id", "height_ft", "width_ft", "lock_style"
+    "aluminium", "alu_mm", "glass_mm", "alu_color", "type_id", "height_ft", "width_ft", "lock_style",
+    "room", "assigned"
   ];
+}
+
+function normalizeQuoteStatus_(s) {
+  var v = String(s || "").trim().toLowerCase();
+  if (v === "called" || v === "booked" || v === "delivered") return v;
+  return "new";
 }
 
 function deleteSheetIfExists_(book, name) {
@@ -532,13 +546,15 @@ function handleQuote_(body) {
     var aluColor = String(it.aluColorLabel || it.aluColor || "").trim();
     var glassMm = String(it.thickness || it.glass_mm || "").trim();
     itemRows.push([
-      id, time, name, phone, "New", 0, 0, 0,
+      id, time, name, phone, "new", 0, 0, 0,
       type, size, qty, color, company, lock, net, priced.total,
       alu, aluMm, glassMm, aluColor,
       String(it.typeId || it.winType || ""),
       h,
       w,
-      String(it.lockStyle || "")
+      String(it.lockStyle || ""),
+      String(it.room || "").trim().slice(0, 40),
+      ""
     ]);
   }
 
@@ -554,9 +570,9 @@ function handleQuote_(body) {
 
   var quotes = ss_().getSheetByName("Quotes") || ss_().insertSheet("Quotes");
   ensureQuotesHeader_(quotes);
-  quotes.getRange(quotes.getLastRow() + 1, 1, itemRows.length, 24).setValues(itemRows);
+  quotes.getRange(quotes.getLastRow() + 1, 1, itemRows.length, 26).setValues(itemRows);
 
-  return json_({ ok: true, id: id });
+  return json_({ ok: true, id: id, total: qTotal, sqft: qSqft, name: name, phone: phone });
 }
 
 function isMergedQuotes_(sh) {
@@ -567,8 +583,11 @@ function ensureQuotesHeader_(sh) {
   if (!sh) return;
   if (!isMergedQuotes_(sh)) {
     migrateQuoteSheets_(ss_());
-    return;
+    sh = ss_().getSheetByName("Quotes");
+    if (!sh) return;
   }
+  var headers = quotesHeader_();
+  sh.getRange(1, 1, 1, headers.length).setValues([headers]);
   styleSheetByName_("Quotes");
 }
 
@@ -630,7 +649,7 @@ function migrateQuoteSheets_(book) {
     var sqft = Number(sum.sqft) || 0;
     var total = Number(sum.total) || 0;
     if (!lines.length) {
-      out.push([id, time, name, phone, status, items, sqft, total, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]);
+      out.push([id, time, name, phone, status, items, sqft, total, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]);
       continue;
     }
     for (var L = 0; L < lines.length; L++) {
@@ -645,8 +664,9 @@ function migrateQuoteSheets_(book) {
 
   if (!quotes) quotes = book.insertSheet("Quotes");
   quotes.clear();
-  quotes.getRange(1, 1, out.length, 24).setValues(out);
+  quotes.getRange(1, 1, out.length, out[0].length).setValues(out);
   deleteSheetIfExists_(book, "QuoteItems");
+  ensureQuotesHeader_(quotes);
 }
 
 function readQuotes_() {
@@ -665,7 +685,8 @@ function readQuotes_() {
         time: cellTime_(rows[i][1]),
         name: String(rows[i][2] || ""),
         phone: String(rows[i][3] || ""),
-        status: String(rows[i][4] || "New"),
+        status: normalizeQuoteStatus_(rows[i][4]),
+        assigned: String(rows[i][25] || "").trim().toLowerCase(),
         items: Number(rows[i][5]) || 0,
         sqft: Number(rows[i][6]) || 0,
         total: Number(rows[i][7]) || 0,
@@ -691,10 +712,11 @@ function readQuotes_() {
       typeId: String(rows[i][20] || ""),
       heightFt: Number(rows[i][21]) || 0,
       widthFt: Number(rows[i][22]) || 0,
-      lockStyle: String(rows[i][23] || "")
+      lockStyle: String(rows[i][23] || ""),
+      room: String(rows[i][24] || "")
     });
   }
-  return order.reverse().slice(0, 40).map(function (id) {
+  return order.reverse().slice(0, 80).map(function (id) {
     var q = map[id];
     if (!q.items) q.items = q.lines.length;
     if (!q.sqft) {
@@ -709,6 +731,101 @@ function readQuotes_() {
     }
     return q;
   });
+}
+
+function publicQuote_(id) {
+  id = String(id || "").trim();
+  if (!id || id.length > 40) return { ok: false, error: "id" };
+  var sh = ss_().getSheetByName("Quotes");
+  if (!sh || sh.getLastRow() < 2) return { ok: false, error: "notfound" };
+  var all = readQuotes_();
+  var i;
+  for (i = 0; i < all.length; i++) {
+    if (all[i].id === id) {
+      return {
+        ok: true,
+        quote: {
+          id: all[i].id,
+          time: all[i].time,
+          name: all[i].name,
+          phone: all[i].phone,
+          status: all[i].status,
+          items: all[i].items,
+          sqft: all[i].sqft,
+          total: all[i].total,
+          lines: all[i].lines
+        }
+      };
+    }
+  }
+  var rows = sh.getDataRange().getValues();
+  var found = null;
+  for (i = 1; i < rows.length; i++) {
+    if (String(rows[i][0] || "").trim() !== id) continue;
+    if (!found) {
+      found = {
+        id: id,
+        time: cellTime_(rows[i][1]),
+        name: String(rows[i][2] || ""),
+        phone: String(rows[i][3] || ""),
+        status: normalizeQuoteStatus_(rows[i][4]),
+        items: Number(rows[i][5]) || 0,
+        sqft: Number(rows[i][6]) || 0,
+        total: Number(rows[i][7]) || 0,
+        lines: []
+      };
+    }
+    var type = String(rows[i][8] || "");
+    if (!type && !rows[i][9] && !rows[i][21]) continue;
+    found.lines.push({
+      type: type,
+      size: String(rows[i][9] || ""),
+      qty: Number(rows[i][10]) || 1,
+      color: String(rows[i][11] || ""),
+      company: String(rows[i][12] || ""),
+      lock: String(rows[i][13] || ""),
+      net: String(rows[i][14] || "").toLowerCase() === "yes",
+      total: Number(rows[i][15]) || 0,
+      aluminium: String(rows[i][16] || ""),
+      aluMm: String(rows[i][17] || ""),
+      glassMm: String(rows[i][18] || ""),
+      aluColor: String(rows[i][19] || ""),
+      typeId: String(rows[i][20] || ""),
+      heightFt: Number(rows[i][21]) || 0,
+      widthFt: Number(rows[i][22]) || 0,
+      lockStyle: String(rows[i][23] || ""),
+      room: String(rows[i][24] || "")
+    });
+  }
+  if (!found) return { ok: false, error: "notfound" };
+  if (!found.items) found.items = found.lines.length;
+  return { ok: true, quote: found };
+}
+
+function quotePatch_(body) {
+  var id = String(body && body.id || "").trim();
+  if (!id) return json_({ ok: false, error: "id" });
+  var sh = ss_().getSheetByName("Quotes");
+  if (!sh) return json_({ ok: false, error: "notfound" });
+  ensureQuotesHeader_(sh);
+  var rows = sh.getDataRange().getValues();
+  var hasStatus = body && body.status != null;
+  var hasAssigned = body && body.assigned != null;
+  var status = hasStatus ? normalizeQuoteStatus_(body.status) : "";
+  var assigned = "";
+  if (hasAssigned) {
+    assigned = String(body.assigned || "").trim().toLowerCase();
+    if (assigned && assigned.indexOf("@") < 1) assigned = "";
+  }
+  var found = 0;
+  for (var i = 1; i < rows.length; i++) {
+    if (String(rows[i][0] || "").trim() !== id) continue;
+    found++;
+    if (hasStatus) sh.getRange(i + 1, 5).setValue(status);
+    if (hasAssigned) sh.getRange(i + 1, 26).setValue(assigned);
+  }
+  if (!found) return json_({ ok: false, error: "notfound" });
+  return json_({ ok: true, quotes: readQuotes_() });
 }
 
 function props_() {
@@ -779,6 +896,9 @@ function ensureCompanyShape_() {
       sh.getRange(2, 4, last2 - 1, 1).setValues(colors);
     }
   }
+  var lastCol = sh.getLastColumn();
+  var h5 = lastCol >= 5 ? String(sh.getRange(1, 5).getValue() || "").trim().toLowerCase() : "";
+  if (h5 !== "out") sh.getRange(1, 5).setValue("out");
 }
 
 function splitPipe_(value) {
@@ -811,18 +931,25 @@ function parseThicks_(value, fallback) {
   return out;
 }
 
-function expandComboRow_(name, thickCell, rate, colorCell, colorFn, defaultThick) {
+function isOut_(v) {
+  var s = String(v == null ? "" : v).trim().toLowerCase();
+  return s === "1" || s === "true" || s === "yes" || s === "out";
+}
+
+function expandComboRow_(name, thickCell, rate, colorCell, colorFn, defaultThick, outFlag) {
   var thicks = parseThicks_(thickCell, defaultThick);
   var colors = splitPipe_(colorCell).map(colorFn);
   if (!colors.length) colors = [colorFn("")];
   var rows = [];
+  var out = isOut_(outFlag);
   for (var t = 0; t < thicks.length; t++) {
     for (var c = 0; c < colors.length; c++) {
       rows.push({
         name: name,
         thickness: thicks[t],
         rate: isNaN(Number(rate)) ? 0 : Number(rate),
-        color: colors[c]
+        color: colors[c],
+        out: out
       });
     }
   }
@@ -867,7 +994,8 @@ function readCompanies_() {
     var rate = Number(hasThick ? rows[i][2] : rows[i][1]);
     var thickCell = hasThick ? rows[i][1] : 5;
     var colorCell = hasThick ? rows[i][3] : rows[i][2];
-    expandComboRow_(name, thickCell, rate, colorCell, normalizeColorId_, 5).forEach(function (row) {
+    var outCell = hasThick ? rows[i][4] : "";
+    expandComboRow_(name, thickCell, rate, colorCell, normalizeColorId_, 5, outCell).forEach(function (row) {
       out.push(row);
     });
   }
@@ -903,15 +1031,19 @@ function readCut_() {
 }
 
 function writeComboRows_(sh, list, colorFn, defaultThick) {
-  var rows = [["name", "thickness", "rate", "color"]];
+  var header = defaultThick === 5
+    ? ["name", "thickness", "rate", "color", "out"]
+    : ["name", "thickness", "rate", "color"];
+  var rows = [header];
   (list || []).forEach(function (row) {
     if (!row || !String(row.name || "").trim()) return;
-    expandComboRow_(String(row.name).trim(), row.thickness, row.rate, row.color, colorFn, defaultThick).forEach(function (x) {
-      rows.push([x.name, x.thickness, Number(x.rate) || 0, x.color]);
+    expandComboRow_(String(row.name).trim(), row.thickness, row.rate, row.color, colorFn, defaultThick, row.out).forEach(function (x) {
+      if (defaultThick === 5) rows.push([x.name, x.thickness, Number(x.rate) || 0, x.color, x.out ? 1 : 0]);
+      else rows.push([x.name, x.thickness, Number(x.rate) || 0, x.color]);
     });
   });
   sh.clear();
-  sh.getRange(1, 1, rows.length, 4).setValues(rows);
+  sh.getRange(1, 1, rows.length, header.length).setValues(rows);
 }
 
 function writeCompanies_(list) {
