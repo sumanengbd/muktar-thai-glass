@@ -7,7 +7,7 @@
  *   Aluminium      name | thickness | rate | color
  *   Locks          name | rate | style
  *   Charges        key | value   (net, extra)
- *   Shop           key | value   (name, slogan, logo)
+ *   Shop           key | value   (name, slogan, logo, phone, address)
  *   CutParams      key | value
  *   Quotes         one row per window/door (id + customer + line + room + assigned)
  *
@@ -22,6 +22,8 @@
 var PIN_FAIL_MAX = 8;
 var PIN_LOCK_MS = 10 * 60 * 1000;
 var TZ = "Asia/Dhaka";
+var CATALOG_CACHE_KEY = "mtg_pub_catalog_v2";
+var CATALOG_CACHE_SEC = 300;
 
 function setup() {
   ensureSheets_();
@@ -89,6 +91,7 @@ function doPost(e) {
       if ((writeAll || sections.indexOf("shop") >= 0) && body.shop && typeof body.shop === "object") {
         writeShop_(body.shop);
       }
+      bustCatalogCache_();
       var out = { ok: true, role: user.role };
       if (writeAll || sections.indexOf("users") >= 0) out.users = readUsers_();
       return json_(out);
@@ -329,6 +332,25 @@ function readOldConfig_(book, key) {
 
 function ensureSheets_() {
   var book = ss_();
+  var hasCore = !!(
+    book.getSheetByName("Users") &&
+    book.getSheetByName("Companies") &&
+    book.getSheetByName("Locks") &&
+    book.getSheetByName("Aluminium") &&
+    book.getSheetByName("Charges") &&
+    book.getSheetByName("Shop") &&
+    book.getSheetByName("CutParams")
+  );
+  if (hasCore) {
+    var quotes = book.getSheetByName("Quotes");
+    if (quotes && isMergedQuotes_(quotes)) {
+      deleteSheetIfExists_(book, "QuoteItems");
+      return;
+    }
+    if (!quotes && !book.getSheetByName("QuoteItems")) return;
+    migrateQuoteSheets_(book);
+    return;
+  }
 
   var users = book.getSheetByName("Users") || book.insertSheet("Users");
   if (users.getLastRow() < 2) {
@@ -375,11 +397,13 @@ function ensureSheets_() {
   var shop = book.getSheetByName("Shop") || book.insertSheet("Shop");
   if (shop.getLastRow() < 2) {
     shop.clear();
-    shop.getRange(1, 1, 4, 2).setValues([
+    shop.getRange(1, 1, 6, 2).setValues([
       ["key", "value"],
       ["name", ""],
       ["slogan", ""],
-      ["logo", ""]
+      ["logo", ""],
+      ["phone", ""],
+      ["address", ""]
     ]);
   }
 
@@ -479,28 +503,16 @@ function tryRead_(fn, fallback) {
   }
 }
 
-function publicCatalog_() {
-  return {
-    ok: true,
-    companies: tryRead_(readCompanies_, []),
-    locks: tryRead_(readLocks_, []),
-    aluminium: tryRead_(readAluminium_, []),
-    glassThicks: tryRead_(glassThicksFromCompanies_, []),
-    charges: tryRead_(readCharges_, { net: 0, extra: 0 }),
-    cutParams: tryRead_(readCut_, { outerHoriz: 0.4, side: 1.1, shutterHoriz: 6, glassH: 4.2, glassW: 5 }),
-    shop: tryRead_(readShop_, { name: "", slogan: "", logo: "" })
-  };
+function bustCatalogCache_() {
+  try {
+    CacheService.getScriptCache().remove(CATALOG_CACHE_KEY);
+  } catch (err) { /* ignore */ }
 }
 
-function publicCompanies_() {
-  return readCompanies_();
-}
-
-function glassThicksFromCompanies_() {
-  var list = readCompanies_();
+function glassThicksFromList_(list) {
   var seen = {};
   var out = [];
-  for (var i = 0; i < list.length; i++) {
+  for (var i = 0; i < (list || []).length; i++) {
     var mm = Number(list[i].thickness);
     if (!isNaN(mm) && mm > 0 && !seen[String(mm)]) {
       seen[String(mm)] = true;
@@ -508,6 +520,47 @@ function glassThicksFromCompanies_() {
     }
   }
   return out;
+}
+
+function buildPublicCatalog_() {
+  var companies = tryRead_(readCompanies_, []);
+  return {
+    ok: true,
+    companies: companies,
+    locks: tryRead_(readLocks_, []),
+    aluminium: tryRead_(readAluminium_, []),
+    glassThicks: glassThicksFromList_(companies),
+    charges: tryRead_(readCharges_, { net: 0, extra: 0 }),
+    cutParams: tryRead_(readCut_, { outerHoriz: 0.4, side: 1.1, shutterHoriz: 6, glassH: 4.2, glassW: 5 }),
+    shop: tryRead_(readShop_, { name: "", slogan: "", logo: "", phone: "", address: "" })
+  };
+}
+
+function publicCatalog_() {
+  try {
+    var cache = CacheService.getScriptCache();
+    var hit = cache.get(CATALOG_CACHE_KEY);
+    if (hit) {
+      var parsed = JSON.parse(hit);
+      if (parsed && parsed.ok) return parsed;
+    }
+  } catch (err) { /* ignore */ }
+  var payload = buildPublicCatalog_();
+  try {
+    var raw = JSON.stringify(payload);
+    if (raw.length < 95000) {
+      CacheService.getScriptCache().put(CATALOG_CACHE_KEY, raw, CATALOG_CACHE_SEC);
+    }
+  } catch (err2) { /* ignore */ }
+  return payload;
+}
+
+function publicCompanies_() {
+  return readCompanies_();
+}
+
+function glassThicksFromCompanies_() {
+  return glassThicksFromList_(readCompanies_());
 }
 
 function publicLocks_() {
@@ -1189,13 +1242,13 @@ function readCharges_() {
 
 function readShop_() {
   var sh = ss_().getSheetByName("Shop");
-  var out = { name: "", slogan: "", logo: "" };
+  var out = { name: "", slogan: "", logo: "", phone: "", address: "" };
   if (!sh) return out;
   var rows = sh.getDataRange().getValues();
   for (var i = 1; i < rows.length; i++) {
     var k = String(rows[i][0] || "").trim().toLowerCase();
     var v = String(rows[i][1] || "").trim();
-    if (k === "name" || k === "slogan" || k === "logo") out[k] = v;
+    if (k === "name" || k === "slogan" || k === "logo" || k === "phone" || k === "address") out[k] = v;
   }
   return out;
 }
@@ -1212,11 +1265,13 @@ function writeShop_(shop) {
   var book = ss_();
   var sh = book.getSheetByName("Shop") || book.insertSheet("Shop");
   sh.clearContents();
-  sh.getRange(1, 1, 4, 2).setValues([
+  sh.getRange(1, 1, 6, 2).setValues([
     ["key", "value"],
     ["name", String(shop && shop.name || "").trim().slice(0, 80)],
     ["slogan", String(shop && shop.slogan || "").trim().slice(0, 140)],
-    ["logo", safeShopLogo_(shop && shop.logo)]
+    ["logo", safeShopLogo_(shop && shop.logo)],
+    ["phone", String(shop && shop.phone || "").trim().slice(0, 40)],
+    ["address", String(shop && shop.address || "").trim().slice(0, 180)]
   ]);
 }
 

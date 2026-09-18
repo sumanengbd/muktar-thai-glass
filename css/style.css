@@ -1952,6 +1952,16 @@ html.is-standalone .install-tip { display: none !important; }
     opacity: 0.82;
   }
 
+  .print-sheet .print-contact {
+    margin: 4px 0 0;
+    font-size: 11.5px;
+    font-weight: 600;
+    opacity: 0.9;
+    line-height: 1.35;
+  }
+
+  .print-sheet .print-contact.hidden { display: none; }
+
   .print-sheet-meta {
     flex: none;
     text-align: right;
@@ -2016,8 +2026,7 @@ html.is-standalone .install-tip { display: none !important; }
   body.print-cutting #cut-list-hint,
   body.print-cutting #cut-list-warn,
   body.print-cutting #cutting-empty,
-  body.print-cutting #cutting-actions,
-  body.print-cutting .print-foot #print-note {
+  body.print-cutting #cutting-actions {
     display: none !important;
   }
 
@@ -2144,14 +2153,26 @@ html.is-standalone .install-tip { display: none !important; }
   }
 
   body.print-cutting .print-foot {
-    margin-top: 10px;
-    padding-top: 8px;
+    display: block !important;
+    margin-top: 14px;
+    padding-top: 10px;
+    border-top: 1px dashed #9bb8c3;
+    text-align: center;
   }
 
   body.print-cutting .print-foot #print-thanks {
-    font-size: 12px;
-    font-weight: 600;
+    margin: 0;
+    font-size: 13px;
+    font-weight: 700;
+    color: #0a4456;
+  }
+
+  body.print-cutting .print-foot #print-note {
+    display: block !important;
+    margin: 4px 0 0;
+    font-size: 11.5px;
     color: #5b7380;
+    line-height: 1.4;
   }
 
   .app-body {

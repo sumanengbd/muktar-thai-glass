@@ -17,11 +17,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://script.google.com">
   <link rel="dns-prefetch" href="https://script.google.com">
-  <link rel="preload" href="css/style.css?v=148" as="style">
+  <link rel="preload" href="css/style.css?v=156" as="style">
   <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
   <script>(function(){try{var s=JSON.parse(localStorage.getItem("glasscalc:session")||"null");if(!s)return;var role=s.r||s.role;if(!(s.k||s.pin))return;document.documentElement.classList.add("has-session","is-staff");if(role==="owner"||(!role&&(s.k||s.pin)))document.documentElement.classList.add("is-owner");}catch(e){}})();</script>
-  <link rel="stylesheet" href="css/style.css?v=148">
+  <link rel="stylesheet" href="css/style.css?v=156">
 </head>
 <body>
   <div class="app">
@@ -32,6 +32,7 @@
           <p class="print-kicker" id="print-kicker"></p>
           <h1 id="print-shop"></h1>
           <p id="print-sub"></p>
+          <p class="print-contact" id="print-contact"></p>
         </div>
       </div>
       <div class="print-sheet-meta">
@@ -89,14 +90,14 @@
           </div>
           <div class="size-row">
           <div class="grid3">
-            <div class="field"><label for="in-h-ft" id="h-ft-label">উচ্চতা (ফুট)</label><input type="number" min="0" step="0.1" id="in-h-ft" placeholder="৫" max="40" disabled></div>
-            <div class="field"><label for="in-h-in" id="h-in-label">উচ্চতা (ইঞ্চি)</label><input type="number" min="0" max="11.9" step="0.1" id="in-h-in" placeholder="৬" disabled></div>
-            <div class="field"><label for="in-h-suta" id="h-suta-label"></label><input type="number" min="0" max="7" step="1" id="in-h-suta" placeholder="0" disabled></div>
+            <div class="field"><label for="in-h-ft" id="h-ft-label">উচ্চতা (ফুট)</label><input type="number" min="0" step="0.1" id="in-h-ft" value="0" placeholder="০" max="40" disabled></div>
+            <div class="field"><label for="in-h-in" id="h-in-label">উচ্চতা (ইঞ্চি)</label><input type="number" min="0" max="120" step="0.1" id="in-h-in" value="54" placeholder="৫৪" disabled></div>
+            <div class="field"><label for="in-h-suta" id="h-suta-label"></label><input type="number" min="0" max="7" step="1" id="in-h-suta" value="0" placeholder="0" disabled></div>
           </div>
           <div class="grid3">
-            <div class="field"><label for="in-w-ft" id="w-ft-label">প্রস্থ (ফুট)</label><input type="number" min="0" step="0.1" id="in-w-ft" placeholder="৪" max="40" disabled></div>
-            <div class="field"><label for="in-w-in" id="w-in-label">প্রস্থ (ইঞ্চি)</label><input type="number" min="0" max="11.9" step="0.1" id="in-w-in" placeholder="0" disabled></div>
-            <div class="field"><label for="in-w-suta" id="w-suta-label"></label><input type="number" min="0" max="7" step="1" id="in-w-suta" placeholder="0" disabled></div>
+            <div class="field"><label for="in-w-ft" id="w-ft-label">প্রস্থ (ফুট)</label><input type="number" min="0" step="0.1" id="in-w-ft" value="0" placeholder="০" max="40" disabled></div>
+            <div class="field"><label for="in-w-in" id="w-in-label">প্রস্থ (ইঞ্চি)</label><input type="number" min="0" max="120" step="0.1" id="in-w-in" value="60" placeholder="৬০" disabled></div>
+            <div class="field"><label for="in-w-suta" id="w-suta-label"></label><input type="number" min="0" max="7" step="1" id="in-w-suta" value="0" placeholder="0" disabled></div>
           </div>
           </div>
           <div class="grid2 opt-row">
@@ -203,17 +204,20 @@
             <h3 id="cut-types-heading"></h3>
             <div class="type-grid" id="cut-type-list"></div>
           </div>
-          <div class="field field-full"><label for="cut-qty" id="cut-qty-label"></label><input type="number" min="1" step="1" id="cut-qty" value="1" placeholder="1" max="99"></div>
+          <div class="grid2 opt-row">
+            <div class="field"><label for="cut-qty" id="cut-qty-label"></label><input type="number" min="1" step="1" id="cut-qty" value="1" placeholder="1" max="99"></div>
+            <div class="field"><label for="cut-room" id="cut-room-label"></label><input type="text" id="cut-room" maxlength="40" autocomplete="off"></div>
+          </div>
           <div class="size-row">
             <div class="grid3">
-              <div class="field"><label for="cut-h-ft" id="cut-h-ft-label"></label><input type="number" min="0" step="1" id="cut-h-ft" inputmode="numeric" placeholder="4" max="40"></div>
-              <div class="field"><label for="cut-h-in" id="cut-h-in-label"></label><input type="number" min="0" max="11" step="1" id="cut-h-in" inputmode="numeric" placeholder="6"></div>
-              <div class="field"><label for="cut-h-suta" id="cut-h-suta-label"></label><input type="number" min="0" max="7" step="1" id="cut-h-suta" inputmode="numeric" placeholder="0"></div>
+              <div class="field"><label for="cut-h-ft" id="cut-h-ft-label"></label><input type="number" min="0" step="1" id="cut-h-ft" inputmode="numeric" value="0" placeholder="0" max="40"></div>
+              <div class="field"><label for="cut-h-in" id="cut-h-in-label"></label><input type="number" min="0" max="120" step="1" id="cut-h-in" inputmode="numeric" value="54" placeholder="54"></div>
+              <div class="field"><label for="cut-h-suta" id="cut-h-suta-label"></label><input type="number" min="0" max="7" step="1" id="cut-h-suta" inputmode="numeric" value="0" placeholder="0"></div>
             </div>
             <div class="grid3">
-              <div class="field"><label for="cut-w-ft" id="cut-w-ft-label"></label><input type="number" min="0" step="1" id="cut-w-ft" inputmode="numeric" placeholder="5" max="40"></div>
-              <div class="field"><label for="cut-w-in" id="cut-w-in-label"></label><input type="number" min="0" max="11" step="1" id="cut-w-in" inputmode="numeric" placeholder="0"></div>
-              <div class="field"><label for="cut-w-suta" id="cut-w-suta-label"></label><input type="number" min="0" max="7" step="1" id="cut-w-suta" inputmode="numeric" placeholder="0"></div>
+              <div class="field"><label for="cut-w-ft" id="cut-w-ft-label"></label><input type="number" min="0" step="1" id="cut-w-ft" inputmode="numeric" value="0" placeholder="0" max="40"></div>
+              <div class="field"><label for="cut-w-in" id="cut-w-in-label"></label><input type="number" min="0" max="120" step="1" id="cut-w-in" inputmode="numeric" value="60" placeholder="60"></div>
+              <div class="field"><label for="cut-w-suta" id="cut-w-suta-label"></label><input type="number" min="0" max="7" step="1" id="cut-w-suta" inputmode="numeric" value="0" placeholder="0"></div>
             </div>
           </div>
           <div class="add-item-row cut-action-row">
@@ -261,6 +265,10 @@
             <div class="grid2">
               <div class="field"><label for="shop-name" id="shop-name-label"></label><input type="text" id="shop-name" maxlength="80" autocomplete="organization"></div>
               <div class="field"><label for="shop-slogan" id="shop-slogan-label"></label><input type="text" id="shop-slogan" maxlength="140"></div>
+            </div>
+            <div class="grid2">
+              <div class="field"><label for="shop-phone" id="shop-phone-label"></label><input type="tel" id="shop-phone" maxlength="40" autocomplete="tel" inputmode="tel"></div>
+              <div class="field"><label for="shop-address" id="shop-address-label"></label><input type="text" id="shop-address" maxlength="180" autocomplete="street-address"></div>
             </div>
             <div class="field shop-logo-field">
               <label id="shop-logo-label"></label>
@@ -380,6 +388,6 @@
   </div>
   <div id="app-loader" class="app-loader hidden" aria-live="polite"><div class="app-loader-box"><span class="app-spinner"></span><p id="app-loader-text"></p></div></div>
   <script src="js/config.js?v=23"></script>
-  <script src="js/calculator.js?v=148"></script>
+  <script src="js/calculator.js?v=156"></script>
 </body>
 </html>

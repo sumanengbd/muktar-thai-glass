@@ -114,6 +114,8 @@
   "cancelBtn": "বাতিল",
   "addBtn": "যোগ করুন",
   "saveBtn": "সংরক্ষণ",
+  "savingBtn": "সংরক্ষণ হচ্ছে...",
+  "savedOk": "সংরক্ষণ হয়েছে ✓",
   "aluNamePh": "কোম্পানি",
   "aluThickPh": "মিমি",
   "aluRatePh": "রেট",
@@ -169,13 +171,15 @@
   "tabHome": "\u09b8\u09cd\u09ac\u09be\u0997\u09a4\u09ae",
   "homeTitle": "\u09a6\u09cb\u0995\u09be\u09a8\u09c7\u09b0 \u09a4\u09a5\u09cd\u09af",
   "homeHello": "\u09b8\u09cd\u09ac\u09be\u0997\u09a4\u09ae",
-  "shopName": "\u09a6\u09cb\u0995\u09be\u09a8\u09c7\u09b0 \u09a8\u09be\u09ae",
-  "shopSloganLabel": "\u09b8\u09cd\u09b2\u09cb\u0997\u09be\u09a8",
-  "shopLogo": "\u09b2\u09cb\u0997\u09cb",
-  "shopLogoPick": "\u099b\u09ac\u09bf \u09ac\u09be\u099b\u09c1\u09a8",
-  "shopLogoReset": "\u09a1\u09bf\u09ab\u09b2\u09cd\u099f",
-  "shopHint": "\u09a8\u09be\u09ae, \u09b8\u09cd\u09b2\u09cb\u0997\u09be\u09a8 \u0993 \u09b2\u09cb\u0997\u09cb \u09b9\u09c7\u09a1\u09be\u09b0 \u0993 \u09aa\u09cd\u09b0\u09bf\u09a8\u09cd\u099f\u09c7 \u09a6\u09c7\u0996\u09be\u09ac\u09c7\u0964",
-  "shopLogoBad": "\u099b\u09ac\u09bf \u09aa\u09dc\u09be \u09af\u09be\u09df\u09a8\u09bf\u0964",
+  "shopName": "দোকানের নাম",
+  "shopSloganLabel": "স্লোগান",
+  "shopPhone": "মোবাইল",
+  "shopAddress": "ঠিকানা",
+  "shopLogo": "লোগো",
+  "shopLogoPick": "ছবি বাছুন",
+  "shopLogoReset": "ডিফল্ট",
+  "shopHint": "নাম, স্লোগান, মোবাইল, ঠিকানা ও লোগো হেডার ও প্রিন্টে দেখাবে।",
+  "shopLogoBad": "ছবি পড়া যায়নি।",
   "statQuotes": "\u0995\u09cb\u099f",
   "statToday": "\u0986\u099c\u0995\u09c7\u09b0 \u0995\u09cb\u099f",
   "statGlass": "\u0995\u09be\u0981\u099a \u0995\u09cb\u09ae\u09cd\u09aa\u09be\u09a8\u09bf",
@@ -391,6 +395,8 @@
     cancelBtn: "Cancel",
     addBtn: "Add",
     saveBtn: "Save",
+    savingBtn: "Saving...",
+    savedOk: "Saved ✓",
     aluNamePh: "Company",
     aluThickPh: "mm",
     aluRatePh: "Rate",
@@ -448,10 +454,12 @@
     homeHello: "Welcome",
     shopName: "Shop name",
     shopSloganLabel: "Slogan",
+    shopPhone: "Mobile",
+    shopAddress: "Address",
     shopLogo: "Logo",
     shopLogoPick: "Choose image",
     shopLogoReset: "Default",
-    shopHint: "Name, slogan and logo show in the header and print.",
+    shopHint: "Name, slogan, mobile, address and logo show in the header and print.",
     shopLogoBad: "Image is too large.",
     statQuotes: "Quotes",
     statToday: "Today's quotes",
@@ -631,7 +639,7 @@
     staff: [],
     edit: { kind: "", index: -1, name: "", rate: null, thicks: [], colors: [] },
     adminPick: { companyThicks: [5], companyColors: ["clear"], companyOut: [], aluThicks: [1], aluColors: ["silver"] },
-    shop: { name: "", slogan: "", logo: "" },
+    shop: { name: "", slogan: "", logo: "", phone: "", address: "" },
     adminPanel: "home",
     quoteOpenId: "",
     cutQuote: null,
@@ -707,6 +715,8 @@
     setHeading("cut-calc-title", T.cutCalcTitle);
     setHeading("cut-preview-title", T.previewTitle);
     set("cut-qty-label", T.qtyLabel);
+    set("cut-room-label", T.roomLabel);
+    if ($("cut-room")) $("cut-room").placeholder = T.roomPh;
     set("cut-h-ft-label", T.hFt);
     set("cut-h-in-label", T.hIn);
     set("cut-h-suta-label", T.hSutaShort || T.hSuta);
@@ -1461,7 +1471,7 @@
   }
 
   function defaultShop() {
-    return { name: T.shop, slogan: T.shopSlogan, logo: "images/logo.svg" };
+    return { name: T.shop, slogan: T.shopSlogan, logo: "images/logo.svg", phone: "", address: "" };
   }
 
   function safeShopLogo(logo) {
@@ -1477,7 +1487,9 @@
     return {
       name: String(src.name || "").trim() || fallback.name,
       slogan: String(src.slogan || "").trim() || fallback.slogan,
-      logo: safeShopLogo(src.logo) || fallback.logo
+      logo: safeShopLogo(src.logo) || fallback.logo,
+      phone: String(src.phone || "").trim(),
+      address: String(src.address || "").trim()
     };
   }
 
@@ -1486,6 +1498,8 @@
     const name = state.shop.name;
     const slogan = state.shop.slogan;
     const logo = state.shop.logo;
+    const phone = state.shop.phone;
+    const address = state.shop.address;
     document.title = name + "  -  " + T.calcTab;
     const h1 = document.querySelector(".app-bar h1");
     if (h1) h1.textContent = name;
@@ -1496,6 +1510,8 @@
     });
     if ($("shop-name") && document.activeElement !== $("shop-name")) $("shop-name").value = name;
     if ($("shop-slogan") && document.activeElement !== $("shop-slogan")) $("shop-slogan").value = slogan;
+    if ($("shop-phone") && document.activeElement !== $("shop-phone")) $("shop-phone").value = phone;
+    if ($("shop-address") && document.activeElement !== $("shop-address")) $("shop-address").value = address;
     storeSet(KEYS.shop, state.shop);
   }
 
@@ -1616,6 +1632,8 @@
     if ($("home-shop-hint")) $("home-shop-hint").textContent = T.shopHint;
     if ($("shop-name-label")) $("shop-name-label").textContent = T.shopName;
     if ($("shop-slogan-label")) $("shop-slogan-label").textContent = T.shopSloganLabel;
+    if ($("shop-phone-label")) $("shop-phone-label").textContent = T.shopPhone;
+    if ($("shop-address-label")) $("shop-address-label").textContent = T.shopAddress;
     if ($("shop-logo-label")) $("shop-logo-label").textContent = T.shopLogo;
     if ($("btn-shop-logo")) $("btn-shop-logo").textContent = T.shopLogoPick;
     if ($("btn-shop-logo-reset")) $("btn-shop-logo-reset").textContent = T.shopLogoReset;
@@ -1623,6 +1641,8 @@
     fillCalcLabels();
     if ($("shop-name") && document.activeElement !== $("shop-name")) $("shop-name").value = shop.name;
     if ($("shop-slogan") && document.activeElement !== $("shop-slogan")) $("shop-slogan").value = shop.slogan;
+    if ($("shop-phone") && document.activeElement !== $("shop-phone")) $("shop-phone").value = shop.phone || "";
+    if ($("shop-address") && document.activeElement !== $("shop-address")) $("shop-address").value = shop.address || "";
     if ($("shop-logo-preview")) $("shop-logo-preview").src = shop.logo;
   }
 
@@ -1680,6 +1700,8 @@
     applyShop({
       name: $("shop-name") && $("shop-name").value,
       slogan: $("shop-slogan") && $("shop-slogan").value,
+      phone: $("shop-phone") && $("shop-phone").value,
+      address: $("shop-address") && $("shop-address").value,
       logo: state.shop.logo
     });
     renderHome();
@@ -1688,7 +1710,13 @@
 
   function onShopLogoPicked(file) {
     resizeLogoFile(file).then(function (dataUrl) {
-      applyShop({ name: state.shop.name, slogan: state.shop.slogan, logo: dataUrl });
+      applyShop({
+        name: state.shop.name,
+        slogan: state.shop.slogan,
+        phone: state.shop.phone,
+        address: state.shop.address,
+        logo: dataUrl
+      });
       renderHome();
       persistOwnerData(["shop"]);
     }).catch(function () {
@@ -1829,18 +1857,34 @@
   }
 
   function flashSaved() {
-    flashNote("", false);
+    flashNote(T.savedOk || "সংরক্ষণ হয়েছে ✓", false);
   }
 
   function flashNote(text, isErr) {
     const el = $("save-flash");
     if (!el) return;
-    if (!el.dataset.okText) el.dataset.okText = el.textContent;
+    if (!el.dataset.okText) el.dataset.okText = T.savedOk || el.textContent;
     el.textContent = text || el.dataset.okText;
     el.classList.toggle("is-err", !!isErr);
     el.classList.add("show");
     clearTimeout(el._hide);
-    el._hide = setTimeout(() => el.classList.remove("show", "is-err"), isErr ? 2200 : 1200);
+    el._hide = setTimeout(function () {
+      el.classList.remove("show", "is-err");
+    }, isErr ? 2800 : 1800);
+  }
+
+  function setSaveButtonsBusy(on) {
+    ["btn-save-shop", "btn-save-charges", "btn-save-cut"].forEach(function (id) {
+      const btn = $(id);
+      if (!btn) return;
+      btn.disabled = !!on;
+      btn.classList.toggle("is-busy", !!on);
+      const label = btn.querySelector("span:last-child") || btn.querySelector("span") || btn;
+      if (!btn.dataset.labelIdle) btn.dataset.labelIdle = (label.textContent || T.saveBtn || "").trim();
+      if (label.tagName === "SPAN" || label === btn) {
+        label.textContent = on ? (T.savingBtn || "সংরক্ষণ হচ্ছে...") : (btn.dataset.labelIdle || T.saveBtn);
+      }
+    });
   }
 
   function cleanNumberValue(raw) {
@@ -3575,11 +3619,19 @@
     }).join("");
   }
 
+  function fillDefaultCutSize() {
+    if ($("cut-h-ft")) $("cut-h-ft").value = "0";
+    if ($("cut-h-in")) $("cut-h-in").value = "54";
+    if ($("cut-h-suta")) $("cut-h-suta").value = "0";
+    if ($("cut-w-ft")) $("cut-w-ft").value = "0";
+    if ($("cut-w-in")) $("cut-w-in").value = "60";
+    if ($("cut-w-suta")) $("cut-w-suta").value = "0";
+  }
+
   function resetCutCalc() {
-    ["cut-h-ft", "cut-h-in", "cut-h-suta", "cut-w-ft", "cut-w-in", "cut-w-suta"].forEach(function (id) {
-      if ($(id)) $(id).value = "";
-    });
+    fillDefaultCutSize();
     if ($("cut-qty")) $("cut-qty").value = "1";
+    if ($("cut-room")) $("cut-room").value = "";
     state.cutKind = "window";
     state.cutType = "sliding2";
     state.cutItems = [];
@@ -3616,7 +3668,7 @@
       heightFt: heightFt,
       widthFt: widthFt,
       qty: qty,
-      room: "",
+      room: cleanTextValue($("cut-room") && $("cut-room").value).slice(0, 40),
       hasNet: false,
       glassColor: "clear",
       aluColor: "silver",
@@ -3745,9 +3797,12 @@
   }
 
   function clearInputs() {
-    ["in-h-ft", "in-h-in", "in-h-suta", "in-w-ft", "in-w-in", "in-w-suta"].forEach((id) => {
-      if ($(id)) $(id).value = "";
-    });
+    if ($("in-h-ft")) $("in-h-ft").value = "0";
+    if ($("in-h-in")) $("in-h-in").value = "54";
+    if ($("in-h-suta")) $("in-h-suta").value = "0";
+    if ($("in-w-ft")) $("in-w-ft").value = "0";
+    if ($("in-w-in")) $("in-w-in").value = "60";
+    if ($("in-w-suta")) $("in-w-suta").value = "0";
     if ($("in-qty")) $("in-qty").value = "1";
     if ($("in-room")) $("in-room").value = "";
     state.editItemIndex = -1;
@@ -4005,7 +4060,7 @@
     }
     state.quotes = isStaff() && Array.isArray(data.quotes) ? data.quotes : [];
     state.staff = isOwner() && Array.isArray(data.users) ? data.users : [];
-    if (data.shop && typeof data.shop === "object" && (data.shop.name || data.shop.slogan || data.shop.logo)) applyShop(data.shop);
+    if (data.shop && typeof data.shop === "object" && (data.shop.name || data.shop.slogan || data.shop.logo || data.shop.phone || data.shop.address)) applyShop(data.shop);
     ensureDummyCatalog();
     fillCutInputs();
     repriceItems();
@@ -4019,6 +4074,35 @@
     renderItems();
     updateRoleUi();
     updateCatalogHint();
+    saveCatalogSoftCache();
+  }
+
+  function readCatalogSoftCache() {
+    try {
+      const raw = localStorage.getItem(KEYS.catalog);
+      const data = raw ? JSON.parse(raw) : null;
+      if (!data || typeof data !== "object") return null;
+      if (!Array.isArray(data.companies) && !Array.isArray(data.aluminium) && !Array.isArray(data.locks)) return null;
+      return data;
+    } catch (_) {
+      return null;
+    }
+  }
+
+  function saveCatalogSoftCache() {
+    try {
+      localStorage.setItem(KEYS.catalog, JSON.stringify({
+        v: 2,
+        t: Date.now(),
+        companies: state.companies,
+        locks: state.locks,
+        aluminium: state.aluminium,
+        glassThicks: state.glassThicks,
+        charges: state.charges,
+        cutParams: state.cutParams,
+        shop: state.shop
+      }));
+    } catch (_) { /* ignore */ }
   }
 
   function clearCatalogCache() {
@@ -4066,9 +4150,10 @@
     if (data.cutParams && typeof data.cutParams === "object") {
       state.cutParams = normalizeCutParams(data.cutParams);
     }
-    if (data.shop && typeof data.shop === "object" && (data.shop.name || data.shop.slogan || data.shop.logo)) applyShop(data.shop);
+    if (data.shop && typeof data.shop === "object" && (data.shop.name || data.shop.slogan || data.shop.logo || data.shop.phone || data.shop.address)) applyShop(data.shop);
     ensureDummyCatalog();
     const ok = !!(state.companies.length || state.aluminium.length || state.glassThicks.length || state.locks.length);
+    if (ok) saveCatalogSoftCache();
     if (doRender !== false) {
       repriceItems();
       renderItems();
@@ -4082,7 +4167,6 @@
   }
 
   function applyCatalog(data) {
-    if (isStaff()) return false;
     return applyCatalogLists(data, true);
   }
 
@@ -4097,10 +4181,39 @@
   function fetchCatalogGet() {
     const url = sheetApiUrl();
     const sep = url.indexOf("?") >= 0 ? "&" : "?";
-    return fetch(url + sep + "action=catalog", {
+    return fetch(url + sep + "action=catalog&_=" + Date.now(), {
       method: "GET",
-      redirect: "follow"
-    }).then((res) => res.json());
+      redirect: "follow",
+      cache: "no-store"
+    }).then(function (res) {
+      if (!res.ok) throw new Error("http");
+      return res.json();
+    });
+  }
+
+  function fetchCatalogOnce() {
+    return fetchJsonTimeout(fetchCatalogGet(), 18000).catch(function () {
+      return fetchJsonTimeout(sheetRequest({ action: "catalog" }), 18000);
+    });
+  }
+
+  function fetchCatalogWithRetry(tries) {
+    var left = Math.max(1, tries || 3);
+    function attempt() {
+      return fetchCatalogOnce().then(function (data) {
+        if (data && (data.ok !== false) && (
+          Array.isArray(data.companies) || Array.isArray(data.aluminium) || Array.isArray(data.locks)
+        )) return data;
+        throw new Error("catalog");
+      }).catch(function (err) {
+        left -= 1;
+        if (left <= 0) throw err || new Error("catalog");
+        return new Promise(function (resolve) {
+          setTimeout(resolve, left === 2 ? 700 : 1400);
+        }).then(attempt);
+      });
+    }
+    return attempt();
   }
 
   function loadCatalog() {
@@ -4113,23 +4226,18 @@
       updateCatalogHint();
       return;
     }
+    const soft = readCatalogSoftCache();
+    if (soft) applyCatalogLists(soft, true);
     const hasLocal = !!(state.companies.length || state.aluminium.length || state.locks.length);
     if (hasLocal) setCatalogSyncing(true);
     else showLoader(true, T.loading);
-    fetchJsonTimeout(fetchCatalogGet(), hasLocal ? 10000 : 14000).then(function (data) {
-      if (isStaff()) return true;
-      if (applyCatalogLists(data, true)) return true;
-      throw new Error("catalog");
-    }).catch(function () {
-      if (hasLocal || isStaff()) return;
-      return fetchJsonTimeout(sheetRequest({ action: "catalog" }), 12000).then(function (data) {
-        if (!isStaff()) applyCatalog(data);
-      });
+    fetchCatalogWithRetry(3).then(function (data) {
+      applyCatalogLists(data, true);
     }).catch(function () {
       updateCatalogHint();
     }).finally(function () {
-      if (hasLocal) setCatalogSyncing(false);
-      else showLoader(false);
+      setCatalogSyncing(false);
+      showLoader(false);
     });
   }
 
@@ -4210,7 +4318,10 @@
   var persistAgain = false;
 
   function persistOwnerData(sections) {
-    if (!isOwner() || !state.ownerPin || !state.ownerEmail || !sheetApiUrl()) return;
+    if (!isOwner() || !state.ownerPin || !state.ownerEmail || !sheetApiUrl()) {
+      flashNote(T.ownerNeedApi || T.ownerSaveFail, true);
+      return;
+    }
     var list = Array.isArray(sections) ? sections : [];
     if (!list.length) {
       ["companies", "locks", "aluminium", "charges", "cut", "users", "shop"].forEach(function (s) {
@@ -4223,6 +4334,9 @@
         if (key) persistPending[key] = true;
       });
     }
+    flashNote(T.savingBtn || "সংরক্ষণ হচ্ছে...", false);
+    setSaveButtonsBusy(true);
+    setCatalogSyncing(true);
     if (persistTimer) clearTimeout(persistTimer);
     persistTimer = setTimeout(flushPersistOwnerData, 280);
   }
@@ -4231,6 +4345,8 @@
     persistTimer = null;
     if (!isOwner() || !state.ownerPin || !state.ownerEmail || !sheetApiUrl()) {
       persistPending = {};
+      setSaveButtonsBusy(false);
+      setCatalogSyncing(false);
       return;
     }
     if (persistInFlight) {
@@ -4239,9 +4355,14 @@
     }
     var sections = Object.keys(persistPending);
     persistPending = {};
-    if (!sections.length) return;
+    if (!sections.length) {
+      setSaveButtonsBusy(false);
+      setCatalogSyncing(false);
+      return;
+    }
     persistInFlight = true;
     setCatalogSyncing(true);
+    setSaveButtonsBusy(true);
     var payload = {
       action: "save",
       email: state.ownerEmail,
@@ -4261,21 +4382,19 @@
         state.staff = data.users;
         renderStaffList();
       }
+      saveCatalogSoftCache();
       flashSaved();
     }).catch(() => {
-      const el = $("save-flash");
-      if (el) {
-        el.textContent = T.ownerSaveFail;
-        el.classList.add("show");
-        setTimeout(() => el.classList.remove("show"), 1800);
-      }
+      flashNote(T.ownerSaveFail, true);
     }).finally(() => {
       persistInFlight = false;
-      setCatalogSyncing(false);
       if (persistAgain || Object.keys(persistPending).length) {
         persistAgain = false;
         flushPersistOwnerData();
+        return;
       }
+      setCatalogSyncing(false);
+      setSaveButtonsBusy(false);
     });
   }
 
@@ -5077,6 +5196,13 @@
     if ($("print-kicker")) $("print-kicker").textContent = cutting ? T.printCutKicker : T.printKicker;
     if ($("print-shop")) $("print-shop").textContent = shopOf(state.shop).name;
     if ($("print-sub")) $("print-sub").textContent = cutting ? (T.cutTitle || T.printCutKicker) : shopOf(state.shop).slogan;
+    const shop = shopOf(state.shop);
+    const contact = $("print-contact");
+    if (contact) {
+      const bits = [shop.phone, shop.address].filter(Boolean);
+      contact.textContent = bits.join(" · ");
+      contact.classList.toggle("hidden", !bits.length);
+    }
     if ($("print-date-label")) $("print-date-label").textContent = T.printDate;
     if ($("print-date")) {
       $("print-date").textContent = new Date().toLocaleDateString(state.lang === "en" ? "en-GB" : "bn-BD", {
@@ -5085,8 +5211,15 @@
         year: "numeric"
       });
     }
-    if ($("print-thanks")) $("print-thanks").textContent = cutting ? (T.cutTitle || T.printCutKicker) : T.printThanks;
-    if ($("print-note")) $("print-note").textContent = T.printNote;
+    if ($("print-thanks")) $("print-thanks").textContent = cutting ? shop.name : T.printThanks;
+    if ($("print-note")) {
+      if (cutting) {
+        const bits = [shop.phone, shop.address].filter(Boolean);
+        $("print-note").textContent = bits.length ? bits.join(" · ") : (T.printNote || "");
+      } else {
+        $("print-note").textContent = T.printNote;
+      }
+    }
     const cust = $("print-customer");
     let name = $("quote-name") && $("quote-name").value.trim();
     let phone = $("quote-phone") && $("quote-phone").value.trim();
@@ -5197,7 +5330,13 @@
     }
     if ($("btn-shop-logo-reset")) {
       $("btn-shop-logo-reset").addEventListener("click", function () {
-        applyShop({ name: state.shop.name, slogan: state.shop.slogan, logo: "images/logo.svg" });
+        applyShop({
+          name: state.shop.name,
+          slogan: state.shop.slogan,
+          phone: state.shop.phone,
+          address: state.shop.address,
+          logo: "images/logo.svg"
+        });
         renderHome();
         persistOwnerData(["shop"]);
       });
@@ -5388,7 +5527,7 @@
 
   async function init() {
     try {
-      ["glasscalc:companies", "glasscalc:locks", "glasscalc:cutparams", "glasscalc:ownerpin", KEYS.catalog].forEach((k) => {
+      ["glasscalc:companies", "glasscalc:locks", "glasscalc:cutparams", "glasscalc:ownerpin"].forEach((k) => {
         localStorage.removeItem(k);
       });
     } catch (_) { /* ignore */ }
@@ -5398,6 +5537,7 @@
     state.glassThicks = [];
     state.charges = { net: 0, extra: 0 };
     state.cutParams = { ...DEFAULT_CUT };
+    applyCatalogLists(readCatalogSoftCache(), false);
     const savedShop = await storeGet(KEYS.shop);
     applyShop(savedShop || state.shop);
     state.items = (await storeGet(KEYS.items)) || [];
