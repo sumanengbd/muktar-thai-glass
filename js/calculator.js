@@ -5,6 +5,8 @@
   "shop": "মুক্তার থাই এস.এস গ্যালারী এন্ড গ্লাস হাউজ",
   "janala": "জানালা",
   "dorja": "দরজা",
+  "janalaSub": "ফিক্সড ও স্লাইডিং",
+  "dorjaSub": "সিঙ্গেল ও স্লাইডিং",
   "fut": "ফুট",
   "inchi": "ইঞ্চি",
   "fixedFrame": "ফিক্সড ফ্রেম",
@@ -33,6 +35,7 @@
   "map": "মাপ",
   "songkha": "সংখ্যা",
   "piece": "পিস",
+  "sutaUnit": "সুতা",
   "errCompany": "প্রথমে \u0985\u09cd\u09af\u09be\u09a1\u09ae\u09bf\u09a8 থেকে অন্তত একটি কাঁচের কোম্পানি যোগ করুন।",
   "errSize": "উচ্চতা ও প্রস্থ সঠিকভাবে দিন।",
   "cutShow": "কাটিং লিস্ট দেখান",
@@ -208,10 +211,16 @@
   "qtyLabel": "পরিমাণ (সংখ্যা)",
   "hFt": "উচ্চতা (ফুট)",
   "hIn": "উচ্চতা (ইঞ্চি)",
-  "hMm": "উচ্চতা (মিমি)",
+  "hSutaShort": "উচ্চতা (সুতা)",
   "wFt": "প্রস্থ (ফুট)",
   "wIn": "প্রস্থ (ইঞ্চি)",
-  "wMm": "প্রস্থ (মিমি)",
+  "wSutaShort": "প্রস্থ (সুতা)",
+  "heightOnly": "উচ্চতা",
+  "widthOnly": "প্রস্থ",
+  "autoMapTitle": "অটোমেটিক মাপ",
+  "glassPerPiece": "গ্লাস (প্রতি পিস)",
+  "glassCountLabel": "গ্লাসের সংখ্যা",
+  "pieceCut": "পিচ",
   "glassCompany": "কাঁচের কোম্পানি",
   "lockType": "লক এর ধরন",
   "addCardTitle": "নতুন জানালা / দরজা যোগ করুন",
@@ -239,12 +248,42 @@
   "navCut": "কাটিং",
   "installBtn": "ইনস্টল",
   "closeBtn": "বন্ধ করুন",
-  "quotesOf": "কোট"
+  "quotesOf": "কোট",
+  "outerSide": "আউটার সাইড",
+  "shutterLock": "সাটার লক",
+  "shutterBottom": "সাটার বটম",
+  "shutterTop": "সাটার টপ",
+  "interLock": "ইন্টার লক",
+  "outerBottomHi": "আউটার বটম হাই",
+  "outerTopPart": "আউটার টপ",
+  "cutCalcTitle": "কাটিং হিসাব",
+  "cutCalcHint": "উচ্চতা ও প্রস্থ দিয়ে কাটিং মাপ বের করুন। লগইন লাগবে না।",
+  "cutSutaNote": "৮ সুতা = ১ ইঞ্চি · ফুট, ইঞ্চি ও সুতা দিয়ে মাপ দিন",
+  "sutaHint": "৮ সুতা = ১ ইঞ্চি",
+  "hSuta": "উচ্চতা (সুতা)",
+  "wSuta": "প্রস্থ (সুতা)",
+  "cutShutters": "শাটার",
+  "cutCalcBtn": "হিসাব করুন",
+  "cutAddBtn": "কাটিং লিস্টে যোগ করুন",
+  "cutResetBtn": "রিসেট / নতুন",
+  "cutAddedNote": "কাটিং লিস্টে যোগ হয়েছে।",
+  "cutUserSize": "ইউজার এর মাপ",
+  "cutListHint": "প্রতিটি জানালা/দরজার জন্য কোনো পার্টস কতটুকু মাপে কাটতে হবে তার তালিকা।",
+  "cutListWarn": "একটা সাধারণ হিসাব - প্রোফাইল অনুযায়ী প্রকৃত মাপ কিছুটা ভিন্ন হতে পারে।",
+  "cpOuterLabel": "আউটার টপ/বটম কমতি (0.4 = 4 সুতা)",
+  "cpSideLabel": "সাটার/ইন্টার লক কমতি (1.1)",
+  "cpShutterLabel": "শাটার টপ/বটম প্রস্থ কমতি (6)",
+  "cpGlassHLabel": "গ্লাস উচ্চতা কমতি (4.2)",
+  "cpGlassWLabel": "গ্লাস প্রস্থ কমতি (5)",
+  "cutFormulaHint": "মান ইঞ্চি।সুতা ফরম্যাটে। দশমিকের পরে সুতা।",
+  "cutFormulaNote": "উদাহরণ: হাইট 54, প্রস্থ 60 দুই শাটার।"
 };
   const EN = {
     shop: "Muktar Thai S.S Gallery & Glass House",
     janala: "Window",
     dorja: "Door",
+    janalaSub: "Fixed & sliding",
+    dorjaSub: "Single & sliding",
     fut: "ft",
     inchi: "in",
     fixedFrame: "Fixed frame",
@@ -273,6 +312,7 @@
     map: "Size",
     songkha: "Qty",
     piece: "pcs",
+    sutaUnit: "suta",
     errCompany: "Add at least one glass company from Admin first.",
     errSize: "Enter height and width correctly.",
     cutShow: "Show cutting list",
@@ -448,10 +488,16 @@
     qtyLabel: "Quantity",
     hFt: "Height (ft)",
     hIn: "Height (in)",
-    hMm: "Height (mm)",
+    hSutaShort: "Height (suta)",
     wFt: "Width (ft)",
     wIn: "Width (in)",
-    wMm: "Width (mm)",
+    wSutaShort: "Width (suta)",
+    heightOnly: "Height",
+    widthOnly: "Width",
+    autoMapTitle: "Automatic size",
+    glassPerPiece: "Glass (per piece)",
+    glassCountLabel: "Glass count",
+    pieceCut: "pcs",
     glassCompany: "Glass company",
     lockType: "Lock type",
     addCardTitle: "Add a new window / door",
@@ -479,13 +525,42 @@
     navCut: "Cutting",
     installBtn: "Install",
     closeBtn: "Close",
-    quotesOf: "quotes"
+    quotesOf: "quotes",
+    outerSide: "Outer side",
+    shutterLock: "Shutter lock",
+    shutterBottom: "Shutter bottom",
+    shutterTop: "Shutter top",
+    interLock: "Inter lock",
+    outerBottomHi: "Outer bottom",
+    outerTopPart: "Outer top",
+    cutCalcTitle: "Cutting calculator",
+    cutCalcHint: "Enter height and width to get cutting sizes. No login needed.",
+    cutSutaNote: "8 suta = 1 inch · enter size as feet, inches and suta",
+    sutaHint: "8 suta = 1 inch",
+    hSuta: "Height (suta)",
+    wSuta: "Width (suta)",
+    cutShutters: "Shutters",
+    cutCalcBtn: "Calculate",
+    cutAddBtn: "Add to cutting list",
+    cutResetBtn: "Reset / New",
+    cutAddedNote: "Added to the cutting list.",
+    cutUserSize: "Your size",
+    cutListHint: "Part sizes for each window/door in the list.",
+    cutListWarn: "Guide sizes only — real cuts may differ by profile.",
+    cpOuterLabel: "Outer top/bottom deduct (0.4 = 4 suta)",
+    cpSideLabel: "Shutter/inter lock deduct (1.1)",
+    cpShutterLabel: "Shutter T/B width deduct (6)",
+    cpGlassHLabel: "Glass height deduct (4.2)",
+    cpGlassWLabel: "Glass width deduct (5)",
+    cutFormulaHint: "Values use inch.suta format. Digits after the point are suta.",
+    cutFormulaNote: "Example: height 54, width 60, 2 shutters."
   };
   const BN = {};
   Object.keys(T).forEach(function (k) { BN[k] = T[k]; });
 
   const KEYS = {
     items: "glasscalc:items",
+    cutItems: "glasscalc:cutItems",
     tab: "glasscalc:tab",
     session: "glasscalc:session",
     adminPanel: "glasscalc:adminPanel",
@@ -504,7 +579,8 @@
     doors: [
       { id: "door-single", label: T.doorSingle, sub: T.oneLeaf, image: "images/door-single.svg", shutters: 1, kind: "door" },
       { id: "door-double", label: T.doorDouble, sub: T.twoLeaf, image: "images/door-double.svg", shutters: 2, kind: "door" },
-      { id: "door-sliding", label: T.doorSliding, sub: T.s2, image: "images/door-sliding.svg", shutters: 2, kind: "door" }
+      { id: "door-sliding", label: T.doorSliding, sub: T.s2, image: "images/door-sliding.svg", shutters: 2, kind: "door" },
+      { id: "door-sliding3", label: T.doorSliding, sub: T.s3, image: "images/door-sliding3.svg", shutters: 3, kind: "door" }
     ]
   };
   const ALL_TYPES = [...PRODUCT_TYPES.windows, ...PRODUCT_TYPES.doors];
@@ -528,7 +604,7 @@
     { id: "brown", labelKey: "aluBrown", light: "#d4b896", mid: "#7a4e2e", dark: "#4a2e1a" }
   ];
 
-  const DEFAULT_CUT = { outerHoriz: 0, side: 0, shutterHoriz: 0, glassGap: 0 };
+  const DEFAULT_CUT = { outerHoriz: 0.4, side: 1.1, shutterHoriz: 6, glassH: 4.2, glassW: 5 };
   const DEFAULT_LOGIN = { email: "sumanengbd@gmail.com", pin: "123456" };
 
   const state = {
@@ -538,9 +614,12 @@
     glassThicks: [],
     charges: { net: 0, extra: 0 },
     items: [],
+    cutItems: [],
     cutParams: { ...DEFAULT_CUT },
-    selectedKind: null,
-    selectedType: null,
+    selectedKind: "window",
+    selectedType: "sliding2",
+    cutKind: "window",
+    cutType: "sliding2",
     glassColor: "clear",
     aluColor: "silver",
     hasNet: false,
@@ -577,10 +656,13 @@
       fillQuoteLabels();
       renderKindPicker();
       renderTypePicker();
+      renderCutKindPicker();
+      renderCutTypePicker();
       refreshSheetSelects();
       renderItems();
       renderCuttingTab();
       renderLivePreview(true);
+      renderCutPreview(true);
       updateAddItemBtn();
     }
   }
@@ -596,6 +678,7 @@
     d[0].label = T.doorSingle; d[0].sub = T.oneLeaf;
     d[1].label = T.doorDouble; d[1].sub = T.twoLeaf;
     d[2].label = T.doorSliding; d[2].sub = T.s2;
+    d[3].label = T.doorSliding; d[3].sub = T.s3;
   }
 
   function fillCalcLabels() {
@@ -605,10 +688,12 @@
     if ($("in-room")) $("in-room").placeholder = T.roomPh;
     set("h-ft-label", T.hFt);
     set("h-in-label", T.hIn);
-    set("h-mm-label", T.hMm);
+    set("h-suta-label", T.hSutaShort || T.hSuta);
     set("w-ft-label", T.wFt);
     set("w-in-label", T.wIn);
-    set("w-mm-label", T.wMm);
+    set("w-suta-label", T.wSutaShort || T.wSuta);
+    set("calc-suta-hint", T.cutSutaNote);
+    set("cut-suta-hint", T.cutSutaNote);
     set("glass-company-label", T.glassCompany);
     set("glass-color-label", T.glassColor);
     set("lock-type-label", T.lockType);
@@ -619,8 +704,34 @@
     setHeading("preview-title", T.previewTitle);
     setHeading("list-title", T.listTitle);
     setHeading("cut-title", T.cutTitle);
+    setHeading("cut-calc-title", T.cutCalcTitle);
+    setHeading("cut-preview-title", T.previewTitle);
+    set("cut-qty-label", T.qtyLabel);
+    set("cut-h-ft-label", T.hFt);
+    set("cut-h-in-label", T.hIn);
+    set("cut-h-suta-label", T.hSutaShort || T.hSuta);
+    set("cut-w-ft-label", T.wFt);
+    set("cut-w-in-label", T.wIn);
+    set("cut-w-suta-label", T.wSutaShort || T.wSuta);
+    set("cut-meta-kind-l", T.previewKind);
+    set("cut-meta-type-l", T.previewModel);
+    set("cut-meta-size-l", T.previewSize);
+    set("cut-preview-caption", T.previewCaption);
+    set("btn-cut-calc-label", T.cutCalcBtn);
+    set("btn-cut-add-label", T.cutAddBtn);
+    set("btn-cut-reset-label", T.cutResetBtn);
+    set("cut-list-hint", T.cutListHint);
+    set("cut-list-warn", T.cutListWarn);
     set("empty-note", T.emptyItems);
     set("cutting-empty", T.emptyItems);
+    set("cp-outer-label", T.cpOuterLabel);
+    set("cp-side-label", T.cpSideLabel);
+    set("cp-shutter-label", T.cpShutterLabel);
+    set("cp-glassh-label", T.cpGlassHLabel);
+    set("cp-glassw-label", T.cpGlassWLabel);
+    set("cut-formula-hint", T.cutFormulaHint);
+    set("cut-formula-note", T.cutFormulaNote);
+    setHeading("cut-formula-title", T.tabCut);
     set("sum-sqft-label", T.sumSqft);
     set("sum-glass-label", T.sumGlass);
     set("sum-lock-label", T.sumLock);
@@ -665,7 +776,7 @@
     });
     renderRateList("company-list", state.companies, "company");
     renderCompanySelect();
-    persistOwnerData();
+    persistOwnerData(["companies"]);
   }
 
   function statusLabel(s) {
@@ -689,24 +800,27 @@
 
   function feetParts(ft) {
     const safe = Math.max(0, Number(ft) || 0);
-    let tenthMm = Math.round(safe * 3048);
-    let wholeFt = Math.floor(tenthMm / 3048);
-    tenthMm -= wholeFt * 3048;
-    let inch = Math.floor(tenthMm / 254);
-    tenthMm -= inch * 254;
-    let mm = Math.round(tenthMm / 10);
-    if (mm >= 25) { mm -= 25; inch += 1; }
-    if (inch >= 12) { inch -= 12; wholeFt += 1; }
-    return { ft: wholeFt, inch: inch, mm: mm };
+    let totalSuta = Math.round(safe * 12 * 8);
+    let wholeFt = Math.floor(totalSuta / 96);
+    totalSuta -= wholeFt * 96;
+    let inch = Math.floor(totalSuta / 8);
+    let suta = totalSuta % 8;
+    if (inch >= 12) {
+      wholeFt += Math.floor(inch / 12);
+      inch = inch % 12;
+    }
+    return { ft: wholeFt, inch: inch, suta: suta };
   }
+
 
   function fillSizeInputs(axis, ft) {
     const p = feetParts(ft);
     const a = axis === "w" ? "w" : "h";
     if ($("in-" + a + "-ft")) $("in-" + a + "-ft").value = p.ft ? String(p.ft) : "";
     if ($("in-" + a + "-in")) $("in-" + a + "-in").value = p.inch ? String(p.inch) : "";
-    if ($("in-" + a + "-mm")) $("in-" + a + "-mm").value = p.mm ? String(p.mm) : "";
+    if ($("in-" + a + "-suta")) $("in-" + a + "-suta").value = p.suta ? String(p.suta) : "";
   }
+
 
   function updateAddItemBtn() {
     if ($("btn-add-label")) $("btn-add-label").textContent = state.editItemIndex >= 0 ? T.updateItem : T.addItemBtn;
@@ -908,39 +1022,86 @@
   }
 
   function ftInLabel(ft) {
-    const safe = Math.max(0, Number(ft) || 0);
-    let tenthMm = Math.round(safe * 3048);
-    let wholeFt = Math.floor(tenthMm / 3048);
-    tenthMm -= wholeFt * 3048;
-    let inch = Math.floor(tenthMm / 254);
-    tenthMm -= inch * 254;
-    let mm = Math.round(tenthMm / 10);
-    if (mm >= 25) {
-      mm -= 25;
-      inch += 1;
-    }
-    if (inch >= 12) {
-      inch -= 12;
-      wholeFt += 1;
-    }
-    let s = wholeFt + " " + T.fut;
-    if (inch > 0) s += " " + inch + " " + T.inchi;
-    if (mm > 0) s += " " + mm + " " + T.mm;
+    const p = feetParts(ft);
+    let s = p.ft + " " + T.fut;
+    if (p.inch > 0) s += " " + p.inch + " " + T.inchi;
+    if (p.suta > 0) s += " " + p.suta + " " + T.sutaUnit;
     return s;
   }
 
-  function toFeet(ft, inch, mm) {
-    return (Number(ft) || 0) + (Number(inch) || 0) / 12 + (Number(mm) || 0) / 304.8;
+  function alignDimLabels(root) {
+    if (!root) return;
+    root.querySelectorAll("g.dim-label").forEach(function (g) {
+      const text = g.querySelector("text");
+      const rect = g.querySelector("rect");
+      if (!text || !rect) return;
+      text.removeAttribute("transform");
+      text.removeAttribute("dy");
+      text.removeAttribute("dominant-baseline");
+      text.setAttribute("text-anchor", "start");
+      text.setAttribute("x", "0");
+      text.setAttribute("y", "0");
+      let tb;
+      try {
+        tb = text.getBBox();
+      } catch (_) {
+        return;
+      }
+      if (!(tb.width > 0) || !(tb.height > 0)) return;
+      text.setAttribute("x", String(-tb.x - tb.width / 2));
+      text.setAttribute("y", String(-tb.y - tb.height / 2));
+      try {
+        tb = text.getBBox();
+      } catch (_) {
+        return;
+      }
+      const padX = 8;
+      const padY = 4;
+      rect.setAttribute("x", String(tb.x - padX));
+      rect.setAttribute("y", String(tb.y - padY));
+      rect.setAttribute("width", String(Math.max(28, tb.width + padX * 2)));
+      rect.setAttribute("height", String(Math.max(14, tb.height + padY * 2)));
+    });
   }
+
+  function scheduleAlignDimLabels(root) {
+    alignDimLabels(root);
+    requestAnimationFrame(function () {
+      alignDimLabels(root);
+      if (document.fonts && document.fonts.load) {
+        document.fonts.load('600 9.5px "Hind Siliguri"').then(function () {
+          alignDimLabels(root);
+        }).catch(function () {});
+      }
+    });
+  }
+
+  function dimLabelChip(label, x, y, rotate) {
+    const html = escapeHtml(label);
+    return (
+      '<g class="dim-label" transform="translate(' + x + " " + y + ")" + (rotate ? " rotate(" + rotate + ")" : "") + '">' +
+        '<rect x="-20" y="-9" width="40" height="18" rx="8" fill="#0a4456"/>' +
+        '<text fill="#fff" font-size="9.5" font-weight="600" font-family="Hind Siliguri, sans-serif">' + html + "</text>" +
+      "</g>"
+    );
+  }
+
+
+  function toFeet(ft, inch, suta) {
+    const su = Math.max(0, Math.min(7, Math.round(Number(suta) || 0)));
+    return (Number(ft) || 0) + (Number(inch) || 0) / 12 + su / 96;
+  }
+
 
   function inputSizeFt(axis) {
     const p = axis === "w" ? "w" : "h";
     return toFeet(
       $("in-" + p + "-ft") && $("in-" + p + "-ft").value,
       $("in-" + p + "-in") && $("in-" + p + "-in").value,
-      $("in-" + p + "-mm") && $("in-" + p + "-mm").value
+      $("in-" + p + "-suta") && $("in-" + p + "-suta").value
     );
   }
+
 
   function getType(id) {
     return ALL_TYPES.find((t) => t.id === id) || ALL_TYPES[0];
@@ -1171,7 +1332,6 @@
         added += 1;
       }
     });
-    if (added) saveCatalogCache();
     return added;
   }
 
@@ -1523,13 +1683,14 @@
       logo: state.shop.logo
     });
     renderHome();
-    persistOwnerData();
+    persistOwnerData(["shop"]);
   }
 
   function onShopLogoPicked(file) {
     resizeLogoFile(file).then(function (dataUrl) {
       applyShop({ name: state.shop.name, slogan: state.shop.slogan, logo: dataUrl });
       renderHome();
+      persistOwnerData(["shop"]);
     }).catch(function () {
       showStaffErr(T.shopLogoBad);
     });
@@ -1849,7 +2010,7 @@
     const innerW = boxW - frame * 2;
     const innerH = boxH - frame * 2;
     const paneW = (innerW + overlap * (shutters - 1) - paneGap * (shutters - 1)) / shutters;
-    const hasKick = isDoor && type.id !== "door-sliding";
+    const hasKick = isDoor && String(type.id).indexOf("door-sliding") !== 0;
     const glassH = hasKick ? innerH * 0.62 : innerH;
     const lockS = compact ? 0.58 : 1;
     const clipId = uid + "open";
@@ -1994,19 +2155,20 @@
     let dims = "";
     if (!compact) {
       const hx = 20;
-      const labelH = escapeHtml(ftInLabel(h));
-      const labelW = escapeHtml(ftInLabel(w));
+      const labelH = ftInLabel(h);
+      const labelW = ftInLabel(w);
+      const cy = y + boxH / 2;
+      const wy = y + boxH + 26;
+      const wx = x + boxW / 2;
       dims +=
         '<line x1="' + hx + '" y1="' + y + '" x2="' + hx + '" y2="' + (y + boxH) + '" stroke="#0a4456" stroke-width="1.1"/>' +
         '<line x1="' + (hx - 4) + '" y1="' + y + '" x2="' + (hx + 4) + '" y2="' + y + '" stroke="#0a4456"/>' +
         '<line x1="' + (hx - 4) + '" y1="' + (y + boxH) + '" x2="' + (hx + 4) + '" y2="' + (y + boxH) + '" stroke="#0a4456"/>' +
-        '<rect x="' + (hx - 20) + '" y="' + (y + boxH / 2 - 14) + '" width="26" height="28" rx="8" fill="#0a4456"/>' +
-        '<text x="' + (hx - 7) + '" y="' + (y + boxH / 2 + 1) + '" fill="#fff" font-size="9.5" font-family="Hind Siliguri, sans-serif" text-anchor="middle" dominant-baseline="middle" transform="rotate(-90 ' + (hx - 7) + " " + (y + boxH / 2) + ')">' + labelH + "</text>" +
-        '<line x1="' + x + '" y1="' + (y + boxH + 26) + '" x2="' + (x + boxW) + '" y2="' + (y + boxH + 26) + '" stroke="#0a4456" stroke-width="1.1"/>' +
-        '<line x1="' + x + '" y1="' + (y + boxH + 22) + '" x2="' + x + '" y2="' + (y + boxH + 30) + '" stroke="#0a4456"/>' +
-        '<line x1="' + (x + boxW) + '" y1="' + (y + boxH + 22) + '" x2="' + (x + boxW) + '" y2="' + (y + boxH + 30) + '" stroke="#0a4456"/>' +
-        '<rect x="' + (x + boxW / 2 - 36) + '" y="' + (y + boxH + 17) + '" width="72" height="17" rx="8" fill="#0a4456"/>' +
-        '<text x="' + (x + boxW / 2) + '" y="' + (y + boxH + 26) + '" fill="#fff" font-size="9.5" font-family="Hind Siliguri, sans-serif" text-anchor="middle" dominant-baseline="middle">' + labelW + "</text>";
+        dimLabelChip(labelH, hx, cy, -90) +
+        '<line x1="' + x + '" y1="' + wy + '" x2="' + (x + boxW) + '" y2="' + wy + '" stroke="#0a4456" stroke-width="1.1"/>' +
+        '<line x1="' + x + '" y1="' + (wy - 4) + '" x2="' + x + '" y2="' + (wy + 4) + '" stroke="#0a4456"/>' +
+        '<line x1="' + (x + boxW) + '" y1="' + (wy - 4) + '" x2="' + (x + boxW) + '" y2="' + (wy + 4) + '" stroke="#0a4456"/>' +
+        dimLabelChip(labelW, wx, wy, 0);
     }
 
     return (
@@ -2060,6 +2222,7 @@
     const type = getType(opts.typeId);
     const lock = selectedLock();
     $("live-preview").innerHTML = buildDiagram(opts);
+    scheduleAlignDimLabels($("live-preview"));
     $("preview-kind").textContent = kindLabel(type.kind);
     $("preview-type").textContent = type.label + " · " + type.sub;
     $("preview-size").textContent = opts.heightFt > 0 && opts.widthFt > 0
@@ -2077,11 +2240,13 @@
     $("kind-picker").innerHTML = `
       <button type="button" class="kind-btn${state.selectedKind === "window" ? " active" : ""}" data-kind="window">
         <img src="images/window-fixed.svg" alt="${escapeHtml(T.janala)}">
-        <span>${escapeHtml(T.janala)}</span>
+        <span class="name">${escapeHtml(T.janala)}</span>
+        <span class="sub">${escapeHtml(T.janalaSub)}</span>
       </button>
       <button type="button" class="kind-btn${state.selectedKind === "door" ? " active" : ""}" data-kind="door">
         <img src="images/door-single.svg" alt="${escapeHtml(T.dorja)}">
-        <span>${escapeHtml(T.dorja)}</span>
+        <span class="name">${escapeHtml(T.dorja)}</span>
+        <span class="sub">${escapeHtml(T.dorjaSub)}</span>
       </button>
     `;
   }
@@ -2253,13 +2418,17 @@
         return;
       }
       if (!afterSize) return;
+      if (child.classList.contains("suta-hint")) return;
       lockBox(child, !hasSize);
     });
   }
 
   function setSelectedKind(kind) {
     state.selectedKind = kind;
-    state.selectedType = null;
+    const list = kind === "door" ? PRODUCT_TYPES.doors : PRODUCT_TYPES.windows;
+    const keep = list.some((t) => t.id === state.selectedType);
+    state.selectedType = keep ? state.selectedType : (list[0] ? list[0].id : null);
+    if (kind === "window" && !keep) state.selectedType = "sliding2";
     renderKindPicker();
     renderTypePicker();
     syncCalcDetails();
@@ -2756,7 +2925,7 @@
       renderRateList("lock-list", state.locks, "lock");
       renderLockSelect();
       renderLivePreview(true);
-      persistOwnerData();
+      persistOwnerData(["locks"]);
       return;
     }
     const list = kind === "company" ? state.companies : state.aluminium;
@@ -2773,7 +2942,7 @@
     } else {
       refreshSheetSelects();
     }
-    persistOwnerData();
+    persistOwnerData([kind === "company" ? "companies" : "aluminium"]);
   }
 
   function handleRateListClick(kind, e) {
@@ -2836,76 +3005,321 @@
     if (state.edit.kind === kind) renderEditPicks();
   }
 
+
+  function toSuta(inchSuta) {
+    const n = Number(inchSuta);
+    if (!Number.isFinite(n)) return 0;
+    const sign = n < 0 ? -1 : 1;
+    const a = Math.abs(n);
+    const inch = Math.floor(a + 1e-9);
+    const raw = String(a);
+    const dot = raw.indexOf(".");
+    let suta = 0;
+    if (dot >= 0) suta = parseInt(raw.charAt(dot + 1) || "0", 10) || 0;
+    if (suta > 7) {
+      return sign * ((inch + Math.floor(suta / 8)) * 8 + (suta % 8));
+    }
+    return sign * (inch * 8 + suta);
+  }
+
+  function fromSuta(total) {
+    const sign = total < 0 ? -1 : 1;
+    let t = Math.abs(Math.round(Number(total) || 0));
+    const inch = Math.floor(t / 8);
+    const suta = t % 8;
+    return sign * (inch + suta / 10);
+  }
+
+  function inchSutaLabel(inchSuta) {
+    const n = fromSuta(toSuta(inchSuta));
+    const sign = n < 0 ? "-" : "";
+    const a = Math.abs(n);
+    const inch = Math.floor(a + 1e-9);
+    const suta = Math.round((a - inch) * 10);
+    return sign + inch + "." + suta + " " + T.inchi;
+  }
+
+  function inchSutaPretty(inchSuta) {
+    const n = fromSuta(toSuta(inchSuta));
+    const sign = n < 0 ? "-" : "";
+    const a = Math.abs(n);
+    const inch = Math.floor(a + 1e-9);
+    const suta = Math.round((a - inch) * 10);
+    const main = sign + inch + "." + suta + " " + T.inchi;
+    if (!suta) return main;
+    return main + " (" + sign + inch + " " + T.inchi + " " + suta + " " + T.sutaUnit + ")";
+  }
+
+  function ftToInchSuta(ft) {
+    const totalIn = Math.max(0, Number(ft) || 0) * 12;
+    const inch = Math.floor(totalIn + 1e-9);
+    let suta = Math.round((totalIn - inch) * 8);
+    let outInch = inch;
+    if (suta >= 8) {
+      outInch += Math.floor(suta / 8);
+      suta = suta % 8;
+    }
+    return outInch + suta / 10;
+  }
+
+  function normalizeCutParams(cp) {
+    const c = cp && typeof cp === "object" ? cp : {};
+    const legacy = Number(c.outerHoriz) === 3.6 && Number(c.shutterHoriz) === 1.5;
+    const blank = !(Number(c.outerHoriz) > 0 || Number(c.side) > 0 || Number(c.shutterHoriz) > 0);
+    if (legacy || blank) return { ...DEFAULT_CUT };
+    return {
+      outerHoriz: Number.isFinite(Number(c.outerHoriz)) ? Number(c.outerHoriz) : DEFAULT_CUT.outerHoriz,
+      side: Number.isFinite(Number(c.side)) ? Number(c.side) : DEFAULT_CUT.side,
+      shutterHoriz: Number.isFinite(Number(c.shutterHoriz)) ? Number(c.shutterHoriz) : DEFAULT_CUT.shutterHoriz,
+      glassH: Number.isFinite(Number(c.glassH)) ? Number(c.glassH) : DEFAULT_CUT.glassH,
+      glassW: Number.isFinite(Number(c.glassW)) ? Number(c.glassW) : DEFAULT_CUT.glassW
+    };
+  }
+
+  function computeCutFromInches(heightIn, widthIn, shutters) {
+    const h = toSuta(heightIn);
+    const w = toSuta(widthIn);
+    const n = Math.max(1, Math.round(Number(shutters) || 2));
+    const p = state.cutParams;
+    const sideD = toSuta(p.side);
+    const shutterD = toSuta(p.shutterHoriz);
+    const outerD = toSuta(p.outerHoriz);
+    const glassHD = toSuta(p.glassH);
+    const glassWD = toSuta(p.glassW);
+    const lockLen = fromSuta(Math.max(0, h - sideD));
+    const shutterTB = fromSuta(Math.max(0, Math.round((w - shutterD) / n)));
+    const outerTB = fromSuta(Math.max(0, w - outerD));
+    const glassH = fromSuta(Math.max(0, h - glassHD));
+    const glassW = fromSuta(Math.max(0, Math.round((w - glassWD) / n)));
+    const list = [
+      { part: T.outerSide, size: inchSutaPretty(fromSuta(h)), qty: 2 },
+      { part: T.shutterLock, size: inchSutaPretty(lockLen), qty: n },
+      { part: T.shutterBottom, size: inchSutaPretty(shutterTB), qty: n },
+      { part: T.shutterTop, size: inchSutaPretty(shutterTB), qty: n },
+      { part: T.interLock, size: inchSutaPretty(lockLen), qty: n },
+      { part: T.outerBottomHi, size: inchSutaPretty(outerTB), qty: 1 },
+      { part: T.outerTopPart, size: inchSutaPretty(outerTB), qty: 1 },
+      { part: T.glassPerPiece || T.glass, size: inchSutaPretty(glassH) + " × " + inchSutaPretty(glassW), qty: n, isGlass: true },
+      { part: T.glassCountLabel, size: n + (state.lang === "en" ? "" : String.fromCharCode(0x099F, 0x09BE)), qty: 0, isCount: true }
+    ];
+    return list;
+  }
+
   function computeCutList(item) {
     const type = getType(item.winType);
-    const n = type.shutters;
-    const outerHoriz = Math.max(0, item.widthFt - state.cutParams.outerHoriz / 12);
-    const outerVert = Math.max(0, item.heightFt - state.cutParams.side / 12);
-    const shutterW = item.widthFt / n;
-    const shutterHoriz = Math.max(0, shutterW - state.cutParams.shutterHoriz / 12);
-    const shutterVert = Math.max(0, item.heightFt - state.cutParams.side / 12);
-    const glassGap = state.cutParams.glassGap / 12;
-    const list = [
-      { part: T.outerTB, lengthFt: outerHoriz, qty: item.qty * 2 },
-      { part: T.outerLR, lengthFt: outerVert, qty: item.qty * 2 }
-    ];
-    if (n === 1) {
-      list.push({
-        part: T.glass,
-        lengthFt: Math.max(0, item.heightFt - glassGap),
-        widthFt2: Math.max(0, item.widthFt - glassGap),
-        qty: item.qty,
-        isGlass: true
-      });
-    } else {
-      list.push({ part: T.shutterTB + " (" + n + T.ti + ")", lengthFt: shutterHoriz, qty: item.qty * n * 2 });
-      list.push({ part: T.shutterLR, lengthFt: shutterVert, qty: item.qty * n * 2 });
-      list.push({
-        part: T.glassEach,
-        lengthFt: Math.max(0, item.heightFt - glassGap),
-        widthFt2: Math.max(0, shutterW - glassGap),
-        qty: item.qty * n,
-        isGlass: true
-      });
-    }
+    const n = Math.max(1, type && type.shutters ? type.shutters : 2);
+    const heightIn = ftToInchSuta(item.heightFt);
+    const widthIn = ftToInchSuta(item.widthFt);
+    const rows = computeCutFromInches(heightIn, widthIn, n).map((row) => ({
+      part: row.part,
+      lengthLabel: row.size,
+      qty: row.isCount ? 0 : row.qty * Math.max(1, Number(item.qty) || 1),
+      isGlass: !!row.isGlass,
+      isCount: !!row.isCount
+    }));
     if (item.hasNet) {
-      list.push({
+      rows.push({
         part: T.net,
-        lengthFt: item.heightFt,
-        widthFt2: item.widthFt,
-        qty: item.qty,
+        lengthLabel: inchSutaLabel(heightIn) + " x " + inchSutaLabel(widthIn),
+        qty: Math.max(1, Number(item.qty) || 1),
         isGlass: true
       });
     }
-    return list;
+    return rows;
   }
 
   function renderCutTable(item) {
     const rows = computeCutList(item).map((part) => {
-      const size = part.isGlass
-        ? ftInLabel(part.lengthFt) + " x " + ftInLabel(part.widthFt2)
-        : ftInLabel(part.lengthFt);
-      return `<tr>
-        <td>${escapeHtml(part.part)}</td>
-        <td class="mono">${size}</td>
-        <td class="center">${part.qty} ${T.piece}</td>
-      </tr>`;
+      if (part.isCount) {
+        return "<tr>" +
+          "<td>" + escapeHtml(part.part) + "</td>" +
+          '<td class="mono" colspan="2">' + escapeHtml(part.lengthLabel) + "</td>" +
+          "</tr>";
+      }
+      return "<tr>" +
+        "<td>" + escapeHtml(part.part) + "</td>" +
+        '<td class="mono">' + escapeHtml(part.lengthLabel) + "</td>" +
+        '<td class="center">' + part.qty + " " + (T.pieceCut || T.piece) + "</td>" +
+        "</tr>";
     }).join("");
-    return `
-      <div class="cut-table-wrap">
-        <table class="cut-table">
-          <thead>
-            <tr>
-              <th>${T.parts}</th>
-              <th>${T.map}</th>
-              <th class="center">${T.songkha}</th>
-            </tr>
-          </thead>
-          <tbody>${rows}</tbody>
-        </table>
-      </div>
-    `;
+    return (
+      '<div class="cut-table-wrap">' +
+        '<table class="cut-table">' +
+          "<thead><tr>" +
+            "<th>" + T.parts + "</th>" +
+            "<th>" + T.map + "</th>" +
+            '<th class="center">' + T.songkha + "</th>" +
+          "</tr></thead>" +
+          "<tbody>" + rows + "</tbody>" +
+        "</table>" +
+      "</div>"
+    );
   }
+
+  function cutInputToInchSuta(axis) {
+    const p = axis === "w" ? "w" : "h";
+    const ft = parseFloat($("cut-" + p + "-ft") && $("cut-" + p + "-ft").value) || 0;
+    let inch = parseFloat($("cut-" + p + "-in") && $("cut-" + p + "-in").value) || 0;
+    let suta = parseInt($("cut-" + p + "-suta") && $("cut-" + p + "-suta").value, 10) || 0;
+    if (suta < 0) suta = 0;
+    if (suta > 7) suta = 7;
+    if (inch < 0) inch = 0;
+    const totalSuta = Math.round(ft * 12 * 8) + Math.round(inch) * 8 + suta;
+    return fromSuta(totalSuta);
+  }
+
+  function cutInputSizeFt(axis) {
+    const p = axis === "w" ? "w" : "h";
+    return toFeet(
+      $("cut-" + p + "-ft") && $("cut-" + p + "-ft").value,
+      $("cut-" + p + "-in") && $("cut-" + p + "-in").value,
+      $("cut-" + p + "-suta") && $("cut-" + p + "-suta").value
+    );
+  }
+
+  function cutQtyValue() {
+    const raw = parseFloat($("cut-qty") && $("cut-qty").value);
+    if (!Number.isFinite(raw) || raw < 1) return 1;
+    return Math.min(99, Math.round(raw));
+  }
+
+  function renderCutKindPicker() {
+    const heading = $("cut-kind-heading");
+    const picker = $("cut-kind-picker");
+    if (!picker) return;
+    if (heading) heading.textContent = T.janala + " / " + T.dorja;
+    picker.innerHTML =
+      '<button type="button" class="kind-btn' + (state.cutKind === "window" ? " active" : "") + '" data-cut-kind="window">' +
+        '<img src="images/window-fixed.svg" alt="' + escapeHtml(T.janala) + '">' +
+        '<span class="name">' + escapeHtml(T.janala) + "</span>" +
+        '<span class="sub">' + escapeHtml(T.janalaSub) + "</span>" +
+      "</button>" +
+      '<button type="button" class="kind-btn' + (state.cutKind === "door" ? " active" : "") + '" data-cut-kind="door">' +
+        '<img src="images/door-single.svg" alt="' + escapeHtml(T.dorja) + '">' +
+        '<span class="name">' + escapeHtml(T.dorja) + "</span>" +
+        '<span class="sub">' + escapeHtml(T.dorjaSub) + "</span>" +
+      "</button>";
+  }
+
+  function renderCutTypePicker() {
+    const section = $("cut-section-types");
+    const listEl = $("cut-type-list");
+    if (!section || !listEl) return;
+    const isDoor = state.cutKind === "door";
+    const list = isDoor ? PRODUCT_TYPES.doors : PRODUCT_TYPES.windows;
+    if (!list.some((t) => t.id === state.cutType)) {
+      state.cutType = list[0] ? list[0].id : state.cutType;
+    }
+    if ($("cut-types-heading")) {
+      $("cut-types-heading").textContent = isDoor ? T.doorTypes : T.winTypes;
+    }
+    listEl.classList.toggle("doors", isDoor);
+    listEl.innerHTML = list.map((t) =>
+      '<button type="button" class="type-card' + (t.id === state.cutType ? " active" : "") + '" data-cut-type="' + t.id + '">' +
+        '<img src="' + t.image + '" alt="' + escapeHtml(t.label) + '">' +
+        '<span class="name">' + escapeHtml(t.label) + "</span>" +
+        '<span class="sub">' + escapeHtml(t.sub) + "</span>" +
+      "</button>"
+    ).join("");
+  }
+
+  function setCutKind(kind) {
+    state.cutKind = kind === "door" ? "door" : "window";
+    const list = state.cutKind === "door" ? PRODUCT_TYPES.doors : PRODUCT_TYPES.windows;
+    const keep = list.some((t) => t.id === state.cutType);
+    state.cutType = keep ? state.cutType : (list[0] ? list[0].id : state.cutType);
+    if (state.cutKind === "window" && !keep) state.cutType = "sliding2";
+    renderCutKindPicker();
+    renderCutTypePicker();
+    renderCutPreview(true);
+  }
+
+  function setCutType(id) {
+    const list = state.cutKind === "door" ? PRODUCT_TYPES.doors : PRODUCT_TYPES.windows;
+    if (!list.some((t) => t.id === id)) return;
+    state.cutType = id;
+    renderCutTypePicker();
+    renderCutPreview(true);
+  }
+
+  function pulseCutPreview() {
+    const stage = $("cut-live-preview");
+    if (!stage) return;
+    stage.classList.remove("pulse");
+    void stage.offsetWidth;
+    stage.classList.add("pulse");
+  }
+
+  function renderCutPreview(animate) {
+    const stage = $("cut-live-preview");
+    if (!stage) return;
+    if (!state.cutKind || !state.cutType) {
+      stage.innerHTML = "";
+      if ($("cut-preview-kind")) $("cut-preview-kind").textContent = "-";
+      if ($("cut-preview-type")) $("cut-preview-type").textContent = "-";
+      if ($("cut-preview-size")) $("cut-preview-size").textContent = T.typeEnterSize;
+      return;
+    }
+    const heightFt = cutInputSizeFt("h");
+    const widthFt = cutInputSizeFt("w");
+    const type = getType(state.cutType);
+    const opts = {
+      typeId: state.cutType,
+      heightFt: heightFt,
+      widthFt: widthFt,
+      glassColor: "clear",
+      aluColor: "silver",
+      lockStyle: "none",
+      hasNet: false,
+      compact: false
+    };
+    stage.innerHTML = buildDiagram(opts);
+    scheduleAlignDimLabels(stage);
+    if ($("cut-preview-kind")) $("cut-preview-kind").textContent = kindLabel(type.kind);
+    if ($("cut-preview-type")) $("cut-preview-type").textContent = type.label + " · " + type.sub;
+    if ($("cut-preview-size")) {
+      $("cut-preview-size").textContent = heightFt > 0 && widthFt > 0
+        ? ftInLabel(heightFt) + " x " + ftInLabel(widthFt)
+        : T.typeEnterSize;
+    }
+    if (animate) pulseCutPreview();
+  }
+
+  function renderCutCalcResult() {
+    const box = $("cut-calc-result");
+    if (!box) return;
+    renderCutPreview(false);
+    const heightFt = cutInputSizeFt("h");
+    const widthFt = cutInputSizeFt("w");
+    if (!(heightFt > 0) || !(widthFt > 0) || heightFt > 40 || widthFt > 40) {
+      flashNote(T.errSize, true);
+      box.classList.add("hidden");
+      box.innerHTML = "";
+      return;
+    }
+    if (!state.cutType) {
+      flashNote(T.errKind, true);
+      box.classList.add("hidden");
+      box.innerHTML = "";
+      return;
+    }
+    const item = {
+      winType: state.cutType,
+      heightFt: heightFt,
+      widthFt: widthFt,
+      qty: cutQtyValue(),
+      hasNet: false
+    };
+    box.innerHTML =
+      '<h3 class="cut-auto-title">' + escapeHtml(T.autoMapTitle) + "</h3>" +
+      renderCutTable(item);
+    box.classList.remove("hidden");
+  }
+
+
+
+
+
 
   function itemDiagram(item, compact) {
     return buildDiagram({
@@ -3104,21 +3518,22 @@
     updateSummary();
   }
 
+
+  function getCuttingItems() {
+    if (state.cutQuote && state.cutQuote.items && state.cutQuote.items.length) {
+      return state.cutQuote.items;
+    }
+    return (state.items || []).concat(state.cutItems || []);
+  }
+
   function renderCuttingTab() {
     const wrap = $("cutting-list-wrap");
     const emptyEl = $("cutting-empty");
     const actionsEl = $("cutting-actions");
     const bar = $("cutting-quote-bar");
-    if (!isStaff()) {
-      if (wrap) wrap.innerHTML = "";
-      if (emptyEl) emptyEl.classList.remove("hidden");
-      if (actionsEl) actionsEl.classList.add("hidden");
-      if (bar) bar.classList.add("hidden");
-      return;
-    }
-    const items = state.cutQuote && state.cutQuote.items && state.cutQuote.items.length
-      ? state.cutQuote.items
-      : state.items;
+    const itemsCard = $("cut-items-card");
+    const items = getCuttingItems();
+    if (itemsCard) itemsCard.classList.toggle("hidden", !items.length);
     if (bar) {
       const on = !!(state.cutQuote && state.cutQuote.items && state.cutQuote.items.length);
       bar.classList.toggle("hidden", !on);
@@ -3130,9 +3545,10 @@
         if ($("btn-clear-cut-quote")) $("btn-clear-cut-quote").textContent = T.quoteCutClear;
       }
     }
+    if (!wrap || !emptyEl || !actionsEl) return;
     if (!items.length) {
       wrap.innerHTML = "";
-      emptyEl.classList.remove("hidden");
+      emptyEl.classList.add("hidden");
       actionsEl.classList.add("hidden");
       return;
     }
@@ -3140,24 +3556,78 @@
     actionsEl.classList.remove("hidden");
     wrap.innerHTML = items.map((item, i) => {
       const type = getType(item.winType);
-      return `
-        <div class="window-item">
-          <div class="item-thumb">${itemDiagram(item, true)}</div>
-          <div>
-            <div class="item-head">
-              <span class="tag">${kindLabel(type.kind)} ${i + 1} x ${item.qty} - ${escapeHtml(type.label)}${item.room ? " · " + escapeHtml(item.room) : ""}</span>
-            </div>
-            <div class="item-details">
-              ${T.outerSize}: ${ftInLabel(item.heightFt)} x ${ftInLabel(item.widthFt)}
-              - ${T.glassGap}: ${state.cutParams.glassGap} ${T.inchi}
-              ${item.hasNet ? " · " + T.net : ""}
-            </div>
-            ${renderCutTable(item)}
-          </div>
-        </div>
-      `;
+      return (
+        '<div class="window-item">' +
+          '<div class="item-thumb">' + itemDiagram(item, true) + "</div>" +
+          "<div>" +
+            '<div class="item-head">' +
+              '<span class="tag">' + kindLabel(type.kind) + " " + (i + 1) + " x " + item.qty + " - " +
+              escapeHtml(type.label) + (item.room ? " · " + escapeHtml(item.room) : "") + "</span>" +
+            "</div>" +
+            '<div class="item-details">' +
+              T.outerSize + ": " + ftInLabel(item.heightFt) + " x " + ftInLabel(item.widthFt) +
+              (item.hasNet ? " · " + T.net : "") +
+            "</div>" +
+            renderCutTable(item) +
+          "</div>" +
+        "</div>"
+      );
     }).join("");
   }
+
+  function resetCutCalc() {
+    ["cut-h-ft", "cut-h-in", "cut-h-suta", "cut-w-ft", "cut-w-in", "cut-w-suta"].forEach(function (id) {
+      if ($(id)) $(id).value = "";
+    });
+    if ($("cut-qty")) $("cut-qty").value = "1";
+    state.cutKind = "window";
+    state.cutType = "sliding2";
+    state.cutItems = [];
+    state.cutQuote = null;
+    state.items = [];
+    storeSet(KEYS.cutItems, state.cutItems);
+    storeSet(KEYS.items, state.items);
+    renderCutKindPicker();
+    renderCutTypePicker();
+    const box = $("cut-calc-result");
+    if (box) {
+      box.classList.add("hidden");
+      box.innerHTML = "";
+    }
+    renderCutPreview(true);
+    renderItems();
+    renderCuttingTab();
+  }
+
+  function addCutListItem() {
+    const heightFt = cutInputSizeFt("h");
+    const widthFt = cutInputSizeFt("w");
+    if (!(heightFt > 0) || !(widthFt > 0) || heightFt > 40 || widthFt > 40) {
+      flashNote(T.errSize, true);
+      return;
+    }
+    if (!state.cutKind || !state.cutType) {
+      flashNote(T.errKind, true);
+      return;
+    }
+    const qty = cutQtyValue();
+    state.cutItems.push({
+      winType: state.cutType,
+      heightFt: heightFt,
+      widthFt: widthFt,
+      qty: qty,
+      room: "",
+      hasNet: false,
+      glassColor: "clear",
+      aluColor: "silver",
+      fromCut: true
+    });
+    storeSet(KEYS.cutItems, state.cutItems);
+    renderCutCalcResult();
+    renderCuttingTab();
+    flashNote(T.cutAddedNote, false);
+  }
+
 
   function showError(message) {
     const el = $("err-msg");
@@ -3269,15 +3739,16 @@
 
     storeSet(KEYS.items, state.items);
     renderItems();
+    renderCuttingTab();
     clearInputs();
     renderLivePreview(true);
   }
 
   function clearInputs() {
-    ["in-h-ft", "in-h-in", "in-h-mm", "in-w-ft", "in-w-in", "in-w-mm"].forEach((id) => {
+    ["in-h-ft", "in-h-in", "in-h-suta", "in-w-ft", "in-w-in", "in-w-suta"].forEach((id) => {
       if ($(id)) $(id).value = "";
     });
-    if ($("in-qty")) $("in-qty").value = "";
+    if ($("in-qty")) $("in-qty").value = "1";
     if ($("in-room")) $("in-room").value = "";
     state.editItemIndex = -1;
     updateAddItemBtn();
@@ -3288,17 +3759,20 @@
     state.items.splice(index, 1);
     storeSet(KEYS.items, state.items);
     renderItems();
+    renderCuttingTab();
   }
 
   function clearAll() {
     state.items = [];
-    state.selectedKind = null;
-    state.selectedType = null;
+    state.selectedKind = "window";
+    state.selectedType = "sliding2";
+    if ($("in-qty")) $("in-qty").value = "1";
     storeSet(KEYS.items, state.items);
     renderKindPicker();
     renderTypePicker();
     syncCalcDetails();
     renderItems();
+    renderCuttingTab();
     renderLivePreview(false);
   }
 
@@ -3340,7 +3814,7 @@
     $("new-company-rate").value = "";
     renderRateList("company-list", state.companies, "company");
     renderCompanySelect();
-    persistOwnerData();
+    persistOwnerData(["companies"]);
   }
 
   function removeNamedCombos(list, index) {
@@ -3357,7 +3831,7 @@
     removeNamedCombos(state.companies, index);
     renderRateList("company-list", state.companies, "company");
     renderCompanySelect();
-    persistOwnerData();
+    persistOwnerData(["companies"]);
   }
 
   function addAluminium() {
@@ -3381,14 +3855,14 @@
     if ($("new-alu-thick")) $("new-alu-thick").value = "";
     $("new-alu-rate").value = "";
     refreshSheetSelects();
-    persistOwnerData();
+    persistOwnerData(["aluminium"]);
   }
 
   function removeAluminium(index) {
     if (!isOwner()) return;
     removeNamedCombos(state.aluminium, index);
     refreshSheetSelects();
-    persistOwnerData();
+    persistOwnerData(["aluminium"]);
   }
 
   function saveCharges() {
@@ -3401,7 +3875,7 @@
     markInvalid(extraEl, Number.isNaN(extra));
     if (Number.isNaN(net) || Number.isNaN(extra)) { flashNote(T.errNeedNumber, true); return; }
     state.charges = { net, extra };
-    persistOwnerData();
+    persistOwnerData(["charges"]);
     flashSaved();
   }
 
@@ -3422,7 +3896,7 @@
     $("new-lock-rate").value = "";
     renderRateList("lock-list", state.locks, "lock");
     renderLockSelect();
-    persistOwnerData();
+    persistOwnerData(["locks"]);
     renderLivePreview(true);
   }
 
@@ -3431,23 +3905,28 @@
     state.locks.splice(index, 1);
     renderRateList("lock-list", state.locks, "lock");
     renderLockSelect();
-    persistOwnerData();
+    persistOwnerData(["locks"]);
     renderLivePreview(true);
   }
 
+
   function saveCutParams() {
     if (!isOwner()) return;
-    const next = {
+    const next = normalizeCutParams({
       outerHoriz: numVal("in-cp-outerhoriz"),
       side: numVal("in-cp-side"),
       shutterHoriz: numVal("in-cp-shutterhoriz"),
-      glassGap: numVal("in-cp-glassgap")
-    };
+      glassH: numVal("in-cp-glassh"),
+      glassW: numVal("in-cp-glassw")
+    });
     if (Object.values(next).some((v) => Number.isNaN(v) || v < 0)) { flashNote(T.errNeedNumber, true); return; }
     state.cutParams = next;
-    persistOwnerData();
+    persistOwnerData(["cut"]);
     renderItems();
+    renderCuttingTab();
+    if ($("cut-calc-result") && !$("cut-calc-result").classList.contains("hidden")) renderCutCalcResult();
   }
+
 
 
   function setupPwa() {
@@ -3502,12 +3981,15 @@
     }).then((res) => res.json());
   }
 
+
   function fillCutInputs() {
     if ($("in-cp-outerhoriz")) $("in-cp-outerhoriz").value = state.cutParams.outerHoriz;
     if ($("in-cp-side")) $("in-cp-side").value = state.cutParams.side;
     if ($("in-cp-shutterhoriz")) $("in-cp-shutterhoriz").value = state.cutParams.shutterHoriz;
-    if ($("in-cp-glassgap")) $("in-cp-glassgap").value = state.cutParams.glassGap;
+    if ($("in-cp-glassh")) $("in-cp-glassh").value = state.cutParams.glassH;
+    if ($("in-cp-glassw")) $("in-cp-glassw").value = state.cutParams.glassW;
   }
+
 
   function applyOwnerData(data) {
     if (data.role === "owner" || data.role === "operator") state.role = data.role;
@@ -3519,7 +4001,7 @@
       state.charges = { net: Number(data.charges.net) || 0, extra: Number(data.charges.extra) || 0 };
     }
     if (data.cutParams && typeof data.cutParams === "object") {
-      state.cutParams = { ...DEFAULT_CUT, ...data.cutParams };
+      state.cutParams = normalizeCutParams(data.cutParams);
     }
     state.quotes = isStaff() && Array.isArray(data.quotes) ? data.quotes : [];
     state.staff = isOwner() && Array.isArray(data.users) ? data.users : [];
@@ -3537,36 +4019,10 @@
     renderItems();
     updateRoleUi();
     updateCatalogHint();
-    saveCatalogCache();
   }
 
-  function catalogCacheKey() {
-    return KEYS.catalog;
-  }
-
-  function readCatalogCache() {
-    try {
-      const raw = localStorage.getItem(catalogCacheKey());
-      const data = raw ? JSON.parse(raw) : null;
-      if (!data || typeof data !== "object") return null;
-      if (!Array.isArray(data.companies) && !Array.isArray(data.aluminium) && !Array.isArray(data.locks)) return null;
-      return data;
-    } catch (_) {
-      return null;
-    }
-  }
-
-  function saveCatalogCache() {
-    storeSet(KEYS.catalog, {
-      v: 1,
-      t: Date.now(),
-      companies: state.companies,
-      locks: state.locks,
-      aluminium: state.aluminium,
-      glassThicks: state.glassThicks,
-      charges: state.charges,
-      shop: state.shop
-    });
+  function clearCatalogCache() {
+    try { localStorage.removeItem(KEYS.catalog); } catch (_) { /* ignore */ }
   }
 
   function setCatalogSyncing(on) {
@@ -3607,10 +4063,12 @@
     if (data.charges && typeof data.charges === "object") {
       state.charges = { net: Number(data.charges.net) || 0, extra: Number(data.charges.extra) || 0 };
     }
+    if (data.cutParams && typeof data.cutParams === "object") {
+      state.cutParams = normalizeCutParams(data.cutParams);
+    }
     if (data.shop && typeof data.shop === "object" && (data.shop.name || data.shop.slogan || data.shop.logo)) applyShop(data.shop);
     ensureDummyCatalog();
     const ok = !!(state.companies.length || state.aluminium.length || state.glassThicks.length || state.locks.length);
-    if (ok) saveCatalogCache();
     if (doRender !== false) {
       repriceItems();
       renderItems();
@@ -3655,22 +4113,22 @@
       updateCatalogHint();
       return;
     }
-    const hasCache = !!(state.companies.length || state.aluminium.length || state.locks.length);
-    if (hasCache) setCatalogSyncing(true);
+    const hasLocal = !!(state.companies.length || state.aluminium.length || state.locks.length);
+    if (hasLocal) setCatalogSyncing(true);
     else showLoader(true, T.loading);
-    fetchJsonTimeout(fetchCatalogGet(), hasCache ? 10000 : 14000).then(function (data) {
+    fetchJsonTimeout(fetchCatalogGet(), hasLocal ? 10000 : 14000).then(function (data) {
       if (isStaff()) return true;
       if (applyCatalogLists(data, true)) return true;
       throw new Error("catalog");
     }).catch(function () {
-      if (hasCache || isStaff()) return;
+      if (hasLocal || isStaff()) return;
       return fetchJsonTimeout(sheetRequest({ action: "catalog" }), 12000).then(function (data) {
         if (!isStaff()) applyCatalog(data);
       });
     }).catch(function () {
       updateCatalogHint();
     }).finally(function () {
-      if (hasCache) setCatalogSyncing(false);
+      if (hasLocal) setCatalogSyncing(false);
       else showLoader(false);
     });
   }
@@ -3716,7 +4174,7 @@
     $("new-staff-email").value = "";
     $("new-staff-pin").value = "";
     renderStaffList();
-    persistOwnerData();
+    persistOwnerData(["users"]);
   }
 
   function removeStaff(index) {
@@ -3729,7 +4187,7 @@
     showStaffErr("");
     state.staff = next;
     renderStaffList();
-    persistOwnerData();
+    persistOwnerData(["users"]);
   }
 
   function staffForSave() {
@@ -3746,13 +4204,49 @@
     return list;
   }
 
-  function persistOwnerData() {
+  var persistTimer = null;
+  var persistPending = {};
+  var persistInFlight = false;
+  var persistAgain = false;
+
+  function persistOwnerData(sections) {
     if (!isOwner() || !state.ownerPin || !state.ownerEmail || !sheetApiUrl()) return;
-    showLoader(true, T.working);
-    sheetRequest({
+    var list = Array.isArray(sections) ? sections : [];
+    if (!list.length) {
+      ["companies", "locks", "aluminium", "charges", "cut", "users", "shop"].forEach(function (s) {
+        persistPending[s] = true;
+      });
+    } else {
+      list.forEach(function (s) {
+        var key = String(s || "").trim();
+        if (key === "cutParams") key = "cut";
+        if (key) persistPending[key] = true;
+      });
+    }
+    if (persistTimer) clearTimeout(persistTimer);
+    persistTimer = setTimeout(flushPersistOwnerData, 280);
+  }
+
+  function flushPersistOwnerData() {
+    persistTimer = null;
+    if (!isOwner() || !state.ownerPin || !state.ownerEmail || !sheetApiUrl()) {
+      persistPending = {};
+      return;
+    }
+    if (persistInFlight) {
+      persistAgain = true;
+      return;
+    }
+    var sections = Object.keys(persistPending);
+    persistPending = {};
+    if (!sections.length) return;
+    persistInFlight = true;
+    setCatalogSyncing(true);
+    var payload = {
       action: "save",
       email: state.ownerEmail,
       pin: state.ownerPin,
+      sections: sections,
       companies: state.companies,
       locks: state.locks,
       aluminium: state.aluminium,
@@ -3760,7 +4254,8 @@
       cutParams: state.cutParams,
       users: staffForSave(),
       shop: state.shop
-    }).then((data) => {
+    };
+    sheetRequest(payload).then((data) => {
       if (!data || !data.ok) throw new Error("save");
       if (isOwner() && Array.isArray(data.users)) {
         state.staff = data.users;
@@ -3774,7 +4269,14 @@
         el.classList.add("show");
         setTimeout(() => el.classList.remove("show"), 1800);
       }
-    }).finally(() => showLoader(false));
+    }).finally(() => {
+      persistInFlight = false;
+      setCatalogSyncing(false);
+      if (persistAgain || Object.keys(persistPending).length) {
+        persistAgain = false;
+        flushPersistOwnerData();
+      }
+    });
   }
 
   function isStaff() {
@@ -3873,7 +4375,7 @@
     setOwnerUnlocked(true);
     $("owner-gate").classList.add("hidden");
     var tab = nextTab || state.pendingOwnerTab || "rates";
-    if ((tab === "cutting" || tab === "rates") && !isStaff()) tab = "calc";
+    if (tab === "rates" && !isStaff()) tab = "calc";
     switchTab(tab);
   }
 
@@ -4177,7 +4679,7 @@
       const inch = t.match(/(\d+(?:\.\d+)?)\s*(?:in|inch|\u0987\u099e\u09cd\u099a\u09bf)/i);
       const mm = t.match(/(\d+(?:\.\d+)?)\s*(?:mm|\u09ae\u09bf\u09ae\u09bf)/i);
       if (ft || inch || mm) {
-        return (ft ? Number(ft[1]) : 0) + (inch ? Number(inch[1]) / 12 : 0) + (mm ? Number(mm[1]) / 304.8 : 0);
+        return (ft ? Number(ft[1]) : 0) + (inch ? Number(inch[1]) / 12 : 0) + (mm ? Number(mm[1]) / 96 : 0);
       }
       const m = t.match(/(\d+(?:\.\d+)?)(?:\s*(?:ft|\u09ab\u09c1\u099f))?\s*(?:(\d+(?:\.\d+)?))?/i);
       if (!m) return 0;
@@ -4194,7 +4696,10 @@
     if (exact) return exact.id;
     const door = s.indexOf("door") >= 0 || s.indexOf("\u09a6\u09b0\u099c\u09be") >= 0;
     if (door) {
-      if (s.indexOf("slid") >= 0 || s.indexOf("\u09b8\u09cd\u09b2\u09be\u0987\u09a1") >= 0) return "door-sliding";
+      if (s.indexOf("slid") >= 0 || s.indexOf("\u09b8\u09cd\u09b2\u09be\u0987\u09a1") >= 0) {
+        if (/3|\u09e9/.test(s)) return "door-sliding3";
+        return "door-sliding";
+      }
       if (s.indexOf("double") >= 0 || s.indexOf("\u09a1\u09be\u09ac\u09b2") >= 0) return "door-double";
       return "door-single";
     }
@@ -4519,9 +5024,9 @@
     state.aluminium = [];
     state.glassThicks = [];
     state.charges = { net: 0, extra: 0 };
-    state.cutParams = { outerHoriz: 0, side: 0, shutterHoriz: 0, glassGap: 0 };
+    state.cutParams = { ...DEFAULT_CUT };
     state.staff = [];
-    applyCatalogLists(readCatalogCache(), false);
+    clearCatalogCache();
     fillCutInputs();
     renderRateList("company-list", state.companies, "company");
     renderRateList("lock-list", state.locks, "lock");
@@ -4541,11 +5046,6 @@
       showOwnerGate(tab);
       return;
     }
-    if (tab === "cutting" && !isStaff()) {
-      persistActiveTab(tab);
-      showOwnerGate(tab);
-      return;
-    }
     persistActiveTab(tab);
     $("owner-gate").classList.add("hidden");
     document.querySelectorAll(".tab-btn").forEach((btn) => {
@@ -4559,7 +5059,12 @@
     $("tab-calc").classList.toggle("hidden", tab !== "calc");
     $("tab-cutting").classList.toggle("hidden", tab !== "cutting");
     $("tab-rates").classList.toggle("hidden", tab !== "rates");
-    if (tab === "cutting") renderCuttingTab();
+    if (tab === "cutting") {
+      renderCutKindPicker();
+      renderCutTypePicker();
+      renderCutPreview(false);
+      renderCuttingTab();
+    }
     if (tab === "rates") {
       renderQuotes();
       switchAdminPanel(state.adminPanel || "glass");
@@ -4571,7 +5076,7 @@
   function fillPrintHeader(cutting) {
     if ($("print-kicker")) $("print-kicker").textContent = cutting ? T.printCutKicker : T.printKicker;
     if ($("print-shop")) $("print-shop").textContent = shopOf(state.shop).name;
-    if ($("print-sub")) $("print-sub").textContent = shopOf(state.shop).slogan;
+    if ($("print-sub")) $("print-sub").textContent = cutting ? (T.cutTitle || T.printCutKicker) : shopOf(state.shop).slogan;
     if ($("print-date-label")) $("print-date-label").textContent = T.printDate;
     if ($("print-date")) {
       $("print-date").textContent = new Date().toLocaleDateString(state.lang === "en" ? "en-GB" : "bn-BD", {
@@ -4580,13 +5085,17 @@
         year: "numeric"
       });
     }
-    if ($("print-thanks")) $("print-thanks").textContent = T.printThanks;
+    if ($("print-thanks")) $("print-thanks").textContent = cutting ? (T.cutTitle || T.printCutKicker) : T.printThanks;
     if ($("print-note")) $("print-note").textContent = T.printNote;
     const cust = $("print-customer");
-    const name = $("quote-name") && $("quote-name").value.trim();
-    const phone = $("quote-phone") && $("quote-phone").value.trim();
+    let name = $("quote-name") && $("quote-name").value.trim();
+    let phone = $("quote-phone") && $("quote-phone").value.trim();
+    if (cutting && state.cutQuote) {
+      name = state.cutQuote.name || name || "";
+      phone = state.cutQuote.phone || phone || "";
+    }
     if (cust) {
-      if (!cutting && (name || phone)) {
+      if (name || phone) {
         cust.classList.remove("hidden");
         cust.innerHTML = "<span>" + T.printCustomer + "</span>" +
           (name ? "<strong>" + escapeHtml(name) + "</strong>" : "") +
@@ -4652,7 +5161,7 @@
       });
     }
 
-    ["in-h-ft", "in-h-in", "in-h-mm", "in-w-ft", "in-w-in", "in-w-mm", "in-qty"].forEach((id) => {
+    ["in-h-ft", "in-h-in", "in-h-suta", "in-w-ft", "in-w-in", "in-w-suta", "in-qty"].forEach((id) => {
       if ($(id)) $(id).addEventListener("input", () => {
         syncCalcDetails();
         renderLivePreview(true);
@@ -4690,6 +5199,7 @@
       $("btn-shop-logo-reset").addEventListener("click", function () {
         applyShop({ name: state.shop.name, slogan: state.shop.slogan, logo: "images/logo.svg" });
         renderHome();
+        persistOwnerData(["shop"]);
       });
     }
     $("btn-print").addEventListener("click", () => window.print());
@@ -4718,6 +5228,28 @@
     if ($("btn-add-staff")) $("btn-add-staff").addEventListener("click", addStaff);
     $("btn-save-charges").addEventListener("click", saveCharges);
     $("btn-save-cut").addEventListener("click", saveCutParams);
+    if ($("btn-cut-calc")) $("btn-cut-calc").addEventListener("click", renderCutCalcResult);
+    if ($("btn-cut-add")) $("btn-cut-add").addEventListener("click", addCutListItem);
+    if ($("btn-cut-reset")) $("btn-cut-reset").addEventListener("click", resetCutCalc);
+    if ($("cut-kind-picker")) {
+      $("cut-kind-picker").addEventListener("click", function (e) {
+        const btn = e.target.closest("[data-cut-kind]");
+        if (btn) setCutKind(btn.dataset.cutKind);
+      });
+    }
+    if ($("cut-type-list")) {
+      $("cut-type-list").addEventListener("click", function (e) {
+        const card = e.target.closest("[data-cut-type]");
+        if (card) setCutType(card.dataset.cutType);
+      });
+    }
+    ["cut-h-ft", "cut-h-in", "cut-h-suta", "cut-w-ft", "cut-w-in", "cut-w-suta", "cut-qty"].forEach(function (id) {
+      if (!$(id)) return;
+      $(id).addEventListener("input", function () { renderCutPreview(true); });
+      $(id).addEventListener("keydown", function (e) {
+        if (e.key === "Enter") renderCutCalcResult();
+      });
+    });
 
     if ($("quotes-list")) {
       $("quotes-list").addEventListener("click", (e) => {
@@ -4780,22 +5312,22 @@
       cancelEdit(true);
       renderRateList("company-list", state.companies, "company");
       renderCompanySelect();
-      persistOwnerData();
+      persistOwnerData(["companies"]);
     }, true);
     bindSortable("lock-list", () => state.locks, () => {
       cancelEdit(true);
       renderRateList("lock-list", state.locks, "lock");
       renderLockSelect();
-      persistOwnerData();
+      persistOwnerData(["locks"]);
     });
     bindSortable("alu-list", () => state.aluminium, () => {
       cancelEdit(true);
       refreshSheetSelects();
-      persistOwnerData();
+      persistOwnerData(["aluminium"]);
     }, true);
     bindSortable("staff-list", () => state.staff, () => {
       renderStaffList();
-      persistOwnerData();
+      persistOwnerData(["users"]);
     });
     document.querySelectorAll(".tab-btn").forEach((btn) => {
       btn.addEventListener("click", () => switchTab(btn.dataset.tab));
@@ -4856,7 +5388,7 @@
 
   async function init() {
     try {
-      ["glasscalc:companies", "glasscalc:locks", "glasscalc:cutparams", "glasscalc:ownerpin"].forEach((k) => {
+      ["glasscalc:companies", "glasscalc:locks", "glasscalc:cutparams", "glasscalc:ownerpin", KEYS.catalog].forEach((k) => {
         localStorage.removeItem(k);
       });
     } catch (_) { /* ignore */ }
@@ -4865,11 +5397,12 @@
     state.aluminium = [];
     state.glassThicks = [];
     state.charges = { net: 0, extra: 0 };
-    state.cutParams = { outerHoriz: 0, side: 0, shutterHoriz: 0, glassGap: 0 };
-    applyCatalogLists(readCatalogCache(), false);
+    state.cutParams = { ...DEFAULT_CUT };
     const savedShop = await storeGet(KEYS.shop);
     applyShop(savedShop || state.shop);
     state.items = (await storeGet(KEYS.items)) || [];
+    state.cutItems = (await storeGet(KEYS.cutItems)) || [];
+    if (!Array.isArray(state.cutItems)) state.cutItems = [];
     const savedLang = await storeGet(KEYS.lang);
     applyLang(savedLang === "en" ? "en" : "bn", true);
 
@@ -4894,22 +5427,26 @@
     loadCatalog();
     renderKindPicker();
     renderTypePicker();
+    renderCutKindPicker();
+    renderCutTypePicker();
     syncCalcDetails();
     renderColorGrid();
     renderRateList("company-list", state.companies, "company");
     renderRateList("lock-list", state.locks, "lock");
     refreshSheetSelects();
     renderItems();
+    renderCuttingTab();
     renderLivePreview(false);
+    renderCutPreview(false);
     setupPwa();
     if (session) {
       const next = tab === "rates" || tab === "cutting" || tab === "calc" ? tab : "calc";
       switchTab(next);
       const ok = await restoreSession(session, next);
       if (!ok && isStaff()) switchTab(next);
-      else if (!ok && !isStaff()) switchTab("calc");
+      else if (!ok && !isStaff()) switchTab(tab === "cutting" ? "cutting" : "calc");
     } else {
-      switchTab("calc");
+      switchTab(tab === "cutting" ? "cutting" : "calc");
     }
   }
 

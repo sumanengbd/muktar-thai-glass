@@ -1,13 +1,13 @@
-const CACHE = "mtg-app-v117";
+const CACHE = "mtg-app-v148";
 const ASSETS = [
   "./",
   "./index.html",
   "./css/style.css",
-  "./css/style.css?v=117",
+  "./css/style.css?v=122",
   "./js/config.js",
   "./js/config.js?v=23",
   "./js/calculator.js",
-  "./js/calculator.js?v=117",
+  "./js/calculator.js?v=121",
   "./manifest.webmanifest",
   "./images/logo.svg",
   "./images/icon-192.png",
@@ -19,7 +19,8 @@ const ASSETS = [
   "./images/window-sliding4.svg",
   "./images/door-single.svg",
   "./images/door-double.svg",
-  "./images/door-sliding.svg"
+  "./images/door-sliding.svg",
+  "./images/door-sliding3.svg"
 ];
 
 self.addEventListener("install", (event) => {

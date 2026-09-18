@@ -25,6 +25,7 @@ var TZ = "Asia/Dhaka";
 
 function setup() {
   ensureSheets_();
+  styleAllSheets_();
 }
 
 function doGet(e) {
@@ -70,14 +71,27 @@ function doPost(e) {
     }
     if (action === "save") {
       if (user.role !== "owner") return json_({ ok: false, error: "forbidden" });
-      writeCompanies_(body.companies || []);
-      writeLocks_(body.locks || []);
-      writeAluminium_(body.aluminium || []);
-      writeCharges_(body.charges || {});
-      writeCut_(body.cutParams || {});
-      if (Array.isArray(body.glassThicks)) writeGlassThicks_(body.glassThicks);
-      if (Array.isArray(body.users)) writeUsers_(body.users, user);
-      if (body.shop && typeof body.shop === "object") writeShop_(body.shop);
+      var sections = normalizeSaveSections_(body.sections);
+      var writeAll = !sections.length;
+      if (writeAll || sections.indexOf("companies") >= 0) writeCompanies_(body.companies || []);
+      if (writeAll || sections.indexOf("locks") >= 0) writeLocks_(body.locks || []);
+      if (writeAll || sections.indexOf("aluminium") >= 0) writeAluminium_(body.aluminium || []);
+      if (writeAll || sections.indexOf("charges") >= 0) writeCharges_(body.charges || {});
+      if (writeAll || sections.indexOf("cut") >= 0 || sections.indexOf("cutParams") >= 0) {
+        writeCut_(body.cutParams || {});
+      }
+      if ((writeAll || sections.indexOf("glassThicks") >= 0) && Array.isArray(body.glassThicks)) {
+        writeGlassThicks_(body.glassThicks);
+      }
+      if ((writeAll || sections.indexOf("users") >= 0) && Array.isArray(body.users)) {
+        writeUsers_(body.users, user);
+      }
+      if ((writeAll || sections.indexOf("shop") >= 0) && body.shop && typeof body.shop === "object") {
+        writeShop_(body.shop);
+      }
+      var out = { ok: true, role: user.role };
+      if (writeAll || sections.indexOf("users") >= 0) out.users = readUsers_();
+      return json_(out);
     }
     return json_({
       ok: true,
@@ -100,6 +114,31 @@ function doPost(e) {
 function json_(obj) {
   return ContentService.createTextOutput(JSON.stringify(obj))
     .setMimeType(ContentService.MimeType.JSON);
+}
+
+function normalizeSaveSections_(raw) {
+  var allowed = {
+    companies: 1,
+    locks: 1,
+    aluminium: 1,
+    charges: 1,
+    cut: 1,
+    cutParams: 1,
+    glassThicks: 1,
+    users: 1,
+    shop: 1
+  };
+  var out = [];
+  var seen = {};
+  var list = Object.prototype.toString.call(raw) === "[object Array]" ? raw : [];
+  for (var i = 0; i < list.length; i++) {
+    var key = String(list[i] || "").trim();
+    if (key === "cutParams") key = "cut";
+    if (!allowed[key] || seen[key]) continue;
+    seen[key] = 1;
+    out.push(key);
+  }
+  return out;
 }
 
 function ss_() {
@@ -347,17 +386,17 @@ function ensureSheets_() {
   var cut = book.getSheetByName("CutParams") || book.insertSheet("CutParams");
   if (cut.getLastRow() < 2) {
     cut.clear();
-    cut.getRange(1, 1, 5, 2).setValues([
+    cut.getRange(1, 1, 6, 2).setValues([
       ["key", "value"],
-      ["outerHoriz", 3.6],
+      ["outerHoriz", 0.4],
       ["side", 1.1],
-      ["shutterHoriz", 1.5],
-      ["glassGap", 0.25]
+      ["shutterHoriz", 6],
+      ["glassH", 4.2],
+      ["glassW", 5]
     ]);
   }
 
   migrateQuoteSheets_(book);
-  styleAllSheets_();
 }
 
 function readUsers_() {
@@ -419,9 +458,8 @@ function writeUsers_(list, actor) {
     if (owners < 1) addRow(actor.email, actor.pin, "owner");
   }
   if (rows.length < 2) return;
-  sh.clear();
+  sh.clearContents();
   sh.getRange(1, 1, rows.length, 3).setValues(rows);
-  styleSheetByName_("Users");
 }
 
 function findUser_(email, pin) {
@@ -449,6 +487,7 @@ function publicCatalog_() {
     aluminium: tryRead_(readAluminium_, []),
     glassThicks: tryRead_(glassThicksFromCompanies_, []),
     charges: tryRead_(readCharges_, { net: 0, extra: 0 }),
+    cutParams: tryRead_(readCut_, { outerHoriz: 0.4, side: 1.1, shutterHoriz: 6, glassH: 4.2, glassW: 5 }),
     shop: tryRead_(readShop_, { name: "", slogan: "", logo: "" })
   };
 }
@@ -1022,11 +1061,16 @@ function readCut_() {
   for (var i = 1; i < rows.length; i++) {
     map[String(rows[i][0])] = Number(rows[i][1]);
   }
+  // Migrate legacy seed values to the new inch.suta formula.
+  if (map.outerHoriz === 3.6 && map.shutterHoriz === 1.5) {
+    return { outerHoriz: 0.4, side: 1.1, shutterHoriz: 6, glassH: 4.2, glassW: 5 };
+  }
   return {
-    outerHoriz: map.outerHoriz || 0,
-    side: map.side || 0,
-    shutterHoriz: map.shutterHoriz || 0,
-    glassGap: map.glassGap || 0
+    outerHoriz: map.outerHoriz != null && !isNaN(map.outerHoriz) ? map.outerHoriz : 0.4,
+    side: map.side != null && !isNaN(map.side) ? map.side : 1.1,
+    shutterHoriz: map.shutterHoriz != null && !isNaN(map.shutterHoriz) ? map.shutterHoriz : 6,
+    glassH: map.glassH != null && !isNaN(map.glassH) ? map.glassH : 4.2,
+    glassW: map.glassW != null && !isNaN(map.glassW) ? map.glassW : 5
   };
 }
 
@@ -1042,24 +1086,22 @@ function writeComboRows_(sh, list, colorFn, defaultThick) {
       else rows.push([x.name, x.thickness, Number(x.rate) || 0, x.color]);
     });
   });
-  sh.clear();
+  sh.clearContents();
   sh.getRange(1, 1, rows.length, header.length).setValues(rows);
 }
 
 function writeCompanies_(list) {
   writeComboRows_(ss_().getSheetByName("Companies"), list, normalizeColorId_, 5);
-  styleSheetByName_("Companies");
 }
 
 function writeLocks_(list) {
   var sh = ss_().getSheetByName("Locks");
-  sh.clear();
+  sh.clearContents();
   var rows = [["name", "rate", "style"]];
   (list || []).forEach(function (l) {
     if (l && l.name) rows.push([String(l.name), Number(l.rate) || 0, String(l.style || "generic")]);
   });
   sh.getRange(1, 1, rows.length, 3).setValues(rows);
-  styleSheetByName_("Locks");
 }
 
 var ALU_COLOR_IDS = ["silver", "bronze", "black", "white", "champagne", "brown"];
@@ -1104,7 +1146,6 @@ function readAluminium_() {
 
 function writeAluminium_(list) {
   writeComboRows_(ss_().getSheetByName("Aluminium"), list, normalizeAluColorId_, 1);
-  styleSheetByName_("Aluminium");
 }
 
 function readGlassThicks_() {
@@ -1126,14 +1167,13 @@ function writeGlassThicks_(list) {
     if (!list || !list.length) return;
     sh = book.insertSheet("GlassThickness");
   }
-  sh.clear();
+  sh.clearContents();
   var rows = [["mm"]];
   (list || []).forEach(function (mm) {
     var n = Number(mm);
     if (!isNaN(n) && n > 0) rows.push([n]);
   });
   sh.getRange(1, 1, rows.length, 1).setValues(rows);
-  styleSheetByName_("GlassThickness");
 }
 
 function readCharges_() {
@@ -1171,25 +1211,23 @@ function safeShopLogo_(logo) {
 function writeShop_(shop) {
   var book = ss_();
   var sh = book.getSheetByName("Shop") || book.insertSheet("Shop");
-  sh.clear();
+  sh.clearContents();
   sh.getRange(1, 1, 4, 2).setValues([
     ["key", "value"],
     ["name", String(shop && shop.name || "").trim().slice(0, 80)],
     ["slogan", String(shop && shop.slogan || "").trim().slice(0, 140)],
     ["logo", safeShopLogo_(shop && shop.logo)]
   ]);
-  styleSheetByName_("Shop");
 }
 
 function writeCharges_(charges) {
   var sh = ss_().getSheetByName("Charges");
-  sh.clear();
+  sh.clearContents();
   sh.getRange(1, 1, 3, 2).setValues([
     ["key", "value"],
     ["net", Number(charges && charges.net) || 0],
     ["extra", Number(charges && charges.extra) || 0]
   ]);
-  styleSheetByName_("Charges");
 }
 
 function findRateByName_(list, name) {
@@ -1254,13 +1292,13 @@ function priceItem_(it, h, w, qty) {
 
 function writeCut_(cut) {
   var sh = ss_().getSheetByName("CutParams");
-  sh.clear();
-  sh.getRange(1, 1, 5, 2).setValues([
+  sh.clearContents();
+  sh.getRange(1, 1, 6, 2).setValues([
     ["key", "value"],
     ["outerHoriz", Number(cut.outerHoriz) || 0],
     ["side", Number(cut.side) || 0],
     ["shutterHoriz", Number(cut.shutterHoriz) || 0],
-    ["glassGap", Number(cut.glassGap) || 0]
+    ["glassH", Number(cut.glassH) || 0],
+    ["glassW", Number(cut.glassW) || 0]
   ]);
-  styleSheetByName_("CutParams");
 }

@@ -17,11 +17,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://script.google.com">
   <link rel="dns-prefetch" href="https://script.google.com">
-  <link rel="preload" href="css/style.css?v=117" as="style">
+  <link rel="preload" href="css/style.css?v=148" as="style">
   <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
   <script>(function(){try{var s=JSON.parse(localStorage.getItem("glasscalc:session")||"null");if(!s)return;var role=s.r||s.role;if(!(s.k||s.pin))return;document.documentElement.classList.add("has-session","is-staff");if(role==="owner"||(!role&&(s.k||s.pin)))document.documentElement.classList.add("is-owner");}catch(e){}})();</script>
-  <link rel="stylesheet" href="css/style.css?v=117">
+  <link rel="stylesheet" href="css/style.css?v=148">
 </head>
 <body>
   <div class="app">
@@ -73,27 +73,30 @@
       <div class="calc-layout">
         <div class="card">
           <h2 id="add-card-title">নতুন জানালা / দরজা যোগ করুন <span class="badge">Add Item</span></h2>
+          <p class="card-desc suta-hint" id="calc-suta-hint"></p>
           <div class="type-section">
             <h3 id="kind-heading"></h3>
             <div class="kind-row" id="kind-picker"></div>
           </div>
-          <div class="type-section is-locked" id="section-types">
+          <div class="type-section" id="section-types">
             <h3 id="types-heading"></h3>
             <div class="type-grid" id="type-list"></div>
           </div>
-          <div id="calc-details" class="calc-details is-locked">
-          <div class="field field-full"><label for="in-qty" id="qty-label">পরিমাণ (সংখ্যা)</label><input type="number" min="1" step="1" id="in-qty" value="" placeholder="1" max="99" disabled></div>
-          <div class="field field-full"><label for="in-room" id="room-label">রুম / ফ্লোর</label><input type="text" id="in-room" maxlength="40" autocomplete="off" disabled></div>
+          <div id="calc-details" class="calc-details">
+          <div class="grid2 opt-row">
+            <div class="field"><label for="in-qty" id="qty-label">পরিমাণ (সংখ্যা)</label><input type="number" min="1" step="1" id="in-qty" value="1" placeholder="1" max="99"></div>
+            <div class="field"><label for="in-room" id="room-label">রুম / ফ্লোর</label><input type="text" id="in-room" maxlength="40" autocomplete="off"></div>
+          </div>
           <div class="size-row">
           <div class="grid3">
             <div class="field"><label for="in-h-ft" id="h-ft-label">উচ্চতা (ফুট)</label><input type="number" min="0" step="0.1" id="in-h-ft" placeholder="৫" max="40" disabled></div>
             <div class="field"><label for="in-h-in" id="h-in-label">উচ্চতা (ইঞ্চি)</label><input type="number" min="0" max="11.9" step="0.1" id="in-h-in" placeholder="৬" disabled></div>
-            <div class="field"><label for="in-h-mm" id="h-mm-label">উচ্চতা (মিমি)</label><input type="number" min="0" max="99" step="1" id="in-h-mm" placeholder="0" disabled></div>
+            <div class="field"><label for="in-h-suta" id="h-suta-label"></label><input type="number" min="0" max="7" step="1" id="in-h-suta" placeholder="0" disabled></div>
           </div>
           <div class="grid3">
             <div class="field"><label for="in-w-ft" id="w-ft-label">প্রস্থ (ফুট)</label><input type="number" min="0" step="0.1" id="in-w-ft" placeholder="৪" max="40" disabled></div>
             <div class="field"><label for="in-w-in" id="w-in-label">প্রস্থ (ইঞ্চি)</label><input type="number" min="0" max="11.9" step="0.1" id="in-w-in" placeholder="0" disabled></div>
-            <div class="field"><label for="in-w-mm" id="w-mm-label">প্রস্থ (মিমি)</label><input type="number" min="0" max="99" step="1" id="in-w-mm" placeholder="0" disabled></div>
+            <div class="field"><label for="in-w-suta" id="w-suta-label"></label><input type="number" min="0" max="7" step="1" id="in-w-suta" placeholder="0" disabled></div>
           </div>
           </div>
           <div class="grid2 opt-row">
@@ -185,11 +188,56 @@
       </div>
     </div>
       <div id="tab-cutting" class="app-page hidden">
-      <div class="card">
+      <div class="calc-layout cut-layout">
+        <div class="card cut-calc-card">
+          <div class="cut-calc-head">
+            <h2 id="cut-calc-title">কাটিং হিসাব <span class="badge">Free</span></h2>
+            <button type="button" class="icon-btn cut-reset" id="btn-cut-reset"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg><span id="btn-cut-reset-label"></span></button>
+          </div>
+          <p class="card-desc suta-hint" id="cut-suta-hint"></p>
+          <div class="type-section">
+            <h3 id="cut-kind-heading"></h3>
+            <div class="kind-row" id="cut-kind-picker"></div>
+          </div>
+          <div class="type-section" id="cut-section-types">
+            <h3 id="cut-types-heading"></h3>
+            <div class="type-grid" id="cut-type-list"></div>
+          </div>
+          <div class="field field-full"><label for="cut-qty" id="cut-qty-label"></label><input type="number" min="1" step="1" id="cut-qty" value="1" placeholder="1" max="99"></div>
+          <div class="size-row">
+            <div class="grid3">
+              <div class="field"><label for="cut-h-ft" id="cut-h-ft-label"></label><input type="number" min="0" step="1" id="cut-h-ft" inputmode="numeric" placeholder="4" max="40"></div>
+              <div class="field"><label for="cut-h-in" id="cut-h-in-label"></label><input type="number" min="0" max="11" step="1" id="cut-h-in" inputmode="numeric" placeholder="6"></div>
+              <div class="field"><label for="cut-h-suta" id="cut-h-suta-label"></label><input type="number" min="0" max="7" step="1" id="cut-h-suta" inputmode="numeric" placeholder="0"></div>
+            </div>
+            <div class="grid3">
+              <div class="field"><label for="cut-w-ft" id="cut-w-ft-label"></label><input type="number" min="0" step="1" id="cut-w-ft" inputmode="numeric" placeholder="5" max="40"></div>
+              <div class="field"><label for="cut-w-in" id="cut-w-in-label"></label><input type="number" min="0" max="11" step="1" id="cut-w-in" inputmode="numeric" placeholder="0"></div>
+              <div class="field"><label for="cut-w-suta" id="cut-w-suta-label"></label><input type="number" min="0" max="7" step="1" id="cut-w-suta" inputmode="numeric" placeholder="0"></div>
+            </div>
+          </div>
+          <div class="add-item-row cut-action-row">
+            <button type="button" class="icon-btn primary" id="btn-cut-calc"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/><circle cx="18" cy="17" r="2.2"/></svg><span id="btn-cut-calc-label"></span></button>
+            <button type="button" class="icon-btn secondary" id="btn-cut-add"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg><span id="btn-cut-add-label"></span></button>
+          </div>
+          <div id="cut-calc-result" class="cut-calc-result hidden"></div>
+        </div>
+        <aside class="card preview-card cut-preview-card">
+          <h2 id="cut-preview-title">ভিজুয়াল প্রিভিউ <span class="badge">Live</span></h2>
+          <div class="preview-stage" id="cut-live-preview"></div>
+          <div class="preview-meta">
+            <div><span id="cut-meta-kind-l"></span><strong id="cut-preview-kind">-</strong></div>
+            <div><span id="cut-meta-type-l"></span><strong id="cut-preview-type">-</strong></div>
+            <div><span id="cut-meta-size-l"></span><strong id="cut-preview-size">-</strong></div>
+          </div>
+          <p class="preview-caption" id="cut-preview-caption"></p>
+        </aside>
+      </div>
+      <div class="card hidden" id="cut-items-card">
         <h2 id="cut-title">মিস্ত্রির জন্য কাটিং লিস্ট <span class="badge">Cutting List</span></h2>
         <div id="cutting-quote-bar" class="cutting-quote-bar hidden"><div><strong id="cutting-quote-name"></strong><span id="cutting-quote-meta"></span></div><button type="button" class="icon-btn secondary compact" id="btn-clear-cut-quote"></button></div>
-        <p class="hint">প্রতিটি জানালা/দরজার জন্য কোনো পার্টস কতটুকু মাপে কাটতে হবে তার তালিকা।</p>
-        <p class="hint warn">একটা সাধারণ হিসাব  -  শাটার এর ওভারল্যাপ, ট্র্যাক গভীরতা বা প্রোফাইল অনুযায়ী প্রকৃত মাপ কিছুটা ভিন্ন হতে পারে।</p>
+        <p class="hint" id="cut-list-hint"></p>
+        <p class="hint warn" id="cut-list-warn"></p>
         <div id="cutting-list-wrap"></div>
         <div class="empty-note" id="cutting-empty"></div>
         <div class="actions-row hidden" id="cutting-actions">
@@ -278,18 +326,21 @@
         <div class="add-stack add-composer"><div class="add-form-main is-3"><div class="field add-name"><label for="new-staff-email" id="staff-email-label"></label><input type="email" id="new-staff-email" autocomplete="off"></div><div class="field add-mid"><label for="new-staff-pin" id="staff-pin-label"></label><input type="text" id="new-staff-pin" inputmode="numeric" maxlength="8" autocomplete="off"></div><div class="field add-rate"><label for="new-staff-role" id="staff-role-label"></label><select id="new-staff-role"><option value="operator" id="opt-staff-role">Staff</option><option value="owner" id="opt-owner-role">Owner</option></select></div></div><div class="add-actions"><button type="button" class="icon-btn secondary" id="btn-add-staff"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg><span id="btn-add-staff-label"></span></button></div></div></div>
       </div>
         <div class="card admin-block admin-tone-cut hidden" data-admin-panel="cut"><span class="admin-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h10"/><circle cx="18" cy="17" r="2.2"/></svg></span>
-        <h2>কাটিং ফর্মুলা সেটিংস <span class="badge">Cutting Formula</span></h2>
-        <p class="hint">ফ্রেম এর বাইরের মাপ থেকে প্রতিটি পার্টস কতটুকু কমিয়ে কাটতে হয় তা এখানে সেট করুন।</p>
+        <h2 id="cut-formula-title">কাটিং ফর্মুলা সেটিংস <span class="badge">Cutting Formula</span></h2>
+        <p class="hint" id="cut-formula-hint"></p>
         <div class="admin-pane"><div class="grid2">
-          <div class="field"><label for="in-cp-outerhoriz">O/H, B  -  আউটার ফ্রেম উপর/নিচ কমতি</label><input type="number" min="0" step="0.1" id="in-cp-outerhoriz" placeholder="3.6"></div>
-          <div class="field"><label for="in-cp-side">S/L, I/N  -  সাইড/ইন্টারলক কমতি</label><input type="number" min="0" step="0.1" id="in-cp-side" placeholder="1.1"></div>
+          <div class="field"><label for="in-cp-outerhoriz" id="cp-outer-label"></label><input type="number" min="0" step="0.1" id="in-cp-outerhoriz" placeholder="0.4"></div>
+          <div class="field"><label for="in-cp-side" id="cp-side-label"></label><input type="number" min="0" step="0.1" id="in-cp-side" placeholder="1.1"></div>
         </div>
         <div class="grid2">
-          <div class="field"><label for="in-cp-shutterhoriz">S/T, B  -  শাটার উপর/নিচ কমতি</label><input type="number" min="0" step="0.1" id="in-cp-shutterhoriz" placeholder="1.5"></div>
-          <div class="field"><label for="in-cp-glassgap">গ্লাস গ্যাপ  -  ফ্রেম থেকে কাঁচ কতটুকু ছোট</label><input type="number" min="0" step="0.05" id="in-cp-glassgap" placeholder="0.25"></div>
+          <div class="field"><label for="in-cp-shutterhoriz" id="cp-shutter-label"></label><input type="number" min="0" step="0.1" id="in-cp-shutterhoriz" placeholder="6"></div>
+          <div class="field"><label for="in-cp-glassh" id="cp-glassh-label"></label><input type="number" min="0" step="0.1" id="in-cp-glassh" placeholder="4.2"></div>
+        </div>
+        <div class="grid2">
+          <div class="field"><label for="in-cp-glassw" id="cp-glassw-label"></label><input type="number" min="0" step="0.1" id="in-cp-glassw" placeholder="5"></div>
         </div>
         <button type="button" class="icon-btn secondary" id="btn-save-cut"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8"/><path d="M7 3v5h8"/></svg><span>সংরক্ষণ</span></button></div>
-        <p class="hint spaced">সব মান ইঞ্চিতে। আপনার প্রোফাইল/মিস্ত্রির মাপ অনুযায়ী বদলে নিন।</p>
+        <p class="hint spaced" id="cut-formula-note"></p>
       </div>
       </div>
         <span class="save-flash" id="save-flash">সংরক্ষণ হয়েছে ✓</span>
@@ -329,6 +380,6 @@
   </div>
   <div id="app-loader" class="app-loader hidden" aria-live="polite"><div class="app-loader-box"><span class="app-spinner"></span><p id="app-loader-text"></p></div></div>
   <script src="js/config.js?v=23"></script>
-  <script src="js/calculator.js?v=117"></script>
+  <script src="js/calculator.js?v=148"></script>
 </body>
 </html>
