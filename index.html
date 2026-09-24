@@ -7,21 +7,21 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="গ্লাস হাউজ">
+  <meta name="apple-mobile-web-app-title" content="Suman Thai Glass">
   <meta name="description" content="থাই কাঁচ জানালা ও দরজা ক্যালকুলেটর  -  মাপ দেখে ভিজুয়াল সহ দাম হিসাব করুন">
-  <title>মুক্তার থাই এস.এস গ্যালারী এন্ড গ্লাস হাউজ  -  ক্যালকুলেটর</title>
+  <title>Suman Thai Glass - Calculator</title>
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="images/icon-192.png" type="image/png">
   <link rel="apple-touch-icon" href="images/icon-180.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://script.google.com">
-  <link rel="dns-prefetch" href="https://script.google.com">
-  <link rel="preload" href="css/style.css?v=156" as="style">
+  <link rel="preconnect" href="https://euynncqrcufdakmdmkrm.supabase.co">
+  <link rel="dns-prefetch" href="https://euynncqrcufdakmdmkrm.supabase.co">
+  <link rel="preload" href="css/style.css?v=211" as="style">
   <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
-  <script>(function(){try{var s=JSON.parse(localStorage.getItem("glasscalc:session")||"null");if(!s)return;var role=s.r||s.role;if(!(s.k||s.pin))return;document.documentElement.classList.add("has-session","is-staff");if(role==="owner"||(!role&&(s.k||s.pin)))document.documentElement.classList.add("is-owner");}catch(e){}})();</script>
-  <link rel="stylesheet" href="css/style.css?v=156">
+  <script>(function(){try{var s=JSON.parse(localStorage.getItem("glasscalc:session")||"null");if(!s)return;var role=s.r||s.role;if(!(s.k||s.pin))return;if(role!=="owner"&&role!=="superadmin"&&role!=="operator")return;document.documentElement.classList.add("has-session","is-staff");if(role==="owner"||role==="superadmin")document.documentElement.classList.add("is-owner");if(role==="superadmin")document.documentElement.classList.add("is-superadmin");}catch(e){}})();</script>
+  <link rel="stylesheet" href="css/style.css?v=211">
 </head>
 <body>
   <div class="app">
@@ -41,9 +41,9 @@
       </div>
     </header>
     <header class="app-bar">
-      <img class="logo" src="images/logo.svg" alt="গ্লাস হাউজ">
+      <img class="logo" src="images/logo.svg" alt="Suman Thai Glass">
       <div class="app-bar-text">
-        <h1>মুক্তার থাই এস.এস গ্যালারী এন্ড গ্লাস হাউজ</h1>
+        <h1>Suman Thai Glass</h1>
         <p>থাই কাঁচ জানালা ও দরজা ক্যালকুলেটর  -  মাপ দেখে ভিজুয়াল সহ দাম হিসাব করুন</p>
       </div>
       <div class="app-bar-actions">
@@ -73,7 +73,10 @@
       <div id="tab-calc" class="app-page">
       <div class="calc-layout">
         <div class="card">
-          <h2 id="add-card-title">নতুন জানালা / দরজা যোগ করুন <span class="badge">Add Item</span></h2>
+          <div class="cut-calc-head">
+            <h2 id="add-card-title">নতুন জানালা / দরজা যোগ করুন <span class="badge">Add Item</span></h2>
+            <button type="button" class="icon-btn cut-reset" id="btn-calc-reset"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg><span id="btn-calc-reset-label"></span></button>
+          </div>
           <p class="card-desc suta-hint" id="calc-suta-hint"></p>
           <div class="type-section">
             <h3 id="kind-heading"></h3>
@@ -89,16 +92,8 @@
             <div class="field"><label for="in-room" id="room-label">রুম / ফ্লোর</label><input type="text" id="in-room" maxlength="40" autocomplete="off"></div>
           </div>
           <div class="size-row">
-          <div class="grid3">
-            <div class="field"><label for="in-h-ft" id="h-ft-label">উচ্চতা (ফুট)</label><input type="number" min="0" step="0.1" id="in-h-ft" value="0" placeholder="০" max="40" disabled></div>
-            <div class="field"><label for="in-h-in" id="h-in-label">উচ্চতা (ইঞ্চি)</label><input type="number" min="0" max="120" step="0.1" id="in-h-in" value="54" placeholder="৫৪" disabled></div>
-            <div class="field"><label for="in-h-suta" id="h-suta-label"></label><input type="number" min="0" max="7" step="1" id="in-h-suta" value="0" placeholder="0" disabled></div>
-          </div>
-          <div class="grid3">
-            <div class="field"><label for="in-w-ft" id="w-ft-label">প্রস্থ (ফুট)</label><input type="number" min="0" step="0.1" id="in-w-ft" value="0" placeholder="০" max="40" disabled></div>
-            <div class="field"><label for="in-w-in" id="w-in-label">প্রস্থ (ইঞ্চি)</label><input type="number" min="0" max="120" step="0.1" id="in-w-in" value="60" placeholder="৬০" disabled></div>
-            <div class="field"><label for="in-w-suta" id="w-suta-label"></label><input type="number" min="0" max="7" step="1" id="in-w-suta" value="0" placeholder="0" disabled></div>
-          </div>
+            <div class="field"><label for="in-h" id="h-label">উচ্চতা</label><input type="text" inputmode="decimal" id="in-h" value="54" placeholder="54.2" autocomplete="off" disabled></div>
+            <div class="field"><label for="in-w" id="w-label">প্রস্থ</label><input type="text" inputmode="decimal" id="in-w" value="60" placeholder="60.5" autocomplete="off" disabled></div>
           </div>
           <div class="grid2 opt-row">
             <div class="field"><label for="sel-company" id="glass-company-label">কাঁচের কোম্পানি</label><select id="sel-company"></select></div>
@@ -187,6 +182,16 @@
           </div>
         </div>
       </div>
+      <div class="card" id="my-quotes-card">
+        <h2 id="my-quotes-title"><span class="title-text"></span> <span class="badge">Find</span></h2>
+        <p class="hint" id="my-quotes-hint"></p>
+        <div class="my-quotes-find">
+          <div class="field"><label class="req" for="my-quotes-phone" id="my-quotes-phone-label"></label><input type="tel" id="my-quotes-phone" inputmode="tel" maxlength="15" autocomplete="tel" placeholder="01XXXXXXXXX"></div>
+          <button type="button" class="icon-btn primary" id="btn-find-quotes"><span id="btn-find-quotes-label"></span></button>
+        </div>
+        <div class="err" id="my-quotes-err" style="display:none"></div>
+        <div id="my-quotes-list" class="my-quotes-list"></div>
+      </div>
     </div>
       <div id="tab-cutting" class="app-page hidden">
       <div class="calc-layout cut-layout">
@@ -209,16 +214,8 @@
             <div class="field"><label for="cut-room" id="cut-room-label"></label><input type="text" id="cut-room" maxlength="40" autocomplete="off"></div>
           </div>
           <div class="size-row">
-            <div class="grid3">
-              <div class="field"><label for="cut-h-ft" id="cut-h-ft-label"></label><input type="number" min="0" step="1" id="cut-h-ft" inputmode="numeric" value="0" placeholder="0" max="40"></div>
-              <div class="field"><label for="cut-h-in" id="cut-h-in-label"></label><input type="number" min="0" max="120" step="1" id="cut-h-in" inputmode="numeric" value="54" placeholder="54"></div>
-              <div class="field"><label for="cut-h-suta" id="cut-h-suta-label"></label><input type="number" min="0" max="7" step="1" id="cut-h-suta" inputmode="numeric" value="0" placeholder="0"></div>
-            </div>
-            <div class="grid3">
-              <div class="field"><label for="cut-w-ft" id="cut-w-ft-label"></label><input type="number" min="0" step="1" id="cut-w-ft" inputmode="numeric" value="0" placeholder="0" max="40"></div>
-              <div class="field"><label for="cut-w-in" id="cut-w-in-label"></label><input type="number" min="0" max="120" step="1" id="cut-w-in" inputmode="numeric" value="60" placeholder="60"></div>
-              <div class="field"><label for="cut-w-suta" id="cut-w-suta-label"></label><input type="number" min="0" max="7" step="1" id="cut-w-suta" inputmode="numeric" value="0" placeholder="0"></div>
-            </div>
+            <div class="field"><label for="cut-h" id="cut-h-label"></label><input type="text" inputmode="decimal" id="cut-h" value="54" placeholder="54.2" autocomplete="off"></div>
+            <div class="field"><label for="cut-w" id="cut-w-label"></label><input type="text" inputmode="decimal" id="cut-w" value="60" placeholder="60.5" autocomplete="off"></div>
           </div>
           <div class="add-item-row cut-action-row">
             <button type="button" class="icon-btn primary" id="btn-cut-calc"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/><circle cx="18" cy="17" r="2.2"/></svg><span id="btn-cut-calc-label"></span></button>
@@ -252,13 +249,25 @@
       <div id="tab-rates" class="app-page hidden">
       <div class="admin-page">
       <div class="admin-shell">
-        <nav class="admin-tabs" id="admin-tabs"><button type="button" class="admin-tab active" data-admin="home" id="admin-tab-home"></button><button type="button" class="admin-tab" data-admin="glass" id="admin-tab-glass"></button><button type="button" class="admin-tab" data-admin="alu" id="admin-tab-alu"></button><button type="button" class="admin-tab" data-admin="lock" id="admin-tab-lock"></button><button type="button" class="admin-tab" data-admin="charges" id="admin-tab-charges"></button><button type="button" class="admin-tab" data-admin="staff" id="admin-tab-staff"></button><button type="button" class="admin-tab" data-admin="cut" id="admin-tab-cut"></button><button type="button" class="admin-tab hidden" data-admin="quotes" id="admin-tab-quotes"></button></nav>
+        <div class="admin-nav-wrap">
+        <nav class="admin-tabs" id="admin-tabs" aria-label="Admin"><button type="button" class="admin-tab active" data-admin="home" id="admin-tab-home"></button><button type="button" class="admin-tab" data-admin="glass" id="admin-tab-glass"></button><button type="button" class="admin-tab" data-admin="alu" id="admin-tab-alu"></button><button type="button" class="admin-tab" data-admin="lock" id="admin-tab-lock"></button><button type="button" class="admin-tab" data-admin="charges" id="admin-tab-charges"></button><button type="button" class="admin-tab" data-admin="cut" id="admin-tab-cut"></button><button type="button" class="admin-tab hidden" data-admin="quotes" id="admin-tab-quotes"></button><button type="button" class="admin-tab" data-admin="staff" id="admin-tab-staff"></button><button type="button" class="admin-tab superadmin-only hidden" data-admin="db" id="admin-tab-db"></button></nav>
+        </div>
         <div class="card admin-block admin-tone-home" data-admin-panel="home"><span class="admin-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5L12 4l8 6.5V20a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1z"/></svg></span>
         <h2 id="home-title"><span class="title-text"></span> <span class="badge">Shop</span></h2>
         <div class="admin-pane home-pane">
-          <div class="home-hero" id="home-hero"></div>
-          <div class="home-stats" id="home-stats"></div>
-          <div class="home-actions" id="home-actions"></div>
+          <div class="home-board" id="home-board">
+            <div class="home-charts" id="home-charts">
+              <section class="home-chart-card home-chart-overview">
+                <header class="home-panel-head"><h3 id="home-chart-overview-title"></h3></header>
+                <div class="home-chart-wrap home-chart-wrap-overview"><canvas id="home-chart-overview" aria-label="Overview chart"></canvas></div>
+              </section>
+              <section class="home-chart-card">
+                <header class="home-panel-head"><h3 id="home-chart-week-title"></h3></header>
+                <div class="home-chart-wrap"><canvas id="home-chart-week" aria-label="Weekly chart"></canvas></div>
+              </section>
+            </div>
+            <div class="home-actions" id="home-actions"></div>
+          </div>
           <div id="home-shop" class="home-shop hidden">
             <h3 id="home-shop-title"></h3>
             <p class="hint" id="home-shop-hint"></p>
@@ -294,16 +303,16 @@
       </div>
         <div class="card admin-block admin-tone-glass hidden" data-admin-panel="glass"><span class="admin-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 10h16M10 4v16"/></svg></span>
         <h2>কাঁচের কোম্পানি ও রেট <span class="badge">৳ / বর্গফুট</span></h2>
-        <p class="hint" id="company-rates-hint">নিয়মিত ব্যবহৃত কাঁচ কোম্পানি এর নাম ও প্রতি বর্গফুট রেট যোগ করুন।</p>
+        <p class="hint" id="company-rates-hint">মিমি টিক করে পাশে দাম দিন — যেমন ৫ মিমি ৳১২০, ৬ মিমি ৳১৪০।</p>
         <p class="hint warn">ডিফল্ট রেট বাজারভেদে বদলায়  -  আপনার আসল ক্রয়মূল্য অনুযায়ী এডিট করে নিন।</p>
         <div class="admin-pane"><div class="rate-list" id="company-list"></div>
-                        <div class="add-stack add-composer"><div class="add-form-main"><div class="field add-name"><label for="new-company-name" id="company-name-label"></label><input type="text" id="new-company-name" placeholder="কোম্পানি এর নাম, যেমনঃ থাই ৫ মিমি"></div><div class="field add-rate"><label for="new-company-rate" id="company-rate-label"></label><input type="number" id="new-company-rate" min="0" step="1" placeholder="রেট (৳/বর্গফুট)"></div></div><div class="add-form-picks"><div class="field"><label id="company-thick-pick-label"></label><div class="msel" id="msel-company-thick"><button type="button" class="msel-toggle" id="company-thick-toggle"></button><div class="msel-panel" id="new-company-thicks"></div></div></div><div class="field"><label id="company-color-pick-label"></label><div class="msel" id="msel-company-color"><button type="button" class="msel-toggle" id="company-color-toggle"></button><div class="msel-panel" id="new-company-colors"></div></div></div></div><div class="add-actions"><button type="button" class="icon-btn secondary" id="btn-add-company"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg><span>যোগ করুন</span></button></div></div></div>
+                        <div class="add-stack add-composer"><div class="add-form-main"><div class="field add-name"><label for="new-company-name" id="company-name-label"></label><input type="text" id="new-company-name" placeholder="কোম্পানি এর নাম, যেমনঃ থাই"></div></div><div class="add-form-picks"><div class="field"><label id="company-thick-pick-label"></label><div class="msel" id="msel-company-thick"><button type="button" class="msel-toggle" id="company-thick-toggle"></button><div class="msel-panel" id="new-company-thicks"></div></div></div><div class="field"><label id="company-color-pick-label"></label><div class="msel" id="msel-company-color"><button type="button" class="msel-toggle" id="company-color-toggle"></button><div class="msel-panel" id="new-company-colors"></div></div></div></div><div class="add-actions"><button type="button" class="icon-btn secondary" id="btn-add-company"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg><span>যোগ করুন</span></button></div></div></div>
       </div>
         <div class="card admin-block admin-tone-alu hidden" data-admin-panel="alu"><span class="admin-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h16M4 16h16M8 4v16M16 4v16"/></svg></span>
-        <h2 id="alu-rates-title"><span class="title-text"></span> <span class="badge">৳ / বর্গফুট</span></h2>
+        <h2 id="alu-rates-title"><span class="title-text"></span> <span class="badge">৳ / ফুট</span></h2>
         <p class="hint" id="alu-rates-hint"></p>
         <div class="admin-pane"><div class="rate-list" id="alu-list"></div>
-                        <div class="add-stack add-composer"><div class="add-form-main"><div class="field add-name"><label for="new-alu-name" id="alu-name-label"></label><input type="text" id="new-alu-name"></div><div class="field add-rate"><label for="new-alu-rate" id="alu-rate-label"></label><input type="number" id="new-alu-rate" min="0" step="1"></div></div><div class="add-form-picks"><div class="field"><label id="alu-thick-pick-label"></label><div class="msel" id="msel-alu-thick"><button type="button" class="msel-toggle" id="alu-thick-toggle"></button><div class="msel-panel" id="new-alu-thicks"></div></div></div><div class="field"><label id="alu-color-pick-label"></label><div class="msel" id="msel-alu-color"><button type="button" class="msel-toggle" id="alu-color-toggle"></button><div class="msel-panel" id="new-alu-colors"></div></div></div></div><div class="add-actions"><button type="button" class="icon-btn secondary" id="btn-add-alu"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg><span id="btn-add-alu-label"></span></button></div></div></div>
+                        <div class="add-stack add-composer"><div class="add-form-main"><div class="field add-name"><label for="new-alu-name" id="alu-name-label"></label><input type="text" id="new-alu-name" placeholder="কোম্পানি এর নাম"></div></div><div class="add-form-picks"><div class="field"><label id="alu-thick-pick-label"></label><div class="msel" id="msel-alu-thick"><button type="button" class="msel-toggle" id="alu-thick-toggle"></button><div class="msel-panel" id="new-alu-thicks"></div></div></div><div class="field"><label id="alu-color-pick-label"></label><div class="msel" id="msel-alu-color"><button type="button" class="msel-toggle" id="alu-color-toggle"></button><div class="msel-panel" id="new-alu-colors"></div></div></div></div><div class="add-actions"><button type="button" class="icon-btn secondary" id="btn-add-alu"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg><span id="btn-add-alu-label"></span></button></div></div></div>
       </div>
         <div class="card admin-block admin-tone-lock hidden" data-admin-panel="lock"><span class="admin-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span>
         <h2>লক এর ধরন ও দাম <span class="badge">৳ / প্রতি লক</span></h2>
@@ -318,66 +327,138 @@
           </select></div><div class="field add-rate"><label for="new-lock-rate" id="lock-rate-label"></label><input type="number" id="new-lock-rate" min="0" step="1" placeholder="দাম (৳)"></div></div><div class="add-actions"><button type="button" class="icon-btn secondary" id="btn-add-lock"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg><span>যোগ করুন</span></button></div></div></div>
       </div>
         <div class="card admin-block admin-tone-charges hidden" data-admin-panel="charges"><span class="admin-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 7v10M9.5 9.5c.8-1 4.2-1.2 4.2 1.3 0 2.4-4.2 1.8-4.2 4.2.1 1.8 3.2 1.8 4.4.7"/></svg></span>
-        <h2 id="charges-title"><span class="title-text"></span> <span class="badge">৳ / টি</span></h2>
+        <h2 id="charges-title"><span class="title-text"></span> <span class="badge" id="charges-badge">নেট ৳/বর্গ · ইনস্টল ৳/বর্গ</span></h2>
         <p class="hint" id="charges-hint"></p>
-        <div class="admin-pane"><div class="grid2">
-          <div class="field"><label for="in-charge-net" id="charge-net-label"></label><input type="number" min="0" step="1" id="in-charge-net"></div>
-          <div class="field"><label for="in-charge-extra" id="charge-extra-label"></label><input type="number" min="0" step="1" id="in-charge-extra"></div>
+        <div class="admin-pane">
+          <div class="grid2">
+            <div class="field"><label for="in-charge-net" id="charge-net-label"></label><input type="number" min="0" step="1" id="in-charge-net"></div>
+            <div class="field"><label for="in-charge-extra" id="charge-extra-label"></label><input type="number" min="0" step="1" id="in-charge-extra"></div>
+          </div>
+          <div class="field"><label for="in-charge-season" id="charge-season-label"></label><input type="number" min="0" max="90" step="1" id="in-charge-season" value="0"><p class="hint" id="charge-season-hint"></p></div>
+          <button type="button" class="icon-btn secondary" id="btn-save-charges"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8"/><path d="M7 3v5h8"/></svg><span id="btn-save-charges-label"></span></button>
         </div>
-        <button type="button" class="icon-btn secondary" id="btn-save-charges"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8"/><path d="M7 3v5h8"/></svg><span id="btn-save-charges-label"></span></button></div>
       </div>
         <div class="card admin-block admin-tone-staff hidden" id="staff-card" data-admin-panel="staff"><span class="admin-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="9.5" cy="7" r="3.2"/><path d="M20 8v6M17 11h6"/></svg></span>
         <h2 id="staff-title"><span class="title-text"></span> <span class="badge">Staff</span></h2>
         <p class="hint" id="staff-hint"></p>
         <div class="err" id="staff-err" style="display:none"></div>
         <div class="admin-pane"><div class="rate-list" id="staff-list"></div>
-        <div class="add-stack add-composer"><div class="add-form-main is-3"><div class="field add-name"><label for="new-staff-email" id="staff-email-label"></label><input type="email" id="new-staff-email" autocomplete="off"></div><div class="field add-mid"><label for="new-staff-pin" id="staff-pin-label"></label><input type="text" id="new-staff-pin" inputmode="numeric" maxlength="8" autocomplete="off"></div><div class="field add-rate"><label for="new-staff-role" id="staff-role-label"></label><select id="new-staff-role"><option value="operator" id="opt-staff-role">Staff</option><option value="owner" id="opt-owner-role">Owner</option></select></div></div><div class="add-actions"><button type="button" class="icon-btn secondary" id="btn-add-staff"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg><span id="btn-add-staff-label"></span></button></div></div></div>
+        <div class="add-stack add-composer"><div class="add-form-main is-3"><div class="field add-name"><label for="new-staff-email" id="staff-email-label"></label><input type="email" id="new-staff-email" autocomplete="off"></div><div class="field add-mid"><label for="new-staff-pin" id="staff-pin-label"></label><input type="text" id="new-staff-pin" inputmode="numeric" maxlength="15" autocomplete="off"></div><div class="field add-rate"><label for="new-staff-role" id="staff-role-label"></label><select id="new-staff-role"><option value="operator" id="opt-staff-role">Staff</option><option value="owner" id="opt-owner-role">Owner</option></select></div></div><div class="add-actions"><button type="button" class="icon-btn secondary" id="btn-add-staff"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg><span id="btn-add-staff-label"></span></button></div></div></div>
       </div>
         <div class="card admin-block admin-tone-cut hidden" data-admin-panel="cut"><span class="admin-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h10"/><circle cx="18" cy="17" r="2.2"/></svg></span>
-        <h2 id="cut-formula-title">কাটিং ফর্মুলা সেটিংস <span class="badge">Cutting Formula</span></h2>
+        <h2 id="cut-formula-title"><span class="title-text"></span> <span class="badge" id="cut-formula-badge">ইঞ্চি.সুতা</span></h2>
         <p class="hint" id="cut-formula-hint"></p>
-        <div class="admin-pane"><div class="grid2">
-          <div class="field"><label for="in-cp-outerhoriz" id="cp-outer-label"></label><input type="number" min="0" step="0.1" id="in-cp-outerhoriz" placeholder="0.4"></div>
-          <div class="field"><label for="in-cp-side" id="cp-side-label"></label><input type="number" min="0" step="0.1" id="in-cp-side" placeholder="1.1"></div>
+        <div class="admin-pane cut-pane">
+          <div class="cut-group">
+            <h3 class="cut-group-title" id="cut-group-frame"></h3>
+            <div class="grid2">
+              <div class="field"><label for="in-cp-outerhoriz" id="cp-outer-label"></label><input type="number" min="0" step="0.1" id="in-cp-outerhoriz" placeholder="0.4"></div>
+              <div class="field"><label for="in-cp-side" id="cp-side-label"></label><input type="number" min="0" step="0.1" id="in-cp-side" placeholder="1.1"></div>
+            </div>
+            <div class="field cut-field-wide"><label for="in-cp-shutterhoriz" id="cp-shutter-label"></label><input type="number" min="0" step="0.1" id="in-cp-shutterhoriz" placeholder="6"></div>
+          </div>
+          <div class="cut-group">
+            <h3 class="cut-group-title" id="cut-group-glass"></h3>
+            <div class="grid2">
+              <div class="field"><label for="in-cp-glassh" id="cp-glassh-label"></label><input type="number" min="0" step="0.1" id="in-cp-glassh" placeholder="4.2"></div>
+              <div class="field"><label for="in-cp-glassw" id="cp-glassw-label"></label><input type="number" min="0" step="0.1" id="in-cp-glassw" placeholder="5"></div>
+            </div>
+          </div>
+          <p class="hint cut-note" id="cut-formula-note"></p>
+          <button type="button" class="icon-btn secondary" id="btn-save-cut"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8"/><path d="M7 3v5h8"/></svg><span id="btn-save-cut-label"></span></button>
         </div>
-        <div class="grid2">
-          <div class="field"><label for="in-cp-shutterhoriz" id="cp-shutter-label"></label><input type="number" min="0" step="0.1" id="in-cp-shutterhoriz" placeholder="6"></div>
-          <div class="field"><label for="in-cp-glassh" id="cp-glassh-label"></label><input type="number" min="0" step="0.1" id="in-cp-glassh" placeholder="4.2"></div>
+      </div>
+        <div class="card admin-block admin-tone-db hidden" data-admin-panel="db"><span class="admin-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/><path d="M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></span>
+        <h2 id="db-title"><span class="title-text"></span> <span class="badge">Supabase</span></h2>
+        <p class="hint" id="db-hint"></p>
+        <div class="admin-pane db-pane">
+          <div class="db-status" id="db-status" aria-live="polite"></div>
+          <div class="field"><label for="in-db-url" id="db-url-label"></label><input type="url" id="in-db-url" autocomplete="off" spellcheck="false" placeholder="https://xxxx.supabase.co"></div>
+          <div class="field"><label for="in-db-key" id="db-key-label"></label><input type="password" id="in-db-key" autocomplete="off" spellcheck="false" placeholder="sb_publishable_… / anon key"></div>
+          <div class="db-actions">
+            <button type="button" class="icon-btn secondary" id="btn-db-connect"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg><span id="btn-db-connect-label"></span></button>
+            <button type="button" class="icon-btn ghost" id="btn-db-test"><span id="btn-db-test-label"></span></button>
+            <button type="button" class="icon-btn ghost superadmin-only hidden" id="btn-db-defaults"><span id="btn-db-defaults-label"></span></button>
+            <button type="button" class="icon-btn ghost superadmin-only hidden" id="btn-db-reset"><span id="btn-db-reset-label"></span></button>
+          </div>
+          <div class="db-sql-card superadmin-only hidden" id="db-sql-card">
+            <h3 id="db-sql-title"></h3>
+            <p class="hint" id="db-sql-hint"></p>
+            <ol class="db-sql-steps" id="db-sql-steps"></ol>
+            <div class="db-actions">
+              <button type="button" class="icon-btn secondary" id="btn-db-copy-schema"><span id="btn-db-copy-schema-label"></span></button>
+              <button type="button" class="icon-btn ghost" id="btn-db-download-schema"><span id="btn-db-download-schema-label"></span></button>
+              <button type="button" class="icon-btn ghost" id="btn-db-copy-seed"><span id="btn-db-copy-seed-label"></span></button>
+              <a class="icon-btn ghost" id="btn-db-open-sql" href="https://supabase.com/dashboard" target="_blank" rel="noopener noreferrer"><span id="btn-db-open-sql-label"></span></a>
+            </div>
+            <textarea id="db-sql-preview" class="db-sql-preview" readonly rows="8" spellcheck="false" aria-label="SQL"></textarea>
+          </div>
         </div>
-        <div class="grid2">
-          <div class="field"><label for="in-cp-glassw" id="cp-glassw-label"></label><input type="number" min="0" step="0.1" id="in-cp-glassw" placeholder="5"></div>
-        </div>
-        <button type="button" class="icon-btn secondary" id="btn-save-cut"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8"/><path d="M7 3v5h8"/></svg><span>সংরক্ষণ</span></button></div>
-        <p class="hint spaced" id="cut-formula-note"></p>
       </div>
       </div>
-        <span class="save-flash" id="save-flash">সংরক্ষণ হয়েছে ✓</span>
       </div>
     </div>
-    <footer class="print-foot" id="print-foot" aria-hidden="true">
-      <p id="print-thanks"></p>
-      <p id="print-note"></p>
-    </footer>
-    <div id="quote-view" class="owner-gate hidden">
+    <div id="print-booklet" class="print-booklet" aria-hidden="true"></div>
+    <div id="quote-view" class="owner-gate quote-view-gate hidden" role="dialog" aria-modal="true" aria-labelledby="quote-view-title">
       <div class="owner-gate-card quote-view-card">
-        <h2 id="quote-view-title"></h2>
-        <div id="quote-view-body"></div>
+        <div class="quote-view-hero">
+          <span class="owner-gate-glow" aria-hidden="true"></span>
+          <img class="quote-view-logo" id="quote-view-logo" src="images/logo.svg" alt="">
+          <div class="quote-view-hero-text">
+            <h2 id="quote-view-title"></h2>
+            <p class="quote-view-shop" id="quote-view-shop"></p>
+          </div>
+        </div>
+        <div id="quote-view-body" class="quote-view-body"></div>
         <div class="quote-share-btns" id="quote-view-actions"></div>
         <button type="button" class="icon-btn secondary" id="btn-quote-view-close"></button>
       </div>
     </div>
-    <div id="owner-gate" class="owner-gate hidden">
+    <div id="owner-gate" class="owner-gate hidden" role="dialog" aria-modal="true" aria-labelledby="owner-gate-title">
       <div class="owner-gate-card">
+        <div class="owner-gate-hero" aria-hidden="true">
+          <span class="owner-gate-glow"></span>
+          <img class="owner-gate-logo" src="images/logo.svg" alt="">
+          <span class="owner-gate-lock">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
+          </span>
+        </div>
         <h2 id="owner-gate-title"></h2>
         <p class="hint" id="owner-gate-hint"></p>
-        <div class="field"><label class="req" for="owner-email" id="owner-email-label"></label><input type="email" id="owner-email" autocomplete="username" inputmode="email" required aria-required="true" value="sumanengbd@gmail.com"></div>
-        <div class="field"><label class="req" for="owner-pin" id="owner-pin-label"></label><input type="password" id="owner-pin" inputmode="numeric" maxlength="8" autocomplete="new-password" required aria-required="true" value="123456"></div>
+        <div class="field owner-gate-field">
+          <label class="req" for="owner-email" id="owner-email-label"></label>
+          <div class="owner-gate-input">
+            <svg class="og-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 7 9-7"/></svg>
+            <input type="email" id="owner-email" autocomplete="username" inputmode="email" required aria-required="true" placeholder="email@example.com">
+          </div>
+        </div>
+        <div class="field owner-gate-field">
+          <label class="req" for="owner-pin" id="owner-pin-label"></label>
+          <div class="owner-gate-input">
+            <svg class="og-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
+            <input type="password" id="owner-pin" inputmode="numeric" maxlength="15" autocomplete="current-password" required aria-required="true" placeholder="••••••••">
+            <button type="button" class="pin-toggle" id="btn-pin-toggle" aria-pressed="false" title="PIN">
+              <svg class="pin-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
+              <svg class="pin-eye-off hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3l18 18"/><path d="M10.6 10.6a3 3 0 0 0 4.2 4.2"/><path d="M9.9 5.1A10.8 10.8 0 0 1 12 5c6.5 0 10 7 10 7a17.6 17.6 0 0 1-4.2 4.8"/><path d="M6.1 6.1C3.9 7.7 2 12 2 12a17.5 17.5 0 0 0 6.3 5.4"/></svg>
+            </button>
+          </div>
+        </div>
         <div class="err" id="owner-gate-err" style="display:none"></div>
-        <button type="button" class="icon-btn primary" id="btn-owner-ok"></button>
-        <button type="button" class="icon-btn secondary" id="btn-owner-cancel"></button>
+        <div class="owner-gate-actions">
+          <button type="button" class="icon-btn primary" id="btn-owner-ok"></button>
+          <button type="button" class="icon-btn secondary" id="btn-owner-cancel"></button>
+        </div>
+        <button type="button" class="icon-btn ghost db-gate-btn superadmin-only hidden" id="btn-owner-db"><span id="btn-owner-db-label"></span></button>
       </div>
     </div>
     </main>
+    <footer class="print-foot" id="print-foot" aria-hidden="true">
+      <div class="print-foot-inner">
+        <p id="print-thanks"></p>
+        <p id="print-note"></p>
+      </div>
+    </footer>
+
     <nav class="bottom-nav" data-active="calc" style="--i:0" aria-label="ক্যালকুলেটর">
       <div class="nav-dock">
         <button type="button" class="tab-btn active" data-tab="calc" id="nav-calc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="3" width="16" height="18" rx="3"/><path d="M8 8h8M8 12h8M8 16h4"/></svg><span id="nav-calc-label">ক্যালকুলেটর</span></button>
@@ -387,7 +468,12 @@
     </nav>
   </div>
   <div id="app-loader" class="app-loader hidden" aria-live="polite"><div class="app-loader-box"><span class="app-spinner"></span><p id="app-loader-text"></p></div></div>
-  <script src="js/config.js?v=23"></script>
-  <script src="js/calculator.js?v=156"></script>
+  <div class="app-toast-stack" id="save-flash" aria-live="polite" aria-relevant="additions"></div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/chart.umd.min.js"></script>
+  <script src="js/config.js?v=26"></script>
+  <script src="js/api.js?v=5"></script>
+  <script src="js/sql-setup.js?v=9"></script>
+  <script src="js/calculator.js?v=241"></script>
 </body>
 </html>

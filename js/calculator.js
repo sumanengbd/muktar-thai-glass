@@ -2,7 +2,7 @@
   "use strict";
 
   const T = {
-  "shop": "মুক্তার থাই এস.এস গ্যালারী এন্ড গ্লাস হাউজ",
+  "shop": "Suman Thai Glass",
   "janala": "জানালা",
   "dorja": "দরজা",
   "janalaSub": "ফিক্সড ও স্লাইডিং",
@@ -24,6 +24,7 @@
   "noLock": "লক নেই",
   "emptyRates": "এখনও কিছু যোগ করা হয়নি।",
   "perSq": "/ফুট²",
+  "perFt": "/ফুট",
   "muchun": "মুছুন",
   "outerTB": "বাইরের ফ্রেম - উপর/নিচ (O/H, B)",
   "outerLR": "বাইরের ফ্রেম - বাম/ডান (S/L)",
@@ -70,24 +71,27 @@
   "winTypes": "জানালার ধরন",
   "doorTypes": "দরজার ধরন",
   "errKind": "প্রথমে জানালা বা দরজা সিলেক্ট করুন।",
-  "ownerUnlockHint": "ইমেইল ও পিন দুটোই দিতে হবে।",
+  "ownerUnlockHint": "স্টাফ ইমেইল ও পিন দিয়ে অ্যাডমিন খুলুন।",
   "ownerPinLabel": "পিন",
-  "ownerOpen": "খুলুন",
-  "ownerPinBad": "পিন ৪ থেকে ৮ ডিজিট দিন।",
+  "ownerPinShow": "পিন দেখান",
+  "ownerPinHide": "পিন লুকান",
+  "ownerOpen": "লগইন",
+  "ownerPinBad": "পিন ৪ থেকে ১৫ ডিজিট দিন।",
   "ownerPinWrong": "ইমেইল বা পিন ভুল।",
   "ownerLock": "লক",
   "ownerEmailLabel": "ইমেইল",
   "ownerEmailNeed": "ইমেইল দিন।",
   "ownerPinNeed": "পিন দিন।",
   "ownerEmailBad": "সঠিক ইমেইল দিন।",
-  "ownerNeedEmail": "Users শীটে ইমেইল ও পিন বসান।",
-  "ownerNeedApi": "Google Apps Script URL js/config.js এ বসান।",
-  "ownerNetErr": "শীট খুলতে পারেনি। ইন্টারনেট চেক করুন।",
-  "ownerSaveFail": "শীটে সেভ হয়নি।",
+  "ownerNeedEmail": "Admin → Staff এ ইমেইল ও পিন সেট করুন।",
+  "ownerNeedApi": "অ্যাডমিন → ডাটাবেজ থেকে URL/কী সেট করুন, অথবা SQL সেটআপ রান করুন।",
+  "ownerNeedSchema": "অ্যাডমিন → ডাটাবেজ থেকে Schema SQL কপি করে Supabase SQL Editor-এ রান করুন।",
+  "ownerNetErr": "সার্ভারে সংযোগ হয়নি। ইন্টারনেট চেক করুন।",
+  "ownerSaveFail": "সংরক্ষণ হয়নি।",
   "ownerLocked": "অনেকবার ভুল চেষ্টা। পরে চেষ্টা করুন।",
   "staffLogin": "স্টাফ লগইন",
   "quoteTitle": "মালিককে পাঠান",
-  "quoteHint": "নাম ও মোবাইল দিন। কোট শীটে সেভ হবে।",
+  "quoteHint": "নাম ও মোবাইল দিন। কোট সার্ভারে সেভ হবে।",
   "quoteName": "নাম",
   "quotePhone": "মোবাইল",
   "quoteSend": "পাঠান",
@@ -104,11 +108,14 @@
   "aluCompany": "আলুমিনিয়াম কোম্পানি",
   "aluThick": "আলুমিনিয়াম থিকনেস",
   "aluRatesTitle": "আলুমিনিয়াম কোম্পানি, থিকনেস ও রং",
-  "aluRatesHint": "এক কোম্পানি এক সারি। একাধিক থিকনেস ও রং শীটে | দিয়ে থাকবে।",
+  "aluRatesHint": "মিমি টিক করে পাশে ৳/ফুট দাম দিন। হিসাব কাটিং লম্বা (ফুট) × রেট।",
+  "aluMmRateLabel": "মিমি রেট (৳/ফুট)",
+  "aluMmRatePh": "৳/ফুট",
   "chargesTitle": "নেট ও ইনস্টলেশন রেট",
-  "chargesHint": "প্রতি জানালা/দরজার চার্জ । শীট থেকে আসে।",
-  "chargeNet": "নেট (টাকা / টি)",
-  "chargeExtra": "ইনস্টলেশন (টাকা / টি)",
+  "chargesHint": "নেট ও ইনস্টলেশন দুটোই উচ্চতা × প্রস্থ (বর্গফুট) × রেট।",
+  "chargeNet": "নেট (টাকা / বর্গফুট)",
+  "chargeExtra": "ইনস্টলেশন (টাকা / বর্গফুট)",
+  "chargesBadge": "নেট ৳/বর্গ · ইনস্টল ৳/বর্গ",
   "editBtn": "এডিট",
   "updateBtn": "আপডেট",
   "cancelBtn": "বাতিল",
@@ -116,20 +123,29 @@
   "saveBtn": "সংরক্ষণ",
   "savingBtn": "সংরক্ষণ হচ্ছে...",
   "savedOk": "সংরক্ষণ হয়েছে ✓",
+  "addedOk": "যোগ হয়েছে ✓",
+  "updatedOk": "আপডেট হয়েছে ✓",
+  "deletedOk": "মুছে ফেলা হয়েছে",
   "aluNamePh": "কোম্পানি",
   "aluThickPh": "মিমি",
   "aluRatePh": "রেট",
   "glassThickPh": "মিমি",
-  "companyRatesHint": "এক কোম্পানি এক সারি। একাধিক থিকনেস ও রং শীটে | দিয়ে থাকবে।",
+  "companyRatesHint": "মিমি টিক করে পাশে দাম দিন — যেমন ৫ মিমি ৳১২০, ৬ মিমি ৳১৪০।",
+  "mmRateLabel": "মিমি রেট (৳/বর্গফুট)",
+  "mmRatePh": "৳/বর্গফুট",
   "aluColor": "আলুমিনিয়াম রং",
   "aluSilver": "সিলভার",
   "aluWhite": "সাদা",
   "aluChampagne": "শ্যাম্পেন",
   "aluBrown": "বাদামি",
-  "catalogEmpty": "শীট থেকে লিস্ট আসেনি। ইন্টারনেট চেক করে পেজ রিফ্রেশ করুন।",
+  "catalogEmpty": "ক্যাটালগ খালি — অ্যাডমিন থেকে কাঁচ/আলুমিনিয়াম কোম্পানি যোগ করুন।",
+  "selectEmpty": "এখনো যোগ হয়নি",
   "admin": "\u0985\u09cd\u09af\u09be\u09a1\u09ae\u09bf\u09a8",
   "calcTab": "\u0995\u09cd\u09af\u09be\u09b2\u0995\u09c1\u09b2\u09c7\u099f\u09b0",
   "pickHint": "\u09a8\u09bf\u09b0\u09cd\u09ac\u09be\u099a\u09a8 \u0995\u09b0\u09c1\u09a8",
+  "pickAddMm": "মিমি যোগ",
+  "pickAddColor": "কালার যোগ",
+  "pickRemove": "সরান",
   "working": "\u0985\u09aa\u09c7\u0995\u09cd\u09b7\u09be \u0995\u09b0\u09c1\u09a8...",
   "loading": "\u09b2\u09cb\u09a1 \u09b9\u099a\u09cd\u099b\u09c7...",
   "tabGlass": "\u0995\u09be\u0981\u099a\u09c7\u09b0 \u0995\u09cb\u09ae\u09cd\u09aa\u09be\u09a8\u09bf",
@@ -138,15 +154,48 @@
   "tabCharges": "\u09a8\u09c7\u099f \u0993 \u0987\u09a8\u09b8\u09cd\u099f\u09b2",
   "tabStaff": "\u09b8\u09cd\u099f\u09be\u09ab \u0985\u09cd\u09af\u09be\u0995\u09be\u0989\u09a8\u09cd\u099f",
   "tabCut": "\u0995\u09be\u099f\u09bf\u0982 \u09ab\u09b0\u09cd\u09ae\u09c1\u09b2\u09be",
+  "tabDb": "ডাটাবেজ",
   "tabQuotes": "\u09ad\u09bf\u099c\u09bf\u099f\u09b0 \u0995\u09cb\u099f",
+  "dbTitle": "সুপাবেস ডাটাবেজ",
+  "dbHint": "প্রজেক্ট URL ও publishable/anon কী। স্কিমা কপি → SQL Editor-এ পেস্ট। স্টাফ পিন আলাদা (প্রাইভেট ফাইল)।",
+  "dbUrlLabel": "Project URL",
+  "dbKeyLabel": "Anon / Publishable key",
+  "dbConnect": "সেভ ও কানেক্ট",
+  "dbTest": "টেস্ট",
+  "dbDefaults": "ডিফল্ট প্রজেক্ট",
+  "dbReset": "সেভড কনফিগ মুছুন",
+  "dbConnected": "কানেক্টেড ✓",
+  "dbNotConnected": "কানেক্ট হয়নি",
+  "dbTestOk": "কানেকশন ঠিক আছে ✓",
+  "dbTestFail": "কানেক্ট ব্যর্থ — URL/কী বা schema চেক করুন।",
+  "dbSaved": "ডাটাবেজ কনফিগ সেভ হয়েছে ✓",
+  "dbSqlTitle": "SQL সেটআপ (ক্লিপবোর্ড)",
+  "dbSqlHint": "শুধু সুপার অ্যাডমিন। Schema কপি → SQL Editor → Run — কোম্পানি/রেট/কোট মুছে না (ফিচার আপডেটেও নিরাপদ)।",
+  "dbSqlStep1": "Schema SQL কপি করুন (বারবার রান করা নিরাপদ — ক্যাটালগ মুছে না)।",
+  "dbSqlStep2": "Supabase → SQL Editor এ পেস্ট করে Run।",
+  "dbSqlStep3": "প্রয়োজন হলে Defaults কপি (দোকান/চার্জ ডিফল্ট)।",
+  "dbSqlStep4": "স্টাফ পিন শুধু SQL Editor দিয়ে সেট করুন — পাবলিক কোডে রাখবেন না।",
+  "dbCopySchema": "Schema SQL কপি",
+  "dbCopySeed": "Defaults SQL কপি",
+  "dbDownloadSchema": "Schema ডাউনলোড",
+  "dbOpenSql": "SQL Editor খুলুন",
+  "dbCopied": "কপি হয়েছে ✓",
+  "dbDownloaded": "SQL ফাইল ডাউনলোড হয়েছে ✓",
+  "dbCopyFail": "কপি হয়নি — নিচের বক্স থেকে সিলেক্ট করে কপি করুন, অথবা ডাউনলোড চাপুন।",
+  "dbGateBtn": "ডাটাবেজ সেটআপ",
   "staffTitle": "স্টাফ অ্যাকাউন্ট",
-  "staffHint": "মালিক স্টাফ যোগ করতে পারবেন। ইমেইল ও পিন দিয়ে তারা লগইন করবে। টেনে সারি সাজাতে পারবেন।",
+  "staffHint": "মালিক স্টাফ যোগ করতে পারবেন। সারিতে এডিট চাপলে পিন/রোল ইনলাইনে বদলানো যায়।",
   "staffEmailPh": "ইমেইল",
-  "staffPinPh": "পিন ৪-৮ ডিজিট",
+  "staffPinPh": "পিন ৪-১৫ ডিজিট",
   "roleStaff": "স্টাফ",
   "roleOwner": "মালিক",
-  "staffNeedOwner": "অন্তত একজন মালিক রাখতে হবে।",
-  "staffBad": "সঠিক ইমেইল ও ৪-৮ ডিজিট পিন দিন।",
+  "roleSuperAdmin": "সুপার অ্যাডমিন",
+  "staffNeedOwner": "কমপক্ষে একজন মালিক রাখুন।",
+  "staffProtectSuper": "সুপার অ্যাডমিন একজনই — যোগ বা মুছা যাবে না।",
+  "staffPinChange": "পিন",
+  "staffPinHint": "নতুন পিন লিখে যোগ/আপডেট চাপুন। সুপার অ্যাডমিন যে কারো পিন বদলাতে পারে।",
+  "staffPinUpdated": "পিন আপডেট হয়েছে।",
+  "staffBad": "সঠিক ইমেইল ও ৪-১৫ ডিজিট পিন দিন।",
   "errNeedName": "\u09a8\u09be\u09ae \u09a6\u09bf\u09a8\u0964",
   "errNeedNumber": "\u09b8\u09a0\u09bf\u0995 \u09b8\u0982\u0996\u09cd\u09af\u09be \u09a6\u09bf\u09a8\u0964",
   "errNeedPick": "\u09a5\u09bf\u0995\u09a8\u09c7\u09b8 \u0993 \u09b0\u0982 \u09b8\u09bf\u09b2\u09c7\u0995\u09cd\u099f \u09b0\u09be\u0996\u09c1\u09a8\u0964",
@@ -166,8 +215,9 @@
   "printDate": "\u09a4\u09be\u09b0\u09bf\u0996",
   "printThanks": "\u09a7\u09a8\u09cd\u09af\u09ac\u09be\u09a6",
   "printNote": "\u098f\u0987 \u09b9\u09bf\u09b8\u09be\u09ac \u0986\u09a8\u09c1\u09ae\u09be\u09a8\u09bf\u0995\u0964 \u099a\u09c2\u09dc\u09be\u09a8\u09cd\u09a4 \u09a6\u09be\u09ae \u09ae\u09be\u09aa \u0993 \u09ae\u09be\u09b2\u09be\u09ae\u09be\u09b2 \u0985\u09a8\u09c1\u09af\u09be\u09df\u09c0 \u09b9\u09a4\u09c7 \u09aa\u09be\u09b0\u09c7\u0964",
+  "printFoldHint": "A5 · A4 অর্ধেক সাইজ (১৪৮×২১০ মিমি)",
   "printCustomer": "\u0997\u09cd\u09b0\u09be\u09b9\u0995",
-  "shopSlogan": "\u09a5\u09be\u0987 \u0995\u09be\u0981\u099a \u099c\u09be\u09a8\u09be\u09b2\u09be \u0993 \u09a6\u09b0\u099c\u09be \u0995\u09cd\u09af\u09be\u09b2\u0995\u09c1\u09b2\u09c7\u099f\u09b0  -  \u09ae\u09be\u09aa \u09a6\u09c7\u0996\u09c7 \u09ad\u09bf\u099c\u09c1\u09df\u09be\u09b2 \u09b8\u09b9 \u09a6\u09be\u09ae \u09b9\u09bf\u09b8\u09be\u09ac \u0995\u09b0\u09c1\u09a8",
+  "shopSlogan": "Thai glass window & door calculator — see the size and estimate price with visuals",
   "tabHome": "\u09b8\u09cd\u09ac\u09be\u0997\u09a4\u09ae",
   "homeTitle": "\u09a6\u09cb\u0995\u09be\u09a8\u09c7\u09b0 \u09a4\u09a5\u09cd\u09af",
   "homeHello": "\u09b8\u09cd\u09ac\u09be\u0997\u09a4\u09ae",
@@ -198,27 +248,52 @@
   "quoteLink": "কোট লিংক",
   "quoteLinkCopy": "লিংক কপি",
   "quoteLinkCopied": "কপি হয়েছে",
+  "quoteShare": "শেয়ার",
+  "quoteShareWa": "WhatsApp",
+  "quoteOpenCalc": "ক্যালকুলেটরে খুলুন",
+  "quoteDelete": "কোট মুছুন",
+  "quoteDeleteConfirm": "এই ভিজিটর কোট মুছে ফেলবেন? ফিরে পাওয়া যাবে না।",
+  "quotePrint": "প্রিন্ট / PDF",
+  "quoteInvoice": "ইনভয়েস",
+  "myQuotesTitle": "আমার কোট খুঁজুন",
+  "myQuotesHint": "মোবাইল নম্বর দিয়ে আগের কোট দেখুন ও আবার শেয়ার করুন।",
+  "myQuotesPhone": "মোবাইল নম্বর",
+  "myQuotesFind": "খুঁজুন",
+  "myQuotesEmpty": "এই নম্বরে কোনো কোট পাওয়া যায়নি।",
+  "myQuotesNeedPhone": "সঠিক মোবাইল নম্বর দিন।",
+  "myQuotesView": "দেখুন",
+  "quoteHistory": "এই মোবাইলের আগের কোট",
+  "catalogGuide": "প্রথমে অ্যাডমিন → কাঁচের কোম্পানি থেকে রেট যোগ করুন। তারপর আলুমিনিয়াম ও লক।",
+  "catalogGuideBtn": "কাঁচ রেট সেটআপ",
+  "seasonLabel": "সিজনাল ছাড় (%)",
+  "seasonHint": "সব রেটের উপর শতাংশ ছাড় (০ = বন্ধ)।",
+  "staffPerf": "স্টাফ হ্যান্ডেল",
+  "homeTodayList": "আজকের কোট",
+  "homeTodayEmpty": "আজ এখনো কোনো নতুন কোট নেই।",
+  "homeTodayAll": "সব কোট দেখুন",
+  "homeTodayNew": "নতুন কোট",
+  "homeChartStatus": "কোট স্ট্যাটাস",
+  "homeChartWeek": "৭ দিনের কোট",
+  "homeChartOverview": "সারাংশ",
+  "offlineCatalog": "অফলাইন ক্যাটালগ ব্যবহার হচ্ছে",
+  "quoteFailDetail": "কোট পাঠানো যায়নি",
   "quoteViewTitle": "আপনার কোট",
   "quoteNotFound": "কোট পাওয়া যায়নি।",
+  "quoteItemsTitle": "আইটেম তালিকা",
+  "quoteTotalLabel": "মোট",
+  "quoteAreaLabel": "মোট বর্গফুট",
   "roomLabel": "রুম / ফ্লোর",
   "roomPh": "যেমনঃ ২য় তলা বেডরুম",
   "updateItem": "আপডেট করুন",
   "addItemBtn": "যোগ করুন ও হিসাব করুন",
-  "stockOut": "স্টকে নেই",
-  "stockIn": "স্টকে আছে",
   "shopWa": "মালিকের WhatsApp",
   "shopWaHint": "নতুন কোট এলে এই নম্বরে অ্যালার্ট যাবে।",
   "assignStaff": "স্টাফ",
   "assignNone": "অ্যাসাইন নেই",
   "quoteShareTitle": "কাস্টমারকে পাঠান",
-  "itemOutWarn": "এই থিকনেস এখন স্টকে নেই।",
   "qtyLabel": "পরিমাণ (সংখ্যা)",
-  "hFt": "উচ্চতা (ফুট)",
-  "hIn": "উচ্চতা (ইঞ্চি)",
-  "hSutaShort": "উচ্চতা (সুতা)",
-  "wFt": "প্রস্থ (ফুট)",
-  "wIn": "প্রস্থ (ইঞ্চি)",
-  "wSutaShort": "প্রস্থ (সুতা)",
+  "hLabel": "উচ্চতা (ইঞ্চি.সুতা)",
+  "wLabel": "প্রস্থ (ইঞ্চি.সুতা)",
   "heightOnly": "উচ্চতা",
   "widthOnly": "প্রস্থ",
   "autoMapTitle": "অটোমেটিক মাপ",
@@ -262,10 +337,8 @@
   "outerTopPart": "আউটার টপ",
   "cutCalcTitle": "কাটিং হিসাব",
   "cutCalcHint": "উচ্চতা ও প্রস্থ দিয়ে কাটিং মাপ বের করুন। লগইন লাগবে না।",
-  "cutSutaNote": "৮ সুতা = ১ ইঞ্চি · ফুট, ইঞ্চি ও সুতা দিয়ে মাপ দিন",
+  "cutSutaNote": "৮ সুতা = ১ ইঞ্চি · যেমন ৫৪.২ = ৫৪ ইঞ্চি ২ সুতা",
   "sutaHint": "৮ সুতা = ১ ইঞ্চি",
-  "hSuta": "উচ্চতা (সুতা)",
-  "wSuta": "প্রস্থ (সুতা)",
   "cutShutters": "শাটার",
   "cutCalcBtn": "হিসাব করুন",
   "cutAddBtn": "কাটিং লিস্টে যোগ করুন",
@@ -274,16 +347,20 @@
   "cutUserSize": "ইউজার এর মাপ",
   "cutListHint": "প্রতিটি জানালা/দরজার জন্য কোনো পার্টস কতটুকু মাপে কাটতে হবে তার তালিকা।",
   "cutListWarn": "একটা সাধারণ হিসাব - প্রোফাইল অনুযায়ী প্রকৃত মাপ কিছুটা ভিন্ন হতে পারে।",
+  "cutBlock": "ব্লক",
   "cpOuterLabel": "আউটার টপ/বটম কমতি (0.4 = 4 সুতা)",
   "cpSideLabel": "সাটার/ইন্টার লক কমতি (1.1)",
   "cpShutterLabel": "শাটার টপ/বটম প্রস্থ কমতি (6)",
   "cpGlassHLabel": "গ্লাস উচ্চতা কমতি (4.2)",
   "cpGlassWLabel": "গ্লাস প্রস্থ কমতি (5)",
+  "cutGroupFrame": "ফ্রেম / অ্যালুমিনিয়াম",
+  "cutGroupGlass": "কাঁচ",
+  "cutFormulaBadge": "ইঞ্চি.সুতা",
   "cutFormulaHint": "মান ইঞ্চি।সুতা ফরম্যাটে। দশমিকের পরে সুতা।",
-  "cutFormulaNote": "উদাহরণ: হাইট 54, প্রস্থ 60 দুই শাটার।"
+  "cutFormulaNote": "উদাহরণ: হাইট ৫৪, প্রস্থ ৬০ — দুই শাটার।"
 };
   const EN = {
-    shop: "Muktar Thai S.S Gallery & Glass House",
+    shop: "Suman Thai Glass",
     janala: "Window",
     dorja: "Door",
     janalaSub: "Fixed & sliding",
@@ -305,6 +382,7 @@
     noLock: "No lock",
     emptyRates: "Nothing added yet.",
     perSq: "/sqft",
+    perFt: "/ft",
     muchun: "Delete",
     outerTB: "Outer frame - top/bottom (O/H, B)",
     outerLR: "Outer frame - left/right (S/L)",
@@ -351,24 +429,27 @@
     winTypes: "Window types",
     doorTypes: "Door types",
     errKind: "Select window or door first.",
-    ownerUnlockHint: "Enter both email and PIN.",
+    ownerUnlockHint: "Sign in with staff email and PIN to open Admin.",
     ownerPinLabel: "PIN",
-    ownerOpen: "Open",
-    ownerPinBad: "PIN must be 4 to 8 digits.",
+    ownerPinShow: "Show PIN",
+    ownerPinHide: "Hide PIN",
+    ownerOpen: "Sign in",
+    ownerPinBad: "PIN must be 4 to 15 digits.",
     ownerPinWrong: "Wrong email or PIN.",
     ownerLock: "Lock",
     ownerEmailLabel: "Email",
     ownerEmailNeed: "Enter email.",
     ownerPinNeed: "Enter PIN.",
     ownerEmailBad: "Enter a valid email.",
-    ownerNeedEmail: "Put email and PIN on the Users sheet.",
-    ownerNeedApi: "Put the Google Apps Script URL in js/config.js.",
-    ownerNetErr: "Could not open the sheet. Check internet.",
-    ownerSaveFail: "Save to sheet failed.",
+    ownerNeedEmail: "Set email and PIN in Admin → Staff.",
+    ownerNeedApi: "Set URL/key in Admin → Database, or run the SQL setup.",
+    ownerNeedSchema: "Copy Schema SQL from Admin → Database and run it in the Supabase SQL Editor.",
+    ownerNetErr: "Could not reach the server. Check internet.",
+    ownerSaveFail: "Save failed.",
     ownerLocked: "Too many wrong tries. Try later.",
     staffLogin: "Staff login",
     quoteTitle: "Send to owner",
-    quoteHint: "Enter name and mobile. The quote is saved to the sheet.",
+    quoteHint: "Enter name and mobile. The quote is saved on the server.",
     quoteName: "Name",
     quotePhone: "Mobile",
     quoteSend: "Send",
@@ -385,11 +466,14 @@
     aluCompany: "Aluminium company",
     aluThick: "Aluminium thickness",
     aluRatesTitle: "Aluminium company, thickness and color",
-    aluRatesHint: "One company per row. Multiple thickness and color stay as | on the sheet.",
+    aluRatesHint: "Tick each mm and enter ৳/ft beside it. Cost = cutting length (ft) × rate.",
+    aluMmRateLabel: "mm rate (৳/ft)",
+    aluMmRatePh: "৳/ft",
     chargesTitle: "Net and installation rates",
-    chargesHint: "Charge per window/door. Comes from the sheet.",
-    chargeNet: "Net (Tk / pc)",
-    chargeExtra: "Installation (Tk / pc)",
+    chargesHint: "Net and installation both = height × width (sqft) × rate.",
+    chargeNet: "Net (Tk / sqft)",
+    chargeExtra: "Installation (Tk / sqft)",
+    chargesBadge: "Net ৳/sqft · Install ৳/sqft",
     editBtn: "Edit",
     updateBtn: "Update",
     cancelBtn: "Cancel",
@@ -397,20 +481,29 @@
     saveBtn: "Save",
     savingBtn: "Saving...",
     savedOk: "Saved ✓",
+    addedOk: "Added ✓",
+    updatedOk: "Updated ✓",
+    deletedOk: "Deleted",
     aluNamePh: "Company",
     aluThickPh: "mm",
     aluRatePh: "Rate",
     glassThickPh: "mm",
-    companyRatesHint: "One company per row. Multiple thickness and color stay as | on the sheet.",
+    companyRatesHint: "Tick each mm and enter the price beside it — e.g. 5mm ৳120, 6mm ৳140.",
+    mmRateLabel: "mm rate (৳/sqft)",
+    mmRatePh: "৳/sqft",
     aluColor: "Aluminium color",
     aluSilver: "Silver",
     aluWhite: "White",
     aluChampagne: "Champagne",
     aluBrown: "Brown",
-    catalogEmpty: "List did not load from the sheet. Check internet and refresh.",
+    catalogEmpty: "Catalog is empty — add glass/aluminium companies in Admin.",
+    selectEmpty: "Nothing added yet",
     admin: "Admin",
     calcTab: "Calculator",
     pickHint: "Choose",
+    pickAddMm: "Add mm",
+    pickAddColor: "Add color",
+    pickRemove: "Remove",
     working: "Working...",
     loading: "Loading...",
     tabGlass: "Glass companies",
@@ -419,15 +512,48 @@
     tabCharges: "Net and install",
     tabStaff: "Staff accounts",
     tabCut: "Cutting formula",
+    tabDb: "Database",
     tabQuotes: "Visitor quotes",
+    dbTitle: "Supabase database",
+    dbHint: "Project URL and publishable/anon key. Copy schema → paste in SQL Editor. Staff PIN stays in private files.",
+    dbUrlLabel: "Project URL",
+    dbKeyLabel: "Anon / Publishable key",
+    dbConnect: "Save & connect",
+    dbTest: "Test",
+    dbDefaults: "Default project",
+    dbReset: "Clear saved config",
+    dbConnected: "Connected ✓",
+    dbNotConnected: "Not connected",
+    dbTestOk: "Connection OK ✓",
+    dbTestFail: "Connect failed — check URL/key or schema.",
+    dbSaved: "Database config saved ✓",
+    dbSqlTitle: "SQL setup (clipboard)",
+    dbSqlHint: "Super Admin only. Copy Schema → SQL Editor → Run — does not wipe companies/rates/quotes (safe on updates).",
+    dbSqlStep1: "Copy Schema SQL (safe to re-run — never wipes catalog).",
+    dbSqlStep2: "Paste in Supabase → SQL Editor and Run.",
+    dbSqlStep3: "Optional: copy Defaults (shop/charges defaults).",
+    dbSqlStep4: "Set staff PIN only via SQL Editor — never in public code.",
+    dbCopySchema: "Copy schema SQL",
+    dbCopySeed: "Copy defaults SQL",
+    dbDownloadSchema: "Download schema",
+    dbOpenSql: "Open SQL Editor",
+    dbCopied: "Copied ✓",
+    dbDownloaded: "SQL file downloaded ✓",
+    dbCopyFail: "Copy failed — select from the box below, or tap Download.",
+    dbGateBtn: "Database setup",
     staffTitle: "Staff accounts",
-    staffHint: "Owner can add staff. They log in with email and PIN. Drag to reorder.",
+    staffHint: "Owner can add staff. Tap Edit on a row to change PIN/role inline.",
     staffEmailPh: "Email",
-    staffPinPh: "PIN 4-8 digits",
+    staffPinPh: "PIN 4-15 digits",
     roleStaff: "Staff",
     roleOwner: "Owner",
+    roleSuperAdmin: "Super Admin",
     staffNeedOwner: "Keep at least one owner.",
-    staffBad: "Enter a valid email and 4-8 digit PIN.",
+    staffProtectSuper: "Only one Super Admin — cannot add or remove.",
+    staffPinChange: "PIN",
+    staffPinHint: "Enter the new PIN and tap Add/Update. Super Admin can change anyone's PIN.",
+    staffPinUpdated: "PIN updated.",
+    staffBad: "Enter a valid email and 4-15 digit PIN.",
     errNeedName: "Enter a name.",
     errNeedNumber: "Enter a valid number.",
     errNeedPick: "Select thickness and color.",
@@ -447,8 +573,9 @@
     printDate: "Date",
     printThanks: "Thank you",
     printNote: "This is an estimate. Final price depends on measurement and materials.",
+    printFoldHint: "A5 · half of A4 (148×210 mm)",
     printCustomer: "Customer",
-    shopSlogan: "Thai glass window and door calculator - see the size and estimate the price",
+    shopSlogan: "Thai glass window & door calculator — see the size and estimate price with visuals",
     tabHome: "Home",
     homeTitle: "Shop details",
     homeHello: "Welcome",
@@ -479,27 +606,52 @@
     quoteLink: "Quote link",
     quoteLinkCopy: "Copy link",
     quoteLinkCopied: "Copied",
+    quoteShare: "Share",
+    quoteShareWa: "WhatsApp",
+    quoteOpenCalc: "Open in calculator",
+    quoteDelete: "Delete quote",
+    quoteDeleteConfirm: "Delete this visitor quote? This cannot be undone.",
+    quotePrint: "Print / PDF",
+    quoteInvoice: "Invoice",
+    myQuotesTitle: "Find my quote",
+    myQuotesHint: "Enter your mobile to view past quotes and share again.",
+    myQuotesPhone: "Mobile number",
+    myQuotesFind: "Search",
+    myQuotesEmpty: "No quotes found for this number.",
+    myQuotesNeedPhone: "Enter a valid mobile number.",
+    myQuotesView: "View",
+    quoteHistory: "Earlier quotes for this mobile",
+    catalogGuide: "First add glass company rates in Admin → Glass. Then aluminium and locks.",
+    catalogGuideBtn: "Set up glass rates",
+    seasonLabel: "Seasonal discount (%)",
+    seasonHint: "Percent off all rates (0 = off).",
+    staffPerf: "Staff handled",
+    homeTodayList: "Today's quotes",
+    homeTodayEmpty: "No new quotes today yet.",
+    homeTodayAll: "View all quotes",
+    homeTodayNew: "New quotes",
+    homeChartStatus: "Quote status",
+    homeChartWeek: "Quotes · 7 days",
+    homeChartOverview: "Overview",
+    offlineCatalog: "Using offline catalog",
+    quoteFailDetail: "Could not send quote",
     quoteViewTitle: "Your quote",
     quoteNotFound: "Quote not found.",
+    quoteItemsTitle: "Items",
+    quoteTotalLabel: "Total",
+    quoteAreaLabel: "Total sqft",
     roomLabel: "Room / floor",
     roomPh: "e.g. 2nd floor bedroom",
     updateItem: "Update item",
     addItemBtn: "Add and calculate",
-    stockOut: "Out of stock",
-    stockIn: "In stock",
     shopWa: "Owner WhatsApp",
     shopWaHint: "New quotes will alert this number.",
     assignStaff: "Staff",
     assignNone: "Unassigned",
     quoteShareTitle: "Send to customer",
-    itemOutWarn: "This thickness is out of stock.",
     qtyLabel: "Quantity",
-    hFt: "Height (ft)",
-    hIn: "Height (in)",
-    hSutaShort: "Height (suta)",
-    wFt: "Width (ft)",
-    wIn: "Width (in)",
-    wSutaShort: "Width (suta)",
+    hLabel: "Height (inch.suta)",
+    wLabel: "Width (inch.suta)",
     heightOnly: "Height",
     widthOnly: "Width",
     autoMapTitle: "Automatic size",
@@ -543,10 +695,8 @@
     outerTopPart: "Outer top",
     cutCalcTitle: "Cutting calculator",
     cutCalcHint: "Enter height and width to get cutting sizes. No login needed.",
-    cutSutaNote: "8 suta = 1 inch · enter size as feet, inches and suta",
+    cutSutaNote: "8 suta = 1 inch · e.g. 54.2 = 54 inch 2 suta",
     sutaHint: "8 suta = 1 inch",
-    hSuta: "Height (suta)",
-    wSuta: "Width (suta)",
     cutShutters: "Shutters",
     cutCalcBtn: "Calculate",
     cutAddBtn: "Add to cutting list",
@@ -555,13 +705,17 @@
     cutUserSize: "Your size",
     cutListHint: "Part sizes for each window/door in the list.",
     cutListWarn: "Guide sizes only — real cuts may differ by profile.",
+    cutBlock: "Block",
     cpOuterLabel: "Outer top/bottom deduct (0.4 = 4 suta)",
     cpSideLabel: "Shutter/inter lock deduct (1.1)",
     cpShutterLabel: "Shutter T/B width deduct (6)",
     cpGlassHLabel: "Glass height deduct (4.2)",
     cpGlassWLabel: "Glass width deduct (5)",
+    cutGroupFrame: "Frame / aluminium",
+    cutGroupGlass: "Glass",
+    cutFormulaBadge: "inch.suta",
     cutFormulaHint: "Values use inch.suta format. Digits after the point are suta.",
-    cutFormulaNote: "Example: height 54, width 60, 2 shutters."
+    cutFormulaNote: "Example: height 54, width 60 — 2 shutters."
   };
   const BN = {};
   Object.keys(T).forEach(function (k) { BN[k] = T[k]; });
@@ -572,9 +726,9 @@
     tab: "glasscalc:tab",
     session: "glasscalc:session",
     adminPanel: "glasscalc:adminPanel",
-    catalog: "glasscalc:catalog",
     shop: "glasscalc:shop",
-    lang: "glasscalc:lang"
+    lang: "glasscalc:lang",
+    catalogCache: "glasscalc:catalogCache"
   };
 
   const PRODUCT_TYPES = {
@@ -613,14 +767,13 @@
   ];
 
   const DEFAULT_CUT = { outerHoriz: 0.4, side: 1.1, shutterHoriz: 6, glassH: 4.2, glassW: 5 };
-  const DEFAULT_LOGIN = { email: "sumanengbd@gmail.com", pin: "123456" };
 
   const state = {
     companies: [],
     locks: [],
     aluminium: [],
     glassThicks: [],
-    charges: { net: 0, extra: 0 },
+    charges: { net: 0, extra: 0, seasonPct: 0 },
     items: [],
     cutItems: [],
     cutParams: { ...DEFAULT_CUT },
@@ -637,16 +790,30 @@
     role: "",
     quotes: [],
     staff: [],
-    edit: { kind: "", index: -1, name: "", rate: null, thicks: [], colors: [] },
-    adminPick: { companyThicks: [5], companyColors: ["clear"], companyOut: [], aluThicks: [1], aluColors: ["silver"] },
+    edit: { kind: "", index: -1, name: "", rate: null, rates: {}, thicks: [], thickExtras: [], colors: [], colorExtras: [], outs: [] },
+    adminPick: {
+      companyThicks: [5],
+      companyThickExtras: [],
+      companyColors: ["clear"],
+      companyColorExtras: [],
+      companyRates: {},
+      aluThicks: [1],
+      aluThickExtras: [],
+      aluColors: ["silver"],
+      aluColorExtras: [],
+      aluRates: {}
+    },
     shop: { name: "", slogan: "", logo: "", phone: "", address: "" },
     adminPanel: "home",
     quoteOpenId: "",
     cutQuote: null,
     lang: "bn",
     editItemIndex: -1,
-    quoteSearch: ""
+    quoteSearch: "",
+    myQuotes: []
   };
+
+  let homeChartInstances = { overview: null, week: null };
 
   const $ = (id) => document.getElementById(id);
 
@@ -666,7 +833,7 @@
       renderTypePicker();
       renderCutKindPicker();
       renderCutTypePicker();
-      refreshSheetSelects();
+      refreshCatalogSelects();
       renderItems();
       renderCuttingTab();
       renderLivePreview(true);
@@ -694,12 +861,8 @@
     set("qty-label", T.qtyLabel);
     set("room-label", T.roomLabel);
     if ($("in-room")) $("in-room").placeholder = T.roomPh;
-    set("h-ft-label", T.hFt);
-    set("h-in-label", T.hIn);
-    set("h-suta-label", T.hSutaShort || T.hSuta);
-    set("w-ft-label", T.wFt);
-    set("w-in-label", T.wIn);
-    set("w-suta-label", T.wSutaShort || T.wSuta);
+    set("h-label", T.hLabel);
+    set("w-label", T.wLabel);
     set("calc-suta-hint", T.cutSutaNote);
     set("cut-suta-hint", T.cutSutaNote);
     set("glass-company-label", T.glassCompany);
@@ -717,12 +880,8 @@
     set("cut-qty-label", T.qtyLabel);
     set("cut-room-label", T.roomLabel);
     if ($("cut-room")) $("cut-room").placeholder = T.roomPh;
-    set("cut-h-ft-label", T.hFt);
-    set("cut-h-in-label", T.hIn);
-    set("cut-h-suta-label", T.hSutaShort || T.hSuta);
-    set("cut-w-ft-label", T.wFt);
-    set("cut-w-in-label", T.wIn);
-    set("cut-w-suta-label", T.wSutaShort || T.wSuta);
+    set("cut-h-label", T.hLabel);
+    set("cut-w-label", T.wLabel);
     set("cut-meta-kind-l", T.previewKind);
     set("cut-meta-type-l", T.previewModel);
     set("cut-meta-size-l", T.previewSize);
@@ -730,6 +889,7 @@
     set("btn-cut-calc-label", T.cutCalcBtn);
     set("btn-cut-add-label", T.cutAddBtn);
     set("btn-cut-reset-label", T.cutResetBtn);
+    set("btn-calc-reset-label", T.cutResetBtn);
     set("cut-list-hint", T.cutListHint);
     set("cut-list-warn", T.cutListWarn);
     set("empty-note", T.emptyItems);
@@ -739,8 +899,12 @@
     set("cp-shutter-label", T.cpShutterLabel);
     set("cp-glassh-label", T.cpGlassHLabel);
     set("cp-glassw-label", T.cpGlassWLabel);
+    set("cut-group-frame", T.cutGroupFrame);
+    set("cut-group-glass", T.cutGroupGlass);
     set("cut-formula-hint", T.cutFormulaHint);
     set("cut-formula-note", T.cutFormulaNote);
+    if ($("cut-formula-badge")) $("cut-formula-badge").textContent = T.cutFormulaBadge;
+    if ($("btn-save-cut-label")) $("btn-save-cut-label").textContent = T.saveBtn;
     setHeading("cut-formula-title", T.tabCut);
     set("sum-sqft-label", T.sumSqft);
     set("sum-glass-label", T.sumGlass);
@@ -769,24 +933,11 @@
     if ($("btn-cancel-item")) $("btn-cancel-item").textContent = T.cancelBtn;
     if ($("btn-quote-view-close")) $("btn-quote-view-close").textContent = T.closeBtn;
     if ($("quote-view-title")) $("quote-view-title").textContent = T.quoteViewTitle;
+    setHeading("my-quotes-title", T.myQuotesTitle);
+    if ($("my-quotes-hint")) $("my-quotes-hint").textContent = T.myQuotesHint;
+    if ($("my-quotes-phone-label")) $("my-quotes-phone-label").textContent = T.myQuotesPhone;
+    if ($("btn-find-quotes-label")) $("btn-find-quotes-label").textContent = T.myQuotesFind;
     updateAddItemBtn();
-  }
-
-  function glassMmOut(name, mm) {
-    return state.companies.some(function (c) {
-      return c.name === name && String(c.thickness) === String(mm) && c.out;
-    });
-  }
-
-  function toggleGlassStock(name, mm) {
-    if (!isOwner()) return;
-    const next = !glassMmOut(name, mm);
-    state.companies.forEach(function (c) {
-      if (c.name === name && String(c.thickness) === String(mm)) c.out = next;
-    });
-    renderRateList("company-list", state.companies, "company");
-    renderCompanySelect();
-    persistOwnerData(["companies"]);
   }
 
   function statusLabel(s) {
@@ -800,6 +951,82 @@
   function quotePublicUrl(id) {
     const base = String(location.origin + location.pathname).replace(/index\.html$/i, "");
     return base + (base.charAt(base.length - 1) === "/" ? "" : "/") + "?q=" + encodeURIComponent(id);
+  }
+
+  function waPhoneDigits(phone) {
+    let n = String(phone || "").replace(/\D/g, "");
+    if (!n) return "";
+    if (n.indexOf("88") === 0) return n;
+    if (n.length === 11 && n.charAt(0) === "0") return "88" + n;
+    if (n.length === 10) return "880" + n;
+    return n;
+  }
+
+  function quoteShareText(row) {
+    if (!row || !row.id) return "";
+    const bits = [];
+    if (row.name) bits.push(row.name);
+    bits.push(T.quoteInvoice + " " + row.id);
+    const tot = quoteTotal(row);
+    if (tot) bits.push(money(tot));
+    return bits.join(" · ") + "\n" + quotePublicUrl(row.id);
+  }
+
+  function copyTextFlash(text, okMsg) {
+    const msg = okMsg || T.quoteLinkCopied;
+    const done = function () { flashNote(msg, false); };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done).catch(function () {
+        try {
+          const ta = document.createElement("textarea");
+          ta.value = text;
+          ta.setAttribute("readonly", "");
+          ta.style.position = "fixed";
+          ta.style.left = "-9999px";
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand("copy");
+          document.body.removeChild(ta);
+          done();
+        } catch (_) { /* ignore */ }
+      });
+    } else {
+      done();
+    }
+  }
+
+  function copyQuoteById(id) {
+    if (!id) return;
+    copyTextFlash(quotePublicUrl(id));
+  }
+
+  function shareQuoteWhatsApp(id) {
+    const row = findQuoteAnywhere(id);
+    if (!row) return;
+    const text = quoteShareText(row);
+    const phone = waPhoneDigits(row.phone);
+    const url = phone
+      ? "https://wa.me/" + phone + "?text=" + encodeURIComponent(text)
+      : "https://wa.me/?text=" + encodeURIComponent(text);
+    window.open(url, "_blank", "noopener,noreferrer");
+  }
+
+  function shareQuoteNative(id) {
+    const row = findQuoteAnywhere(id);
+    if (!row) return;
+    const url = quotePublicUrl(row.id);
+    const text = quoteShareText(row);
+    if (navigator.share) {
+      navigator.share({ title: T.quoteViewTitle, text: text, url: url }).catch(function () {});
+      return;
+    }
+    copyQuoteById(id);
+  }
+
+  function findQuoteAnywhere(id) {
+    const fromStaff = (state.quotes || []).find(function (x) { return x.id === id; });
+    if (fromStaff) return fromStaff;
+    return (state.myQuotes || []).find(function (x) { return x.id === id; }) || null;
   }
 
   function phoneKey(p) {
@@ -823,12 +1050,22 @@
   }
 
 
+  function formatInchSutaInput(ft) {
+    const n = ftToInchSuta(ft);
+    const a = Math.abs(Number(n) || 0);
+    const inch = Math.floor(a + 1e-9);
+    const suta = Math.round((a - inch) * 10);
+    return suta > 0 ? (inch + "." + suta) : String(inch);
+  }
+
+  function inchSutaInputToFeet(raw) {
+    return toSuta(raw) / 96;
+  }
+
   function fillSizeInputs(axis, ft) {
-    const p = feetParts(ft);
     const a = axis === "w" ? "w" : "h";
-    if ($("in-" + a + "-ft")) $("in-" + a + "-ft").value = p.ft ? String(p.ft) : "";
-    if ($("in-" + a + "-in")) $("in-" + a + "-in").value = p.inch ? String(p.inch) : "";
-    if ($("in-" + a + "-suta")) $("in-" + a + "-suta").value = p.suta ? String(p.suta) : "";
+    const el = $("in-" + a);
+    if (el) el.value = formatInchSutaInput(ft);
   }
 
 
@@ -852,7 +1089,7 @@
     if ($("in-room")) $("in-room").value = item.room || "";
     renderKindPicker();
     renderTypePicker();
-    refreshSheetSelects();
+    refreshCatalogSelects();
     if ($("sel-company") && item.companyName) $("sel-company").value = item.companyName;
     renderGlassThickSelect();
     if ($("sel-glass-thick") && item.thickness) $("sel-glass-thick").value = String(item.thickness);
@@ -922,8 +1159,8 @@
   }
 
   function patchQuote(id, fields) {
-    if (!isStaff() || !sheetApiUrl()) return;
-    sheetRequest(Object.assign({
+    if (!isStaff() || !apiReady()) return;
+    apiRequest(Object.assign({
       action: "quotePatch",
       email: state.ownerEmail,
       pin: state.ownerPin,
@@ -937,47 +1174,210 @@
     }).catch(function () {});
   }
 
+  function deleteQuote(id) {
+    if (!isOwner() || !apiReady() || !id) return;
+    if (!window.confirm(T.quoteDeleteConfirm)) return;
+    showLoader(true, T.working);
+    apiRequest({
+      action: "quoteDelete",
+      email: state.ownerEmail,
+      pin: state.ownerPin,
+      id: id
+    }).then(function (data) {
+      showLoader(false);
+      if (!data || !data.ok) {
+        flashNote(T.ownerSaveFail || "Error", true);
+        return;
+      }
+      if (Array.isArray(data.quotes)) state.quotes = data.quotes;
+      else state.quotes = (state.quotes || []).filter(function (q) { return q.id !== id; });
+      if (state.quoteOpenId === id) state.quoteOpenId = "";
+      if (state.cutQuote && state.cutQuote.id === id) {
+        state.cutQuote = null;
+        renderCuttingTab();
+      }
+      if (state.publicQuote && state.publicQuote.id === id) closeQuoteView();
+      renderQuotes();
+      renderHome();
+      flashNote(T.deletedOk, false);
+    }).catch(function () {
+      showLoader(false);
+      flashNote(T.ownerSaveFail || "Error", true);
+    });
+  }
+
   function fetchQuoteGet(id) {
-    const url = sheetApiUrl();
-    if (!url) return Promise.reject(new Error("noapi"));
-    const sep = url.indexOf("?") >= 0 ? "&" : "?";
-    return fetch(url + sep + "action=quote&id=" + encodeURIComponent(id), {
-      method: "GET",
-      redirect: "follow"
-    }).then(function (res) { return res.json(); });
+    if (!apiReady() || !window.MTG_API.fetchPublicQuote) return Promise.reject(new Error("noapi"));
+    return window.MTG_API.fetchPublicQuote(id);
+  }
+
+  function clearQuoteQuery() {
+    try {
+      const url = new URL(location.href);
+      if (!url.searchParams.has("q")) return;
+      url.searchParams.delete("q");
+      const next = url.pathname + (url.searchParams.toString() ? "?" + url.searchParams.toString() : "") + url.hash;
+      history.replaceState(null, "", next);
+    } catch (_) { /* ignore */ }
   }
 
   function closeQuoteView() {
+    state.publicQuote = null;
+    document.documentElement.classList.remove("gate-open");
     if ($("quote-view")) $("quote-view").classList.add("hidden");
+    clearQuoteQuery();
+  }
+
+  function quoteLineMeta(it) {
+    const bits = [];
+    if (it.size) bits.push(it.size);
+    bits.push((it.qty || 1) + " " + T.ti);
+    if (it.company) bits.push(it.company);
+    if (it.color) bits.push(it.color);
+    if (it.aluminium) bits.push(it.aluminium);
+    if (it.glassMm) bits.push(String(it.glassMm) + "mm");
+    if (it.lock && it.lock !== "-") bits.push(it.lock);
+    if (it.net) bits.push(T.net);
+    return bits.join(" · ");
   }
 
   function renderQuoteView(q) {
     const box = $("quote-view");
     const body = $("quote-view-body");
+    const actions = $("quote-view-actions");
     if (!box || !body) return;
     if ($("quote-view-title")) $("quote-view-title").textContent = T.quoteViewTitle;
+    const shop = shopOf(state.shop);
+    if ($("quote-view-shop")) $("quote-view-shop").textContent = shop.name || "";
+    if ($("quote-view-logo") && shop.logo) $("quote-view-logo").src = shop.logo;
+    state.publicQuote = q || null;
+    document.documentElement.classList.add("gate-open");
     if (!q) {
-      body.innerHTML = '<div class="empty-note">' + T.quoteNotFound + "</div>";
+      body.innerHTML = '<div class="quote-view-empty">' + T.quoteNotFound + "</div>";
+      if (actions) actions.innerHTML = "";
       box.classList.remove("hidden");
       return;
     }
+    const phone = String(q.phone || "").trim();
+    const phoneHref = phone ? "tel:" + phone.replace(/\s+/g, "") : "";
     const lines = (q.lines || []).map(function (it) {
-      return '<div class="quote-line"><strong>' + escapeHtml([it.room, it.type].filter(Boolean).join(" · ")) + "</strong>" +
-        "<span>" + escapeHtml(it.size || "") + " · " + (it.qty || 1) + " " + T.ti + "</span>" +
-        "<span>" + (it.total ? money(it.total) : "") + "</span></div>";
+      const title = [it.room, it.type].filter(Boolean).join(" · ") || T.item || "Item";
+      return '<div class="qv-line"><div class="qv-line-main"><strong>' + escapeHtml(title) + "</strong>" +
+        "<span>" + escapeHtml(quoteLineMeta(it)) + "</span></div>" +
+        '<div class="qv-line-price">' + (it.total ? money(it.total) : "—") + "</div></div>";
     }).join("");
-    body.innerHTML = "<p><strong>" + escapeHtml(q.name || "") + "</strong> · " + escapeHtml(q.phone || "") + "</p>" +
-      "<p>" + escapeHtml(q.id || "") + " · " + fmt(quoteSqft(q)) + T.sqLabel + " · " + money(quoteTotal(q)) + "</p>" +
-      (lines || "");
+    body.innerHTML =
+      '<div class="qv-meta">' +
+        '<div class="qv-invoice"><span>' + T.quoteInvoice + "</span><strong>" + escapeHtml(q.id || "") + "</strong></div>" +
+        (q.time ? '<div class="qv-time">' + escapeHtml(q.time) + "</div>" : "") +
+      "</div>" +
+      '<div class="qv-customer"><strong>' + escapeHtml(q.name || "") + "</strong>" +
+        (phoneHref
+          ? '<a href="' + escapeHtml(phoneHref) + '">' + escapeHtml(phone) + "</a>"
+          : "<span>" + escapeHtml(phone) + "</span>") +
+      "</div>" +
+      '<div class="qv-totals">' +
+        '<div class="qv-stat"><em>' + T.quoteAreaLabel + "</em><strong>" + fmt(quoteSqft(q)) + "</strong></div>" +
+        '<div class="qv-stat is-total"><em>' + T.quoteTotalLabel + "</em><strong>" + money(quoteTotal(q)) + "</strong></div>" +
+      "</div>" +
+      (lines
+        ? '<div class="qv-lines"><p class="qv-lines-title">' + T.quoteItemsTitle + "</p>" + lines + "</div>"
+        : "");
+    if (actions) {
+      actions.innerHTML =
+        '<button type="button" class="icon-btn primary" id="btn-quote-view-print">' +
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:18px;height:18px"><path d="M6 9V3h12v6"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v7H6z"/></svg>' +
+        "<span>" + T.quotePrint + "</span></button>";
+    }
     box.classList.remove("hidden");
   }
 
   function loadPublicQuote(id) {
-    if (!id || !sheetApiUrl()) return;
+    if (!id || !apiReady()) return;
     fetchQuoteGet(id).then(function (data) {
       if (data && data.ok && data.quote) renderQuoteView(data.quote);
       else renderQuoteView(null);
     }).catch(function () { renderQuoteView(null); });
+  }
+
+  function renderMyQuotesList() {
+    const list = $("my-quotes-list");
+    if (!list) return;
+    const rows = state.myQuotes || [];
+    if (!rows.length) {
+      list.innerHTML = "";
+      return;
+    }
+    list.innerHTML = rows.map(function (row) {
+      return '<div class="my-quote-row" data-id="' + escapeHtml(row.id) + '">' +
+        '<div class="my-quote-main"><strong>' + escapeHtml(row.id) + "</strong>" +
+        "<span>" + escapeHtml(formatQuoteTime(row.time)) + " · " +
+        (row.lines && row.lines.length ? row.lines.length : row.items || 0) + " " + T.ti +
+        (quoteTotal(row) ? " · " + money(quoteTotal(row)) : "") +
+        "</span></div>" +
+        '<div class="my-quote-actions">' +
+        '<button type="button" class="icon-btn secondary compact" data-action="my-quote-view" data-id="' +
+        escapeHtml(row.id) + '"><span>' + T.myQuotesView + "</span></button>" +
+        '<button type="button" class="icon-btn ghost compact" data-action="quote-share-copy" data-id="' +
+        escapeHtml(row.id) + '" title="' + escapeHtml(T.quoteLinkCopy) + '">' + ico("link") + "</button>" +
+        '<button type="button" class="icon-btn ghost compact" data-action="quote-share-wa" data-id="' +
+        escapeHtml(row.id) + '" title="' + escapeHtml(T.quoteShareWa) + '">' + ico("wa") + "</button>" +
+        '<button type="button" class="icon-btn ghost compact" data-action="quote-share" data-id="' +
+        escapeHtml(row.id) + '" title="' + escapeHtml(T.quoteShare) + '">' + ico("share") + "</button>" +
+        "</div></div>";
+    }).join("");
+  }
+
+  function findMyQuotes() {
+    const err = $("my-quotes-err");
+    const phone = $("my-quotes-phone") ? $("my-quotes-phone").value.trim() : "";
+    const digits = String(phone).replace(/\D/g, "");
+    if (err) err.style.display = "none";
+    if (digits.length < 10 || digits.length > 15) {
+      if (err) {
+        err.textContent = T.myQuotesNeedPhone;
+        err.style.display = "block";
+      }
+      return;
+    }
+    if (!apiReady() || !window.MTG_API.fetchQuotesByPhone) {
+      if (err) {
+        err.textContent = T.ownerNeedApi || T.myQuotesEmpty;
+        err.style.display = "block";
+      }
+      return;
+    }
+    const btn = $("btn-find-quotes");
+    if (btn) btn.disabled = true;
+    showLoader(true, T.working);
+    window.MTG_API.fetchQuotesByPhone(phone).then(function (data) {
+      if (btn) btn.disabled = false;
+      showLoader(false);
+      if (!data || !data.ok) {
+        state.myQuotes = [];
+        renderMyQuotesList();
+        if (err) {
+          err.textContent = data && data.error === "phone" ? T.myQuotesNeedPhone : T.myQuotesEmpty;
+          err.style.display = "block";
+        }
+        return;
+      }
+      state.myQuotes = Array.isArray(data.quotes) ? data.quotes : [];
+      renderMyQuotesList();
+      if (!state.myQuotes.length && err) {
+        err.textContent = T.myQuotesEmpty;
+        err.style.display = "block";
+      }
+    }).catch(function () {
+      if (btn) btn.disabled = false;
+      showLoader(false);
+      state.myQuotes = [];
+      renderMyQuotesList();
+      if (err) {
+        err.textContent = T.ownerNetErr || T.myQuotesEmpty;
+        err.style.display = "block";
+      }
+    });
   }
 
 
@@ -1005,7 +1405,10 @@
       save: '<path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8"/><path d="M7 3v5h8"/>',
       grip: '<path d="M8 6h8M8 12h8M8 18h8"/>',
       pencil: '<path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/>',
-      cut: '<path d="M4 7h16M4 12h16M4 17h10"/><circle cx="18" cy="17" r="2.2"/>'
+      cut: '<path d="M4 7h16M4 12h16M4 17h10"/><circle cx="18" cy="17" r="2.2"/>',
+      link: '<path d="M10 13a5 5 0 0 0 7.1 0l2-2a5 5 0 0 0-7.1-7.1l-1.1 1.1"/><path d="M14 11a5 5 0 0 0-7.1 0l-2 2a5 5 0 0 0 7.1 7.1l1.1-1.1"/>',
+      wa: '<path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3z"/><path d="M9.2 9.3c.2-.4.4-.4.6-.4h.5c.2 0 .4 0 .5.4l.7 1.7c.1.2 0 .4-.1.6l-.3.4c-.1.2-.1.4.1.6.4.5 1 .9 1.6 1.2.5.3 1 .2 1.2 0l.5-.5c.2-.2.4-.2.6-.1l1.7.7c.3.1.4.3.4.5v.5c0 .2 0 .4-.4.6A4.8 4.8 0 0 1 12.4 16 4.8 4.8 0 0 1 9 9.7c.1-.3.2-.4.2-.4z"/>',
+      share: '<circle cx="18" cy="5" r="2.4"/><circle cx="6" cy="12" r="2.4"/><circle cx="18" cy="19" r="2.4"/><path d="M8.2 10.8l7.6-4.2M8.2 13.2l7.6 4.2"/>'
     };
     return '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + (p[name] || "") + "</svg>";
   }
@@ -1032,11 +1435,7 @@
   }
 
   function ftInLabel(ft) {
-    const p = feetParts(ft);
-    let s = p.ft + " " + T.fut;
-    if (p.inch > 0) s += " " + p.inch + " " + T.inchi;
-    if (p.suta > 0) s += " " + p.suta + " " + T.sutaUnit;
-    return s;
+    return inchSutaPretty(ftToInchSuta(ft));
   }
 
   function alignDimLabels(root) {
@@ -1105,11 +1504,8 @@
 
   function inputSizeFt(axis) {
     const p = axis === "w" ? "w" : "h";
-    return toFeet(
-      $("in-" + p + "-ft") && $("in-" + p + "-ft").value,
-      $("in-" + p + "-in") && $("in-" + p + "-in").value,
-      $("in-" + p + "-suta") && $("in-" + p + "-suta").value
-    );
+    const el = $("in-" + p);
+    return inchSutaInputToFeet(el && el.value);
   }
 
 
@@ -1117,25 +1513,98 @@
     return ALL_TYPES.find((t) => t.id === id) || ALL_TYPES[0];
   }
 
+  function customColorList(kind, isEdit) {
+    if (isEdit) return (state.edit && state.edit.colorExtras) || [];
+    return (state.adminPick && state.adminPick[kind + "ColorExtras"]) || [];
+  }
+
+  function thickExtraList(kind, isEdit) {
+    if (isEdit) return (state.edit && state.edit.thickExtras) || [];
+    return (state.adminPick && state.adminPick[kind + "ThickExtras"]) || [];
+  }
+
+  function paletteFor(kind, isEdit) {
+    const base = kind === "alu" ? ALU_COLORS : GLASS_COLORS;
+    return base.concat(customColorList(kind, isEdit).map(function (c) {
+      return {
+        id: c.id,
+        labelKey: "",
+        label: c.label,
+        light: c.light || "#e8eef1",
+        mid: c.mid || "#6b8591",
+        dark: c.dark || "#3d5560"
+      };
+    }));
+  }
+
+  function findColorDef(id, kind) {
+    const s = String(id || "").trim().toLowerCase();
+    const base = kind === "alu" ? ALU_COLORS : GLASS_COLORS;
+    const hit = base.find((c) => c.id === s);
+    if (hit) return hit;
+    const extras = []
+      .concat(state.adminPick.companyColorExtras || [])
+      .concat(state.adminPick.aluColorExtras || [])
+      .concat((state.edit && state.edit.colorExtras) || []);
+    const custom = extras.find((c) => c.id === s);
+    if (custom) {
+      return {
+        id: custom.id,
+        labelKey: "",
+        label: custom.label,
+        light: custom.light || "#e8eef1",
+        mid: custom.mid || "#6b8591",
+        dark: custom.dark || "#3d5560"
+      };
+    }
+    if (s) {
+      return { id: s, labelKey: "", label: s, light: "#e8eef1", mid: "#6b8591", dark: "#3d5560" };
+    }
+    return kind === "alu" ? ALU_COLORS[0] : GLASS_COLORS[0];
+  }
+
   function getColor(id) {
-    return GLASS_COLORS.find((c) => c.id === id) || GLASS_COLORS[0];
+    return findColorDef(id, "company");
   }
 
   function colorLabel(id) {
-    return T[getColor(id).labelKey] || id;
+    const c = getColor(id);
+    return c.label || T[c.labelKey] || id;
   }
 
   function getAluColor(id) {
-    return ALU_COLORS.find((c) => c.id === id) || ALU_COLORS[0];
+    return findColorDef(id, "alu");
   }
 
   function aluColorLabel(id) {
-    return T[getAluColor(id).labelKey] || id;
+    const c = getAluColor(id);
+    return c.label || T[c.labelKey] || id;
   }
 
   function normalizeAluColorId(id) {
     const s = String(id || "").trim().toLowerCase();
-    return ALU_COLORS.some((c) => c.id === s) ? s : "silver";
+    if (ALU_COLORS.some((c) => c.id === s)) return s;
+    if ((state.adminPick.aluColorExtras || []).some((c) => c.id === s)) return s;
+    if ((state.edit.colorExtras || []).some((c) => c.id === s)) return s;
+    return s || "silver";
+  }
+
+  function normalizeColorId(id) {
+    const s = String(id || "").trim().toLowerCase();
+    if (GLASS_COLORS.some((c) => c.id === s)) return s;
+    if ((state.adminPick.companyColorExtras || []).some((c) => c.id === s)) return s;
+    if ((state.edit.colorExtras || []).some((c) => c.id === s)) return s;
+    return s || "clear";
+  }
+
+  function slugColorId(label) {
+    const base = String(label || "")
+      .trim()
+      .toLowerCase()
+      .replace(/[^a-z0-9\u0980-\u09ff]+/gi, "-")
+      .replace(/^-+|-+$/g, "")
+      .slice(0, 24);
+    return "x-" + (base || "color") + "-" + String(Date.now()).slice(-4);
   }
 
   function expandNamedCombos(list, colorFn, defaultThick) {
@@ -1150,7 +1619,7 @@
       const rate = Number(row.rate);
       const useRate = Number.isFinite(rate) && rate >= 0 ? rate : 0;
       useThicks.forEach((thickness) => {
-        useColors.forEach((color) => out.push({ name: name, thickness: thickness, rate: useRate, color: color, out: !!row.out }));
+        useColors.forEach((color) => out.push({ name: name, thickness: thickness, rate: useRate, color: color, out: false }));
       });
     });
     return out;
@@ -1226,125 +1695,6 @@
   const GLASS_THICK_PRESETS = [4, 5, 5.5, 6, 8, 10, 12];
   const ALU_THICK_PRESETS = [1, 1.2, 1.4, 1.5, 1.8, 2, 3];
 
-  function dummyGlassRows() {
-    const prices = {
-      "Clear Float": { "4": 110, "5": 130, "6": 150, "8": 180, "10": 205, "12": 230 },
-      Tinted: { "5": 145, "6": 165 },
-      Reflective: { "5": 170, "5.5": 180, "6": 190 },
-      Tempered: { "5": 165, "6": 190, "8": 230 }
-    };
-    const brands = [
-      {
-        name: "PHP Float Glass",
-        colors: {
-          "Clear Float": ["clear"],
-          Tinted: ["blue", "green", "bronze", "gray"],
-          Reflective: ["blue", "green", "bronze", "gray"],
-          Tempered: ["clear", "blue", "green", "bronze", "gray"]
-        }
-      },
-      {
-        name: "Nasir Glass",
-        colors: {
-          "Clear Float": ["clear"],
-          Tinted: ["bronze", "gray", "blue", "green", "black"],
-          Reflective: ["bronze", "gray", "blue", "green", "frosted"],
-          Tempered: ["clear", "bronze", "gray", "blue", "green", "black"]
-        }
-      }
-    ];
-    const out = [];
-    brands.forEach((b) => {
-      Object.keys(prices).forEach((type) => {
-        const name = b.name + " · " + type;
-        const rateMap = prices[type];
-        const colors = b.colors[type] || ["clear"];
-        Object.keys(rateMap).forEach((mm) => {
-          colors.forEach((color) => {
-            out.push({ name: name, thickness: Number(mm), rate: rateMap[mm], color: color });
-          });
-        });
-      });
-    });
-    return out;
-  }
-
-  function dummyAluRows() {
-    const profiles = [
-      { type: "Standard", thickness: 1.2, rate: 125 },
-      { type: "Sliding", thickness: 1.2, rate: 175 },
-      { type: "Heavy Duty", thickness: 1.5, rate: 200 },
-      { type: "Heavy Duty", thickness: 1.8, rate: 250 },
-      { type: "Commercial", thickness: 2, rate: 300 }
-    ];
-    const brands = [
-      { name: "Chung Hua Aluminium", colors: ["silver", "bronze", "champagne", "black", "white", "brown"] },
-      { name: "KAI Aluminium", colors: ["silver", "bronze", "black", "champagne", "white", "brown"] },
-      { name: "PHP Aluminium", colors: ["silver", "bronze", "champagne", "black", "white"] }
-    ];
-    const out = [];
-    brands.forEach((b) => {
-      profiles.forEach((p) => {
-        const name = b.name + " · " + p.type;
-        b.colors.forEach((color) => {
-          out.push({ name: name, thickness: p.thickness, rate: p.rate, color: color });
-        });
-      });
-    });
-    return out;
-  }
-
-  function dummyLocks() {
-    return [
-      { name: "Crescent Lock", rate: 200, style: "sliding" },
-      { name: "Heavy Duty Crescent Lock", rate: 400, style: "sliding" },
-      { name: "Hook Lock", rate: 250, style: "sliding" },
-      { name: "Keyed Sliding Window Lock", rate: 500, style: "sliding" },
-      { name: "Casement Handle", rate: 400, style: "casement" },
-      { name: "Multi Point Handle", rate: 800, style: "casement" },
-      { name: "Espagnolette Lock", rate: 1000, style: "casement" },
-      { name: "Window Stay", rate: 250, style: "casement" },
-      { name: "Friction Stay", rate: 500, style: "casement" },
-      { name: "Basic Aluminium Door Lock", rate: 450, style: "generic" },
-      { name: "Mortise Lock", rate: 800, style: "deadbolt" },
-      { name: "Heavy Duty Mortise Lock", rate: 1500, style: "deadbolt" },
-      { name: "Cylinder Lock", rate: 700, style: "deadbolt" },
-      { name: "Door Handle Set", rate: 700, style: "knob" },
-      { name: "Sliding Door Hook Lock", rate: 500, style: "sliding" },
-      { name: "Multi Point Lock", rate: 2500, style: "deadbolt" }
-    ];
-  }
-
-  function ensureDummyCatalog() {
-    const glass = dummyGlassRows();
-    const alu = dummyAluRows();
-    const locks = dummyLocks();
-    let added = 0;
-    glass.forEach((row) => {
-      const exists = state.companies.some((c) =>
-        c.name === row.name && Number(c.thickness) === Number(row.thickness) && c.color === row.color);
-      if (!exists) {
-        state.companies.push(row);
-        added += 1;
-      }
-    });
-    alu.forEach((row) => {
-      const exists = state.aluminium.some((a) =>
-        a.name === row.name && Number(a.thickness) === Number(row.thickness) && a.color === row.color);
-      if (!exists) {
-        state.aluminium.push(row);
-        added += 1;
-      }
-    });
-    locks.forEach((row) => {
-      if (!state.locks.some((l) => l.name === row.name)) {
-        state.locks.push(row);
-        added += 1;
-      }
-    });
-    return added;
-  }
-
   function togglePick(arr, value, isNum) {
     const v = isNum ? Number(value) : value;
     const i = arr.findIndex((x) => (isNum ? Number(x) === v : x === v));
@@ -1352,23 +1702,74 @@
     else arr.push(v);
   }
 
-  function mergeThicks(presets, selected) {
+  function mergeThicks(presets, selected, extras) {
     const all = presets.slice();
-    selected.forEach((mm) => {
+    (extras || []).concat(selected || []).forEach((mm) => {
       if (all.every((p) => Number(p) !== Number(mm))) all.push(Number(mm));
     });
     return all.sort((a, b) => a - b);
   }
 
-  function addThickPick(kind) {
-    const id = kind === "company" ? "new-company-thick" : "new-alu-thick";
+  function addThickPick(kind, isEdit) {
+    const id = isEdit ? "edit-thick" : (kind === "company" ? "new-company-thick" : "new-alu-thick");
+    const wrapId = isEdit ? "edit-thicks" : (kind === "company" ? "new-company-thicks" : "new-alu-thicks");
+    const rates = isEdit
+      ? (state.edit.rates || (state.edit.rates = {}))
+      : (state.adminPick[kind + "Rates"] || (state.adminPick[kind + "Rates"] = {}));
+    syncMmRatesFromDom(wrapId, rates);
     const mm = parseFloat($(id) && $(id).value);
     if (Number.isNaN(mm) || mm <= 0) return;
-    const arr = kind === "company" ? state.adminPick.companyThicks : state.adminPick.aluThicks;
+    const arr = isEdit ? (state.edit.thicks || (state.edit.thicks = [])) : state.adminPick[kind + "Thicks"];
+    const extras = isEdit ? (state.edit.thickExtras || (state.edit.thickExtras = [])) : (state.adminPick[kind + "ThickExtras"] || (state.adminPick[kind + "ThickExtras"] = []));
+    const presets = kind === "alu" ? ALU_THICK_PRESETS : GLASS_THICK_PRESETS;
     if (arr.every((t) => Number(t) !== mm)) arr.push(mm);
     arr.sort((a, b) => a - b);
+    if (presets.every((p) => Number(p) !== mm) && extras.every((t) => Number(t) !== mm)) extras.push(mm);
     if ($(id)) $(id).value = "";
-    renderAdminPicks();
+    if (isEdit) renderEditPicks();
+    else renderAdminPicks();
+  }
+
+  function removeThickPick(kind, mm, isEdit) {
+    const n = Number(mm);
+    const arr = isEdit ? (state.edit.thicks || []) : state.adminPick[kind + "Thicks"];
+    const extras = isEdit ? (state.edit.thickExtras || []) : (state.adminPick[kind + "ThickExtras"] || []);
+    const rates = isEdit ? (state.edit.rates || {}) : (state.adminPick[kind + "Rates"] || {});
+    for (let i = arr.length - 1; i >= 0; i--) if (Number(arr[i]) === n) arr.splice(i, 1);
+    for (let i = extras.length - 1; i >= 0; i--) if (Number(extras[i]) === n) extras.splice(i, 1);
+    delete rates[String(n)];
+    if (isEdit) renderEditPicks();
+    else renderAdminPicks();
+  }
+
+  function addColorPick(kind, isEdit) {
+    const id = isEdit ? "edit-color-custom" : (kind === "company" ? "new-company-color" : "new-alu-color");
+    const label = cleanTextValue($(id) && $(id).value);
+    if (!label) return;
+    const colorId = slugColorId(label);
+    const extras = isEdit
+      ? (state.edit.colorExtras || (state.edit.colorExtras = []))
+      : (state.adminPick[kind + "ColorExtras"] || (state.adminPick[kind + "ColorExtras"] = []));
+    const colors = isEdit
+      ? (state.edit.colors || (state.edit.colors = []))
+      : state.adminPick[kind + "Colors"];
+    if (extras.every((c) => c.label !== label && c.id !== colorId)) {
+      extras.push({ id: colorId, label: label, light: "#e8eef1", mid: "#6b8591", dark: "#3d5560" });
+    }
+    const useId = (extras.find((c) => c.label === label) || { id: colorId }).id;
+    if (colors.indexOf(useId) < 0) colors.push(useId);
+    if ($(id)) $(id).value = "";
+    if (isEdit) renderEditPicks();
+    else renderAdminPicks();
+  }
+
+  function removeColorPick(kind, colorId, isEdit) {
+    const colors = isEdit ? (state.edit.colors || []) : state.adminPick[kind + "Colors"];
+    const extras = isEdit ? (state.edit.colorExtras || []) : (state.adminPick[kind + "ColorExtras"] || []);
+    for (let i = colors.length - 1; i >= 0; i--) if (colors[i] === colorId) colors.splice(i, 1);
+    for (let i = extras.length - 1; i >= 0; i--) if (extras[i].id === colorId) extras.splice(i, 1);
+    if (isEdit) renderEditPicks();
+    else renderAdminPicks();
   }
 
   function selectedThicks(kind) {
@@ -1382,7 +1783,7 @@
     const existing = list.find((x) => x.name === row.name && Number(x.thickness) === Number(row.thickness) && x.color === row.color);
     if (existing) {
       existing.rate = row.rate;
-      if (Object.prototype.hasOwnProperty.call(row, "out")) existing.out = !!row.out;
+      existing.out = false;
     } else list.push(row);
   }
 
@@ -1403,29 +1804,82 @@
     return out;
   }
 
-  function replaceCombos(list, oldName, name, thicks, colors, rate, clickedRate, outMms) {
+  function replaceCombos(list, oldName, name, thicks, colors, rate, clickedRate) {
     const old = list.filter((x) => x.name === oldName);
     const rateMap = {};
-    const outMap = {};
     old.forEach((x) => {
       rateMap[Number(x.thickness) + "|" + x.color] = x.rate;
-      outMap[Number(x.thickness)] = !!x.out;
     });
-    const rateChanged = Number(rate) !== Number(clickedRate);
+    const byMm = rate && typeof rate === "object" && !Array.isArray(rate);
+    const rateChanged = !byMm && Number(rate) !== Number(clickedRate);
     const next = [];
     thicks.forEach((thickness) => {
       colors.forEach((color) => {
         const key = Number(thickness) + "|" + color;
-        const useRate = rateChanged || rateMap[key] == null ? rate : rateMap[key];
-        const useOut = Array.isArray(outMms)
-          ? outMms.some(function (m) { return Number(m) === Number(thickness); })
-          : !!outMap[Number(thickness)];
-        next.push({ name: name, thickness: thickness, rate: useRate, color: color, out: useOut });
+        let useRate;
+        if (byMm) {
+          const mmRate = rate[Number(thickness)];
+          useRate = mmRate != null && Number.isFinite(Number(mmRate)) ? Number(mmRate) : (rateMap[key] != null ? rateMap[key] : 0);
+        } else {
+          useRate = rateChanged || rateMap[key] == null ? rate : rateMap[key];
+        }
+        next.push({ name: name, thickness: thickness, rate: useRate, color: color, out: false });
       });
     });
     const kept = list.filter((x) => x.name !== oldName);
     list.length = 0;
     kept.concat(next).forEach((row) => list.push(row));
+  }
+
+  function syncMmRatesFromDom(wrapId, target) {
+    const wrap = $(wrapId);
+    if (!wrap || !target) return;
+    wrap.querySelectorAll("[data-mm-rate]").forEach((el) => {
+      const v = parseFloat(el.value);
+      if (Number.isFinite(v) && v >= 0) target[String(el.dataset.mmRate)] = v;
+      else delete target[String(el.dataset.mmRate)];
+    });
+  }
+
+  function mmRateGridHtml(thicks, rates, placeholder) {
+    const list = (thicks || []).slice().sort((a, b) => a - b);
+    if (!list.length) return "";
+    return list.map((mm) => {
+      const key = String(Number(mm));
+      const val = rates && rates[key] != null ? rates[key] : "";
+      return '<label class="mm-rate-item"><span>' + mm + T.mm + '</span><input type="number" min="0" step="1" data-mm-rate="' + key + '" placeholder="' + escapeHtml(placeholder || T.mmRatePh) + '" value="' + escapeHtml(val) + '"></label>';
+    }).join("");
+  }
+
+  function thickRateLabel(thicks, rates) {
+    return mselLabel((thicks || []).map(function (mm) {
+      const key = String(Number(mm));
+      const r = rates && rates[key] != null && rates[key] !== "" ? rates[key] : null;
+      return mm + T.mm + (r != null ? " " + T.taka + r : "");
+    }));
+  }
+
+  function readMmRates(wrapId, thicks) {
+    const wrap = $(wrapId);
+    const map = {};
+    let ok = true;
+    (thicks || []).forEach((mm) => {
+      const key = String(Number(mm));
+      const el = wrap && wrap.querySelector('[data-mm-rate="' + key + '"]');
+      const v = parseFloat(el && el.value);
+      if (!Number.isFinite(v) || v < 0) ok = false;
+      else map[Number(mm)] = v;
+    });
+    return ok ? map : null;
+  }
+
+  function ratesByThickness(rows) {
+    const map = {};
+    (rows || []).forEach((x) => {
+      const key = String(Number(x.thickness));
+      if (map[key] == null) map[key] = Number(x.rate) || 0;
+    });
+    return map;
   }
 
   function setAddLabels() {
@@ -1454,11 +1908,12 @@
   }
 
   function switchAdminPanel(id) {
-    const allowed = ["home", "glass", "alu", "lock", "charges", "staff", "cut", "quotes"];
+    const allowed = ["home", "glass", "alu", "lock", "charges", "staff", "cut", "db", "quotes"];
     if (allowed.indexOf(id) < 0) id = "home";
     if (isStaff() && !isOwner() && id !== "home" && id !== "quotes") id = "home";
     if (id === "quotes" && !isStaff()) id = "home";
     if (id === "staff" && !isOwner()) id = "home";
+    if (id === "db" && !isSuperAdmin()) id = "home";
     state.adminPanel = id;
     storeSet(KEYS.adminPanel, id);
     document.querySelectorAll("[data-admin-panel]").forEach((el) => {
@@ -1468,10 +1923,11 @@
       btn.classList.toggle("active", btn.dataset.admin === id);
     });
     if (id === "home") renderHome();
+    if (id === "db") fillDbSettings();
   }
 
   function defaultShop() {
-    return { name: T.shop, slogan: T.shopSlogan, logo: "images/logo.svg", phone: "", address: "" };
+    return { name: T.shop, slogan: T.shopSlogan, logo: "images/logo.svg", phone: "+8801727282829", address: "Walia Bazar, Lalpur, Natore" };
   }
 
   function safeShopLogo(logo) {
@@ -1589,43 +2045,203 @@
     return { count: count, today: today };
   }
 
-  function renderHome() {
-    const shop = shopOf(state.shop);
-    const hero = $("home-hero");
-    if (hero) {
-      hero.innerHTML = '<img src="' + escapeHtml(shop.logo) + '" alt="">' +
-        '<div><p class="home-kicker">' + T.homeHello + (isStaff() ? " \u00b7 " + escapeHtml(roleLabel(state.role)) : "") + "</p>" +
-        "<strong>" + escapeHtml(shop.name) + "</strong><span>" + escapeHtml(shop.slogan) + "</span></div>";
-    }
+  function destroyHomeCharts() {
+    Object.keys(homeChartInstances).forEach(function (k) {
+      if (homeChartInstances[k]) {
+        try { homeChartInstances[k].destroy(); } catch (e) {}
+        homeChartInstances[k] = null;
+      }
+    });
+  }
+
+  function homeOverviewSeries() {
     const q = quoteHomeStats();
     const aluNames = typeof uniqueAlu === "function" ? uniqueAlu("name", {}) : [];
-    const stats = [
-      [q.count, T.statQuotes, isStaff() ? "quotes" : ""],
-      [q.today, T.statToday, isStaff() ? "quotes" : ""],
-      [companyNames().length, T.statGlass, isOwner() ? "glass" : ""],
-      [aluNames.length, T.statAlu, isOwner() ? "alu" : ""],
-      [state.locks.length, T.statLocks, isOwner() ? "lock" : ""]
+    const items = [
+      { label: T.statQuotes, value: q.count, goto: isStaff() ? "quotes" : "" },
+      { label: T.statToday, value: q.today, goto: isStaff() ? "quotes" : "" },
+      { label: T.statGlass, value: companyNames().length, goto: isOwner() ? "glass" : "" },
+      { label: T.statAlu, value: aluNames.length, goto: isOwner() ? "alu" : "" },
+      { label: T.statLocks, value: (state.locks || []).length, goto: isOwner() ? "lock" : "" },
+      { label: T.statStaff, value: (state.staff || []).length, goto: isOwner() ? "staff" : "" }
     ];
-    if (isOwner()) stats.push([(state.staff || []).length, T.statStaff, "staff"]);
-    if ($("home-stats")) {
-      $("home-stats").innerHTML = stats.map((s) =>
-        '<button type="button" class="home-stat"' + (s[2] ? ' data-goto="' + s[2] + '"' : "") + ">" +
-        "<em>" + s[0] + "</em><span>" + s[1] + "</span></button>"
-      ).join("");
+    return items;
+  }
+
+  function quoteWeekSeries() {
+    const labels = [];
+    const data = [];
+    const base = new Date();
+    base.setHours(12, 0, 0, 0);
+    for (let i = 6; i >= 0; i -= 1) {
+      const d = new Date(base);
+      d.setDate(base.getDate() - i);
+      const key = localDayKey(d);
+      labels.push(d.toLocaleDateString(state.lang === "en" ? "en-GB" : "bn-BD", { weekday: "short" }));
+      let n = 0;
+      (state.quotes || []).forEach(function (q) {
+        if (localDayKey(quoteTimeDate(q.time)) === key) n += 1;
+      });
+      data.push(n);
     }
+    return { labels: labels, data: data };
+  }
+
+  function renderHomeCharts() {
+    destroyHomeCharts();
+    if (typeof Chart === "undefined") return;
+    const overviewCanvas = $("home-chart-overview");
+    const weekCanvas = $("home-chart-week");
+    if (!overviewCanvas || !weekCanvas) return;
+
+    const fontFamily = '"Hind Siliguri", "Noto Sans Bengali", sans-serif';
+    const overview = homeOverviewSeries();
+    const overviewColors = ["#0e6b86", "#f2a93b", "#12809e", "#2f8f5b", "#5b7380", "#0a4456"];
+
+    homeChartInstances.overview = new Chart(overviewCanvas, {
+      type: "bar",
+      data: {
+        labels: overview.map(function (x) { return x.label; }),
+        datasets: [{
+          data: overview.map(function (x) { return x.value; }),
+          backgroundColor: overviewColors,
+          hoverBackgroundColor: overviewColors,
+          borderRadius: 7,
+          borderSkipped: false,
+          maxBarThickness: 28
+        }]
+      },
+      options: {
+        indexAxis: "y",
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: function (ctx) {
+                return " " + (ctx.parsed.x || 0);
+              }
+            }
+          }
+        },
+        scales: {
+          x: {
+            beginAtZero: true,
+            ticks: {
+              stepSize: 1,
+              precision: 0,
+              font: { family: fontFamily, size: 10 },
+              color: "#8aa0ab"
+            },
+            grid: { color: "rgba(16, 35, 44, 0.06)" },
+            border: { display: false }
+          },
+          y: {
+            grid: { display: false },
+            ticks: {
+              font: { family: fontFamily, size: 11, weight: "600" },
+              color: "#10232c"
+            },
+            border: { display: false }
+          }
+        },
+        onClick: function (_evt, elements) {
+          if (!elements || !elements.length) return;
+          const idx = elements[0].index;
+          const target = overview[idx] && overview[idx].goto;
+          if (target) goHomeTarget(target);
+        }
+      }
+    });
+
+    const week = quoteWeekSeries();
+    homeChartInstances.week = new Chart(weekCanvas, {
+      type: "bar",
+      data: {
+        labels: week.labels,
+        datasets: [{
+          data: week.data,
+          backgroundColor: "rgba(14, 107, 134, 0.75)",
+          hoverBackgroundColor: "#0a4456",
+          borderRadius: 6,
+          borderSkipped: false,
+          maxBarThickness: 22
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: function (ctx) {
+                return " " + (ctx.parsed.y || 0);
+              }
+            }
+          }
+        },
+        scales: {
+          x: {
+            grid: { display: false },
+            ticks: {
+              font: { family: fontFamily, size: 10, weight: "600" },
+              color: "#5b7380",
+              maxRotation: 0
+            }
+          },
+          y: {
+            beginAtZero: true,
+            ticks: {
+              stepSize: 1,
+              precision: 0,
+              font: { family: fontFamily, size: 10 },
+              color: "#8aa0ab"
+            },
+            grid: { color: "rgba(16, 35, 44, 0.06)" },
+            border: { display: false }
+          }
+        },
+        onClick: function () {
+          if (isStaff()) goHomeTarget("quotes");
+        }
+      }
+    });
+  }
+
+  function renderHome() {
+    const shop = shopOf(state.shop);
+
+    if ($("home-chart-overview-title")) $("home-chart-overview-title").textContent = T.homeChartOverview;
+    if ($("home-chart-week-title")) $("home-chart-week-title").textContent = T.homeChartWeek;
+
+    const charts = $("home-charts");
+    if (charts) charts.classList.toggle("hidden", !isStaff());
+    if (isStaff()) renderHomeCharts();
+    else destroyHomeCharts();
+
     const actions = [];
     if (isStaff()) actions.push(["quotes", T.tabQuotes]);
     if (isOwner()) {
       actions.push(["glass", T.tabGlass]);
       actions.push(["alu", T.tabAlu]);
+      actions.push(["lock", T.tabLock]);
+      actions.push(["staff", T.tabStaff]);
     }
     actions.push(["calc", T.calcTab]);
     if ($("home-actions")) {
-      $("home-actions").innerHTML = (actions.length ? '<p class="hint">' + T.homeQuick + "</p>" : "") +
-        actions.map((a) =>
-          '<button type="button" class="icon-btn secondary compact" data-goto="' + a[0] + '">' + a[1] + "</button>"
-        ).join("");
+      $("home-actions").innerHTML =
+        '<div class="home-action-row">' +
+        actions.map(function (a) {
+          return '<button type="button" class="home-action" data-goto="' + a[0] + '">' + a[1] + "</button>";
+        }).join("") +
+        "</div>";
     }
+
+    const board = $("home-board");
+    if (board) board.classList.toggle("home-board-solo", !isStaff());
+
     if ($("home-shop")) $("home-shop").classList.toggle("hidden", !isOwner());
     setHeading("home-title", T.homeTitle);
     if ($("home-shop-title")) $("home-shop-title").textContent = T.homeTitle;
@@ -1646,12 +2262,16 @@
     if ($("shop-logo-preview")) $("shop-logo-preview").src = shop.logo;
   }
 
-  function goHomeTarget(id) {
+  function goHomeTarget(id, quoteId) {
     if (id === "calc") {
       switchTab("calc");
       return;
     }
     switchAdminPanel(id);
+    if (id === "quotes" && quoteId) {
+      state.quoteOpenId = quoteId;
+      if (typeof renderQuotes === "function") renderQuotes();
+    }
   }
 
   function resizeLogoFile(file) {
@@ -1705,7 +2325,7 @@
       logo: state.shop.logo
     });
     renderHome();
-    persistOwnerData(["shop"]);
+    persistOwnerData(["shop"], T.savedOk);
   }
 
   function onShopLogoPicked(file) {
@@ -1718,7 +2338,7 @@
         logo: dataUrl
       });
       renderHome();
-      persistOwnerData(["shop"]);
+      persistOwnerData(["shop"], T.savedOk);
     }).catch(function () {
       showStaffErr(T.shopLogoBad);
     });
@@ -1742,40 +2362,80 @@
     return values.length ? values.join(", ") : T.pickHint;
   }
 
-  function renderThickPanel(wrapId, presets, selected, inputId, kind, outMms) {
+  function renderThickPanel(wrapId, presets, selected, inputId, kind, rates, ratePh, extras, isEdit) {
     const wrap = $(wrapId);
     if (!wrap) return;
-    const outs = outMms || [];
-    const opts = mergeThicks(presets, selected).map(function (mm) {
+    if (!rates) rates = {};
+    syncMmRatesFromDom(wrapId, rates);
+    const ph = ratePh || (kind === "alu" ? T.aluMmRatePh : T.mmRatePh);
+    const extraList = extras || [];
+    const opts = mergeThicks(presets, selected, extraList).map(function (mm) {
       const on = selected.some(function (t) { return Number(t) === Number(mm); });
-      const out = outs.some(function (t) { return Number(t) === Number(mm); });
-      var html = '<button type="button" class="msel-opt' + (on ? " active" : "") + '" data-mm="' + mm + '"><span class="msel-check"></span>' + mm + T.mm + "</button>";
-      if (kind === "company") {
-        html = '<div class="msel-thick-row">' + html +
-          '<button type="button" class="msel-stock' + (out ? " is-out" : " active") + '" data-stock-mm="' + mm + '"><span class="msel-check"></span>' + (out ? T.stockOut : T.stockIn) + "</button></div>";
-      }
-      return html;
+      const key = String(Number(mm));
+      const val = rates[key] != null ? rates[key] : "";
+      const isCustom = presets.every(function (p) { return Number(p) !== Number(mm); });
+      return (
+        '<div class="msel-mm-row' + (on ? " is-on" : "") + '" data-mm="' + mm + '">' +
+          '<button type="button" class="msel-opt' + (on ? " active" : "") + '" data-mm="' + mm + '">' +
+            '<span class="msel-check"></span>' +
+            '<span class="msel-mm-label">' + mm + T.mm + "</span>" +
+          "</button>" +
+          '<input type="number" class="msel-mm-rate" min="0" step="1" data-mm-rate="' + key + '" placeholder="' + escapeHtml(ph) + '" value="' + escapeHtml(val) + '"' + (on ? "" : " disabled") + ">" +
+          '<button type="button" class="msel-remove" data-remove-mm="' + mm + '" title="' + escapeHtml(T.pickRemove) + '" aria-label="' + escapeHtml(T.pickRemove) + '"' + (on || isCustom ? "" : " disabled") + ">×</button>" +
+        "</div>"
+      );
     }).join("");
-    wrap.innerHTML = '<div class="msel-opts">' + opts + '</div><div class="msel-custom"><input type="number" id="' + inputId + '" min="0" step="' + (kind === "alu" ? "0.1" : "0.5") + '" placeholder="' + T.mm + '"><button type="button" class="msel-add-mm" data-thick-kind="' + kind + '">+</button></div>';
+    wrap.innerHTML =
+      '<div class="msel-opts">' + opts + "</div>" +
+      '<div class="msel-custom">' +
+        '<input type="number" id="' + inputId + '" min="0" step="' + (kind === "alu" ? "0.1" : "0.5") + '" placeholder="' + escapeHtml(T.pickAddMm || T.mm) + '">' +
+        '<button type="button" class="msel-add-mm" data-thick-kind="' + kind + '"' + (isEdit ? ' data-edit="1"' : "") + ">+</button>" +
+      "</div>";
   }
 
-  function renderColorPanel(wrapId, palette, selected) {
+  function renderColorPanel(wrapId, kind, selected, extras, isEdit) {
     const wrap = $(wrapId);
     if (!wrap) return;
-    wrap.innerHTML = '<div class="msel-opts">' + palette.map((c) =>
-      '<button type="button" class="msel-opt' + (selected.indexOf(c.id) >= 0 ? " active" : "") + '" data-color="' + c.id + '"><span class="msel-check"></span><span class="pick-dot" style="background:linear-gradient(135deg,' + c.light + "," + c.mid + ')"></span>' + escapeHtml(T[c.labelKey]) + "</button>"
-    ).join("") + "</div>";
+    const palette = paletteFor(kind, !!isEdit);
+    const opts = palette.map(function (c) {
+      const on = selected.indexOf(c.id) >= 0;
+      const label = c.label || T[c.labelKey] || c.id;
+      const isCustom = !(kind === "alu" ? ALU_COLORS : GLASS_COLORS).some(function (b) { return b.id === c.id; });
+      return (
+        '<div class="msel-color-row' + (on ? " is-on" : "") + '">' +
+          '<button type="button" class="msel-opt' + (on ? " active" : "") + '" data-color="' + c.id + '">' +
+            '<span class="msel-check"></span>' +
+            '<span class="pick-dot" style="background:linear-gradient(135deg,' + c.light + "," + c.mid + ')"></span>' +
+            escapeHtml(label) +
+          "</button>" +
+          '<button type="button" class="msel-remove" data-remove-color="' + c.id + '" title="' + escapeHtml(T.pickRemove) + '" aria-label="' + escapeHtml(T.pickRemove) + '"' + (on || isCustom ? "" : " disabled") + ">×</button>" +
+        "</div>"
+      );
+    }).join("");
+    const inputId = isEdit ? "edit-color-custom" : (kind === "company" ? "new-company-color" : "new-alu-color");
+    wrap.innerHTML =
+      '<div class="msel-opts">' + opts + "</div>" +
+      '<div class="msel-custom">' +
+        '<input type="text" id="' + inputId + '" placeholder="' + escapeHtml(T.pickAddColor) + '" autocomplete="off">' +
+        '<button type="button" class="msel-add-color" data-color-kind="' + kind + '"' + (isEdit ? ' data-edit="1"' : "") + ">+</button>" +
+      "</div>";
   }
 
   function renderAdminPicks() {
     const pick = state.adminPick;
-    renderThickPanel("new-company-thicks", GLASS_THICK_PRESETS, pick.companyThicks, "new-company-thick", "company", pick.companyOut || []);
-    renderColorPanel("new-company-colors", GLASS_COLORS, pick.companyColors);
-    renderThickPanel("new-alu-thicks", ALU_THICK_PRESETS, pick.aluThicks, "new-alu-thick", "alu");
-    renderColorPanel("new-alu-colors", ALU_COLORS, pick.aluColors);
-    if ($("company-thick-toggle")) $("company-thick-toggle").textContent = mselLabel(pick.companyThicks.map((mm) => mm + T.mm));
+    if (!pick.companyRates) pick.companyRates = {};
+    if (!pick.aluRates) pick.aluRates = {};
+    if (!pick.companyThickExtras) pick.companyThickExtras = [];
+    if (!pick.aluThickExtras) pick.aluThickExtras = [];
+    if (!pick.companyColorExtras) pick.companyColorExtras = [];
+    if (!pick.aluColorExtras) pick.aluColorExtras = [];
+    renderThickPanel("new-company-thicks", GLASS_THICK_PRESETS, pick.companyThicks, "new-company-thick", "company", pick.companyRates, T.mmRatePh, pick.companyThickExtras, false);
+    renderColorPanel("new-company-colors", "company", pick.companyColors, pick.companyColorExtras, false);
+    renderThickPanel("new-alu-thicks", ALU_THICK_PRESETS, pick.aluThicks, "new-alu-thick", "alu", pick.aluRates, T.aluMmRatePh, pick.aluThickExtras, false);
+    renderColorPanel("new-alu-colors", "alu", pick.aluColors, pick.aluColorExtras, false);
+    if ($("company-thick-toggle")) $("company-thick-toggle").textContent = thickRateLabel(pick.companyThicks, pick.companyRates);
     if ($("company-color-toggle")) $("company-color-toggle").textContent = mselLabel(pick.companyColors.map((id) => colorLabel(id)));
-    if ($("alu-thick-toggle")) $("alu-thick-toggle").textContent = mselLabel(pick.aluThicks.map((mm) => mm + T.mm));
+    if ($("alu-thick-toggle")) $("alu-thick-toggle").textContent = thickRateLabel(pick.aluThicks, pick.aluRates);
     if ($("alu-color-toggle")) $("alu-color-toggle").textContent = mselLabel(pick.aluColors.map((id) => aluColorLabel(id)));
   }
 
@@ -1785,33 +2445,69 @@
       if (!wrap || wrap.dataset.pickBound) return;
       wrap.dataset.pickBound = "1";
       wrap.addEventListener("click", (e) => {
-        const addMm = e.target.closest(".msel-add-mm");
-        if (addMm) {
-          addThickPick(addMm.dataset.thickKind || kind);
+        if (e.target.closest(".msel-mm-rate")) return;
+        const remMm = e.target.closest("[data-remove-mm]");
+        if (remMm) {
+          e.preventDefault();
+          removeThickPick(kind, remMm.getAttribute("data-remove-mm"), false);
           return;
         }
-        const stock = e.target.closest(".msel-stock");
-        if (stock && kind === "company") {
-          if (!state.adminPick.companyOut) state.adminPick.companyOut = [];
-          const mm = stock.dataset.stockMm;
-          togglePick(state.adminPick.companyOut, mm, true);
-          if (state.adminPick.companyThicks.every(function (t) { return Number(t) !== Number(mm); })) {
-            state.adminPick.companyThicks.push(Number(mm));
-            state.adminPick.companyThicks.sort(function (a, b) { return a - b; });
-          }
-          renderAdminPicks();
+        const remColor = e.target.closest("[data-remove-color]");
+        if (remColor) {
+          e.preventDefault();
+          removeColorPick(kind, remColor.getAttribute("data-remove-color"), false);
+          return;
+        }
+        const addMm = e.target.closest(".msel-add-mm");
+        if (addMm) {
+          addThickPick(addMm.dataset.thickKind || kind, false);
+          return;
+        }
+        const addColor = e.target.closest(".msel-add-color");
+        if (addColor) {
+          addColorPick(addColor.dataset.colorKind || kind, false);
           return;
         }
         const btn = e.target.closest(".msel-opt");
         if (!btn) return;
-        if (field === "thick") togglePick(state.adminPick[kind + "Thicks"], btn.dataset.mm, true);
-        else togglePick(state.adminPick[kind + "Colors"], btn.dataset.color, false);
+        if (field === "thick") {
+          if (!state.adminPick[kind + "Rates"]) state.adminPick[kind + "Rates"] = {};
+          syncMmRatesFromDom(wrapId, state.adminPick[kind + "Rates"]);
+          togglePick(state.adminPick[kind + "Thicks"], btn.dataset.mm, true);
+        } else {
+          togglePick(state.adminPick[kind + "Colors"], btn.dataset.color, false);
+        }
         renderAdminPicks();
+        if (field === "thick") {
+          const rateInp = $(wrapId) && $(wrapId).querySelector('[data-mm-rate="' + String(Number(btn.dataset.mm)) + '"]');
+          if (rateInp && !rateInp.disabled) {
+            rateInp.focus();
+            rateInp.select();
+          }
+        }
+      });
+      wrap.addEventListener("input", (e) => {
+        const inp = e.target.closest(".msel-mm-rate");
+        if (!inp || field !== "thick") return;
+        if (!state.adminPick[kind + "Rates"]) state.adminPick[kind + "Rates"] = {};
+        const rates = state.adminPick[kind + "Rates"];
+        const v = parseFloat(inp.value);
+        if (Number.isFinite(v) && v >= 0) rates[String(inp.dataset.mmRate)] = v;
+        else delete rates[String(inp.dataset.mmRate)];
+        const toggleId = kind === "company" ? "company-thick-toggle" : "alu-thick-toggle";
+        if ($(toggleId)) $(toggleId).textContent = thickRateLabel(state.adminPick[kind + "Thicks"], rates);
       });
       wrap.addEventListener("keydown", (e) => {
-        if (e.key !== "Enter" || !e.target.closest(".msel-custom input")) return;
-        e.preventDefault();
-        addThickPick(kind);
+        if (e.key !== "Enter") return;
+        if (e.target.closest(".msel-custom input[type='number']") || e.target.id === "new-company-thick" || e.target.id === "new-alu-thick") {
+          e.preventDefault();
+          addThickPick(kind, false);
+          return;
+        }
+        if (e.target.closest(".msel-custom input[type='text']") || e.target.id === "new-company-color" || e.target.id === "new-alu-color") {
+          e.preventDefault();
+          addColorPick(kind, false);
+        }
       });
     }
     bindPanel("new-company-thicks", "company", "thick");
@@ -1856,21 +2552,63 @@
     try { localStorage.setItem(key, JSON.stringify(value)); } catch (_) { /* ignore */ }
   }
 
-  function flashSaved() {
-    flashNote(T.savedOk || "সংরক্ষণ হয়েছে ✓", false);
+  function flashSaved(msg) {
+    flashNote(msg || T.savedOk || "সংরক্ষণ হয়েছে ✓", false);
+  }
+
+  var persistOkMsg = "";
+  var TOAST_MAX = 5;
+
+  function dismissToast(el) {
+    if (!el || !el.parentNode) return;
+    el.classList.remove("show");
+    clearTimeout(el._hide);
+    clearTimeout(el._gone);
+    el._gone = setTimeout(function () {
+      if (el.parentNode) el.parentNode.removeChild(el);
+    }, 340);
   }
 
   function flashNote(text, isErr) {
-    const el = $("save-flash");
-    if (!el) return;
-    if (!el.dataset.okText) el.dataset.okText = T.savedOk || el.textContent;
-    el.textContent = text || el.dataset.okText;
-    el.classList.toggle("is-err", !!isErr);
-    el.classList.add("show");
-    clearTimeout(el._hide);
+    const stack = $("save-flash");
+    if (!stack) return;
+    const msg = text || T.savedOk || "";
+    const isWait = !isErr && (msg === T.savingBtn || /সংরক্ষণ হচ্ছে|Saving/i.test(msg));
+    const kind = isErr ? "err" : (isWait ? "wait" : "ok");
+
+    if (isWait) {
+      const existing = stack.querySelector(".app-toast.is-wait");
+      if (existing) {
+        const m = existing.querySelector(".app-toast-msg");
+        if (m) m.textContent = msg;
+        existing.classList.add("show");
+        return;
+      }
+    } else {
+      stack.querySelectorAll(".app-toast.is-wait").forEach(dismissToast);
+    }
+
+    const el = document.createElement("div");
+    el.className = "app-toast is-" + kind;
+    el.setAttribute("role", "status");
+    el.innerHTML = '<span class="app-toast-ico" aria-hidden="true"></span><span class="app-toast-msg"></span>';
+    el.querySelector(".app-toast-msg").textContent = msg;
+    stack.appendChild(el);
+
+    while (stack.querySelectorAll(".app-toast").length > TOAST_MAX) {
+      const oldest = stack.querySelector(".app-toast");
+      if (oldest) dismissToast(oldest);
+      else break;
+    }
+
+    requestAnimationFrame(function () {
+      el.classList.add("show");
+    });
+
+    if (isWait) return;
     el._hide = setTimeout(function () {
-      el.classList.remove("show", "is-err");
-    }, isErr ? 2800 : 1800);
+      dismissToast(el);
+    }, isErr ? 3400 : 2400);
   }
 
   function setSaveButtonsBusy(on) {
@@ -1926,6 +2664,15 @@
       if (el.id === "quote-phone" || el.id === "new-staff-pin" || el.id === "owner-pin") {
         const next = el.value.replace(/\D/g, "");
         if (el.value !== next) el.value = next;
+        return;
+      }
+      if (el.id === "in-h" || el.id === "in-w" || el.id === "cut-h" || el.id === "cut-w") {
+        let next = String(el.value || "").replace(/[^\d.]/g, "");
+        const dot = next.indexOf(".");
+        if (dot >= 0) {
+          next = next.slice(0, dot + 1) + next.slice(dot + 1).replace(/\./g, "").slice(0, 1);
+        }
+        if (el.value !== next) el.value = next;
       }
     });
   }
@@ -1936,52 +2683,73 @@
 
   function glassTint(color) {
     const map = {
-      clear: { fill: "#5aa8c4", op: 0.28 },
-      green: { fill: "#1f6a3c", op: 0.5 },
-      blue: { fill: "#163f88", op: 0.5 },
-      bronze: { fill: "#6a3810", op: 0.52 },
-      gray: { fill: "#2f3840", op: 0.52 },
-      black: { fill: "#0b1016", op: 0.7 },
-      frosted: { fill: "#e7eef2", op: 0.8 }
+      clear: { fill: "#6eb8d4", op: 0.22 },
+      green: { fill: "#157a3a", op: 0.55 },
+      blue: { fill: "#0f3d8a", op: 0.55 },
+      bronze: { fill: "#7a3f0c", op: 0.58 },
+      gray: { fill: "#1f2830", op: 0.56 },
+      black: { fill: "#070a10", op: 0.72 },
+      frosted: { fill: "#e8eef2", op: 0.82 }
     };
     return map[color && color.id] || map.clear;
   }
 
   function drawOutdoor(x, y, w, h, uid) {
-    const gnd = y + h * 0.66;
-    const sunX = x + w * 0.8;
-    const sunY = y + h * 0.14;
-    function tree(cx, baseY, sc) {
+    const gnd = y + h * 0.62;
+    const sunX = x + w * 0.78;
+    const sunY = y + h * 0.16;
+    const sc = Math.max(0.65, Math.min(w, h) / 95);
+    function tree(cx, baseY, s, deep) {
       return (
-        '<rect x="' + (cx - 1.4 * sc) + '" y="' + (baseY - 8 * sc) + '" width="' + (2.8 * sc) + '" height="' + (10 * sc) + '" fill="#5a3d28"/>' +
-        '<ellipse cx="' + cx + '" cy="' + (baseY - 16 * sc) + '" rx="' + (9 * sc) + '" ry="' + (8 * sc) + '" fill="#2f5a32"/>' +
-        '<ellipse cx="' + (cx - 5 * sc) + '" cy="' + (baseY - 11 * sc) + '" rx="' + (6.5 * sc) + '" ry="' + (6 * sc) + '" fill="#3d7040"/>' +
-        '<ellipse cx="' + (cx + 5 * sc) + '" cy="' + (baseY - 11 * sc) + '" rx="' + (6 * sc) + '" ry="' + (5.5 * sc) + '" fill="#4a7d45"/>'
+        '<rect x="' + (cx - 1.2 * s) + '" y="' + (baseY - 9 * s) + '" width="' + (2.4 * s) + '" height="' + (11 * s) + '" rx="' + (0.6 * s) + '" fill="' + (deep ? "#3d2a1c" : "#5a3d28") + '"/>' +
+        '<ellipse cx="' + cx + '" cy="' + (baseY - 18 * s) + '" rx="' + (10 * s) + '" ry="' + (9 * s) + '" fill="' + (deep ? "#1e4a28" : "#2a5f34") + '"/>' +
+        '<ellipse cx="' + (cx - 5.5 * s) + '" cy="' + (baseY - 12 * s) + '" rx="' + (7 * s) + '" ry="' + (6.2 * s) + '" fill="' + (deep ? "#2d6a38" : "#3d7a45") + '"/>' +
+        '<ellipse cx="' + (cx + 5.2 * s) + '" cy="' + (baseY - 12.5 * s) + '" rx="' + (6.4 * s) + '" ry="' + (5.8 * s) + '" fill="' + (deep ? "#356f3c" : "#4a8a4e") + '"/>' +
+        '<ellipse cx="' + (cx + 1.5 * s) + '" cy="' + (baseY - 20 * s) + '" rx="' + (4.2 * s) + '" ry="' + (3.5 * s) + '" fill="#6aa85a" opacity="0.45"/>'
       );
     }
-    const sc = Math.max(0.7, Math.min(w, h) / 90);
+    function bldg(bx, by, bw, bh, tone, accent) {
+      const winY = by + bh * 0.16;
+      const winH = Math.max(2, bh * 0.09);
+      const cols = Math.max(2, Math.floor(bw / 6.2));
+      const rows = Math.max(2, Math.floor(bh / 13));
+      let wins = "";
+      for (let r = 0; r < rows; r += 1) {
+        for (let c = 0; c < cols; c += 1) {
+          const wx = bx + 1.6 + c * ((bw - 3.2) / cols);
+          const wy = winY + r * (winH + 2.6);
+          if (wy + winH > by + bh - 2.5) continue;
+          wins += '<rect x="' + wx + '" y="' + wy + '" width="' + Math.max(2, (bw - 3.2) / cols - 1.3) + '" height="' + winH + '" rx="0.25" fill="' + accent + '" opacity="' + (0.5 + (c % 2) * 0.18) + '"/>';
+        }
+      }
+      return (
+        '<rect x="' + bx + '" y="' + by + '" width="' + bw + '" height="' + bh + '" fill="' + tone + '"/>' +
+        '<rect x="' + bx + '" y="' + by + '" width="' + bw + '" height="' + Math.max(1.1, bh * 0.045) + '" fill="#fff" opacity="0.15"/>' +
+        '<rect x="' + (bx + bw - 1.1) + '" y="' + by + '" width="1.1" height="' + bh + '" fill="#000" opacity="0.12"/>' +
+        wins
+      );
+    }
     return (
       '<rect x="' + x + '" y="' + y + '" width="' + w + '" height="' + h + '" fill="url(#' + uid + 'sky)"/>' +
-      '<ellipse cx="' + sunX + '" cy="' + sunY + '" rx="' + (w * 0.16) + '" ry="' + (h * 0.1) + '" fill="#fff7d2" opacity="0.35"/>' +
-      '<ellipse cx="' + sunX + '" cy="' + sunY + '" rx="' + Math.max(6, w * 0.055) + '" ry="' + Math.max(5, h * 0.04) + '" fill="#ffe9a0"/>' +
-      '<ellipse cx="' + (x + w * 0.22) + '" cy="' + (y + h * 0.16) + '" rx="' + (w * 0.12) + '" ry="' + (h * 0.035) + '" fill="#fff" opacity="0.55"/>' +
-      '<ellipse cx="' + (x + w * 0.3) + '" cy="' + (y + h * 0.145) + '" rx="' + (w * 0.08) + '" ry="' + (h * 0.028) + '" fill="#fff" opacity="0.4"/>' +
-      '<ellipse cx="' + (x + w * 0.58) + '" cy="' + (y + h * 0.2) + '" rx="' + (w * 0.1) + '" ry="' + (h * 0.03) + '" fill="#fff" opacity="0.35"/>' +
-      '<path d="M ' + x + " " + (gnd - h * 0.08) + " C " + (x + w * 0.2) + " " + (gnd - h * 0.22) + " " + (x + w * 0.48) + " " + (gnd - h * 0.1) + " " + (x + w) + " " + (gnd - h * 0.18) + " L " + (x + w) + " " + gnd + " L " + x + " " + gnd + ' Z" fill="#6d8a5c" opacity="0.55"/>' +
-      '<path d="M ' + x + " " + (gnd + h * 0.02) + " C " + (x + w * 0.26) + " " + (gnd - h * 0.14) + " " + (x + w * 0.55) + " " + (gnd + h * 0.04) + " " + (x + w) + " " + (gnd - h * 0.06) + " L " + (x + w) + " " + (y + h) + " L " + x + " " + (y + h) + ' Z" fill="#4e6d3f"/>' +
-      '<path d="M ' + x + " " + gnd + " C " + (x + w * 0.3) + " " + (gnd - h * 0.16) + " " + (x + w * 0.62) + " " + (gnd + h * 0.02) + " " + (x + w) + " " + (gnd - h * 0.1) + " L " + (x + w) + " " + (gnd + h * 0.12) + " L " + x + " " + (gnd + h * 0.1) + ' Z" fill="#7fa35f"/>' +
-      '<rect x="' + (x + w * 0.08) + '" y="' + (gnd - h * 0.3) + '" width="' + (w * 0.16) + '" height="' + (h * 0.3) + '" fill="#d2c0a8"/>' +
-      '<rect x="' + (x + w * 0.1) + '" y="' + (gnd - h * 0.32) + '" width="' + (w * 0.12) + '" height="' + (h * 0.03) + '" fill="#bfa88c"/>' +
-      '<rect x="' + (x + w * 0.105) + '" y="' + (gnd - h * 0.24) + '" width="' + (w * 0.04) + '" height="' + (h * 0.05) + '" fill="#8ec8dc"/>' +
-      '<rect x="' + (x + w * 0.155) + '" y="' + (gnd - h * 0.24) + '" width="' + (w * 0.04) + '" height="' + (h * 0.05) + '" fill="#7eb8d0"/>' +
-      '<rect x="' + (x + w * 0.105) + '" y="' + (gnd - h * 0.16) + '" width="' + (w * 0.04) + '" height="' + (h * 0.05) + '" fill="#7eb8d0"/>' +
-      '<rect x="' + (x + w * 0.155) + '" y="' + (gnd - h * 0.16) + '" width="' + (w * 0.04) + '" height="' + (h * 0.05) + '" fill="#8ec8dc"/>' +
-      '<rect x="' + (x + w * 0.28) + '" y="' + (gnd - h * 0.22) + '" width="' + (w * 0.13) + '" height="' + (h * 0.22) + '" fill="#c4ae93"/>' +
-      '<rect x="' + (x + w * 0.3) + '" y="' + (gnd - h * 0.17) + '" width="' + (w * 0.035) + '" height="' + (h * 0.04) + '" fill="#9fd4ea"/>' +
-      '<rect x="' + (x + w * 0.345) + '" y="' + (gnd - h * 0.17) + '" width="' + (w * 0.035) + '" height="' + (h * 0.04) + '" fill="#8ec8dc"/>' +
-      tree(x + w * 0.58, gnd + 2, sc) +
-      tree(x + w * 0.74, gnd + 4, sc * 1.15) +
-      '<rect x="' + x + '" y="' + (gnd + h * 0.1) + '" width="' + w + '" height="' + (h * 0.08) + '" fill="#6a8a4e" opacity="0.35"/>'
+      '<rect x="' + x + '" y="' + y + '" width="' + w + '" height="' + (h * 0.45) + '" fill="url(#' + uid + 'haze)" opacity="0.7"/>' +
+      '<ellipse cx="' + sunX + '" cy="' + sunY + '" rx="' + (w * 0.22) + '" ry="' + (h * 0.14) + '" fill="#fff4c8" opacity="0.28"/>' +
+      '<circle cx="' + sunX + '" cy="' + sunY + '" r="' + Math.max(5.5, w * 0.048) + '" fill="#ffe7a0"/>' +
+      '<circle cx="' + sunX + '" cy="' + sunY + '" r="' + Math.max(3.2, w * 0.028) + '" fill="#fff8dc"/>' +
+      '<ellipse cx="' + (x + w * 0.2) + '" cy="' + (y + h * 0.14) + '" rx="' + (w * 0.14) + '" ry="' + (h * 0.032) + '" fill="#fff" opacity="0.55"/>' +
+      '<ellipse cx="' + (x + w * 0.3) + '" cy="' + (y + h * 0.125) + '" rx="' + (w * 0.09) + '" ry="' + (h * 0.026) + '" fill="#fff" opacity="0.38"/>' +
+      '<ellipse cx="' + (x + w * 0.52) + '" cy="' + (y + h * 0.19) + '" rx="' + (w * 0.11) + '" ry="' + (h * 0.028) + '" fill="#fff" opacity="0.32"/>' +
+      '<path d="M ' + x + " " + (gnd - h * 0.06) + " L " + (x + w * 0.2) + " " + (gnd - h * 0.15) + " L " + (x + w * 0.4) + " " + (gnd - h * 0.09) + " L " + (x + w * 0.58) + " " + (gnd - h * 0.18) + " L " + (x + w * 0.76) + " " + (gnd - h * 0.1) + " L " + (x + w) + " " + (gnd - h * 0.07) + " L " + (x + w) + " " + gnd + " L " + x + " " + gnd + ' Z" fill="#7f95a8" opacity="0.26"/>' +
+      bldg(x + w * 0.04, gnd - h * 0.4, w * 0.14, h * 0.4, "#8a97a4", "#9ec9e0") +
+      bldg(x + w * 0.17, gnd - h * 0.5, w * 0.12, h * 0.5, "#74828f", "#7eb6d2") +
+      bldg(x + w * 0.3, gnd - h * 0.34, w * 0.13, h * 0.34, "#9aa6b2", "#b7daf0") +
+      '<path d="M ' + x + " " + (gnd - h * 0.02) + " C " + (x + w * 0.22) + " " + (gnd - h * 0.16) + " " + (x + w * 0.5) + " " + (gnd + h * 0.02) + " " + (x + w) + " " + (gnd - h * 0.1) + " L " + (x + w) + " " + (y + h) + " L " + x + " " + (y + h) + ' Z" fill="#3f5f36"/>' +
+      '<path d="M ' + x + " " + gnd + " C " + (x + w * 0.28) + " " + (gnd - h * 0.12) + " " + (x + w * 0.58) + " " + (gnd + h * 0.04) + " " + (x + w) + " " + (gnd - h * 0.08) + " L " + (x + w) + " " + (gnd + h * 0.14) + " L " + x + " " + (gnd + h * 0.1) + ' Z" fill="#5f8a4c"/>' +
+      '<path d="M ' + x + " " + (gnd + h * 0.05) + " C " + (x + w * 0.35) + " " + (gnd - h * 0.05) + " " + (x + w * 0.7) + " " + (gnd + h * 0.08) + " " + (x + w) + " " + (gnd + h * 0.02) + " L " + (x + w) + " " + (y + h) + " L " + x + " " + (y + h) + ' Z" fill="#7eaa60" opacity="0.5"/>' +
+      tree(x + w * 0.56, gnd + 1, sc * 0.95, true) +
+      tree(x + w * 0.7, gnd + 3, sc * 1.18, false) +
+      tree(x + w * 0.85, gnd + 2, sc * 0.88, true) +
+      '<rect x="' + x + '" y="' + (gnd + h * 0.12) + '" width="' + w + '" height="' + Math.max(4, h * 0.1) + '" fill="#4f6a40" opacity="0.26"/>' +
+      '<ellipse cx="' + (x + w * 0.4) + '" cy="' + (gnd + h * 0.08) + '" rx="' + (w * 0.16) + '" ry="' + (h * 0.03) + '" fill="#8fba68" opacity="0.32"/>'
     );
   }
 
@@ -2062,79 +2830,107 @@
     let defs = "" +
       '<linearGradient id="' + uid + 'aluV" x1="0" y1="0" x2="0" y2="1">' +
         '<stop offset="0%" stop-color="' + aluC.light + '"/>' +
-        '<stop offset="42%" stop-color="' + aluC.mid + '"/>' +
+        '<stop offset="38%" stop-color="' + aluC.mid + '"/>' +
+        '<stop offset="72%" stop-color="' + aluC.mid + '"/>' +
         '<stop offset="100%" stop-color="' + aluC.dark + '"/>' +
       "</linearGradient>" +
       '<linearGradient id="' + uid + 'aluH" x1="0" y1="0" x2="1" y2="0">' +
         '<stop offset="0%" stop-color="' + aluC.light + '"/>' +
-        '<stop offset="50%" stop-color="' + aluC.mid + '"/>' +
+        '<stop offset="45%" stop-color="' + aluC.mid + '"/>' +
         '<stop offset="100%" stop-color="' + aluC.dark + '"/>' +
       "</linearGradient>" +
       '<linearGradient id="' + uid + 'sheen" x1="0" y1="0" x2="1" y2="1">' +
-        '<stop offset="0%" stop-color="#fff" stop-opacity="0.5"/>' +
-        '<stop offset="28%" stop-color="#fff" stop-opacity="0.12"/>' +
+        '<stop offset="0%" stop-color="#fff" stop-opacity="0.55"/>' +
+        '<stop offset="18%" stop-color="#fff" stop-opacity="0.18"/>' +
+        '<stop offset="42%" stop-color="#fff" stop-opacity="0.04"/>' +
+        '<stop offset="58%" stop-color="#9ad4ff" stop-opacity="0.08"/>' +
+        '<stop offset="100%" stop-color="#041018" stop-opacity="0.06"/>' +
+      "</linearGradient>" +
+      '<linearGradient id="' + uid + 'glassBand" x1="0" y1="0" x2="1" y2="0">' +
+        '<stop offset="0%" stop-color="#fff" stop-opacity="0"/>' +
+        '<stop offset="35%" stop-color="#fff" stop-opacity="0"/>' +
+        '<stop offset="48%" stop-color="#fff" stop-opacity="0.22"/>' +
+        '<stop offset="56%" stop-color="#fff" stop-opacity="0.05"/>' +
         '<stop offset="100%" stop-color="#fff" stop-opacity="0"/>' +
       "</linearGradient>" +
-      '<radialGradient id="' + uid + 'glow" cx="78%" cy="16%" r="42%">' +
-        '<stop offset="0%" stop-color="#fff7d0" stop-opacity="0.55"/>' +
-        '<stop offset="100%" stop-color="#fff7d0" stop-opacity="0"/>' +
+      '<radialGradient id="' + uid + 'glow" cx="78%" cy="14%" r="48%">' +
+        '<stop offset="0%" stop-color="#fff8d6" stop-opacity="0.62"/>' +
+        '<stop offset="55%" stop-color="#fff8d6" stop-opacity="0.12"/>' +
+        '<stop offset="100%" stop-color="#fff8d6" stop-opacity="0"/>' +
       "</radialGradient>" +
       '<linearGradient id="' + uid + 'sky" x1="0" y1="0" x2="0" y2="1">' +
-        '<stop offset="0%" stop-color="#8ec8ea"/>' +
-        '<stop offset="48%" stop-color="#c7e6f6"/>' +
-        '<stop offset="100%" stop-color="#e7f3d8"/>' +
+        '<stop offset="0%" stop-color="#5ba4d8"/>' +
+        '<stop offset="42%" stop-color="#9dcee9"/>' +
+        '<stop offset="78%" stop-color="#d5ebf4"/>' +
+        '<stop offset="100%" stop-color="#e8f2d6"/>' +
+      "</linearGradient>" +
+      '<linearGradient id="' + uid + 'haze" x1="0" y1="0" x2="0" y2="1">' +
+        '<stop offset="0%" stop-color="#fff" stop-opacity="0.35"/>' +
+        '<stop offset="100%" stop-color="#fff" stop-opacity="0"/>' +
       "</linearGradient>" +
       '<linearGradient id="' + uid + 'wall" x1="0" y1="0" x2="0" y2="1">' +
-        '<stop offset="0%" stop-color="#efe7db"/>' +
-        '<stop offset="70%" stop-color="#e4d8c8"/>' +
-        '<stop offset="100%" stop-color="#cbb8a2"/>' +
+        '<stop offset="0%" stop-color="#f2f5f7"/>' +
+        '<stop offset="55%" stop-color="#e6ebef"/>' +
+        '<stop offset="100%" stop-color="#cfd6dc"/>' +
+      "</linearGradient>" +
+      '<linearGradient id="' + uid + 'floor" x1="0" y1="0" x2="0" y2="1">' +
+        '<stop offset="0%" stop-color="#b8c0c8" stop-opacity="0.35"/>' +
+        '<stop offset="100%" stop-color="#8a949e" stop-opacity="0.55"/>' +
       "</linearGradient>" +
       '<linearGradient id="' + uid + 'hwm" x1="0" y1="0" x2="1" y2="1">' +
-        '<stop offset="0%" stop-color="#f3f5f6"/>' +
-        '<stop offset="100%" stop-color="#6b7780"/>' +
+        '<stop offset="0%" stop-color="#f5f7f8"/>' +
+        '<stop offset="100%" stop-color="#5f6b74"/>' +
       "</linearGradient>" +
       '<linearGradient id="' + uid + 'hwg" x1="0" y1="0" x2="0" y2="1">' +
-        '<stop offset="0%" stop-color="#f7e7b2"/>' +
+        '<stop offset="0%" stop-color="#f8e9b8"/>' +
         '<stop offset="55%" stop-color="#d4b56a"/>' +
         '<stop offset="100%" stop-color="#8a6d28"/>' +
       "</linearGradient>" +
-      '<pattern id="' + uid + 'net" width="5" height="5" patternUnits="userSpaceOnUse">' +
-        '<path d="M0 0 H5 M0 0 V5" stroke="#1a3324" stroke-width="0.35" opacity="0.45"/>' +
+      '<pattern id="' + uid + 'net" width="4.5" height="4.5" patternUnits="userSpaceOnUse">' +
+        '<path d="M0 0 H4.5 M0 0 V4.5" stroke="#1a3324" stroke-width="0.32" opacity="0.42"/>' +
       "</pattern>" +
-      '<pattern id="' + uid + 'brush" width="4" height="10" patternUnits="userSpaceOnUse">' +
-        '<rect width="4" height="10" fill="' + aluC.mid + '"/>' +
-        '<path d="M0 0 L4 10" stroke="' + aluC.light + '" stroke-width="0.45" opacity="0.35"/>' +
-        '<path d="M2 0 L4 5" stroke="' + aluC.dark + '" stroke-width="0.25" opacity="0.2"/>' +
+      '<pattern id="' + uid + 'brush" width="5" height="12" patternUnits="userSpaceOnUse">' +
+        '<rect width="5" height="12" fill="' + aluC.mid + '"/>' +
+        '<path d="M0 0 L5 12" stroke="' + aluC.light + '" stroke-width="0.5" opacity="0.38"/>' +
+        '<path d="M2.5 0 L5 6" stroke="' + aluC.dark + '" stroke-width="0.28" opacity="0.22"/>' +
+        '<path d="M0 6 L3 12" stroke="#fff" stroke-width="0.2" opacity="0.12"/>' +
       "</pattern>" +
-      '<filter id="' + uid + 'sh" x="-18%" y="-12%" width="136%" height="140%">' +
-        '<feDropShadow dx="0" dy="7" stdDeviation="6" flood-color="#2a2218" flood-opacity="0.26"/>' +
+      '<filter id="' + uid + 'sh" x="-22%" y="-16%" width="144%" height="148%">' +
+        '<feDropShadow dx="0" dy="10" stdDeviation="8" flood-color="#1a2430" flood-opacity="0.28"/>' +
       "</filter>" +
-      '<clipPath id="' + clipId + '"><rect x="' + innerX + '" y="' + innerY + '" width="' + innerW + '" height="' + innerH + '"/></clipPath>';
+      '<filter id="' + uid + 'soft" x="-8%" y="-8%" width="116%" height="116%">' +
+        '<feGaussianBlur stdDeviation="1.1"/>' +
+      "</filter>" +
+      '<clipPath id="' + clipId + '"><rect x="' + innerX + '" y="' + innerY + '" width="' + innerW + '" height="' + innerH + '" rx="1.2"/></clipPath>';
 
     let scene = "";
     if (!compact) {
       scene += '<rect x="0" y="0" width="' + svgW + '" height="' + svgH + '" fill="url(#' + uid + 'wall)"/>';
-      scene += '<rect x="0" y="0" width="' + svgW + '" height="' + (svgH * 0.22) + '" fill="#fff" opacity="0.18"/>';
-      scene += '<rect x="0" y="' + (svgH - 18) + '" width="' + svgW + '" height="18" fill="#9a8772" opacity="0.35"/>';
+      scene += '<rect x="0" y="0" width="' + svgW + '" height="' + (svgH * 0.18) + '" fill="#fff" opacity="0.28"/>';
+      scene += '<rect x="0" y="' + (svgH - 28) + '" width="' + svgW + '" height="28" fill="url(#' + uid + 'floor)"/>';
+      scene += '<ellipse cx="' + (x + boxW / 2) + '" cy="' + (y + boxH + 18) + '" rx="' + (boxW * 0.42) + '" ry="7" fill="#1a2430" opacity="0.12" filter="url(#' + uid + 'soft)"/>';
     }
 
-    const depth = compact ? 4 : 11;
+    const depth = compact ? 4 : (isDoor ? 16 : 12);
     if (!compact) {
-      scene += '<rect x="' + (x - 7) + '" y="' + (y - 7) + '" width="' + (boxW + 14) + '" height="' + (boxH + 16) + '" rx="3" fill="#b9a48c" opacity="0.4"/>';
-      scene += '<rect x="' + (x - 4) + '" y="' + (y - 4) + '" width="' + (boxW + 8) + '" height="' + (boxH + 10) + '" rx="2.4" fill="#8f7a64" opacity="0.22"/>';
+      scene += '<rect x="' + (x - 8) + '" y="' + (y - 8) + '" width="' + (boxW + 16) + '" height="' + (boxH + 18) + '" rx="4" fill="#9aa7b2" opacity="0.28"/>';
+      scene += '<rect x="' + (x - 4.5) + '" y="' + (y - 4.5) + '" width="' + (boxW + 9) + '" height="' + (boxH + 11) + '" rx="3" fill="#7d8a95" opacity="0.18"/>';
     }
-    scene += '<path d="M ' + (x + boxW) + " " + y + " L " + (x + boxW + depth) + " " + (y + depth * 0.35) + " L " + (x + boxW + depth) + " " + (y + boxH + depth * 0.35) + " L " + (x + boxW) + " " + (y + boxH) + ' Z" fill="' + aluC.dark + '"/>';
-    scene += '<path d="M ' + x + " " + (y + boxH) + " L " + (x + boxW) + " " + (y + boxH) + " L " + (x + boxW + depth) + " " + (y + boxH + depth * 0.35) + " L " + (x + depth) + " " + (y + boxH + depth * 0.35) + ' Z" fill="' + aluC.mid + '"/>';
+    scene += '<path d="M ' + (x + boxW) + " " + y + " L " + (x + boxW + depth) + " " + (y + depth * 0.32) + " L " + (x + boxW + depth) + " " + (y + boxH + depth * 0.32) + " L " + (x + boxW) + " " + (y + boxH) + ' Z" fill="' + aluC.dark + '"/>';
+    scene += '<path d="M ' + x + " " + (y + boxH) + " L " + (x + boxW) + " " + (y + boxH) + " L " + (x + boxW + depth) + " " + (y + boxH + depth * 0.32) + " L " + (x + depth) + " " + (y + boxH + depth * 0.32) + ' Z" fill="' + aluC.mid + '"/>';
     scene += '<g filter="url(#' + uid + 'sh)">';
-    scene += '<rect x="' + x + '" y="' + y + '" width="' + boxW + '" height="' + boxH + '" rx="1.8" fill="url(#' + uid + 'brush)"/>';
+    scene += '<rect x="' + x + '" y="' + y + '" width="' + boxW + '" height="' + boxH + '" rx="2.2" fill="url(#' + uid + 'brush)"/>';
     scene += "</g>";
-    scene += '<rect x="' + (x + 2.2) + '" y="' + (y + 2.2) + '" width="' + (boxW - 4.4) + '" height="' + (boxH - 4.4) + '" rx="1.2" fill="url(#' + uid + 'aluV)"/>';
-    scene += '<rect x="' + (x + 1.4) + '" y="' + (y + 1.4) + '" width="' + (boxW - 2.8) + '" height="2.4" fill="#fff" opacity="0.38"/>';
-    scene += '<rect x="' + (x + 1.4) + '" y="' + (y + 1.4) + '" width="2.2" height="' + (boxH - 2.8) + '" fill="#fff" opacity="0.2"/>';
-    scene += '<rect x="' + (x + 2) + '" y="' + (y + boxH - 3.4) + '" width="' + (boxW - 4) + '" height="2" fill="#000" opacity="0.18"/>';
+    scene += '<rect x="' + (x + 2) + '" y="' + (y + 2) + '" width="' + (boxW - 4) + '" height="' + (boxH - 4) + '" rx="1.4" fill="url(#' + uid + 'aluV)"/>';
+    scene += '<rect x="' + (x + 1.2) + '" y="' + (y + 1.2) + '" width="' + (boxW - 2.4) + '" height="2.6" fill="#fff" opacity="0.42"/>';
+    scene += '<rect x="' + (x + 1.2) + '" y="' + (y + 1.2) + '" width="2.4" height="' + (boxH - 2.4) + '" fill="#fff" opacity="0.22"/>';
+    scene += '<rect x="' + (x + 2) + '" y="' + (y + boxH - 3.6) + '" width="' + (boxW - 4) + '" height="2.2" fill="#000" opacity="0.2"/>';
+    scene += '<rect x="' + (x + boxW - 3.4) + '" y="' + (y + 2) + '" width="1.6" height="' + (boxH - 4) + '" fill="#000" opacity="0.12"/>';
 
     scene += '<g clip-path="url(#' + clipId + ')">' + drawOutdoor(innerX, innerY, innerW, innerH, uid) + "</g>";
-    scene += '<rect x="' + innerX + '" y="' + innerY + '" width="' + innerW + '" height="' + innerH + '" fill="#041018" opacity="0.08"/>';
+    scene += '<rect x="' + innerX + '" y="' + innerY + '" width="' + innerW + '" height="' + innerH + '" rx="1.2" fill="#041018" opacity="0.06"/>';
+    scene += '<rect x="' + innerX + '" y="' + innerY + '" width="' + innerW + '" height="3" fill="#000" opacity="0.1"/>';
+    scene += '<rect x="' + innerX + '" y="' + innerY + '" width="2.2" height="' + innerH + '" fill="#000" opacity="0.08"/>';
 
     const order = [];
     for (let i = 0; i < shutters; i += 1) order.push(i);
@@ -2145,45 +2941,53 @@
       const px = innerX + i * (paneW - overlap + paneGap);
       const py = innerY;
       const paneClip = uid + "p" + i;
-      defs += '<clipPath id="' + paneClip + '"><rect x="' + px + '" y="' + py + '" width="' + paneW + '" height="' + glassH + '" rx="0.8"/></clipPath>';
+      const gw = Math.max(2, paneW - sash * 2);
+      const gh = Math.max(2, glassH - sash * 2);
+      defs += '<clipPath id="' + paneClip + '"><rect x="' + px + '" y="' + py + '" width="' + paneW + '" height="' + glassH + '" rx="1"/></clipPath>';
       panes += '<rect x="' + px + '" y="' + py + '" width="' + paneW + '" height="' + sash + '" fill="url(#' + uid + 'aluH)"/>';
       panes += '<rect x="' + px + '" y="' + (py + glassH - sash) + '" width="' + paneW + '" height="' + sash + '" fill="url(#' + uid + 'aluH)"/>';
       panes += '<rect x="' + px + '" y="' + py + '" width="' + sash + '" height="' + glassH + '" fill="url(#' + uid + 'aluV)"/>';
       panes += '<rect x="' + (px + paneW - sash) + '" y="' + py + '" width="' + sash + '" height="' + glassH + '" fill="url(#' + uid + 'aluV)"/>';
-      panes += '<rect x="' + (px + sash) + '" y="' + (py + sash) + '" width="' + Math.max(2, paneW - sash * 2) + '" height="' + Math.max(2, glassH - sash * 2) + '" fill="' + tint.fill + '" opacity="' + tint.op + '"/>';
+      panes += '<rect x="' + (px + 0.5) + '" y="' + (py + 0.5) + '" width="' + (paneW - 1) + '" height="1.2" fill="#fff" opacity="0.35"/>';
+      panes += '<rect x="' + (px + sash) + '" y="' + (py + sash) + '" width="' + gw + '" height="' + gh + '" fill="' + tint.fill + '" opacity="' + tint.op + '"/>';
       panes += '<g clip-path="url(#' + paneClip + ')">';
       panes += '<rect x="' + px + '" y="' + py + '" width="' + paneW + '" height="' + glassH + '" fill="url(#' + uid + 'sheen)"/>';
-      panes += '<rect x="' + px + '" y="' + py + '" width="' + paneW + '" height="' + glassH + '" fill="url(#' + uid + 'glow)" opacity="0.45"/>';
-      panes += '<path d="M ' + (px + paneW * 0.07) + " " + (py + sash + 1) + " L " + (px + paneW * 0.4) + " " + (py + sash + 1) + " L " + (px + paneW * 0.2) + " " + (py + glassH - sash) + " L " + (px + sash + 1) + " " + (py + glassH - sash) + ' Z" fill="#fff" opacity="' + (color.id === "frosted" ? 0.26 : 0.2) + '"/>';
-      panes += '<rect x="' + (px + sash + 0.6) + '" y="' + (py + sash + 0.6) + '" width="1.5" height="' + Math.max(2, glassH - sash * 2 - 1.2) + '" fill="#fff" opacity="0.28"/>';
+      panes += '<rect x="' + px + '" y="' + py + '" width="' + paneW + '" height="' + glassH + '" fill="url(#' + uid + 'glow)" opacity="0.5"/>';
+      panes += '<rect x="' + px + '" y="' + py + '" width="' + paneW + '" height="' + glassH + '" fill="url(#' + uid + 'glassBand)" opacity="0.85"/>';
+      panes += '<path d="M ' + (px + paneW * 0.06) + " " + (py + sash + 1) + " L " + (px + paneW * 0.38) + " " + (py + sash + 1) + " L " + (px + paneW * 0.18) + " " + (py + glassH - sash) + " L " + (px + sash + 1) + " " + (py + glassH - sash) + ' Z" fill="#fff" opacity="' + (color.id === "frosted" ? 0.28 : 0.18) + '"/>';
+      panes += '<path d="M ' + (px + paneW * 0.55) + " " + (py + sash + 2) + " L " + (px + paneW * 0.72) + " " + (py + sash + 2) + " L " + (px + paneW * 0.62) + " " + (py + glassH * 0.45) + " L " + (px + paneW * 0.48) + " " + (py + glassH * 0.45) + ' Z" fill="#fff" opacity="0.1"/>';
+      panes += '<rect x="' + (px + sash + 0.7) + '" y="' + (py + sash + 0.7) + '" width="1.6" height="' + Math.max(2, gh - 1.4) + '" fill="#fff" opacity="0.32"/>';
       if (opts.hasNet) {
-        panes += '<rect x="' + px + '" y="' + py + '" width="' + paneW + '" height="' + glassH + '" fill="url(#' + uid + 'net)" opacity="0.8"/>';
+        panes += '<rect x="' + px + '" y="' + py + '" width="' + paneW + '" height="' + glassH + '" fill="url(#' + uid + 'net)" opacity="0.78"/>';
       }
       if (color.id === "frosted") {
-        panes += '<rect x="' + px + '" y="' + py + '" width="' + paneW + '" height="' + glassH + '" fill="#fff" opacity="0.2"/>';
+        panes += '<rect x="' + px + '" y="' + py + '" width="' + paneW + '" height="' + glassH + '" fill="#fff" opacity="0.22"/>';
       }
       panes += "</g>";
-      panes += '<rect x="' + (px + 0.7) + '" y="' + (py + 0.7) + '" width="' + (paneW - 1.4) + '" height="' + (glassH - 1.4) + '" fill="none" stroke="' + aluC.dark + '" stroke-width="0.8" opacity="0.35"/>';
+      panes += '<rect x="' + (px + 0.6) + '" y="' + (py + 0.6) + '" width="' + (paneW - 1.2) + '" height="' + (glassH - 1.2) + '" fill="none" stroke="' + aluC.dark + '" stroke-width="0.75" opacity="0.32"/>';
       if (hasKick) {
         const ky = py + glassH + 1.5;
         const kh = innerH - glassH - 1.5;
         panes += '<rect x="' + px + '" y="' + ky + '" width="' + paneW + '" height="' + kh + '" fill="url(#' + uid + 'aluV)"/>';
-        panes += '<rect x="' + (px + sash + 1.5) + '" y="' + (ky + 5) + '" width="' + Math.max(4, paneW - sash * 2 - 3) + '" height="' + Math.max(8, kh - 10) + '" rx="1.4" fill="' + aluC.dark + '" opacity="0.22"/>';
-        panes += '<rect x="' + (px + sash + 3) + '" y="' + (ky + 7) + '" width="' + Math.max(2, paneW - sash * 2 - 6) + '" height="' + Math.max(4, kh - 14) + '" rx="1" fill="' + aluC.light + '" opacity="0.12"/>';
+        panes += '<rect x="' + (px + sash + 1.5) + '" y="' + (ky + 5) + '" width="' + Math.max(4, paneW - sash * 2 - 3) + '" height="' + Math.max(8, kh - 10) + '" rx="1.6" fill="' + aluC.dark + '" opacity="0.2"/>';
+        panes += '<rect x="' + (px + sash + 3) + '" y="' + (ky + 7) + '" width="' + Math.max(2, paneW - sash * 2 - 6) + '" height="' + Math.max(4, kh - 14) + '" rx="1.1" fill="' + aluC.light + '" opacity="0.14"/>';
+        panes += '<rect x="' + (px + sash + 3) + '" y="' + (ky + 7) + '" width="' + Math.max(2, paneW - sash * 2 - 6) + '" height="1.2" fill="#fff" opacity="0.18"/>';
       }
     });
 
     let extras = "";
     if (isSliding) {
-      extras += '<rect x="' + innerX + '" y="' + (innerY + innerH - 3.2) + '" width="' + innerW + '" height="3.2" fill="' + aluC.dark + '" opacity="0.55"/>';
-      extras += '<rect x="' + innerX + '" y="' + (innerY + innerH - 2.1) + '" width="' + innerW + '" height="1" fill="#111" opacity="0.25"/>';
+      extras += '<rect x="' + innerX + '" y="' + (innerY + innerH - 3.4) + '" width="' + innerW + '" height="3.4" fill="' + aluC.dark + '" opacity="0.58"/>';
+      extras += '<rect x="' + innerX + '" y="' + (innerY + innerH - 2.2) + '" width="' + innerW + '" height="1.1" fill="#111" opacity="0.28"/>';
+      extras += '<rect x="' + innerX + '" y="' + (innerY + innerH - 3.1) + '" width="' + innerW + '" height="0.7" fill="#fff" opacity="0.12"/>';
     }
-    extras += '<rect x="' + x + '" y="' + y + '" width="' + boxW + '" height="' + boxH + '" rx="2.4" fill="none" stroke="' + aluC.dark + '" stroke-width="1.6"/>';
+    extras += '<rect x="' + x + '" y="' + y + '" width="' + boxW + '" height="' + boxH + '" rx="2.4" fill="none" stroke="' + aluC.dark + '" stroke-width="1.55"/>';
 
-    const sillH = compact ? 3.5 : 7;
-    const sillOver = compact ? 3 : 6;
-    extras += '<rect x="' + (x - sillOver) + '" y="' + (y + boxH - 1) + '" width="' + (boxW + sillOver * 2) + '" height="' + sillH + '" rx="1" fill="url(#' + uid + 'aluH)"/>';
-    extras += '<rect x="' + (x - sillOver) + '" y="' + (y + boxH - 1) + '" width="' + (boxW + sillOver * 2) + '" height="1.4" fill="#fff" opacity="0.22"/>';
+    const sillH = compact ? 3.5 : 7.5;
+    const sillOver = compact ? 3 : 7;
+    extras += '<rect x="' + (x - sillOver) + '" y="' + (y + boxH - 1) + '" width="' + (boxW + sillOver * 2) + '" height="' + sillH + '" rx="1.2" fill="url(#' + uid + 'aluH)"/>';
+    extras += '<rect x="' + (x - sillOver) + '" y="' + (y + boxH - 1) + '" width="' + (boxW + sillOver * 2) + '" height="1.6" fill="#fff" opacity="0.28"/>';
+    extras += '<rect x="' + (x - sillOver + 1) + '" y="' + (y + boxH + sillH - 2.4) + '" width="' + (boxW + sillOver * 2 - 2) + '" height="1.2" fill="#000" opacity="0.14"/>';
 
     let lx;
     let ly = y + (hasKick ? boxH * 0.4 : boxH * 0.48);
@@ -2314,11 +3118,6 @@
     ).join("");
   }
 
-  function normalizeColorId(id) {
-    const s = String(id || "").trim().toLowerCase();
-    return GLASS_COLORS.some((c) => c.id === s) ? s : "clear";
-  }
-
   function normalizeCompanies(list) {
     return expandNamedCombos(list, normalizeColorId, 5).filter((c) => c.name);
   }
@@ -2369,20 +3168,23 @@
     return uniqueCompany("color", { name: name, thick: thick });
   }
 
-  function rateSpan(rows) {
+  function rateSpan(rows, unit) {
     const rates = (rows || []).map((x) => Number(x.rate)).filter((n) => Number.isFinite(n));
     if (!rates.length) return "";
     const min = Math.min.apply(null, rates);
     const max = Math.max.apply(null, rates);
-    const text = min === max ? T.taka + min + T.perSq : T.taka + min + "\u2013" + max + T.perSq;
+    const u = unit || T.perSq;
+    const text = min === max ? T.taka + min + u : T.taka + min + "\u2013" + max + u;
     return " (" + text + ")";
   }
 
-  function colorPickHtml(c, active, rate, dataAttr) {
-    const price = rate != null && rate !== "" && Number.isFinite(Number(rate)) ? T.taka + Number(rate) + T.perSq : "";
+  function colorPickHtml(c, active, rate, dataAttr, unit) {
+    const u = unit || T.perSq;
+    const price = rate != null && rate !== "" && Number.isFinite(Number(rate)) ? T.taka + Number(rate) + u : "";
+    const label = c.label || T[c.labelKey] || c.id;
     return '<button type="button" class="color-pick' + (active ? " active" : "") + '" ' + dataAttr + ">" +
       '<span class="color-swatch" style="background:linear-gradient(135deg,' + c.light + "," + c.mid + ')"></span>' +
-      '<span class="color-caption">' + escapeHtml(T[c.labelKey]) + "</span>" +
+      '<span class="color-caption">' + escapeHtml(label) + "</span>" +
       (price ? '<span class="color-price">' + escapeHtml(price) + "</span>" : "") +
       "</button>";
   }
@@ -2416,11 +3218,12 @@
     const name = selectedCompanyName();
     const thick = selectedGlassThick();
     const available = colorsForCompany(name, thick);
-    const colors = GLASS_COLORS.filter((c) => available.indexOf(c.id) >= 0);
+    const colors = available.map(function (id) { return getColor(id); }).filter(Boolean);
     if (!colors.length) {
-      grid.innerHTML = "";
+      grid.innerHTML = emptyColorHintHtml();
       return;
     }
+    if (available.indexOf(state.glassColor) < 0) state.glassColor = colors[0].id;
     grid.innerHTML = colors.map((c) => {
       const row = exactGlassCombo(name, thick, c.id);
       return colorPickHtml(c, c.id === state.glassColor, row ? row.rate : "", 'data-color="' + c.id + '"');
@@ -2486,18 +3289,33 @@
     renderLivePreview(true);
   }
 
+  function emptySelectOptionHtml() {
+    return '<option value="" disabled selected>' + escapeHtml(T.selectEmpty) + "</option>";
+  }
+
+  function emptyColorHintHtml() {
+    return '<span class="color-empty">' + escapeHtml(T.selectEmpty) + "</span>";
+  }
+
   function renderCompanySelect() {
     const el = $("sel-company");
     if (!el) return;
     const names = companyNames();
     const cur = el.value;
+    if (!names.length) {
+      el.innerHTML = emptySelectOptionHtml();
+      el.classList.add("is-empty");
+      renderGlassThickSelect();
+      return;
+    }
+    el.classList.remove("is-empty");
     el.innerHTML = names.map((n) => {
       const exact = exactGlassCombo(n, selectedGlassThick(), state.glassColor);
       const rows = exact ? [exact] : companyRows({ name: n });
       return '<option value="' + escapeHtml(n) + '">' + escapeHtml(n) + rateSpan(rows) + "</option>";
     }).join("");
     if (cur && names.indexOf(cur) >= 0) el.value = cur;
-    else if (names.length) el.value = names[0];
+    else el.value = names[0];
     renderGlassThickSelect();
   }
 
@@ -2514,14 +3332,21 @@
     const name = selectedCompanyName();
     const thicks = uniqueCompany("thickness", { name: name });
     const cur = pickValid(el.value, thicks);
+    if (!thicks.length) {
+      el.innerHTML = emptySelectOptionHtml();
+      el.classList.add("is-empty");
+      syncGlassColorToCompany();
+      renderColorGrid();
+      return;
+    }
+    el.classList.remove("is-empty");
     el.innerHTML = thicks.map((mm) => {
       const exact = exactGlassCombo(name, mm, state.glassColor);
       const rows = exact ? [exact] : companyRows({ name: name, thick: mm });
-      const oos = glassMmOut(name, mm);
-      return '<option value="' + mm + '">' + mm + " " + T.mm + rateSpan(rows) + (oos ? " \u00b7 " + T.stockOut : "") + "</option>";
+      return '<option value="' + mm + '">' + mm + " " + T.mm + rateSpan(rows) + "</option>";
     }).join("");
     if (cur !== "") el.value = String(cur);
-    else if (thicks.length) el.value = String(thicks[0]);
+    else el.value = String(thicks[0]);
     syncGlassColorToCompany();
     renderColorGrid();
   }
@@ -2550,13 +3375,20 @@
     if (!el) return;
     const names = uniqueAlu("name", {});
     const cur = pickValid(el.value, names);
+    if (!names.length) {
+      el.innerHTML = emptySelectOptionHtml();
+      el.classList.add("is-empty");
+      renderAluThickSelect();
+      return;
+    }
+    el.classList.remove("is-empty");
     el.innerHTML = names.map((n) => {
       const exact = exactAluCombo(n, selectedAluThick(), state.aluColor);
       const rows = exact ? [exact] : aluRows({ name: n });
-      return '<option value="' + escapeHtml(n) + '">' + escapeHtml(n) + rateSpan(rows) + "</option>";
+      return '<option value="' + escapeHtml(n) + '">' + escapeHtml(n) + rateSpan(rows, T.perFt) + "</option>";
     }).join("");
     if (cur) el.value = cur;
-    else if (names.length) el.value = names[0];
+    else el.value = names[0];
     renderAluThickSelect();
   }
 
@@ -2566,12 +3398,21 @@
     const name = selectedAluName();
     const thicks = uniqueAlu("thickness", { name: name });
     const cur = pickValid(el.value, thicks);
+    if (!thicks.length) {
+      el.innerHTML = emptySelectOptionHtml();
+      el.classList.add("is-empty");
+      syncAluColorToSelection();
+      renderAluColorGrid();
+      return;
+    }
+    el.classList.remove("is-empty");
     el.innerHTML = thicks.map((mm) => {
       const exact = exactAluCombo(name, mm, state.aluColor);
       const rows = exact ? [exact] : aluRows({ name: name, thick: mm });
-      return '<option value="' + mm + '">' + mm + " " + T.mm + rateSpan(rows) + "</option>";
+      return '<option value="' + mm + '">' + mm + " " + T.mm + rateSpan(rows, T.perFt) + "</option>";
     }).join("");
     if (cur !== "") el.value = String(cur);
+    else el.value = String(thicks[0]);
     syncAluColorToSelection();
     renderAluColorGrid();
   }
@@ -2619,15 +3460,15 @@
     const name = selectedAluName();
     const thick = selectedAluThick();
     const available = uniqueAlu("color", { name: name, thick: thick });
-    const colors = ALU_COLORS.filter((c) => available.indexOf(c.id) >= 0);
+    const colors = available.map(function (id) { return getAluColor(id); }).filter(Boolean);
     if (!colors.length) {
-      grid.innerHTML = "";
+      grid.innerHTML = emptyColorHintHtml();
       return;
     }
     if (available.indexOf(state.aluColor) < 0) state.aluColor = colors[0].id;
     grid.innerHTML = colors.map((c) => {
       const row = exactAluCombo(name, thick, c.id);
-      return colorPickHtml(c, c.id === state.aluColor, row ? row.rate : "", 'data-alu-color="' + c.id + '"');
+      return colorPickHtml(c, c.id === state.aluColor, row ? row.rate : "", 'data-alu-color="' + c.id + '"', T.perFt);
     }).join("");
   }
 
@@ -2650,13 +3491,26 @@
     return parts.join(" | ");
   }
 
-  function groupRateText(rows) {
+  function groupRateText(rows, byMm, unit) {
+    const u = unit || T.perSq;
+    if (byMm) {
+      const thicks = uniqueNums(rows.map((x) => x.thickness));
+      if (!thicks.length) return T.taka + "0" + u;
+      return thicks.map((mm) => {
+        const rates = rows.filter((x) => Number(x.thickness) === Number(mm)).map((x) => Number(x.rate)).filter((n) => !Number.isNaN(n));
+        if (!rates.length) return mm + T.mm + " " + T.taka + "0";
+        const min = Math.min.apply(null, rates);
+        const max = Math.max.apply(null, rates);
+        const r = min === max ? String(min) : min + "\u2013" + max;
+        return mm + T.mm + " " + T.taka + r;
+      }).join(" · ");
+    }
     const rates = rows.map((x) => Number(x.rate)).filter((n) => !Number.isNaN(n));
-    if (!rates.length) return T.taka + "0" + T.perSq;
+    if (!rates.length) return T.taka + "0" + u;
     const min = Math.min.apply(null, rates);
     const max = Math.max.apply(null, rates);
-    if (min === max) return T.taka + min + T.perSq;
-    return T.taka + min + "\u2013" + max + T.perSq;
+    if (min === max) return T.taka + min + u;
+    return T.taka + min + "\u2013" + max + u;
   }
 
   function comboRowHtml(kind, item, i, groupRows) {
@@ -2665,16 +3519,20 @@
     const thicks = uniqueNums(rows.map((x) => x.thickness));
     const colors = uniqueIds(rows.map((x) => kind === "alu" ? normalizeAluColorId(x.color) : normalizeColorId(x.color)));
     const colorText = joinPipe(colors.map((id) => kind === "alu" ? aluColorLabel(id) : colorLabel(id)));
-    const thickText = kind === "company"
-      ? thicks.map(function (mm) {
-          const out = rows.some(function (r) { return Number(r.thickness) === Number(mm) && r.out; });
-          return '<span class="mm-stock' + (out ? " is-out" : "") + '">' + escapeHtml(mm + T.mm + " (" + (out ? T.stockOut : T.stockIn) + ")") + "</span>";
-        }).join("")
-      : escapeHtml(joinPipe(thicks.map((mm) => mm + T.mm)));
-    const rateText = groupRateText(rows);
+    const thickText = escapeHtml(joinPipe(thicks.map((mm) => mm + T.mm)));
+    const rateUnit = kind === "alu" ? T.perFt : T.perSq;
+    const rateText = groupRateText(rows, kind === "company" || kind === "alu", rateUnit);
     const rateVal = state.edit.rate != null ? state.edit.rate : item.rate;
     const attrs = ' data-index="' + i + '" data-group="' + escapeHtml(item.name) + '"';
     if (editing) {
+      if (kind === "company" || kind === "alu") {
+        return '<div class="rate-row is-combo editing has-mm-rates"' + attrs + ">" +
+          '<span class="drag-handle" aria-hidden="true">' + ico("grip") + "</span>" +
+          '<input class="edit-name" type="text" value="' + escapeHtml(item.name) + '">' +
+          '<div class="msel edit-thick" id="msel-edit-thick"><button type="button" class="msel-toggle" id="edit-thick-toggle"></button><div class="msel-panel" id="edit-thicks"></div></div>' +
+          '<div class="msel edit-color" id="msel-edit-color"><button type="button" class="msel-toggle" id="edit-color-toggle"></button><div class="msel-panel" id="edit-colors"></div></div>' +
+          editSaveCancel(kind, i) + "</div>";
+      }
       return '<div class="rate-row is-combo editing"' + attrs + ">" +
         '<span class="drag-handle" aria-hidden="true">' + ico("grip") + "</span>" +
         '<input class="edit-name" type="text" value="' + escapeHtml(item.name) + '">' +
@@ -2696,23 +3554,28 @@
     if (!$("edit-thicks") || !$("edit-colors")) return;
     const kind = state.edit.kind;
     const presets = kind === "alu" ? ALU_THICK_PRESETS : GLASS_THICK_PRESETS;
-    const palette = kind === "alu" ? ALU_COLORS : GLASS_COLORS;
     const thicks = state.edit.thicks || [];
     const colors = state.edit.colors || [];
-    renderThickPanel("edit-thicks", presets, thicks, "edit-thick", kind === "alu" ? "alu" : "company", kind === "company" ? (state.edit.outs || []) : []);
-    renderColorPanel("edit-colors", palette, colors);
-    if ($("edit-thick-toggle")) $("edit-thick-toggle").textContent = mselLabel(thicks.map((mm) => mm + T.mm));
+    if (!state.edit.rates) state.edit.rates = {};
+    if (!state.edit.thickExtras) state.edit.thickExtras = [];
+    if (!state.edit.colorExtras) state.edit.colorExtras = [];
+    // Keep custom selected thicks in extras so they stay removable
+    thicks.forEach(function (mm) {
+      if (presets.every(function (p) { return Number(p) !== Number(mm); }) &&
+          state.edit.thickExtras.every(function (t) { return Number(t) !== Number(mm); })) {
+        state.edit.thickExtras.push(Number(mm));
+      }
+    });
+    const ph = kind === "alu" ? T.aluMmRatePh : T.mmRatePh;
+    const editKind = kind === "alu" ? "alu" : "company";
+    renderThickPanel("edit-thicks", presets, thicks, "edit-thick", editKind, state.edit.rates, ph, state.edit.thickExtras, true);
+    renderColorPanel("edit-colors", editKind, colors, state.edit.colorExtras, true);
+    if ($("edit-thick-toggle")) $("edit-thick-toggle").textContent = thickRateLabel(thicks, state.edit.rates);
     if ($("edit-color-toggle")) $("edit-color-toggle").textContent = mselLabel(colors.map((id) => kind === "alu" ? aluColorLabel(id) : colorLabel(id)));
   }
 
   function addEditThick() {
-    const mm = parseFloat($("edit-thick") && $("edit-thick").value);
-    if (Number.isNaN(mm) || mm <= 0) return;
-    if (!state.edit.thicks) state.edit.thicks = [];
-    if (state.edit.thicks.every((t) => Number(t) !== mm)) state.edit.thicks.push(mm);
-    state.edit.thicks.sort((a, b) => a - b);
-    if ($("edit-thick")) $("edit-thick").value = "";
-    renderEditPicks();
+    addThickPick(state.edit.kind === "alu" ? "alu" : "company", true);
   }
 
   function bindEditPicks(wrapId) {
@@ -2721,40 +3584,78 @@
     wrap.dataset.editPickBound = "1";
     wrap.addEventListener("click", (e) => {
       if (!e.target.closest(".rate-row.editing")) return;
-      const addMm = e.target.closest(".msel-add-mm");
-      if (addMm) {
-        addEditThick();
+      if (e.target.closest(".msel-mm-rate")) return;
+      const editKind = state.edit.kind === "alu" ? "alu" : "company";
+      const remMm = e.target.closest("[data-remove-mm]");
+      if (remMm) {
+        e.preventDefault();
+        removeThickPick(editKind, remMm.getAttribute("data-remove-mm"), true);
         return;
       }
-      const stock = e.target.closest(".msel-stock");
-      if (stock) {
-        if (!state.edit.outs) state.edit.outs = [];
-        const mm = stock.dataset.stockMm;
-        togglePick(state.edit.outs, mm, true);
-        if (!state.edit.thicks) state.edit.thicks = [];
-        if (state.edit.thicks.every(function (t) { return Number(t) !== Number(mm); })) {
-          state.edit.thicks.push(Number(mm));
-          state.edit.thicks.sort(function (a, b) { return a - b; });
-        }
-        renderEditPicks();
+      const remColor = e.target.closest("[data-remove-color]");
+      if (remColor) {
+        e.preventDefault();
+        removeColorPick(editKind, remColor.getAttribute("data-remove-color"), true);
+        return;
+      }
+      const addMm = e.target.closest(".msel-add-mm");
+      if (addMm) {
+        addThickPick(editKind, true);
+        return;
+      }
+      const addColor = e.target.closest(".msel-add-color");
+      if (addColor) {
+        addColorPick(editKind, true);
         return;
       }
       const btn = e.target.closest(".msel-opt");
       if (!btn) return;
-      if (btn.dataset.mm) togglePick(state.edit.thicks, btn.dataset.mm, true);
-      else if (btn.dataset.color) togglePick(state.edit.colors, btn.dataset.color, false);
+      if (btn.dataset.mm) {
+        if (!state.edit.rates) state.edit.rates = {};
+        syncMmRatesFromDom("edit-thicks", state.edit.rates);
+        togglePick(state.edit.thicks, btn.dataset.mm, true);
+      } else if (btn.dataset.color) {
+        togglePick(state.edit.colors, btn.dataset.color, false);
+      }
       renderEditPicks();
+      if (btn.dataset.mm) {
+        const rateInp = $("edit-thicks") && $("edit-thicks").querySelector('[data-mm-rate="' + String(Number(btn.dataset.mm)) + '"]');
+        if (rateInp && !rateInp.disabled) {
+          rateInp.focus();
+          rateInp.select();
+        }
+      }
+    });
+    wrap.addEventListener("input", (e) => {
+      const inp = e.target.closest(".msel-mm-rate");
+      if (!inp || !e.target.closest(".rate-row.editing")) return;
+      if (!state.edit.rates) state.edit.rates = {};
+      const v = parseFloat(inp.value);
+      if (Number.isFinite(v) && v >= 0) state.edit.rates[String(inp.dataset.mmRate)] = v;
+      else delete state.edit.rates[String(inp.dataset.mmRate)];
+      if ($("edit-thick-toggle")) $("edit-thick-toggle").textContent = thickRateLabel(state.edit.thicks || [], state.edit.rates);
     });
     wrap.addEventListener("keydown", (e) => {
-      if (e.key !== "Enter" || !e.target.closest("#edit-thick")) return;
-      e.preventDefault();
-      addEditThick();
+      if (e.key !== "Enter") return;
+      const editKind = state.edit.kind === "alu" ? "alu" : "company";
+      if (e.target.closest("#edit-thick")) {
+        e.preventDefault();
+        addThickPick(editKind, true);
+        return;
+      }
+      if (e.target.closest("#edit-color-custom")) {
+        e.preventDefault();
+        addColorPick(editKind, true);
+      }
     });
   }
 
   function fillChargesInputs() {
     if ($("in-charge-net")) $("in-charge-net").value = state.charges.net || 0;
     if ($("in-charge-extra")) $("in-charge-extra").value = state.charges.extra || 0;
+    if ($("in-charge-season")) $("in-charge-season").value = state.charges.seasonPct || 0;
+    if ($("charge-season-label")) $("charge-season-label").textContent = T.seasonLabel;
+    if ($("charge-season-hint")) $("charge-season-hint").textContent = T.seasonHint;
   }
 
   function moveItem(arr, from, to) {
@@ -2894,21 +3795,20 @@
 
   function cancelEdit(silent) {
     const was = state.edit.kind;
-    state.edit = { kind: "", index: -1, name: "", rate: null, thicks: [], colors: [], outs: [] };
+    state.edit = { kind: "", index: -1, name: "", rate: null, rates: {}, thicks: [], colors: [], outs: [] };
     if (was === "company") {
       if ($("new-company-name")) $("new-company-name").value = "";
-      if ($("new-company-rate")) $("new-company-rate").value = "";
       if ($("new-company-thick")) $("new-company-thick").value = "";
       state.adminPick.companyThicks = [5];
       state.adminPick.companyColors = ["clear"];
-      state.adminPick.companyOut = [];
+      state.adminPick.companyRates = {};
     }
     if (was === "alu") {
       if ($("new-alu-name")) $("new-alu-name").value = "";
-      if ($("new-alu-rate")) $("new-alu-rate").value = "";
       if ($("new-alu-thick")) $("new-alu-thick").value = "";
       state.adminPick.aluThicks = [1];
       state.adminPick.aluColors = ["silver"];
+      state.adminPick.aluRates = {};
     }
     if (was === "company" || was === "alu") renderAdminPicks();
     setAddLabels();
@@ -2916,6 +3816,9 @@
       renderRateList("company-list", state.companies, "company");
       renderAluList();
       renderRateList("lock-list", state.locks, "lock");
+      renderStaffList();
+    } else if (was === "staff") {
+      renderStaffList();
     }
   }
 
@@ -2925,6 +3828,7 @@
       cancelEdit();
       return;
     }
+    const prevKind = state.edit.kind;
     const list = kind === "company" ? state.companies : kind === "alu" ? state.aluminium : state.locks;
     const item = list[index];
     if (!item) return;
@@ -2934,10 +3838,14 @@
       index: index,
       name: item.name || "",
       rate: item.rate,
+      rates: (kind === "company" || kind === "alu") ? ratesByThickness(siblings) : {},
       thicks: uniqueNums(siblings.map((x) => x.thickness)),
+      thickExtras: [],
       colors: uniqueIds(siblings.map((x) => kind === "alu" ? normalizeAluColorId(x.color) : normalizeColorId(x.color))),
-      outs: kind === "company" ? uniqueNums(siblings.filter(function (x) { return x.out; }).map(function (x) { return x.thickness; })) : []
+      colorExtras: [],
+      outs: []
     };
+    if (prevKind === "staff") renderStaffList();
     if (kind === "company") renderRateList("company-list", state.companies, "company");
     else if (kind === "alu") renderAluList();
     else renderRateList("lock-list", state.locks, "lock");
@@ -2957,19 +3865,19 @@
     const nameEl = row.querySelector(".edit-name");
     const rateEl = row.querySelector(".edit-rate");
     const name = cleanTextValue(nameEl && nameEl.value);
-    const rate = parseFloat(rateEl && rateEl.value);
     markInvalid(nameEl, !name);
-    markInvalid(rateEl, !Number.isFinite(rate) || rate < 0);
     if (!name) { flashNote(T.errNeedName, true); return; }
-    if (!Number.isFinite(rate) || rate < 0) { flashNote(T.errNeedNumber, true); return; }
     if (kind === "lock") {
+      const rate = parseFloat(rateEl && rateEl.value);
+      markInvalid(rateEl, !Number.isFinite(rate) || rate < 0);
+      if (!Number.isFinite(rate) || rate < 0) { flashNote(T.errNeedNumber, true); return; }
       const style = rowInput(row, "edit-style") || "generic";
       state.locks[index] = { name: name, rate: rate, style: style };
-      state.edit = { kind: "", index: -1, name: "", rate: null, thicks: [], colors: [], outs: [] };
+      state.edit = { kind: "", index: -1, name: "", rate: null, rates: {}, thicks: [], colors: [], outs: [] };
       renderRateList("lock-list", state.locks, "lock");
       renderLockSelect();
       renderLivePreview(true);
-      persistOwnerData(["locks"]);
+      persistOwnerData(["locks"], T.updatedOk);
       return;
     }
     const list = kind === "company" ? state.companies : state.aluminium;
@@ -2978,15 +3886,25 @@
     if (!Number.isNaN(extra) && extra > 0 && thicks.every((t) => Number(t) !== extra)) thicks.push(extra);
     const colors = (state.edit.colors || []).map((id) => kind === "alu" ? normalizeAluColorId(id) : normalizeColorId(id));
     if (!thicks.length || !colors.length) { flashNote(T.errNeedPick, true); return; }
-    replaceCombos(list, state.edit.name, name, thicks, colors, rate, state.edit.rate, kind === "company" ? (state.edit.outs || []) : null);
-    state.edit = { kind: "", index: -1, name: "", rate: null, thicks: [], colors: [], outs: [] };
+    if (kind === "company" || kind === "alu") {
+      syncMmRatesFromDom("edit-thicks", state.edit.rates);
+      const rateByMm = readMmRates("edit-thicks", thicks);
+      if (!rateByMm) { flashNote(T.errNeedNumber, true); return; }
+      replaceCombos(list, state.edit.name, name, thicks, colors, rateByMm);
+    } else {
+      const rate = parseFloat(rateEl && rateEl.value);
+      markInvalid(rateEl, !Number.isFinite(rate) || rate < 0);
+      if (!Number.isFinite(rate) || rate < 0) { flashNote(T.errNeedNumber, true); return; }
+      replaceCombos(list, state.edit.name, name, thicks, colors, rate, state.edit.rate);
+    }
+    state.edit = { kind: "", index: -1, name: "", rate: null, rates: {}, thicks: [], colors: [], outs: [] };
     if (kind === "company") {
       renderRateList("company-list", state.companies, "company");
       renderCompanySelect();
     } else {
-      refreshSheetSelects();
+      refreshCatalogSelects();
     }
-    persistOwnerData([kind === "company" ? "companies" : "aluminium"]);
+    persistOwnerData([kind === "company" ? "companies" : "aluminium"], T.updatedOk);
   }
 
   function handleRateListClick(kind, e) {
@@ -2999,14 +3917,14 @@
     else if (action === "save-" + kind) saveEdited(kind, index);
     else if (action === "cancel-edit") cancelEdit();
     else if (action === "remove-" + kind) {
-      if (state.edit.kind === kind) state.edit = { kind: "", index: -1, name: "", rate: null, thicks: [], colors: [], outs: [] };
+      if (state.edit.kind === kind) state.edit = { kind: "", index: -1, name: "", rate: null, rates: {}, thicks: [], colors: [], outs: [] };
       if (kind === "company") removeCompany(index);
       else if (kind === "alu") removeAluminium(index);
       else if (kind === "lock") removeLock(index);
     }
   }
 
-  function refreshSheetSelects() {
+  function refreshCatalogSelects() {
     renderCompanySelect();
     renderLockSelect();
     renderGlassThickSelect();
@@ -3135,6 +4053,8 @@
     const outerTB = fromSuta(Math.max(0, w - outerD));
     const glassH = fromSuta(Math.max(0, h - glassHD));
     const glassW = fromSuta(Math.max(0, Math.round((w - glassWD) / n)));
+    const glassDimPretty = inchSutaPretty(glassH) + " × " + inchSutaPretty(glassW);
+    const glassDimShort = inchSutaLabel(glassH) + " × " + inchSutaLabel(glassW);
     const list = [
       { part: T.outerSide, size: inchSutaPretty(fromSuta(h)), qty: 2 },
       { part: T.shutterLock, size: inchSutaPretty(lockLen), qty: n },
@@ -3143,8 +4063,8 @@
       { part: T.interLock, size: inchSutaPretty(lockLen), qty: n },
       { part: T.outerBottomHi, size: inchSutaPretty(outerTB), qty: 1 },
       { part: T.outerTopPart, size: inchSutaPretty(outerTB), qty: 1 },
-      { part: T.glassPerPiece || T.glass, size: inchSutaPretty(glassH) + " × " + inchSutaPretty(glassW), qty: n, isGlass: true },
-      { part: T.glassCountLabel, size: n + (state.lang === "en" ? "" : String.fromCharCode(0x099F, 0x09BE)), qty: 0, isCount: true }
+      { part: T.glassPerPiece || T.glass, size: glassDimPretty, qty: n, isGlass: true },
+      { part: T.glassCountLabel, size: glassDimShort, qty: n, isCount: true }
     ];
     return list;
   }
@@ -3154,18 +4074,32 @@
     const n = Math.max(1, type && type.shutters ? type.shutters : 2);
     const heightIn = ftToInchSuta(item.heightFt);
     const widthIn = ftToInchSuta(item.widthFt);
-    const rows = computeCutFromInches(heightIn, widthIn, n).map((row) => ({
-      part: row.part,
-      lengthLabel: row.size,
-      qty: row.isCount ? 0 : row.qty * Math.max(1, Number(item.qty) || 1),
-      isGlass: !!row.isGlass,
-      isCount: !!row.isCount
-    }));
+    const mult = Math.max(1, Number(item.qty) || 1);
+    const countUnit = state.lang === "en" ? " pcs" : "\u099f\u09be";
+    const rows = computeCutFromInches(heightIn, widthIn, n).map((row) => {
+      if (row.isCount) {
+        const total = Math.max(1, Number(row.qty) || n) * mult;
+        return {
+          part: row.part,
+          lengthLabel: total + countUnit + " ( " + row.size + " )",
+          qty: 0,
+          isGlass: false,
+          isCount: true
+        };
+      }
+      return {
+        part: row.part,
+        lengthLabel: row.size,
+        qty: row.qty * mult,
+        isGlass: !!row.isGlass,
+        isCount: false
+      };
+    });
     if (item.hasNet) {
       rows.push({
         part: T.net,
         lengthLabel: inchSutaLabel(heightIn) + " x " + inchSutaLabel(widthIn),
-        qty: Math.max(1, Number(item.qty) || 1),
+        qty: mult,
         isGlass: true
       });
     }
@@ -3202,23 +4136,14 @@
 
   function cutInputToInchSuta(axis) {
     const p = axis === "w" ? "w" : "h";
-    const ft = parseFloat($("cut-" + p + "-ft") && $("cut-" + p + "-ft").value) || 0;
-    let inch = parseFloat($("cut-" + p + "-in") && $("cut-" + p + "-in").value) || 0;
-    let suta = parseInt($("cut-" + p + "-suta") && $("cut-" + p + "-suta").value, 10) || 0;
-    if (suta < 0) suta = 0;
-    if (suta > 7) suta = 7;
-    if (inch < 0) inch = 0;
-    const totalSuta = Math.round(ft * 12 * 8) + Math.round(inch) * 8 + suta;
-    return fromSuta(totalSuta);
+    const el = $("cut-" + p);
+    return fromSuta(toSuta(el && el.value));
   }
 
   function cutInputSizeFt(axis) {
     const p = axis === "w" ? "w" : "h";
-    return toFeet(
-      $("cut-" + p + "-ft") && $("cut-" + p + "-ft").value,
-      $("cut-" + p + "-in") && $("cut-" + p + "-in").value,
-      $("cut-" + p + "-suta") && $("cut-" + p + "-suta").value
-    );
+    const el = $("cut-" + p);
+    return inchSutaInputToFeet(el && el.value);
   }
 
   function cutQtyValue() {
@@ -3392,30 +4317,57 @@
       || null;
   }
 
+  function aluRunningFeet(heightFt, widthFt, shutters, qty) {
+    const heightIn = ftToInchSuta(heightFt);
+    const widthIn = ftToInchSuta(widthFt);
+    const h = toSuta(heightIn);
+    const w = toSuta(widthIn);
+    const n = Math.max(1, Math.round(Number(shutters) || 2));
+    const p = state.cutParams || DEFAULT_CUT;
+    const sideD = toSuta(p.side);
+    const shutterD = toSuta(p.shutterHoriz);
+    const outerD = toSuta(p.outerHoriz);
+    const lockSuta = Math.max(0, h - sideD);
+    const shutterSuta = Math.max(0, Math.round((w - shutterD) / n));
+    const outerSuta = Math.max(0, w - outerD);
+    // Same aluminium parts as cutting list (excludes glass)
+    const totalSuta = 2 * h + 2 * n * lockSuta + 2 * n * shutterSuta + 2 * outerSuta;
+    const q = Math.max(1, Number(qty) || 1);
+    return (totalSuta / 96) * q;
+  }
+
   function priceParts(item, company, alu, lock) {
     const qty = Math.max(1, Number(item.qty) || 1);
     const heightFt = Number(item.heightFt) || 0;
     const widthFt = Number(item.widthFt) || 0;
     const totalSqft = heightFt * widthFt * qty;
+    const type = getType(item.winType || state.selectedType);
+    const shutters = type && type.shutters ? type.shutters : 2;
+    const totalAluFt = aluRunningFeet(heightFt, widthFt, shutters, qty);
     const companyRate = company ? Number(company.rate) || 0 : Number(item.companyRate) || 0;
     const frameRate = alu ? Number(alu.rate) || 0 : Number(item.frameRate) || 0;
     const lockRate = lock ? Number(lock.rate) || 0 : Number(item.lockRate) || 0;
     const glassCost = totalSqft * companyRate;
-    const frameCost = totalSqft * frameRate;
+    const frameCost = totalAluFt * frameRate;
     const lockCost = lockRate * qty;
-    const extra = (Number(state.charges.extra) || 0) * qty;
-    const netCost = item.hasNet ? (Number(state.charges.net) || 0) * qty : 0;
+    const extra = totalSqft * (Number(state.charges.extra) || 0);
+    const netCost = item.hasNet ? totalSqft * (Number(state.charges.net) || 0) : 0;
+    let subtotal = glassCost + frameCost + lockCost + netCost + extra;
+    const seasonPct = Math.max(0, Math.min(90, Number(state.charges.seasonPct) || 0));
+    if (seasonPct > 0) subtotal = subtotal * (1 - seasonPct / 100);
     return {
       companyRate: companyRate,
       frameRate: frameRate,
       lockRate: lockRate,
       totalSqft: totalSqft,
+      totalAluFt: totalAluFt,
       glassCost: glassCost,
       frameCost: frameCost,
       lockCost: lockCost,
       extra: extra,
       netCost: netCost,
-      subtotal: glassCost + frameCost + lockCost + netCost + extra
+      seasonPct: seasonPct,
+      subtotal: Math.round(subtotal * 100) / 100
     };
   }
 
@@ -3458,6 +4410,7 @@
       widthFt: widthFt,
       qty: qty,
       hasNet: state.hasNet,
+      winType: state.selectedType,
       companyRate: company.rate,
       frameRate: alu.rate,
       lockRate: lock ? lock.rate : 0
@@ -3470,6 +4423,7 @@
       netCost: priced.netCost,
       extra: priced.extra,
       totalSqft: priced.totalSqft,
+      totalAluFt: priced.totalAluFt,
       subtotal: priced.subtotal,
       lockName: lock ? lock.name : null,
       hasNet: state.hasNet
@@ -3550,7 +4504,7 @@
             <div class="item-details">
               ${T.map}: ${ftInLabel(item.heightFt)} x ${ftInLabel(item.widthFt)} · ${escapeHtml(type.sub)}<br>
               ${T.kach}: ${escapeHtml(item.companyName)}${item.thickness ? " · " + item.thickness + T.mm : ""} (${T.taka}${item.companyRate || 0}${T.perSq})<br>
-              ${T.aluShort}: ${escapeHtml(item.aluName || "-")}${item.aluThick ? " · " + item.aluThick + T.mm : ""}${item.aluColor ? " · " + escapeHtml(aluColorLabel(item.aluColor)) : ""} (${T.taka}${item.frameRate || 0}${T.perSq})<br>
+              ${T.aluShort}: ${escapeHtml(item.aluName || "-")}${item.aluThick ? " · " + item.aluThick + T.mm : ""}${item.aluColor ? " · " + escapeHtml(aluColorLabel(item.aluColor)) : ""} (${T.taka}${item.frameRate || 0}${T.perFt})<br>
               ${escapeHtml(extras)}
             </div>
             ${isStaff() ? '<div id="cutwrap-' + i + '" class="hidden">' + renderCutTable(item) + '</div>' : ""}
@@ -3564,10 +4518,195 @@
 
 
   function getCuttingItems() {
+    return getCuttingEntries().map(function (e) { return e.item; });
+  }
+
+  function getCuttingEntries() {
     if (state.cutQuote && state.cutQuote.items && state.cutQuote.items.length) {
-      return state.cutQuote.items;
+      return state.cutQuote.items.map(function (item, i) {
+        return { item: item, src: "quote", index: i };
+      });
     }
-    return (state.items || []).concat(state.cutItems || []);
+    const fromCalc = (state.items || []).map(function (item, i) {
+      return { item: item, src: "items", index: i };
+    });
+    const fromCut = (state.cutItems || []).map(function (item, i) {
+      return { item: item, src: "cut", index: i };
+    });
+    return fromCalc.concat(fromCut);
+  }
+
+  function removeCuttingEntry(src, index) {
+    const i = Number(index);
+    if (!Number.isFinite(i) || i < 0) return;
+    if (src === "quote") {
+      if (!state.cutQuote || !Array.isArray(state.cutQuote.items)) return;
+      state.cutQuote.items.splice(i, 1);
+      if (!state.cutQuote.items.length) state.cutQuote = null;
+      renderCuttingTab();
+      flashNote(T.deletedOk, false);
+      return;
+    }
+    if (src === "items") {
+      removeItem(i);
+      flashNote(T.deletedOk, false);
+      return;
+    }
+    if (src === "cut") {
+      if (!Array.isArray(state.cutItems) || i >= state.cutItems.length) return;
+      state.cutItems.splice(i, 1);
+      storeSet(KEYS.cutItems, state.cutItems);
+      renderCuttingTab();
+      flashNote(T.deletedOk, false);
+    }
+  }
+
+  function cutBlockNoHtml(num, kind) {
+    const label = kindLabel(kind);
+    return (
+      '<span class="cut-block-no" title="' + escapeHtml(label + " " + num) + '">' +
+        "<small>" + escapeHtml(label) + "</small>" +
+        "<strong>" + num + "</strong>" +
+      "</span>"
+    );
+  }
+
+  function cutBlockTagHtml(item, num) {
+    const type = getType(item.winType);
+    return (
+      cutBlockNoHtml(num, type.kind) +
+      '<span class="tag">' +
+        "× " + item.qty + " — " +
+        escapeHtml(type.label) +
+        " · " + ftInLabel(item.heightFt) + " × " + ftInLabel(item.widthFt) +
+        (item.room ? " · " + escapeHtml(item.room) : "") +
+        (item.hasNet ? " · " + T.net : "") +
+      "</span>"
+    );
+  }
+
+  function cuttingItemBlockHtml(item, num) {
+    return (
+      '<div class="window-item booklet-item">' +
+        "<div>" +
+          '<div class="item-head">' + cutBlockTagHtml(item, num) + "</div>" +
+          renderCutTable(item) +
+        "</div>" +
+      "</div>"
+    );
+  }
+
+  function paginateCutForBooklet(entries) {
+    const items = (entries || []).map(function (e) { return e.item; });
+    if (!items.length) return [];
+    const chunks = [];
+    let i = 0;
+    let num = 1;
+    // Page 1: 3 blocks (header + footer take space); later pages: 4 each
+    while (i < items.length) {
+      const take = chunks.length === 0 ? 3 : 4;
+      const slice = items.slice(i, i + take);
+      chunks.push(slice.map(function (it) {
+        return { item: it, num: num++ };
+      }));
+      i += take;
+    }
+    return chunks;
+  }
+
+  function bookletPrintMeta() {
+    const shop = shopOf(state.shop);
+    let custName = $("quote-name") && $("quote-name").value.trim();
+    let custPhone = $("quote-phone") && $("quote-phone").value.trim();
+    if (state.cutQuote) {
+      custName = state.cutQuote.name || custName || "";
+      custPhone = state.cutQuote.phone || custPhone || "";
+    }
+    const dateStr = new Date().toLocaleDateString(state.lang === "en" ? "en-GB" : "bn-BD", {
+      day: "numeric",
+      month: "short",
+      year: "numeric"
+    });
+    return {
+      shop: shop,
+      dateLabel: T.printDate,
+      date: dateStr,
+      custLabel: T.printCustomer,
+      custName: custName || "",
+      custPhone: custPhone || "",
+      kicker: T.printCutKicker,
+      sub: T.cutTitle || T.printCutKicker,
+      thanks: shop.name
+    };
+  }
+
+  function bookletPageHtml(pageNo, slots, meta) {
+    if (!slots || !slots.length) return "";
+    const shop = meta.shop;
+    const contact = [shop.phone, shop.address].filter(Boolean).join(" · ");
+    const body = slots.map(function (s) {
+      return cuttingItemBlockHtml(s.item, s.num);
+    }).join("");
+    const isCover = pageNo === 1;
+    const custHtml = (meta.custName || meta.custPhone)
+      ? ('<div class="booklet-cust">' +
+          "<span>" + escapeHtml(meta.custLabel) + "</span>" +
+          (meta.custName ? "<strong>" + escapeHtml(meta.custName) + "</strong>" : "") +
+          (meta.custPhone ? "<span>" + escapeHtml(meta.custPhone) + "</span>" : "") +
+        "</div>")
+      : "";
+    const head = isCover
+      ? ('<header class="booklet-head">' +
+          '<div class="booklet-head-brand">' +
+            '<img class="booklet-logo" src="' + escapeHtml(shop.logo || "images/logo.svg") + '" alt="">' +
+            "<div>" +
+              '<p class="booklet-kicker">' + escapeHtml(meta.kicker) + "</p>" +
+              "<h1>" + escapeHtml(shop.name) + "</h1>" +
+              '<p class="booklet-sub">' + escapeHtml(meta.sub) + "</p>" +
+              (contact ? '<p class="booklet-contact">' + escapeHtml(contact) + "</p>" : "") +
+            "</div>" +
+          "</div>" +
+          '<div class="booklet-head-meta">' +
+            "<div><span>" + escapeHtml(meta.dateLabel) + "</span><strong>" + escapeHtml(meta.date) + "</strong></div>" +
+            custHtml +
+          "</div>" +
+        "</header>")
+      : "";
+    const foot =
+      '<footer class="booklet-foot">' +
+        "<strong>" + escapeHtml(meta.thanks) + "</strong>" +
+        (contact ? "<span>" + escapeHtml(contact) + "</span>" : "") +
+      "</footer>";
+    return (
+      '<section class="booklet-page' + (isCover ? " is-cover" : "") + '" data-page="' + pageNo + '">' +
+        head +
+        '<div class="booklet-page-body">' + body + "</div>" +
+        foot +
+      "</section>"
+    );
+  }
+
+  function buildCutBookletHtml() {
+    const meta = bookletPrintMeta();
+    const pages = paginateCutForBooklet(getCuttingEntries());
+    if (!pages.length) return "";
+    return pages.map(function (slots, i) {
+      return bookletPageHtml(i + 1, slots, meta);
+    }).join("");
+  }
+
+  function prepareCutBooklet() {
+    const el = $("print-booklet");
+    if (!el) return;
+    el.innerHTML = buildCutBookletHtml();
+    el.setAttribute("aria-hidden", "false");
+  }
+
+  function clearCutBooklet() {
+    const el = $("print-booklet");
+    if (!el) return;
+    el.innerHTML = "";
+    el.setAttribute("aria-hidden", "true");
   }
 
   function renderCuttingTab() {
@@ -3576,8 +4715,8 @@
     const actionsEl = $("cutting-actions");
     const bar = $("cutting-quote-bar");
     const itemsCard = $("cut-items-card");
-    const items = getCuttingItems();
-    if (itemsCard) itemsCard.classList.toggle("hidden", !items.length);
+    const entries = getCuttingEntries();
+    if (itemsCard) itemsCard.classList.toggle("hidden", !entries.length);
     if (bar) {
       const on = !!(state.cutQuote && state.cutQuote.items && state.cutQuote.items.length);
       bar.classList.toggle("hidden", !on);
@@ -3590,7 +4729,7 @@
       }
     }
     if (!wrap || !emptyEl || !actionsEl) return;
-    if (!items.length) {
+    if (!entries.length) {
       wrap.innerHTML = "";
       emptyEl.classList.add("hidden");
       actionsEl.classList.add("hidden");
@@ -3598,15 +4737,19 @@
     }
     emptyEl.classList.add("hidden");
     actionsEl.classList.remove("hidden");
-    wrap.innerHTML = items.map((item, i) => {
-      const type = getType(item.winType);
+    wrap.innerHTML = entries.map(function (entry, i) {
+      const item = entry.item;
+      const num = i + 1;
       return (
-        '<div class="window-item">' +
+        '<div class="window-item" data-cut-block="' + num + '">' +
           '<div class="item-thumb">' + itemDiagram(item, true) + "</div>" +
           "<div>" +
             '<div class="item-head">' +
-              '<span class="tag">' + kindLabel(type.kind) + " " + (i + 1) + " x " + item.qty + " - " +
-              escapeHtml(type.label) + (item.room ? " · " + escapeHtml(item.room) : "") + "</span>" +
+              cutBlockTagHtml(item, num) +
+              '<span class="item-actions">' +
+                '<button type="button" class="danger-ghost icon-btn compact" data-action="remove-cut-entry" data-src="' +
+                escapeHtml(entry.src) + '" data-index="' + entry.index + '">' + ico("trash") + "<span>" + T.muchun + "</span></button>" +
+              "</span>" +
             "</div>" +
             '<div class="item-details">' +
               T.outerSize + ": " + ftInLabel(item.heightFt) + " x " + ftInLabel(item.widthFt) +
@@ -3620,12 +4763,8 @@
   }
 
   function fillDefaultCutSize() {
-    if ($("cut-h-ft")) $("cut-h-ft").value = "0";
-    if ($("cut-h-in")) $("cut-h-in").value = "54";
-    if ($("cut-h-suta")) $("cut-h-suta").value = "0";
-    if ($("cut-w-ft")) $("cut-w-ft").value = "0";
-    if ($("cut-w-in")) $("cut-w-in").value = "60";
-    if ($("cut-w-suta")) $("cut-w-suta").value = "0";
+    if ($("cut-h")) $("cut-h").value = "54";
+    if ($("cut-w")) $("cut-w").value = "60";
   }
 
   function resetCutCalc() {
@@ -3701,8 +4840,8 @@
   }
 
   function addItem() {
-    const hFtEl = $("in-h-ft");
-    const wFtEl = $("in-w-ft");
+    const hEl = $("in-h");
+    const wEl = $("in-w");
     const qtyEl = $("in-qty");
     const heightFt = inputSizeFt("h");
     const widthFt = inputSizeFt("w");
@@ -3733,8 +4872,8 @@
     const qtyOk = Number.isFinite(qtyRaw) && qtyRaw >= 1 && qtyRaw <= 99;
     const sizeOk = heightFt > 0 && widthFt > 0 && heightFt <= 40 && widthFt <= 40;
     markInvalid(qtyEl, !qtyOk);
-    markInvalid(hFtEl, !sizeOk);
-    markInvalid(wFtEl, !sizeOk);
+    markInvalid(hEl, !sizeOk);
+    markInvalid(wEl, !sizeOk);
     if (!qtyOk) {
       showError(T.errNeedNumber);
       return;
@@ -3751,6 +4890,7 @@
       widthFt: widthFt,
       qty: qty,
       hasNet: state.hasNet,
+      winType: state.selectedType,
       companyRate: company.rate,
       frameRate: alu.rate,
       lockRate: lock ? lock.rate : 0
@@ -3775,6 +4915,7 @@
       frameRate: priced.frameRate,
       extra: priced.extra,
       totalSqft: priced.totalSqft,
+      totalAluFt: priced.totalAluFt,
       glassCost: priced.glassCost,
       lockCost: priced.lockCost,
       frameCost: priced.frameCost,
@@ -3797,12 +4938,8 @@
   }
 
   function clearInputs() {
-    if ($("in-h-ft")) $("in-h-ft").value = "0";
-    if ($("in-h-in")) $("in-h-in").value = "54";
-    if ($("in-h-suta")) $("in-h-suta").value = "0";
-    if ($("in-w-ft")) $("in-w-ft").value = "0";
-    if ($("in-w-in")) $("in-w-in").value = "60";
-    if ($("in-w-suta")) $("in-w-suta").value = "0";
+    if ($("in-h")) $("in-h").value = "54";
+    if ($("in-w")) $("in-w").value = "60";
     if ($("in-qty")) $("in-qty").value = "1";
     if ($("in-room")) $("in-room").value = "";
     state.editItemIndex = -1;
@@ -3821,7 +4958,10 @@
     state.items = [];
     state.selectedKind = "window";
     state.selectedType = "sliding2";
+    state.editItemIndex = -1;
     if ($("in-qty")) $("in-qty").value = "1";
+    if ($("in-room")) $("in-room").value = "";
+    clearInputs();
     storeSet(KEYS.items, state.items);
     renderKindPicker();
     renderTypePicker();
@@ -3829,6 +4969,7 @@
     renderItems();
     renderCuttingTab();
     renderLivePreview(false);
+    updateAddItemBtn();
   }
 
   function toggleCutList(index) {
@@ -3843,33 +4984,35 @@
   function addCompany() {
     if (!isOwner()) return;
     const nameEl = $("new-company-name");
-    const rateEl = $("new-company-rate");
     const name = cleanTextValue(nameEl && nameEl.value);
-    const rate = readNonNeg(rateEl);
     const thicks = selectedThicks("company");
     const colors = state.adminPick.companyColors.map(normalizeColorId);
+    syncMmRatesFromDom("new-company-thicks", state.adminPick.companyRates);
+    const rateByMm = readMmRates("new-company-thicks", thicks);
     markInvalid(nameEl, !name);
-    markInvalid(rateEl, Number.isNaN(rate));
     if (!name) { flashNote(T.errNeedName, true); return; }
-    if (Number.isNaN(rate)) { flashNote(T.errNeedNumber, true); return; }
     if (!thicks.length || !colors.length) { flashNote(T.errNeedPick, true); return; }
+    if (!rateByMm) { flashNote(T.errNeedNumber, true); return; }
     if (nameEl) nameEl.value = name;
-    const outs = state.adminPick.companyOut || [];
     thicks.forEach((thickness) => {
+      const rate = rateByMm[Number(thickness)];
       colors.forEach((color) => upsertCombo(state.companies, {
         name: name,
         thickness: thickness,
         rate: rate,
         color: color,
-        out: outs.some(function (m) { return Number(m) === Number(thickness); })
+        out: false
       }));
     });
     $("new-company-name").value = "";
     if ($("new-company-thick")) $("new-company-thick").value = "";
-    $("new-company-rate").value = "";
+    state.adminPick.companyRates = {};
+    state.adminPick.companyThicks = [5];
+    state.adminPick.companyColors = ["clear"];
+    renderAdminPicks();
     renderRateList("company-list", state.companies, "company");
     renderCompanySelect();
-    persistOwnerData(["companies"]);
+    persistOwnerData(["companies"], T.addedOk);
   }
 
   function removeNamedCombos(list, index) {
@@ -3886,52 +5029,60 @@
     removeNamedCombos(state.companies, index);
     renderRateList("company-list", state.companies, "company");
     renderCompanySelect();
-    persistOwnerData(["companies"]);
+    persistOwnerData(["companies"], T.deletedOk);
   }
 
   function addAluminium() {
     if (!isOwner()) return;
     const nameEl = $("new-alu-name");
-    const rateEl = $("new-alu-rate");
     const name = cleanTextValue(nameEl && nameEl.value);
-    const rate = readNonNeg(rateEl);
     const thicks = selectedThicks("alu");
     const colors = state.adminPick.aluColors.map(normalizeAluColorId);
+    if (!state.adminPick.aluRates) state.adminPick.aluRates = {};
+    syncMmRatesFromDom("new-alu-thicks", state.adminPick.aluRates);
+    const rateByMm = readMmRates("new-alu-thicks", thicks);
     markInvalid(nameEl, !name);
-    markInvalid(rateEl, Number.isNaN(rate));
     if (!name) { flashNote(T.errNeedName, true); return; }
-    if (Number.isNaN(rate)) { flashNote(T.errNeedNumber, true); return; }
     if (!thicks.length || !colors.length) { flashNote(T.errNeedPick, true); return; }
+    if (!rateByMm) { flashNote(T.errNeedNumber, true); return; }
     if (nameEl) nameEl.value = name;
     thicks.forEach((thickness) => {
+      const rate = rateByMm[Number(thickness)];
       colors.forEach((color) => upsertCombo(state.aluminium, { name: name, thickness: thickness, rate: rate, color: color }));
     });
     $("new-alu-name").value = "";
     if ($("new-alu-thick")) $("new-alu-thick").value = "";
-    $("new-alu-rate").value = "";
-    refreshSheetSelects();
-    persistOwnerData(["aluminium"]);
+    state.adminPick.aluRates = {};
+    state.adminPick.aluThicks = [1];
+    state.adminPick.aluColors = ["silver"];
+    renderAdminPicks();
+    refreshCatalogSelects();
+    persistOwnerData(["aluminium"], T.addedOk);
   }
 
   function removeAluminium(index) {
     if (!isOwner()) return;
     removeNamedCombos(state.aluminium, index);
-    refreshSheetSelects();
-    persistOwnerData(["aluminium"]);
+    refreshCatalogSelects();
+    persistOwnerData(["aluminium"], T.deletedOk);
   }
 
   function saveCharges() {
     if (!isOwner()) return;
     const netEl = $("in-charge-net");
     const extraEl = $("in-charge-extra");
+    const seasonEl = $("in-charge-season");
     const net = readNonNeg(netEl);
     const extra = readNonNeg(extraEl);
+    const seasonPct = seasonEl ? Math.max(0, Math.min(90, readNonNeg(seasonEl) || 0)) : 0;
     markInvalid(netEl, Number.isNaN(net));
     markInvalid(extraEl, Number.isNaN(extra));
     if (Number.isNaN(net) || Number.isNaN(extra)) { flashNote(T.errNeedNumber, true); return; }
-    state.charges = { net, extra };
-    persistOwnerData(["charges"]);
-    flashSaved();
+    state.charges = { net, extra, seasonPct: Number.isNaN(seasonPct) ? 0 : seasonPct };
+    try { localStorage.setItem("glasscalc:seasonPct", String(state.charges.seasonPct)); } catch (_) {}
+    persistOwnerData(["charges"], T.savedOk);
+    repriceItems();
+    updateSummary();
   }
 
   function addLock() {
@@ -3951,7 +5102,7 @@
     $("new-lock-rate").value = "";
     renderRateList("lock-list", state.locks, "lock");
     renderLockSelect();
-    persistOwnerData(["locks"]);
+    persistOwnerData(["locks"], T.addedOk);
     renderLivePreview(true);
   }
 
@@ -3960,7 +5111,7 @@
     state.locks.splice(index, 1);
     renderRateList("lock-list", state.locks, "lock");
     renderLockSelect();
-    persistOwnerData(["locks"]);
+    persistOwnerData(["locks"], T.deletedOk);
     renderLivePreview(true);
   }
 
@@ -3976,7 +5127,7 @@
     });
     if (Object.values(next).some((v) => Number.isNaN(v) || v < 0)) { flashNote(T.errNeedNumber, true); return; }
     state.cutParams = next;
-    persistOwnerData(["cut"]);
+    persistOwnerData(["cut"], T.savedOk);
     renderItems();
     renderCuttingTab();
     if ($("cut-calc-result") && !$("cut-calc-result").classList.contains("hidden")) renderCutCalcResult();
@@ -3986,7 +5137,15 @@
 
   function setupPwa() {
     if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("sw.js").catch(function () {});
+      navigator.serviceWorker.register("js/sw.js?v=224", { scope: "/" }).then(function (reg) {
+        if (reg && reg.update) reg.update().catch(function () {});
+      }).catch(function () {});
+      var refreshing = false;
+      navigator.serviceWorker.addEventListener("controllerchange", function () {
+        if (refreshing) return;
+        refreshing = true;
+        location.reload();
+      });
     }
     var installBtn = $("btn-install");
     var tip = $("install-tip");
@@ -4021,19 +5180,246 @@
     }
   }
 
-  function sheetApiUrl() {
-    return String(window.MTG_SHEET_API || "").trim();
+  function apiReady() {
+    return !!(window.MTG_API && window.MTG_API.configured && window.MTG_API.configured());
   }
 
-  function sheetRequest(payload) {
-    const url = sheetApiUrl();
-    if (!url) return Promise.reject(new Error("noapi"));
-    return fetch(url, {
-      method: "POST",
-      redirect: "follow",
-      headers: { "Content-Type": "text/plain;charset=utf-8" },
-      body: JSON.stringify(payload)
-    }).then((res) => res.json());
+  function setDbStatus(text, ok) {
+    const el = $("db-status");
+    if (!el) return;
+    el.textContent = text || "";
+    el.classList.toggle("is-ok", !!ok);
+    el.classList.toggle("is-err", ok === false);
+    el.classList.toggle("hidden", !text);
+  }
+
+  function fillDbSettings() {
+    const cur = (window.MTG_API && window.MTG_API.current) ? window.MTG_API.current() : { url: "", key: "" };
+    if ($("in-db-url") && document.activeElement !== $("in-db-url")) $("in-db-url").value = cur.url || "";
+    if ($("in-db-key") && document.activeElement !== $("in-db-key")) $("in-db-key").value = cur.key || "";
+    if ($("btn-db-open-sql") && window.MTG_API && window.MTG_API.sqlEditorUrl) {
+      $("btn-db-open-sql").href = window.MTG_API.sqlEditorUrl();
+    }
+    const steps = $("db-sql-steps");
+    if (steps) {
+      steps.innerHTML = [T.dbSqlStep1, T.dbSqlStep2, T.dbSqlStep3, T.dbSqlStep4]
+        .map((s) => "<li>" + escapeHtml(s) + "</li>").join("");
+    }
+    setDbStatus(apiReady() ? T.dbConnected : T.dbNotConnected, apiReady() ? true : false);
+  }
+
+  function readDbForm() {
+    return {
+      url: cleanTextValue($("in-db-url") && $("in-db-url").value),
+      key: cleanTextValue($("in-db-key") && $("in-db-key").value)
+    };
+  }
+
+  function connectDbFromForm() {
+    if (!isSuperAdmin()) return;
+    if (!window.MTG_API || !window.MTG_API.saveConfig) {
+      flashNote(T.dbTestFail, true);
+      return;
+    }
+    const form = readDbForm();
+    markInvalid($("in-db-url"), !form.url);
+    markInvalid($("in-db-key"), !form.key);
+    if (!form.url || !form.key) {
+      flashNote(T.errNeedName, true);
+      return;
+    }
+    window.MTG_API.saveConfig(form.url, form.key);
+    fillDbSettings();
+    flashNote(T.dbSaved, false);
+    loadCatalog();
+  }
+
+  function testDbConnection() {
+    if (!isSuperAdmin()) return;
+    if (!window.MTG_API || !window.MTG_API.testConnection) {
+      flashNote(T.dbTestFail, true);
+      return;
+    }
+    const form = readDbForm();
+    if (form.url && form.key && window.MTG_API.applyConfig) {
+      window.MTG_API.applyConfig(form.url, form.key);
+    }
+    setDbStatus(T.working || "...", null);
+    window.MTG_API.testConnection().then(function () {
+      setDbStatus(T.dbTestOk, true);
+      flashNote(T.dbTestOk, false);
+    }).catch(function () {
+      setDbStatus(T.dbTestFail, false);
+      flashNote(T.dbTestFail, true);
+    });
+  }
+
+  function useDefaultDb() {
+    if (!isSuperAdmin()) return;
+    if (!window.MTG_API || !window.MTG_API.useDefaults) return;
+    window.MTG_API.useDefaults();
+    fillDbSettings();
+    flashNote(T.dbSaved, false);
+    loadCatalog();
+  }
+
+  function resetDbConfig() {
+    if (!isSuperAdmin()) return;
+    if (!window.MTG_API || !window.MTG_API.clearStoredConfig) return;
+    window.MTG_API.clearStoredConfig();
+    fillDbSettings();
+    flashNote(T.dbSaved, false);
+    loadCatalog();
+  }
+
+  function loadSqlSetup() {
+    if (window.MTG_SQL_SETUP && window.MTG_SQL_SETUP.schema) {
+      return Promise.resolve(window.MTG_SQL_SETUP);
+    }
+    return new Promise(function (resolve, reject) {
+      const s = document.createElement("script");
+      s.src = "js/sql-setup.js?v=9";
+      s.onload = function () {
+        if (window.MTG_SQL_SETUP && window.MTG_SQL_SETUP.schema) resolve(window.MTG_SQL_SETUP);
+        else reject(new Error("sql"));
+      };
+      s.onerror = function () { reject(new Error("sql")); };
+      document.head.appendChild(s);
+    });
+  }
+
+  function showSqlPreview(text) {
+    const box = $("db-sql-preview");
+    if (!box) return;
+    box.value = text || "";
+    try {
+      box.focus();
+      box.select();
+      box.setSelectionRange(0, box.value.length);
+    } catch (_) { /* ignore */ }
+  }
+
+  function downloadTextFile(filename, text) {
+    const blob = new Blob([text], { type: "text/plain;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = filename || "mtg.sql";
+    a.rel = "noopener";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(function () { URL.revokeObjectURL(url); }, 1500);
+  }
+
+  function copyText(text) {
+    if (!text) return Promise.reject(new Error("empty"));
+    // Prefer sync fallback first while still inside the click gesture (mobile/PWA safe).
+    return copyTextFallback(text).catch(function () {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        return navigator.clipboard.writeText(text);
+      }
+      return Promise.reject(new Error("copy"));
+    });
+  }
+
+  function copyTextFallback(text) {
+    return new Promise(function (resolve, reject) {
+      const box = $("db-sql-preview");
+      if (box) {
+        const wasRo = box.readOnly;
+        box.readOnly = false;
+        box.value = text;
+        box.focus();
+        box.select();
+        try { box.setSelectionRange(0, box.value.length); } catch (_) { /* ignore */ }
+        try {
+          if (document.execCommand("copy")) {
+            box.readOnly = wasRo;
+            resolve();
+            return;
+          }
+        } catch (_) { /* fall through */ }
+        box.readOnly = wasRo;
+      }
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      ta.setAttribute("readonly", "");
+      ta.style.cssText = "position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;";
+      document.body.appendChild(ta);
+      ta.focus();
+      ta.select();
+      try { ta.setSelectionRange(0, ta.value.length); } catch (_) { /* ignore */ }
+      try {
+        const ok = document.execCommand("copy");
+        document.body.removeChild(ta);
+        if (ok) resolve();
+        else reject(new Error("copy"));
+      } catch (err) {
+        try { document.body.removeChild(ta); } catch (_) { /* ignore */ }
+        reject(err);
+      }
+    });
+  }
+
+  function sqlPackText(pack, kind) {
+    if (!pack) return "";
+    return kind === "defaults" ? (pack.defaults || "") : (pack.schema || "");
+  }
+
+  function applySqlAction(kind, mode) {
+    if (!isSuperAdmin()) {
+      flashNote(T.dbCopyFail, true);
+      return;
+    }
+    function run(pack) {
+      const text = sqlPackText(pack, kind);
+      if (!text) {
+        flashNote(T.dbCopyFail, true);
+        return;
+      }
+      showSqlPreview(text);
+      if (mode === "download") {
+        downloadTextFile(kind === "defaults" ? "mtg-defaults.sql" : "mtg-schema.sql", text);
+        flashNote(T.dbDownloaded || T.dbCopied, false);
+        return;
+      }
+      copyText(text).then(function () {
+        flashNote(T.dbCopied, false);
+      }).catch(function () {
+        showSqlPreview(text);
+        downloadTextFile(kind === "defaults" ? "mtg-defaults.sql" : "mtg-schema.sql", text);
+        flashNote(T.dbDownloaded || T.dbCopyFail, false);
+      });
+    }
+    if (window.MTG_SQL_SETUP && window.MTG_SQL_SETUP.schema) {
+      run(window.MTG_SQL_SETUP);
+      return;
+    }
+    loadSqlSetup().then(run).catch(function () {
+      flashNote(T.dbCopyFail, true);
+    });
+  }
+
+  function copySqlKind(kind) {
+    applySqlAction(kind, "copy");
+  }
+
+  function downloadSqlKind(kind) {
+    applySqlAction(kind, "download");
+  }
+
+  function openDbSettingsFromGate() {
+    if (!isSuperAdmin()) return;
+    document.documentElement.classList.remove("gate-open");
+    $("owner-gate").classList.add("hidden");
+    switchTab("rates");
+    switchAdminPanel("db");
+  }
+
+  function apiRequest(payload) {
+    if (!apiReady() || !window.MTG_API.request) return Promise.reject(new Error("noapi"));
+    return window.MTG_API.request(payload);
   }
 
 
@@ -4047,13 +5433,14 @@
 
 
   function applyOwnerData(data) {
-    if (data.role === "owner" || data.role === "operator") state.role = data.role;
+    if (data.role === "owner" || data.role === "operator" || data.role === "superadmin") state.role = data.role;
+    if (isForeverSuperAdminEmail(state.ownerEmail)) state.role = "superadmin";
     if (Array.isArray(data.companies)) state.companies = normalizeCompanies(data.companies);
     if (Array.isArray(data.locks)) state.locks = data.locks;
     if (Array.isArray(data.aluminium)) state.aluminium = normalizeAluminium(data.aluminium);
     if (Array.isArray(data.glassThicks)) state.glassThicks = data.glassThicks;
     if (data.charges && typeof data.charges === "object") {
-      state.charges = { net: Number(data.charges.net) || 0, extra: Number(data.charges.extra) || 0 };
+      state.charges = { net: Number(data.charges.net) || 0, extra: Number(data.charges.extra) || 0, seasonPct: Number(data.charges.seasonPct) || 0 };
     }
     if (data.cutParams && typeof data.cutParams === "object") {
       state.cutParams = normalizeCutParams(data.cutParams);
@@ -4061,52 +5448,18 @@
     state.quotes = isStaff() && Array.isArray(data.quotes) ? data.quotes : [];
     state.staff = isOwner() && Array.isArray(data.users) ? data.users : [];
     if (data.shop && typeof data.shop === "object" && (data.shop.name || data.shop.slogan || data.shop.logo || data.shop.phone || data.shop.address)) applyShop(data.shop);
-    ensureDummyCatalog();
     fillCutInputs();
     repriceItems();
     renderRateList("company-list", state.companies, "company");
     renderRateList("lock-list", state.locks, "lock");
     renderAluList();
-    refreshSheetSelects();
+    refreshCatalogSelects();
     renderStaffList();
     renderQuotes();
     renderHome();
     renderItems();
     updateRoleUi();
     updateCatalogHint();
-    saveCatalogSoftCache();
-  }
-
-  function readCatalogSoftCache() {
-    try {
-      const raw = localStorage.getItem(KEYS.catalog);
-      const data = raw ? JSON.parse(raw) : null;
-      if (!data || typeof data !== "object") return null;
-      if (!Array.isArray(data.companies) && !Array.isArray(data.aluminium) && !Array.isArray(data.locks)) return null;
-      return data;
-    } catch (_) {
-      return null;
-    }
-  }
-
-  function saveCatalogSoftCache() {
-    try {
-      localStorage.setItem(KEYS.catalog, JSON.stringify({
-        v: 2,
-        t: Date.now(),
-        companies: state.companies,
-        locks: state.locks,
-        aluminium: state.aluminium,
-        glassThicks: state.glassThicks,
-        charges: state.charges,
-        cutParams: state.cutParams,
-        shop: state.shop
-      }));
-    } catch (_) { /* ignore */ }
-  }
-
-  function clearCatalogCache() {
-    try { localStorage.removeItem(KEYS.catalog); } catch (_) { /* ignore */ }
   }
 
   function setCatalogSyncing(on) {
@@ -4145,22 +5498,20 @@
     if (Array.isArray(data.aluminium)) state.aluminium = normalizeAluminium(data.aluminium);
     if (Array.isArray(data.glassThicks)) state.glassThicks = data.glassThicks;
     if (data.charges && typeof data.charges === "object") {
-      state.charges = { net: Number(data.charges.net) || 0, extra: Number(data.charges.extra) || 0 };
+      state.charges = { net: Number(data.charges.net) || 0, extra: Number(data.charges.extra) || 0, seasonPct: Number(data.charges.seasonPct) || 0 };
     }
     if (data.cutParams && typeof data.cutParams === "object") {
       state.cutParams = normalizeCutParams(data.cutParams);
     }
     if (data.shop && typeof data.shop === "object" && (data.shop.name || data.shop.slogan || data.shop.logo || data.shop.phone || data.shop.address)) applyShop(data.shop);
-    ensureDummyCatalog();
     const ok = !!(state.companies.length || state.aluminium.length || state.glassThicks.length || state.locks.length);
-    if (ok) saveCatalogSoftCache();
     if (doRender !== false) {
       repriceItems();
       renderItems();
       renderRateList("company-list", state.companies, "company");
       renderRateList("lock-list", state.locks, "lock");
       renderAluList();
-      refreshSheetSelects();
+      refreshCatalogSelects();
       updateCatalogHint();
     }
     return ok;
@@ -4173,27 +5524,27 @@
   function updateCatalogHint() {
     const el = $("catalog-hint");
     if (!el) return;
-    const empty = !state.companies.length && !state.aluminium.length && !state.glassThicks.length;
-    el.textContent = empty ? T.catalogEmpty : "";
-    el.classList.toggle("hidden", !empty);
+    const empty = !state.companies.length && !state.aluminium.length;
+    if (empty) {
+      el.innerHTML = "<strong>" + T.catalogEmpty + "</strong><br>" + T.catalogGuide +
+        (isOwner() || !apiReady()
+          ? ' <button type="button" class="icon-btn secondary compact" id="btn-catalog-guide">' + T.catalogGuideBtn + "</button>"
+          : "");
+      el.classList.remove("hidden");
+    } else {
+      el.textContent = "";
+      el.classList.add("hidden");
+    }
   }
 
   function fetchCatalogGet() {
-    const url = sheetApiUrl();
-    const sep = url.indexOf("?") >= 0 ? "&" : "?";
-    return fetch(url + sep + "action=catalog&_=" + Date.now(), {
-      method: "GET",
-      redirect: "follow",
-      cache: "no-store"
-    }).then(function (res) {
-      if (!res.ok) throw new Error("http");
-      return res.json();
-    });
+    if (!apiReady() || !window.MTG_API.fetchCatalogGet) return Promise.reject(new Error("noapi"));
+    return window.MTG_API.fetchCatalogGet();
   }
 
   function fetchCatalogOnce() {
     return fetchJsonTimeout(fetchCatalogGet(), 18000).catch(function () {
-      return fetchJsonTimeout(sheetRequest({ action: "catalog" }), 18000);
+      return fetchJsonTimeout(apiRequest({ action: "catalog" }), 18000);
     });
   }
 
@@ -4217,33 +5568,37 @@
   }
 
   function loadCatalog() {
-    if (!sheetApiUrl()) {
-      ensureDummyCatalog();
-      refreshSheetSelects();
+    if (!apiReady()) {
+        refreshCatalogSelects();
       renderRateList("company-list", state.companies, "company");
       renderRateList("lock-list", state.locks, "lock");
       renderAluList();
       updateCatalogHint();
       return;
     }
-    const soft = readCatalogSoftCache();
-    if (soft) applyCatalogLists(soft, true);
-    const hasLocal = !!(state.companies.length || state.aluminium.length || state.locks.length);
-    if (hasLocal) setCatalogSyncing(true);
-    else showLoader(true, T.loading);
+    showLoader(true, T.loading);
     fetchCatalogWithRetry(3).then(function (data) {
       applyCatalogLists(data, true);
+      try { storeSet(KEYS.catalogCache, data); } catch (_) { /* ignore */ }
     }).catch(function () {
-      updateCatalogHint();
+      return storeGet(KEYS.catalogCache).then(function (cached) {
+        if (cached && (Array.isArray(cached.companies) || Array.isArray(cached.aluminium))) {
+          applyCatalogLists(cached, true);
+          flashNote(T.offlineCatalog, false);
+        } else {
+          updateCatalogHint();
+        }
+      });
     }).finally(function () {
-      setCatalogSyncing(false);
       showLoader(false);
     });
   }
 
 
   function roleLabel(role) {
-    return role === "owner" ? T.roleOwner : T.roleStaff;
+    if (role === "superadmin") return T.roleSuperAdmin;
+    if (role === "owner") return T.roleOwner;
+    return T.roleStaff;
   }
 
   function renderStaffList() {
@@ -4257,22 +5612,146 @@
       wrap.innerHTML = '<div class="empty-note">' + T.emptyRates + "</div>";
       return;
     }
-    wrap.innerHTML = state.staff.map((u, i) =>
-      rateRowOpen(i) + '<span class="name">' + escapeHtml(u.email) + '</span><span class="role-pill' + (u.role === "owner" ? " is-owner" : "") + '">' + escapeHtml(roleLabel(u.role)) + '</span><span class="rate-actions"><button type="button" class="danger-ghost icon-btn" data-action="remove-staff" data-index="' + i + '">' + ico("trash") + "<span>" + T.muchun + "</span></button></span></div>"
-    ).join("");
+    wrap.innerHTML = state.staff.map((u, i) => {
+      const isSa = u.role === "superadmin" || isForeverSuperAdminEmail(u.email);
+      const pillClass = isSa ? " is-superadmin" : (u.role === "owner" ? " is-owner" : "");
+      const canEdit = isSa ? isSuperAdmin() : isOwner();
+      const editing = state.edit.kind === "staff" && state.edit.index === i;
+
+      if (editing) {
+        const roleField = isSa
+          ? '<span class="role-pill is-superadmin">' + escapeHtml(roleLabel("superadmin")) + "</span>"
+          : '<select class="edit-role edit-style" aria-label="' + escapeHtml(T.dhoron || T.roleStaff) + '">' +
+              '<option value="operator"' + (u.role !== "owner" ? " selected" : "") + ">" + escapeHtml(T.roleStaff) + "</option>" +
+              '<option value="owner"' + (u.role === "owner" ? " selected" : "") + ">" + escapeHtml(T.roleOwner) + "</option>" +
+            "</select>";
+        return rateRowOpen(i, "editing is-staff-edit") +
+          '<span class="edit-email name">' + escapeHtml(u.email) + "</span>" +
+          roleField +
+          '<input class="edit-pin edit-rate" type="text" inputmode="numeric" maxlength="15" placeholder="' + escapeHtml(T.staffPinPh || "") + '" autocomplete="off" aria-label="' + escapeHtml(T.staffPinChange || "PIN") + '">' +
+          editSaveCancel("staff", i) +
+          "</div>";
+      }
+
+      let actions = "";
+      if (canEdit) {
+        actions += '<button type="button" class="icon-btn ghost compact" data-action="edit-staff" data-index="' + i + '">' + ico("pencil") + "<span>" + escapeHtml(T.editBtn) + "</span></button>";
+      }
+      if (!isSa) {
+        actions += '<button type="button" class="danger-ghost icon-btn compact" data-action="remove-staff" data-index="' + i + '">' + ico("trash") + "<span>" + T.muchun + "</span></button>";
+      }
+      if (actions) actions = '<span class="rate-actions">' + actions + "</span>";
+      return rateRowOpen(i) +
+        '<span class="name">' + escapeHtml(u.email) + "</span>" +
+        '<span class="role-pill' + pillClass + '">' + escapeHtml(roleLabel(isSa ? "superadmin" : u.role)) + "</span>" +
+        actions +
+        "</div>";
+    }).join("");
+  }
+
+  function startEditStaff(index) {
+    if (!isOwner()) return;
+    const u = state.staff[index];
+    if (!u) return;
+    const isSa = u.role === "superadmin" || isForeverSuperAdminEmail(u.email);
+    if (isSa && !isSuperAdmin()) {
+      showStaffErr(T.staffProtectSuper);
+      return;
+    }
+    if (state.edit.kind === "staff" && state.edit.index === index) {
+      cancelEdit();
+      return;
+    }
+    cancelEdit(true);
+    state.edit = {
+      kind: "staff",
+      index: index,
+      name: u.email || "",
+      rate: null,
+      rates: {},
+      thicks: [],
+      thickExtras: [],
+      colors: [],
+      colorExtras: [],
+      outs: []
+    };
+    showStaffErr("");
+    renderStaffList();
+    setTimeout(function () {
+      const wrap = $("staff-list");
+      const pin = wrap && wrap.querySelector('.rate-row[data-index="' + index + '"] .edit-pin');
+      if (pin) pin.focus();
+    }, 0);
+  }
+
+  function saveEditedStaff(index) {
+    if (!isOwner()) return;
+    const wrap = $("staff-list");
+    const row = wrap && wrap.querySelector('.rate-row[data-index="' + index + '"]');
+    const u = state.staff[index];
+    if (!row || !u) return;
+    const isSa = u.role === "superadmin" || isForeverSuperAdminEmail(u.email);
+    if (isSa && !isSuperAdmin()) {
+      showStaffErr(T.staffProtectSuper);
+      return;
+    }
+    const pinEl = row.querySelector(".edit-pin");
+    const pin = String(pinEl && pinEl.value || "").trim();
+    if (pinEl) markInvalid(pinEl, !ownerPinOk(pin));
+    if (!ownerPinOk(pin)) {
+      showStaffErr(T.staffBad);
+      return;
+    }
+    if (!isSa) {
+      const roleEl = row.querySelector(".edit-role");
+      u.role = roleEl && roleEl.value === "owner" ? "owner" : "operator";
+    }
+    u.pin = pin;
+    if (String(u.email || "").toLowerCase() === String(state.ownerEmail || "").toLowerCase()) {
+      state.ownerPin = pin;
+      saveSession(state.ownerEmail, state.ownerPin, state.role);
+    }
+    state.edit = { kind: "", index: -1, name: "", rate: null, rates: {}, thicks: [], colors: [], outs: [] };
+    showStaffErr("");
+    renderStaffList();
+    persistOwnerData(["users"], T.staffPinUpdated || T.updatedOk);
   }
 
   function addStaff() {
     if (!isOwner()) return;
+    if (state.edit.kind === "staff") cancelEdit(true);
     const email = String($("new-staff-email") && $("new-staff-email").value || "").trim().toLowerCase();
     const pin = String($("new-staff-pin") && $("new-staff-pin").value || "").trim();
-    const role = $("new-staff-role") && $("new-staff-role").value === "owner" ? "owner" : "operator";
+    let role = "operator";
+    const picked = $("new-staff-role") && $("new-staff-role").value;
+    if (picked === "owner") role = "owner";
     if (!ownerEmailOk(email) || !ownerPinOk(pin)) {
       showStaffErr(T.staffBad);
       return;
     }
     showStaffErr("");
     const existing = state.staff.find((u) => u.email === email);
+    const targetIsSa = (existing && existing.role === "superadmin") || isForeverSuperAdminEmail(email);
+
+    if (targetIsSa) {
+      if (!isSuperAdmin()) {
+        showStaffErr(T.staffProtectSuper);
+        return;
+      }
+      if (existing) existing.pin = pin;
+      else state.staff.push({ email: email, pin: pin, role: "superadmin" });
+      if (email === String(state.ownerEmail || "").toLowerCase()) {
+        state.ownerPin = pin;
+        saveSession(state.ownerEmail, state.ownerPin, state.role);
+      }
+      $("new-staff-email").value = "";
+      $("new-staff-pin").value = "";
+      if ($("new-staff-role")) $("new-staff-role").value = "operator";
+      renderStaffList();
+      persistOwnerData(["users"], T.staffPinUpdated || T.updatedOk);
+      return;
+    }
+
     if (existing) {
       existing.pin = pin;
       existing.role = role;
@@ -4281,30 +5760,56 @@
     }
     $("new-staff-email").value = "";
     $("new-staff-pin").value = "";
+    if ($("new-staff-role")) $("new-staff-role").value = "operator";
     renderStaffList();
-    persistOwnerData(["users"]);
+    persistOwnerData(["users"], existing ? T.updatedOk : T.addedOk);
   }
 
   function removeStaff(index) {
     if (!isOwner()) return;
+    const target = state.staff[index];
+    if (target && (target.role === "superadmin" || isForeverSuperAdminEmail(target.email))) {
+      showStaffErr(T.staffProtectSuper);
+      return;
+    }
     const next = state.staff.filter((_, i) => i !== index);
-    if (!next.some((u) => u.role === "owner")) {
+    if (!next.some((u) => u.role === "owner" || u.role === "superadmin")) {
       showStaffErr(T.staffNeedOwner);
       return;
     }
     showStaffErr("");
+    if (state.edit.kind === "staff") {
+      state.edit = { kind: "", index: -1, name: "", rate: null, rates: {}, thicks: [], colors: [], outs: [] };
+    }
     state.staff = next;
     renderStaffList();
-    persistOwnerData(["users"]);
+    persistOwnerData(["users"], T.deletedOk);
   }
 
   function staffForSave() {
-    const list = (state.staff || []).map((u) => ({
-      email: String(u.email || "").trim().toLowerCase(),
-      pin: String(u.pin || "").trim(),
-      role: u.role === "owner" ? "owner" : "operator"
-    }));
-    if (state.ownerEmail && state.ownerPin) {
+    // Super Admin may include SA rows when a new PIN is set. Owners never send SA.
+    const list = (state.staff || [])
+      .filter((u) => {
+        const email = String(u.email || "").trim().toLowerCase();
+        if (!email) return false;
+        const isSa = u.role === "superadmin" || isForeverSuperAdminEmail(email);
+        if (isSa) {
+          return isSuperAdmin() && /^\d{4,15}$/.test(String(u.pin || "").trim());
+        }
+        return true;
+      })
+      .map((u) => {
+        const email = String(u.email || "").trim().toLowerCase();
+        const isSa = u.role === "superadmin" || isForeverSuperAdminEmail(email);
+        const row = {
+          email: email,
+          role: isSa ? "superadmin" : (u.role === "owner" ? "owner" : "operator")
+        };
+        const pin = String(u.pin || "").trim();
+        if (/^\d{4,15}$/.test(pin)) row.pin = pin;
+        return row;
+      });
+    if (state.ownerEmail && state.ownerPin && state.role !== "superadmin") {
       const found = list.find((u) => u.email === state.ownerEmail);
       if (!found) list.push({ email: state.ownerEmail, pin: state.ownerPin, role: "owner" });
       else if (!found.pin) found.pin = state.ownerPin;
@@ -4317,8 +5822,8 @@
   var persistInFlight = false;
   var persistAgain = false;
 
-  function persistOwnerData(sections) {
-    if (!isOwner() || !state.ownerPin || !state.ownerEmail || !sheetApiUrl()) {
+  function persistOwnerData(sections, okMsg) {
+    if (!isOwner() || !state.ownerPin || !state.ownerEmail || !apiReady()) {
       flashNote(T.ownerNeedApi || T.ownerSaveFail, true);
       return;
     }
@@ -4334,6 +5839,7 @@
         if (key) persistPending[key] = true;
       });
     }
+    if (okMsg) persistOkMsg = okMsg;
     flashNote(T.savingBtn || "সংরক্ষণ হচ্ছে...", false);
     setSaveButtonsBusy(true);
     setCatalogSyncing(true);
@@ -4343,7 +5849,7 @@
 
   function flushPersistOwnerData() {
     persistTimer = null;
-    if (!isOwner() || !state.ownerPin || !state.ownerEmail || !sheetApiUrl()) {
+    if (!isOwner() || !state.ownerPin || !state.ownerEmail || !apiReady()) {
       persistPending = {};
       setSaveButtonsBusy(false);
       setCatalogSyncing(false);
@@ -4376,15 +5882,16 @@
       users: staffForSave(),
       shop: state.shop
     };
-    sheetRequest(payload).then((data) => {
+    apiRequest(payload).then((data) => {
       if (!data || !data.ok) throw new Error("save");
       if (isOwner() && Array.isArray(data.users)) {
         state.staff = data.users;
         renderStaffList();
       }
-      saveCatalogSoftCache();
-      flashSaved();
+      flashSaved(persistOkMsg || T.savedOk);
+      persistOkMsg = "";
     }).catch(() => {
+      persistOkMsg = "";
       flashNote(T.ownerSaveFail, true);
     }).finally(() => {
       persistInFlight = false;
@@ -4399,11 +5906,21 @@
   }
 
   function isStaff() {
-    return state.role === "owner" || state.role === "operator";
+    return state.role === "superadmin" || state.role === "owner" || state.role === "operator";
+  }
+
+  const FOREVER_SA_EMAIL = "sumanengbd@gmail.com";
+
+  function isForeverSuperAdminEmail(email) {
+    return String(email || "").trim().toLowerCase() === FOREVER_SA_EMAIL;
+  }
+
+  function isSuperAdmin() {
+    return state.role === "superadmin" || isForeverSuperAdminEmail(state.ownerEmail);
   }
 
   function isOwner() {
-    return state.role === "owner";
+    return state.role === "owner" || state.role === "superadmin";
   }
 
   function sessionKey(email) {
@@ -4428,20 +5945,28 @@
       for (let i = 0; i < bin.length; i++) {
         out += String.fromCharCode(bin.charCodeAt(i) ^ key.charCodeAt(i % key.length) ^ ((i + 11) & 255));
       }
-      return /^\d{4,8}$/.test(out) ? out : "";
+      return /^\d{4,15}$/.test(out) ? out : "";
     } catch (_) {
       return "";
     }
   }
 
+  function normalizeRole(role) {
+    if (role === "operator") return "operator";
+    if (role === "superadmin") return "superadmin";
+    if (role === "owner") return "owner";
+    return "";
+  }
+
   function saveSession(email, pin, role) {
     const e = String(email || "").toLowerCase();
     const p = String(pin || "");
-    if (!e || !p) return;
+    const r = normalizeRole(role);
+    if (!e || !p || !r) return;
     storeSet(KEYS.session, {
       v: 2,
       e: e,
-      r: role === "operator" ? "operator" : "owner",
+      r: r,
       k: encodePin(p, e)
     });
   }
@@ -4451,12 +5976,15 @@
     if (raw.v === 2 && raw.e && raw.k) {
       const pin = decodePin(raw.k, raw.e);
       if (!pin) return null;
-      return { email: String(raw.e).toLowerCase(), pin: pin, role: raw.r === "operator" ? "operator" : "owner" };
+      const email = String(raw.e).toLowerCase();
+      const role = normalizeRole(raw.r);
+      if (!role) return null;
+      return { email: email, pin: pin, role: role };
     }
     if (raw.email && raw.pin) {
       const email = String(raw.email).toLowerCase();
       const pin = String(raw.pin);
-      const role = raw.role === "operator" ? "operator" : "owner";
+      const role = normalizeRole(raw.role) || "owner";
       if (!ownerPinOk(pin)) return null;
       saveSession(email, pin, role);
       return { email: email, pin: pin, role: role };
@@ -4468,7 +5996,7 @@
     if (!saved || !saved.email || !saved.pin) return false;
     state.ownerEmail = saved.email;
     state.ownerPin = saved.pin;
-    state.role = saved.role === "operator" ? "operator" : "owner";
+    state.role = normalizeRole(saved.role) || "owner";
     state.ownerUnlocked = true;
     saveSession(saved.email, saved.pin, state.role);
     updateRoleUi();
@@ -4487,11 +6015,13 @@
   function applyLoginSuccess(data, email, pin, nextTab) {
     state.ownerEmail = String(email || "").toLowerCase();
     state.ownerPin = String(pin || "");
-    state.role = data.role === "operator" ? "operator" : "owner";
+    state.role = normalizeRole(data && data.role) || "owner";
+    if (isForeverSuperAdminEmail(state.ownerEmail)) state.role = "superadmin";
     saveSession(state.ownerEmail, state.ownerPin, state.role);
     clearLoginFields();
     applyOwnerData(data);
     setOwnerUnlocked(true);
+    document.documentElement.classList.remove("gate-open");
     $("owner-gate").classList.add("hidden");
     var tab = nextTab || state.pendingOwnerTab || "rates";
     if (tab === "rates" && !isStaff()) tab = "calc";
@@ -4499,11 +6029,9 @@
   }
 
   function restoreSession(saved, nextTab) {
-    if (!saved || !saved.email || !saved.pin || !sheetApiUrl()) return Promise.resolve(false);
-    const hasCache = !!(state.companies.length || state.aluminium.length);
-    if (hasCache) setCatalogSyncing(true);
-    else showLoader(true, T.working);
-    return sheetRequest({ action: "unlock", email: saved.email, pin: saved.pin }).then((data) => {
+    if (!saved || !saved.email || !saved.pin || !apiReady()) return Promise.resolve(false);
+    showLoader(true, T.working);
+    return apiRequest({ action: "unlock", email: saved.email, pin: saved.pin }).then((data) => {
       if (!data || !data.ok) {
         const authFail = data && (data.error === "locked" || data.error === "needemail" || data.error === "required" || data.error === "pin" || data.ok === false);
         if (authFail) {
@@ -4515,8 +6043,7 @@
       applyLoginSuccess(data, saved.email, saved.pin, nextTab);
       return true;
     }).catch(() => false).finally(() => {
-      if (hasCache) setCatalogSyncing(false);
-      else showLoader(false);
+      showLoader(false);
     });
   }
 
@@ -4686,7 +6213,7 @@
       closeUserMenu();
       return;
     }
-    const role = isOwner() ? T.roleOwner : T.roleStaff;
+    const role = isSuperAdmin() ? T.roleSuperAdmin : (isOwner() ? T.roleOwner : T.roleStaff);
     const mail = String(state.ownerEmail || "").trim().toLowerCase();
     const fallback = emailAvatarUrl(mail);
     const photo = gravatarAvatarUrl(mail, 128);
@@ -4711,15 +6238,30 @@
     document.documentElement.classList.toggle("has-session", staff);
     document.documentElement.classList.toggle("is-staff", staff);
     document.documentElement.classList.toggle("is-owner", isOwner());
+    document.documentElement.classList.toggle("is-superadmin", isSuperAdmin());
     document.body.classList.toggle("is-staff", staff);
     if ($("btn-staff-login")) $("btn-staff-login").classList.toggle("hidden", isStaff());
     updateSessionChip();
     if ($("nav-cutting")) $("nav-cutting").classList.remove("tab-hidden");
     if ($("nav-rates")) $("nav-rates").classList.remove("tab-hidden");
     if ($("admin-tab-staff")) $("admin-tab-staff").classList.toggle("hidden", !isOwner());
+    if ($("admin-tab-db")) $("admin-tab-db").classList.toggle("hidden", !isSuperAdmin());
+    document.querySelectorAll(".superadmin-only").forEach(function (el) {
+      el.classList.toggle("hidden", !isSuperAdmin());
+    });
+    document.querySelectorAll(".owner-only").forEach(function (el) {
+      el.classList.toggle("hidden", !isOwner());
+    });
+    if ($("db-sql-card")) $("db-sql-card").classList.toggle("hidden", !isSuperAdmin());
+    if ($("opt-staff-role")) $("opt-staff-role").textContent = T.roleStaff;
+    if ($("opt-owner-role")) $("opt-owner-role").textContent = T.roleOwner;
     if (isStaff() && !isOwner()) {
       if (state.adminPanel !== "home" && state.adminPanel !== "quotes") switchAdminPanel("home");
-    } else if (!isOwner() && state.adminPanel === "staff") switchAdminPanel("home");
+    } else if (!isOwner() && state.adminPanel === "staff") {
+      switchAdminPanel("home");
+    } else if (!isSuperAdmin() && state.adminPanel === "db") {
+      switchAdminPanel("home");
+    }
     updateQuoteCard();
     renderQuotes();
   }
@@ -4744,20 +6286,18 @@
     if ($("alu-rates-hint")) $("alu-rates-hint").textContent = T.aluRatesHint;
     setHeading("charges-title", T.chargesTitle);
     if ($("charges-hint")) $("charges-hint").textContent = T.chargesHint;
+    if ($("charges-badge")) $("charges-badge").textContent = T.chargesBadge;
     if ($("charge-net-label")) $("charge-net-label").textContent = T.chargeNet;
     if ($("charge-extra-label")) $("charge-extra-label").textContent = T.chargeExtra;
     setAddLabels();
     if ($("btn-save-charges-label")) $("btn-save-charges-label").textContent = T.saveBtn;
     if ($("new-alu-name")) $("new-alu-name").placeholder = T.aluNamePh;
     if ($("new-alu-thick")) $("new-alu-thick").placeholder = T.aluThickPh;
-    if ($("new-alu-rate")) $("new-alu-rate").placeholder = T.aluRatePh;
     if ($("new-company-thick")) $("new-company-thick").placeholder = T.glassThickPh;
     if ($("company-rates-hint")) $("company-rates-hint").textContent = T.companyRatesHint;
     var multi = " (" + "\u098f\u0995\u09be\u09a7\u09bf\u0995" + ")";
     if ($("company-name-label")) $("company-name-label").textContent = T.aluNamePh;
-    if ($("company-rate-label")) $("company-rate-label").textContent = T.aluRatePh;
     if ($("alu-name-label")) $("alu-name-label").textContent = T.aluNamePh;
-    if ($("alu-rate-label")) $("alu-rate-label").textContent = T.aluRatePh;
     if ($("lock-name-label")) $("lock-name-label").textContent = T.lock;
     if ($("lock-style-label")) $("lock-style-label").textContent = T.dhoron;
     if ($("lock-rate-label")) $("lock-rate-label").textContent = T.aluRatePh;
@@ -4776,6 +6316,7 @@
     if ($("admin-tab-charges")) $("admin-tab-charges").textContent = T.tabCharges;
     if ($("admin-tab-staff")) $("admin-tab-staff").textContent = T.tabStaff;
     if ($("admin-tab-cut")) $("admin-tab-cut").textContent = T.tabCut;
+    if ($("admin-tab-db")) $("admin-tab-db").textContent = T.tabDb;
     if ($("admin-tab-quotes")) $("admin-tab-quotes").textContent = T.tabQuotes;
     if ($("staff-email-label")) $("staff-email-label").textContent = T.staffEmailPh;
     if ($("staff-pin-label")) $("staff-pin-label").textContent = T.ownerPinLabel;
@@ -4787,6 +6328,22 @@
     if ($("opt-staff-role")) $("opt-staff-role").textContent = T.roleStaff;
     if ($("opt-owner-role")) $("opt-owner-role").textContent = T.roleOwner;
     if ($("btn-add-staff-label")) $("btn-add-staff-label").textContent = T.addBtn;
+    setHeading("db-title", T.dbTitle);
+    if ($("db-hint")) $("db-hint").textContent = T.dbHint;
+    if ($("db-url-label")) $("db-url-label").textContent = T.dbUrlLabel;
+    if ($("db-key-label")) $("db-key-label").textContent = T.dbKeyLabel;
+    if ($("btn-db-connect-label")) $("btn-db-connect-label").textContent = T.dbConnect;
+    if ($("btn-db-test-label")) $("btn-db-test-label").textContent = T.dbTest;
+    if ($("btn-db-defaults-label")) $("btn-db-defaults-label").textContent = T.dbDefaults;
+    if ($("btn-db-reset-label")) $("btn-db-reset-label").textContent = T.dbReset;
+    if ($("db-sql-title")) $("db-sql-title").textContent = T.dbSqlTitle;
+    if ($("db-sql-hint")) $("db-sql-hint").textContent = T.dbSqlHint;
+    if ($("btn-db-copy-schema-label")) $("btn-db-copy-schema-label").textContent = T.dbCopySchema;
+    if ($("btn-db-download-schema-label")) $("btn-db-download-schema-label").textContent = T.dbDownloadSchema;
+    if ($("btn-db-copy-seed-label")) $("btn-db-copy-seed-label").textContent = T.dbCopySeed;
+    if ($("btn-db-open-sql-label")) $("btn-db-open-sql-label").textContent = T.dbOpenSql;
+    if ($("btn-owner-db-label")) $("btn-owner-db-label").textContent = T.dbGateBtn;
+    if (state.adminPanel === "db") fillDbSettings();
     renderHome();
   }
 
@@ -4838,11 +6395,11 @@
 
   function quoteLinesToItems(q) {
     return (q && q.lines || []).map((it) => {
-    const parsed = quoteLineSize(it);
-    const heightFt = parsed.heightFt;
-    const widthFt = parsed.widthFt;
+      const parsed = quoteLineSize(it);
+      const heightFt = parsed.heightFt;
+      const widthFt = parsed.widthFt;
       const qty = Math.max(1, Number(it.qty) || 1);
-      return {
+      const item = {
         heightFt: heightFt,
         widthFt: widthFt,
         qty: qty,
@@ -4868,7 +6425,33 @@
         winType: typeIdFromQuote(it),
         room: it.room || ""
       };
+      const company = findCompanyForItem(item);
+      const alu = findAluForItem(item);
+      const lock = item.lockName ? state.locks.find((l) => l.name === item.lockName) : null;
+      Object.assign(item, priceParts(item, company, alu, lock));
+      if (!(item.subtotal > 0) && Number(it.total) > 0) item.subtotal = Number(it.total);
+      return item;
     }).filter((it) => it.heightFt > 0 && it.widthFt > 0);
+  }
+
+  function openQuoteInCalc(id) {
+    const q = state.quotes.find((x) => x.id === id);
+    if (!q) return;
+    const items = quoteLinesToItems(q);
+    if (!items.length) {
+      flashNote(T.quoteNoCut, true);
+      return;
+    }
+    state.items = items;
+    storeSet(KEYS.items, state.items);
+    if ($("quote-name")) $("quote-name").value = q.name || "";
+    if ($("quote-phone")) $("quote-phone").value = q.phone || "";
+    state.printQuoteMeta = { id: q.id, name: q.name, phone: q.phone };
+    renderItems();
+    updateSummary();
+    updateQuoteCard();
+    switchTab("calc");
+    flashNote(T.quoteOpenCalc + " · " + (q.id || ""), false);
   }
 
   function toggleQuote(id) {
@@ -4886,6 +6469,31 @@
     }
     state.cutQuote = { id: q.id, name: q.name, phone: q.phone, items: items };
     switchTab("cutting");
+  }
+
+  function printPublicQuote() {
+    const q = state.publicQuote;
+    if (!q) return;
+    const items = quoteLinesToItems(q);
+    const prevItems = state.items;
+    const prevMeta = state.printQuoteMeta;
+    if (items.length) {
+      state.items = items;
+      state.printQuoteMeta = { id: q.id, name: q.name, phone: q.phone };
+      renderItems();
+      updateSummary();
+    }
+    if ($("quote-name")) $("quote-name").value = q.name || "";
+    if ($("quote-phone")) $("quote-phone").value = q.phone || "";
+    preparePrint();
+    window.print();
+    setTimeout(function () {
+      state.items = prevItems;
+      state.printQuoteMeta = prevMeta;
+      renderItems();
+      updateSummary();
+      clearPrintMode();
+    }, 400);
   }
 
   function clearQuoteCutting() {
@@ -4947,13 +6555,34 @@
           '</span></div><div class="quote-stats"><span>' + escapeHtml(formatQuoteTime(row.time)) + "</span><span>" +
           (row.lines && row.lines.length ? row.lines.length : row.items) + " \u00b7 " + fmt(quoteSqft(row)) + T.sqLabel +
           (quoteTotal(row) ? " \u00b7 " + money(quoteTotal(row)) : "") +
-          '</span></div><span class="quote-status">' + escapeHtml(statusLabel(row.status)) + "</span></div>" +
+          '</span></div><span class="quote-status">' + escapeHtml(statusLabel(row.status)) + "</span>" +
+          '<div class="quote-share-mini" role="group" aria-label="' + escapeHtml(T.quoteShare) + '">' +
+          '<button type="button" class="icon-btn ghost compact quote-share-btn" data-action="quote-share-copy" data-id="' +
+          escapeHtml(row.id) + '" title="' + escapeHtml(T.quoteLinkCopy) + '">' + ico("link") + "</button>" +
+          '<button type="button" class="icon-btn ghost compact quote-share-btn" data-action="quote-share-wa" data-id="' +
+          escapeHtml(row.id) + '" title="' + escapeHtml(T.quoteShareWa) + '">' + ico("wa") + "</button>" +
+          '<button type="button" class="icon-btn ghost compact quote-share-btn" data-action="quote-share" data-id="' +
+          escapeHtml(row.id) + '" title="' + escapeHtml(T.quoteShare) + '">' + ico("share") + "</button>" +
+          "</div></div>" +
           (open ? '<div class="quote-detail">' + (lines || '<div class="empty-note">' + T.quotesEmpty + "</div>") +
             '<div class="quote-tools">' +
             '<label>' + T.dhoron + ' <select data-action="quote-status" data-id="' + escapeHtml(row.id) + '">' + statusOptions(row.status) + "</select></label>" +
             '<label>' + T.assignStaff + ' <select data-action="quote-assign" data-id="' + escapeHtml(row.id) + '">' + staffOptions(row.assigned) + "</select></label>" +
             '<button type="button" class="icon-btn secondary quote-cut-btn" data-action="quote-cut" data-id="' +
-            escapeHtml(row.id) + '">' + ico("cut") + "<span>" + T.cutInfo + "</span></button></div></div>" : "") +
+            escapeHtml(row.id) + '">' + ico("cut") + "<span>" + T.cutInfo + "</span></button>" +
+            '<button type="button" class="icon-btn secondary" data-action="quote-open-calc" data-id="' +
+            escapeHtml(row.id) + '"><span>' + T.quoteOpenCalc + "</span></button>" +
+            '<button type="button" class="icon-btn secondary" data-action="quote-share-copy" data-id="' +
+            escapeHtml(row.id) + '">' + ico("link") + "<span>" + T.quoteLinkCopy + "</span></button>" +
+            '<button type="button" class="icon-btn secondary" data-action="quote-share-wa" data-id="' +
+            escapeHtml(row.id) + '">' + ico("wa") + "<span>" + T.quoteShareWa + "</span></button>" +
+            '<button type="button" class="icon-btn primary" data-action="quote-share" data-id="' +
+            escapeHtml(row.id) + '">' + ico("share") + "<span>" + T.quoteShare + "</span></button>" +
+            (isOwner()
+              ? '<button type="button" class="danger-ghost icon-btn" data-action="quote-delete" data-id="' +
+                escapeHtml(row.id) + '">' + ico("trash") + "<span>" + T.quoteDelete + "</span></button>"
+              : "") +
+            "</div></div>" : "") +
           "</div>";
       }).join("") + "</div>";
     }).join("");
@@ -4990,7 +6619,7 @@
       err.style.display = "block";
       return;
     }
-    if (!sheetApiUrl()) {
+    if (!apiReady()) {
       err.textContent = T.ownerNeedApi;
       err.style.display = "block";
       return;
@@ -4999,7 +6628,7 @@
     var btn = $("btn-send-quote");
     if (btn) btn.disabled = true;
     showLoader(true, T.working);
-    sheetRequest({
+    apiRequest({
       action: "quote",
       name: name,
       phone: phone.replace(/\s+/g, ""),
@@ -5023,6 +6652,8 @@
           lock: i.lockName || "",
           net: i.hasNet,
           sqft: i.totalSqft,
+          subtotal: i.subtotal,
+          total: i.subtotal,
           room: i.room || ""
         };
       })
@@ -5037,33 +6668,46 @@
         err.style.display = "block";
         return;
       }
-      okEl.textContent = T.quoteOk + (data.id ? " (" + data.id + ")" : "");
+      okEl.textContent = T.quoteOk + (data.id ? " — " + T.quoteInvoice + " " + data.id : "");
       okEl.classList.remove("hidden");
       showQuoteShare(data.id);
-    }).catch(function () {
+    }).catch(function (e) {
       if (btn) btn.disabled = false;
       showLoader(false);
-      err.textContent = T.quoteFail;
+      err.textContent = T.quoteFailDetail + (e && e.message ? ": " + e.message : "");
       err.style.display = "block";
     });
+  }
+
+  function setPinVisible(show) {
+    const pin = $("owner-pin");
+    const btn = $("btn-pin-toggle");
+    if (!pin || !btn) return;
+    pin.type = show ? "text" : "password";
+    btn.setAttribute("aria-pressed", show ? "true" : "false");
+    btn.title = show ? T.ownerPinHide : T.ownerPinShow;
+    btn.setAttribute("aria-label", show ? T.ownerPinHide : T.ownerPinShow);
+    const eye = btn.querySelector(".pin-eye");
+    const eyeOff = btn.querySelector(".pin-eye-off");
+    if (eye) eye.classList.toggle("hidden", show);
+    if (eyeOff) eyeOff.classList.toggle("hidden", !show);
   }
 
   function showOwnerGate(nextTab) {
     state.pendingOwnerTab = nextTab;
     $("owner-gate-title").textContent = T.staffLogin;
-    $("owner-gate-hint").textContent = sheetApiUrl() ? T.ownerUnlockHint : T.ownerNeedApi;
+    $("owner-gate-hint").textContent = apiReady() ? T.ownerUnlockHint : T.ownerNeedApi;
     $("owner-email-label").textContent = T.ownerEmailLabel;
     $("owner-pin-label").textContent = T.ownerPinLabel;
     $("btn-owner-ok").textContent = T.ownerOpen;
     if ($("btn-owner-cancel")) $("btn-owner-cancel").textContent = T.cancelBtn;
     if ($("owner-pin2-wrap")) $("owner-pin2-wrap").classList.add("hidden");
     $("owner-gate-err").style.display = "none";
-    $("owner-email").value = DEFAULT_LOGIN.email;
-    $("owner-pin").value = DEFAULT_LOGIN.pin;
+    $("owner-email").value = "";
+    $("owner-pin").value = "";
+    setPinVisible(false);
+    document.documentElement.classList.add("gate-open");
     $("owner-gate").classList.remove("hidden");
-    $("tab-calc").classList.add("hidden");
-    $("tab-cutting").classList.add("hidden");
-    $("tab-rates").classList.add("hidden");
     document.querySelectorAll(".tab-btn").forEach((btn) => {
       btn.classList.toggle("active", btn.dataset.tab === nextTab);
     });
@@ -5080,14 +6724,14 @@
   }
 
   function ownerPinOk(pin) {
-    return /^\d{4,8}$/.test(String(pin || "").trim());
+    return /^\d{4,15}$/.test(String(pin || "").trim());
   }
 
   function submitOwnerPin() {
     const email = $("owner-email").value.trim();
     const pin = $("owner-pin").value.trim();
     const err = $("owner-gate-err");
-    if (!sheetApiUrl()) {
+    if (!apiReady()) {
       err.textContent = T.ownerNeedApi;
       err.style.display = "block";
       return;
@@ -5114,7 +6758,7 @@
     }
     $("btn-owner-ok").disabled = true;
     showLoader(true, T.working);
-    sheetRequest({ action: "unlock", email: email, pin: pin }).then((data) => {
+    apiRequest({ action: "unlock", email: email, pin: pin }).then((data) => {
       $("btn-owner-ok").disabled = false;
       showLoader(false);
       if (!data || !data.ok) {
@@ -5127,10 +6771,16 @@
         return;
       }
       applyLoginSuccess(data, email, pin);
-    }).catch(() => {
+    }).catch((e) => {
       $("btn-owner-ok").disabled = false;
       showLoader(false);
-      err.textContent = T.ownerNetErr;
+      var msg = String((e && e.message) || e || "");
+      var code = String((e && e.code) || "");
+      if (code === "PGRST202" || /Could not find the function|schema cache/i.test(msg)) {
+        err.textContent = T.ownerNeedSchema;
+      } else {
+        err.textContent = T.ownerNetErr;
+      }
       err.style.display = "block";
     });
   }
@@ -5142,14 +6792,13 @@
     state.locks = [];
     state.aluminium = [];
     state.glassThicks = [];
-    state.charges = { net: 0, extra: 0 };
+    state.charges = { net: 0, extra: 0, seasonPct: 0 };
     state.cutParams = { ...DEFAULT_CUT };
     state.staff = [];
-    clearCatalogCache();
     fillCutInputs();
     renderRateList("company-list", state.companies, "company");
     renderRateList("lock-list", state.locks, "lock");
-    refreshSheetSelects();
+    refreshCatalogSelects();
     loadCatalog();
     switchTab("calc");
   }
@@ -5166,6 +6815,7 @@
       return;
     }
     persistActiveTab(tab);
+    document.documentElement.classList.remove("gate-open");
     $("owner-gate").classList.add("hidden");
     document.querySelectorAll(".tab-btn").forEach((btn) => {
       btn.classList.toggle("active", btn.dataset.tab === tab);
@@ -5215,7 +6865,7 @@
     if ($("print-note")) {
       if (cutting) {
         const bits = [shop.phone, shop.address].filter(Boolean);
-        $("print-note").textContent = bits.length ? bits.join(" · ") : (T.printNote || "");
+        $("print-note").textContent = bits.join(" · ");
       } else {
         $("print-note").textContent = T.printNote;
       }
@@ -5230,9 +6880,11 @@
     if (cust) {
       if (name || phone) {
         cust.classList.remove("hidden");
+        const inv = (state.printQuoteMeta && state.printQuoteMeta.id) || (state.cutQuote && state.cutQuote.id) || "";
         cust.innerHTML = "<span>" + T.printCustomer + "</span>" +
           (name ? "<strong>" + escapeHtml(name) + "</strong>" : "") +
-          (phone ? "<span>" + escapeHtml(phone) + "</span>" : "");
+          (phone ? "<span>" + escapeHtml(phone) + "</span>" : "") +
+          (inv ? "<span>" + T.quoteInvoice + ": " + escapeHtml(inv) + "</span>" : "");
       } else {
         cust.classList.add("hidden");
         cust.innerHTML = "";
@@ -5240,15 +6892,34 @@
     }
   }
 
+  function setPrintPageStyle(cutting) {
+    var el = $("mtg-print-page-style");
+    if (!el) {
+      el = document.createElement("style");
+      el.id = "mtg-print-page-style";
+      document.head.appendChild(el);
+    }
+    /* Footer sits in bottom margin zone; keep content clear of it. */
+    el.textContent = cutting
+      ? "@page{size:148mm 210mm;margin:5mm;}"
+      : "@page{size:A4 portrait;margin:8mm 10mm 18mm;}";
+  }
+
   function preparePrint() {
     const cutting = $("tab-cutting") && !$("tab-cutting").classList.contains("hidden");
     document.body.classList.toggle("print-cutting", cutting);
     document.body.classList.toggle("print-quote", !cutting);
+    setPrintPageStyle(cutting);
     fillPrintHeader(cutting);
+    if (cutting) prepareCutBooklet();
+    else clearCutBooklet();
   }
 
   function clearPrintMode() {
     document.body.classList.remove("print-cutting", "print-quote");
+    clearCutBooklet();
+    var el = $("mtg-print-page-style");
+    if (el && el.parentNode) el.parentNode.removeChild(el);
   }
 
   function setNet(on) {
@@ -5294,7 +6965,7 @@
       });
     }
 
-    ["in-h-ft", "in-h-in", "in-h-suta", "in-w-ft", "in-w-in", "in-w-suta", "in-qty"].forEach((id) => {
+    ["in-h", "in-w", "in-qty"].forEach((id) => {
       if ($(id)) $(id).addEventListener("input", () => {
         syncCalcDetails();
         renderLivePreview(true);
@@ -5303,16 +6974,11 @@
 
     $("btn-add").addEventListener("click", addItem);
     $("btn-clear").addEventListener("click", clearAll);
-    if ($("home-stats")) {
-      $("home-stats").addEventListener("click", function (e) {
+    if ($("btn-calc-reset")) $("btn-calc-reset").addEventListener("click", clearAll);
+    if ($("home-board")) {
+      $("home-board").addEventListener("click", function (e) {
         const btn = e.target.closest("[data-goto]");
-        if (btn) goHomeTarget(btn.dataset.goto);
-      });
-    }
-    if ($("home-actions")) {
-      $("home-actions").addEventListener("click", function (e) {
-        const btn = e.target.closest("[data-goto]");
-        if (btn) goHomeTarget(btn.dataset.goto);
+        if (btn) goHomeTarget(btn.dataset.goto, btn.dataset.quoteId || "");
       });
     }
     if ($("btn-save-shop")) $("btn-save-shop").addEventListener("click", saveShopFromForm);
@@ -5367,6 +7033,20 @@
     if ($("btn-add-staff")) $("btn-add-staff").addEventListener("click", addStaff);
     $("btn-save-charges").addEventListener("click", saveCharges);
     $("btn-save-cut").addEventListener("click", saveCutParams);
+    if ($("btn-db-connect")) $("btn-db-connect").addEventListener("click", connectDbFromForm);
+    if ($("btn-db-test")) $("btn-db-test").addEventListener("click", testDbConnection);
+    if ($("btn-db-defaults")) $("btn-db-defaults").addEventListener("click", useDefaultDb);
+    if ($("btn-db-reset")) $("btn-db-reset").addEventListener("click", resetDbConfig);
+    if ($("btn-db-copy-schema")) $("btn-db-copy-schema").addEventListener("click", function () {
+      copySqlKind("schema");
+    });
+    if ($("btn-db-download-schema")) $("btn-db-download-schema").addEventListener("click", function () {
+      downloadSqlKind("schema");
+    });
+    if ($("btn-db-copy-seed")) $("btn-db-copy-seed").addEventListener("click", function () {
+      copySqlKind("defaults");
+    });
+    if ($("btn-owner-db")) $("btn-owner-db").addEventListener("click", openDbSettingsFromGate);
     if ($("btn-cut-calc")) $("btn-cut-calc").addEventListener("click", renderCutCalcResult);
     if ($("btn-cut-add")) $("btn-cut-add").addEventListener("click", addCutListItem);
     if ($("btn-cut-reset")) $("btn-cut-reset").addEventListener("click", resetCutCalc);
@@ -5382,7 +7062,7 @@
         if (card) setCutType(card.dataset.cutType);
       });
     }
-    ["cut-h-ft", "cut-h-in", "cut-h-suta", "cut-w-ft", "cut-w-in", "cut-w-suta", "cut-qty"].forEach(function (id) {
+    ["cut-h", "cut-w", "cut-qty"].forEach(function (id) {
       if (!$(id)) return;
       $(id).addEventListener("input", function () { renderCutPreview(true); });
       $(id).addEventListener("keydown", function (e) {
@@ -5395,8 +7075,23 @@
         if (e.target.closest("select") || e.target.closest("a")) return;
         const btn = e.target.closest("[data-action]");
         if (!btn) return;
-        if (btn.dataset.action === "toggle-quote") toggleQuote(btn.dataset.id);
-        if (btn.dataset.action === "quote-cut") openQuoteCutting(btn.dataset.id);
+        const act = btn.dataset.action;
+        if (act === "quote-share-copy" || act === "quote-share-wa" || act === "quote-share") {
+          e.preventDefault();
+          e.stopPropagation();
+          if (act === "quote-share-copy") copyQuoteById(btn.dataset.id);
+          if (act === "quote-share-wa") shareQuoteWhatsApp(btn.dataset.id);
+          if (act === "quote-share") shareQuoteNative(btn.dataset.id);
+          return;
+        }
+        if (act === "toggle-quote") toggleQuote(btn.dataset.id);
+        if (act === "quote-cut") openQuoteCutting(btn.dataset.id);
+        if (act === "quote-open-calc") openQuoteInCalc(btn.dataset.id);
+        if (act === "quote-delete") {
+          e.preventDefault();
+          e.stopPropagation();
+          deleteQuote(btn.dataset.id);
+        }
       });
       $("quotes-list").addEventListener("change", (e) => {
         const el = e.target.closest("select[data-action]");
@@ -5412,6 +7107,13 @@
       });
     }
     if ($("btn-clear-cut-quote")) $("btn-clear-cut-quote").addEventListener("click", clearQuoteCutting);
+    if ($("cutting-list-wrap")) {
+      $("cutting-list-wrap").addEventListener("click", function (e) {
+        const btn = e.target.closest("[data-action='remove-cut-entry']");
+        if (!btn) return;
+        removeCuttingEntry(btn.dataset.src, btn.dataset.index);
+      });
+    }
     $("item-list").addEventListener("click", (e) => {
       const btn = e.target.closest("[data-action]");
       if (!btn) return;
@@ -5422,12 +7124,6 @@
     });
     if ($("btn-cancel-item")) $("btn-cancel-item").addEventListener("click", function () { clearInputs(); });
     $("company-list").addEventListener("click", (e) => {
-      const stock = e.target.closest("[data-action='toggle-stock']");
-      if (stock) {
-        e.preventDefault();
-        toggleGlassStock(stock.dataset.name, stock.dataset.mm);
-        return;
-      }
       handleRateListClick("company", e);
     });
     $("lock-list").addEventListener("click", (e) => handleRateListClick("lock", e));
@@ -5443,8 +7139,24 @@
     });
     if ($("staff-list")) {
       $("staff-list").addEventListener("click", (e) => {
-        const btn = e.target.closest("[data-action='remove-staff']");
-        if (btn) removeStaff(Number(btn.dataset.index));
+        const btn = e.target.closest("[data-action]");
+        if (!btn) return;
+        const action = btn.dataset.action;
+        const index = Number(btn.dataset.index);
+        if (action === "edit-staff") startEditStaff(index);
+        else if (action === "save-staff") saveEditedStaff(index);
+        else if (action === "cancel-edit") cancelEdit();
+        else if (action === "remove-staff") {
+          if (state.edit.kind === "staff") state.edit = { kind: "", index: -1, name: "", rate: null, rates: {}, thicks: [], colors: [], outs: [] };
+          removeStaff(index);
+        }
+      });
+      $("staff-list").addEventListener("keydown", (e) => {
+        if (e.key !== "Enter") return;
+        const row = e.target.closest(".rate-row.editing.is-staff-edit");
+        if (!row) return;
+        e.preventDefault();
+        saveEditedStaff(Number(row.dataset.index));
       });
     }
     bindSortable("company-list", () => state.companies, () => {
@@ -5461,7 +7173,7 @@
     });
     bindSortable("alu-list", () => state.aluminium, () => {
       cancelEdit(true);
-      refreshSheetSelects();
+      refreshCatalogSelects();
       persistOwnerData(["aluminium"]);
     }, true);
     bindSortable("staff-list", () => state.staff, () => {
@@ -5490,6 +7202,23 @@
     $("owner-pin").addEventListener("keydown", (e) => {
       if (e.key === "Enter") submitOwnerPin();
     });
+    if ($("btn-pin-toggle")) {
+      $("btn-pin-toggle").addEventListener("click", function () {
+        setPinVisible($("owner-pin").type === "password");
+      });
+    }
+    document.addEventListener("keydown", function (e) {
+      if (e.key !== "Escape") return;
+      if ($("quote-view") && !$("quote-view").classList.contains("hidden")) {
+        e.preventDefault();
+        closeQuoteView();
+        return;
+      }
+      if (!$("owner-gate") || $("owner-gate").classList.contains("hidden")) return;
+      e.preventDefault();
+      $("owner-gate-err").style.display = "none";
+      switchTab("calc");
+    });
     if ($("btn-user-menu")) $("btn-user-menu").addEventListener("click", function (e) {
       e.stopPropagation();
       toggleUserMenu();
@@ -5516,6 +7245,32 @@
     $("quote-phone").addEventListener("keydown", function (e) {
       if (e.key === "Enter") sendQuote();
     });
+    if ($("btn-find-quotes")) $("btn-find-quotes").addEventListener("click", findMyQuotes);
+    if ($("my-quotes-phone")) {
+      $("my-quotes-phone").addEventListener("keydown", function (e) {
+        if (e.key === "Enter") findMyQuotes();
+      });
+      $("my-quotes-phone").addEventListener("input", function () {
+        const next = String(this.value || "").replace(/[^\d+]/g, "");
+        if (this.value !== next) this.value = next;
+      });
+    }
+    if ($("my-quotes-list")) {
+      $("my-quotes-list").addEventListener("click", function (e) {
+        const btn = e.target.closest("[data-action]");
+        if (!btn) return;
+        const act = btn.dataset.action;
+        const id = btn.dataset.id;
+        if (act === "my-quote-view") {
+          const q = findQuoteAnywhere(id);
+          if (q) renderQuoteView(q);
+          return;
+        }
+        if (act === "quote-share-copy") copyQuoteById(id);
+        if (act === "quote-share-wa") shareQuoteWhatsApp(id);
+        if (act === "quote-share") shareQuoteNative(id);
+      });
+    }
     if ($("btn-copy-link")) $("btn-copy-link").addEventListener("click", copyQuoteLink);
     if ($("btn-lang")) {
       $("btn-lang").addEventListener("click", function () {
@@ -5523,11 +7278,26 @@
       });
     }
     if ($("btn-quote-view-close")) $("btn-quote-view-close").addEventListener("click", closeQuoteView);
+    document.addEventListener("click", function (e) {
+      const printBtn = e.target.closest("#btn-quote-view-print");
+      if (printBtn) {
+        printPublicQuote();
+        return;
+      }
+      const guide = e.target.closest("#btn-catalog-guide");
+      if (guide) {
+        if (!isStaff()) showOwnerGate("rates");
+        else {
+          switchTab("rates");
+          switchAdminPanel("glass");
+        }
+      }
+    });
   }
 
   async function init() {
     try {
-      ["glasscalc:companies", "glasscalc:locks", "glasscalc:cutparams", "glasscalc:ownerpin"].forEach((k) => {
+      ["glasscalc:companies", "glasscalc:locks", "glasscalc:cutparams", "glasscalc:ownerpin", "glasscalc:catalog"].forEach((k) => {
         localStorage.removeItem(k);
       });
     } catch (_) { /* ignore */ }
@@ -5535,9 +7305,12 @@
     state.locks = [];
     state.aluminium = [];
     state.glassThicks = [];
-    state.charges = { net: 0, extra: 0 };
+    state.charges = { net: 0, extra: 0, seasonPct: 0 };
+    try {
+      const sp = Number(localStorage.getItem("glasscalc:seasonPct"));
+      if (Number.isFinite(sp) && sp >= 0) state.charges.seasonPct = Math.min(90, sp);
+    } catch (_) { /* ignore */ }
     state.cutParams = { ...DEFAULT_CUT };
-    applyCatalogLists(readCatalogSoftCache(), false);
     const savedShop = await storeGet(KEYS.shop);
     applyShop(savedShop || state.shop);
     state.items = (await storeGet(KEYS.items)) || [];
@@ -5573,7 +7346,7 @@
     renderColorGrid();
     renderRateList("company-list", state.companies, "company");
     renderRateList("lock-list", state.locks, "lock");
-    refreshSheetSelects();
+    refreshCatalogSelects();
     renderItems();
     renderCuttingTab();
     renderLivePreview(false);

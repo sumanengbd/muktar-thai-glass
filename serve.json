@@ -1,0 +1,17 @@
+{
+  "headers": [
+    {
+      "source": "**",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" }
+      ]
+    },
+    {
+      "source": "/js/sw.js",
+      "headers": [
+        { "key": "Service-Worker-Allowed", "value": "/" }
+      ]
+    }
+  ],
+  "cleanUrls": false
+}

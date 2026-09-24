@@ -1,0 +1,9 @@
+# Secrets / local credentials — never commit
+.env
+.env.*
+**/seed-credentials.sql
+*.seed-credentials.sql
+*_token*.txt
+mtg-sb-token*
+_push_*.json
+_expr_*.txt

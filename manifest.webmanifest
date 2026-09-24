@@ -1,7 +1,7 @@
 {
-  "name": "মুক্তার থাই এস.এস গ্যালারী এন্ড গ্লাস হাউজ",
-  "short_name": "গ্লাস হাউজ",
-  "description": "থাই কাঁচ জানালা ও দরজা ক্যালকুলেটর  -  মাপ দেখে ভিজুয়াল সহ দাম হিসাব করুন",
+  "name": "Suman Thai Glass",
+  "short_name": "Suman Thai",
+  "description": "Thai glass window & door calculator — see the size and estimate price with visuals",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
