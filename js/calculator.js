@@ -108,7 +108,10 @@
   "aluCompany": "আলুমিনিয়াম কোম্পানি",
   "aluThick": "আলুমিনিয়াম থিকনেস",
   "aluRatesTitle": "আলুমিনিয়াম কোম্পানি, থিকনেস ও রং",
-  "aluRatesHint": "মিমি টিক করে পাশে ৳/ফুট দাম দিন। হিসাব কাটিং লম্বা (ফুট) × রেট।",
+  "aluRatesHint": "কোম্পানি, মিমি ও রং বেছে নিয়ে প্রতিটি ফ্রেম পার্টের ৳/ফুট দাম দিন। গ্লাসের দাম আলাদা (কাঁচ ট্যাব)।",
+  "aluPartsTitle": "পার্ট রেট",
+  "aluPartsHint": "কাটিং ফর্মুলার পার্ট অনুযায়ী প্রতি ফুট দাম।",
+  "aluPartsPick": "দাম / পার্ট",
   "aluMmRateLabel": "মিমি রেট (৳/ফুট)",
   "aluMmRatePh": "৳/ফুট",
   "chargesTitle": "নেট ও ইনস্টলেশন রেট",
@@ -466,7 +469,10 @@
     aluCompany: "Aluminium company",
     aluThick: "Aluminium thickness",
     aluRatesTitle: "Aluminium company, thickness and color",
-    aluRatesHint: "Tick each mm and enter ৳/ft beside it. Cost = cutting length (ft) × rate.",
+    aluRatesHint: "Pick company, mm and color, then enter ৳/ft for each frame part. Glass price stays in the Glass tab.",
+    aluPartsTitle: "Part rates",
+    aluPartsHint: "Per-foot rates matching cutting-formula parts.",
+    aluPartsPick: "Rates / parts",
     aluMmRateLabel: "mm rate (৳/ft)",
     aluMmRatePh: "৳/ft",
     chargesTitle: "Net and installation rates",
@@ -801,7 +807,8 @@
       aluThickExtras: [],
       aluColors: ["silver"],
       aluColorExtras: [],
-      aluRates: {}
+      aluRates: {},
+      aluParts: {}
     },
     shop: { name: "", slogan: "", logo: "", phone: "", address: "" },
     adminPanel: "home",
@@ -1626,7 +1633,34 @@
   }
 
   function normalizeAluminium(list) {
-    return expandNamedCombos(list, normalizeAluColorId, 1).filter((a) => a.name && a.thickness > 0);
+    const out = [];
+    (list || []).forEach(function (row) {
+      const name = String(row && row.name || "").trim();
+      if (!name) return;
+      const thicks = uniqueNums(String(row.thickness == null ? "" : row.thickness).split("|").map(function (p) {
+        return Number(String(p).replace(/[^0-9.]/g, ""));
+      }));
+      const colors = uniqueIds(String(row.color || "").split("|").map(function (p) {
+        return normalizeAluColorId(p.trim());
+      }));
+      const useThicks = thicks.length ? thicks : [1];
+      const useColors = colors.length ? colors : [normalizeAluColorId("")];
+      const parts = normalizeAluParts(row.parts, row.rate);
+      const rate = aluPartsPrimaryRate(parts, row.rate);
+      useThicks.forEach(function (thickness) {
+        useColors.forEach(function (color) {
+          out.push({
+            name: name,
+            thickness: thickness,
+            rate: rate,
+            color: color,
+            parts: Object.assign({}, parts),
+            out: false
+          });
+        });
+      });
+    });
+    return out.filter(function (a) { return a.name && a.thickness > 0; });
   }
 
   function kindLabel(kind) {
@@ -1694,6 +1728,116 @@
 
   const GLASS_THICK_PRESETS = [4, 5, 5.5, 6, 8, 10, 12];
   const ALU_THICK_PRESETS = [1, 1.2, 1.4, 1.5, 1.8, 2, 3];
+  const ALU_PART_KEYS = [
+    "outerSide",
+    "shutterLock",
+    "shutterBottom",
+    "shutterTop",
+    "interLock",
+    "outerBottomHi",
+    "outerTopPart"
+  ];
+
+  function aluPartLabel(key) {
+    return T[key] || key;
+  }
+
+  function emptyAluParts() {
+    const out = {};
+    ALU_PART_KEYS.forEach(function (k) { out[k] = 0; });
+    return out;
+  }
+
+  function normalizeAluParts(raw, fallbackRate) {
+    const fb = Number(fallbackRate);
+    const useFb = Number.isFinite(fb) && fb >= 0 ? fb : 0;
+    const src = raw && typeof raw === "object" && !Array.isArray(raw) ? raw : {};
+    const out = {};
+    let hasOwn = false;
+    ALU_PART_KEYS.forEach(function (k) {
+      const v = Number(src[k]);
+      if (Number.isFinite(v) && v >= 0) {
+        out[k] = v;
+        hasOwn = true;
+      } else out[k] = useFb;
+    });
+    if (!hasOwn && useFb > 0) {
+      ALU_PART_KEYS.forEach(function (k) { out[k] = useFb; });
+    }
+    return out;
+  }
+
+  function aluPartsPrimaryRate(parts, fallback) {
+    const vals = ALU_PART_KEYS.map(function (k) { return Number(parts && parts[k]); })
+      .filter(function (n) { return Number.isFinite(n) && n >= 0; });
+    if (!vals.length) {
+      const fb = Number(fallback);
+      return Number.isFinite(fb) && fb >= 0 ? fb : 0;
+    }
+    return Math.max.apply(null, vals);
+  }
+
+  function aluPartsRateText(parts, fallback) {
+    const vals = ALU_PART_KEYS.map(function (k) { return Number(parts && parts[k]); })
+      .filter(function (n) { return Number.isFinite(n) && n >= 0; });
+    if (!vals.length) {
+      const fb = Number(fallback) || 0;
+      return T.taka + fb + T.perFt;
+    }
+    const min = Math.min.apply(null, vals);
+    const max = Math.max.apply(null, vals);
+    if (min === max) return T.taka + min + T.perFt;
+    return T.taka + min + "\u2013" + max + T.perFt;
+  }
+
+  function readAluPartRates(wrapId) {
+    const wrap = $(wrapId);
+    if (!wrap) return null;
+    const out = {};
+    let ok = true;
+    ALU_PART_KEYS.forEach(function (k) {
+      const el = wrap.querySelector('[data-alu-part="' + k + '"]');
+      const v = parseFloat(el && el.value);
+      if (!Number.isFinite(v) || v < 0) ok = false;
+      else out[k] = v;
+    });
+    return ok ? out : null;
+  }
+
+  function syncAluPartRatesFromDom(wrapId, target) {
+    const wrap = $(wrapId);
+    if (!wrap || !target) return;
+    ALU_PART_KEYS.forEach(function (k) {
+      const el = wrap.querySelector('[data-alu-part="' + k + '"]');
+      const v = parseFloat(el && el.value);
+      if (Number.isFinite(v) && v >= 0) target[k] = v;
+      else delete target[k];
+    });
+  }
+
+  function aluPartsToggleLabel(parts) {
+    const src = parts || {};
+    let filled = 0;
+    ALU_PART_KEYS.forEach(function (k) {
+      const v = Number(src[k]);
+      if (Number.isFinite(v) && v >= 0 && String(src[k]) !== "") filled += 1;
+    });
+    if (!filled) return T.aluPartsPick || T.aluPartsTitle;
+    return aluPartsRateText(src, 0);
+  }
+
+  function renderAluPartRates(wrapId, parts) {
+    const wrap = $(wrapId);
+    if (!wrap) return;
+    wrap.innerHTML = ALU_PART_KEYS.map(function (k) {
+      const raw = parts && parts[k];
+      const val = raw != null && raw !== "" ? raw : "";
+      const label = aluPartLabel(k);
+      return '<label class="alu-part-rate" title="' + escapeHtml(label) + '"><span>' + escapeHtml(label) + "</span>" +
+        '<input type="number" min="0" step="1" data-alu-part="' + k + '" placeholder="৳" value="' +
+        escapeHtml(val) + '"></label>';
+    }).join("");
+  }
 
   function togglePick(arr, value, isNum) {
     const v = isNum ? Number(value) : value;
@@ -1784,6 +1928,7 @@
     if (existing) {
       existing.rate = row.rate;
       existing.out = false;
+      if (row.parts) existing.parts = normalizeAluParts(row.parts, row.rate);
     } else list.push(row);
   }
 
@@ -1804,14 +1949,18 @@
     return out;
   }
 
-  function replaceCombos(list, oldName, name, thicks, colors, rate, clickedRate) {
+  function replaceCombos(list, oldName, name, thicks, colors, rate, clickedRate, parts) {
     const old = list.filter((x) => x.name === oldName);
     const rateMap = {};
+    const partsMap = {};
     old.forEach((x) => {
-      rateMap[Number(x.thickness) + "|" + x.color] = x.rate;
+      const key = Number(x.thickness) + "|" + x.color;
+      rateMap[key] = x.rate;
+      partsMap[key] = x.parts ? Object.assign({}, x.parts) : null;
     });
     const byMm = rate && typeof rate === "object" && !Array.isArray(rate);
     const rateChanged = !byMm && Number(rate) !== Number(clickedRate);
+    const useParts = parts ? normalizeAluParts(parts, byMm ? 0 : rate) : null;
     const next = [];
     thicks.forEach((thickness) => {
       colors.forEach((color) => {
@@ -1823,7 +1972,17 @@
         } else {
           useRate = rateChanged || rateMap[key] == null ? rate : rateMap[key];
         }
-        next.push({ name: name, thickness: thickness, rate: useRate, color: color, out: false });
+        const rowParts = useParts
+          ? Object.assign({}, useParts)
+          : normalizeAluParts(partsMap[key], useRate);
+        next.push({
+          name: name,
+          thickness: thickness,
+          rate: useParts ? aluPartsPrimaryRate(rowParts, useRate) : useRate,
+          color: color,
+          parts: rowParts,
+          out: false
+        });
       });
     });
     const kept = list.filter((x) => x.name !== oldName);
@@ -1924,6 +2083,7 @@
     });
     if (id === "home") renderHome();
     if (id === "db") fillDbSettings();
+    if (id === "alu" || id === "glass") renderAdminPicks();
   }
 
   function defaultShop() {
@@ -2362,11 +2522,11 @@
     return values.length ? values.join(", ") : T.pickHint;
   }
 
-  function renderThickPanel(wrapId, presets, selected, inputId, kind, rates, ratePh, extras, isEdit) {
+  function renderThickPanel(wrapId, presets, selected, inputId, kind, rates, ratePh, extras, isEdit, skipRates) {
     const wrap = $(wrapId);
     if (!wrap) return;
     if (!rates) rates = {};
-    syncMmRatesFromDom(wrapId, rates);
+    if (!skipRates) syncMmRatesFromDom(wrapId, rates);
     const ph = ratePh || (kind === "alu" ? T.aluMmRatePh : T.mmRatePh);
     const extraList = extras || [];
     const opts = mergeThicks(presets, selected, extraList).map(function (mm) {
@@ -2375,12 +2535,12 @@
       const val = rates[key] != null ? rates[key] : "";
       const isCustom = presets.every(function (p) { return Number(p) !== Number(mm); });
       return (
-        '<div class="msel-mm-row' + (on ? " is-on" : "") + '" data-mm="' + mm + '">' +
+        '<div class="msel-mm-row' + (on ? " is-on" : "") + (skipRates ? " no-rate" : "") + '" data-mm="' + mm + '">' +
           '<button type="button" class="msel-opt' + (on ? " active" : "") + '" data-mm="' + mm + '">' +
             '<span class="msel-check"></span>' +
             '<span class="msel-mm-label">' + mm + T.mm + "</span>" +
           "</button>" +
-          '<input type="number" class="msel-mm-rate" min="0" step="1" data-mm-rate="' + key + '" placeholder="' + escapeHtml(ph) + '" value="' + escapeHtml(val) + '"' + (on ? "" : " disabled") + ">" +
+          (skipRates ? "" : '<input type="number" class="msel-mm-rate" min="0" step="1" data-mm-rate="' + key + '" placeholder="' + escapeHtml(ph) + '" value="' + escapeHtml(val) + '"' + (on ? "" : " disabled") + ">") +
           '<button type="button" class="msel-remove" data-remove-mm="' + mm + '" title="' + escapeHtml(T.pickRemove) + '" aria-label="' + escapeHtml(T.pickRemove) + '"' + (on || isCustom ? "" : " disabled") + ">×</button>" +
         "</div>"
       );
@@ -2429,14 +2589,19 @@
     if (!pick.aluThickExtras) pick.aluThickExtras = [];
     if (!pick.companyColorExtras) pick.companyColorExtras = [];
     if (!pick.aluColorExtras) pick.aluColorExtras = [];
-    renderThickPanel("new-company-thicks", GLASS_THICK_PRESETS, pick.companyThicks, "new-company-thick", "company", pick.companyRates, T.mmRatePh, pick.companyThickExtras, false);
+    renderThickPanel("new-company-thicks", GLASS_THICK_PRESETS, pick.companyThicks, "new-company-thick", "company", pick.companyRates, T.mmRatePh, pick.companyThickExtras, false, false);
     renderColorPanel("new-company-colors", "company", pick.companyColors, pick.companyColorExtras, false);
-    renderThickPanel("new-alu-thicks", ALU_THICK_PRESETS, pick.aluThicks, "new-alu-thick", "alu", pick.aluRates, T.aluMmRatePh, pick.aluThickExtras, false);
+    renderThickPanel("new-alu-thicks", ALU_THICK_PRESETS, pick.aluThicks, "new-alu-thick", "alu", pick.aluRates, T.aluMmRatePh, pick.aluThickExtras, false, true);
     renderColorPanel("new-alu-colors", "alu", pick.aluColors, pick.aluColorExtras, false);
+    if (!pick.aluParts) pick.aluParts = {};
+    syncAluPartRatesFromDom("alu-part-rates", pick.aluParts);
+    renderAluPartRates("alu-part-rates", pick.aluParts);
+    if ($("alu-parts-pick-label")) $("alu-parts-pick-label").textContent = T.aluPartsPick;
     if ($("company-thick-toggle")) $("company-thick-toggle").textContent = thickRateLabel(pick.companyThicks, pick.companyRates);
     if ($("company-color-toggle")) $("company-color-toggle").textContent = mselLabel(pick.companyColors.map((id) => colorLabel(id)));
-    if ($("alu-thick-toggle")) $("alu-thick-toggle").textContent = thickRateLabel(pick.aluThicks, pick.aluRates);
+    if ($("alu-thick-toggle")) $("alu-thick-toggle").textContent = mselLabel(pick.aluThicks.map(function (mm) { return mm + T.mm; }));
     if ($("alu-color-toggle")) $("alu-color-toggle").textContent = mselLabel(pick.aluColors.map((id) => aluColorLabel(id)));
+    if ($("alu-parts-toggle")) $("alu-parts-toggle").textContent = aluPartsToggleLabel(pick.aluParts);
   }
 
   function bindAdminPicks() {
@@ -2514,6 +2679,22 @@
     bindPanel("new-company-colors", "company", "color");
     bindPanel("new-alu-thicks", "alu", "thick");
     bindPanel("new-alu-colors", "alu", "color");
+    const aluPartsWrap = $("alu-part-rates");
+    if (aluPartsWrap && !aluPartsWrap.dataset.partBound) {
+      aluPartsWrap.dataset.partBound = "1";
+      aluPartsWrap.addEventListener("input", function (e) {
+        const inp = e.target.closest("[data-alu-part]");
+        if (!inp) return;
+        if (!state.adminPick.aluParts) state.adminPick.aluParts = {};
+        const v = parseFloat(inp.value);
+        if (Number.isFinite(v) && v >= 0) state.adminPick.aluParts[inp.dataset.aluPart] = v;
+        else delete state.adminPick.aluParts[inp.dataset.aluPart];
+        if ($("alu-parts-toggle")) $("alu-parts-toggle").textContent = aluPartsToggleLabel(state.adminPick.aluParts);
+      });
+      aluPartsWrap.addEventListener("click", function (e) {
+        e.stopPropagation();
+      });
+    }
     document.addEventListener("click", (e) => {
       const toggle = e.target.closest(".msel-toggle");
       if (toggle) {
@@ -2523,12 +2704,15 @@
         });
         if (box) {
           box.classList.toggle("open");
-          box.classList.remove("drop-up");
+          box.classList.remove("drop-up", "drop-left");
           if (box.classList.contains("open")) {
             const panel = box.querySelector(".msel-panel");
             if (panel) {
-              const r = panel.getBoundingClientRect();
-              if (r.bottom > window.innerHeight - 16) box.classList.add("drop-up");
+              requestAnimationFrame(function () {
+                const r = panel.getBoundingClientRect();
+                if (r.bottom > window.innerHeight - 16) box.classList.add("drop-up");
+                if (r.left < 12) box.classList.add("drop-left");
+              });
             }
           }
         }
@@ -3468,7 +3652,7 @@
     if (available.indexOf(state.aluColor) < 0) state.aluColor = colors[0].id;
     grid.innerHTML = colors.map((c) => {
       const row = exactAluCombo(name, thick, c.id);
-      return colorPickHtml(c, c.id === state.aluColor, row ? row.rate : "", 'data-alu-color="' + c.id + '"', T.perFt);
+      return colorPickHtml(c, c.id === state.aluColor, row ? aluPartsPrimaryRate(row.parts, row.rate) : "", 'data-alu-color="' + c.id + '"', T.perFt);
     }).join("");
   }
 
@@ -3521,16 +3705,19 @@
     const colorText = joinPipe(colors.map((id) => kind === "alu" ? aluColorLabel(id) : colorLabel(id)));
     const thickText = escapeHtml(joinPipe(thicks.map((mm) => mm + T.mm)));
     const rateUnit = kind === "alu" ? T.perFt : T.perSq;
-    const rateText = groupRateText(rows, kind === "company" || kind === "alu", rateUnit);
+    const rateText = kind === "alu"
+      ? aluPartsRateText(item.parts || (rows[0] && rows[0].parts), item.rate)
+      : groupRateText(rows, kind === "company", rateUnit);
     const rateVal = state.edit.rate != null ? state.edit.rate : item.rate;
     const attrs = ' data-index="' + i + '" data-group="' + escapeHtml(item.name) + '"';
     if (editing) {
       if (kind === "company" || kind === "alu") {
-        return '<div class="rate-row is-combo editing has-mm-rates"' + attrs + ">" +
+        return '<div class="rate-row is-combo editing has-mm-rates' + (kind === "alu" ? " has-alu-parts" : "") + '"' + attrs + ">" +
           '<span class="drag-handle" aria-hidden="true">' + ico("grip") + "</span>" +
           '<input class="edit-name" type="text" value="' + escapeHtml(item.name) + '">' +
           '<div class="msel edit-thick" id="msel-edit-thick"><button type="button" class="msel-toggle" id="edit-thick-toggle"></button><div class="msel-panel" id="edit-thicks"></div></div>' +
           '<div class="msel edit-color" id="msel-edit-color"><button type="button" class="msel-toggle" id="edit-color-toggle"></button><div class="msel-panel" id="edit-colors"></div></div>' +
+          (kind === "alu" ? '<div class="msel edit-alu-parts-msel" id="msel-edit-alu-parts"><button type="button" class="msel-toggle" id="edit-alu-parts-toggle"></button><div class="msel-panel msel-panel-rates"><div class="alu-part-rates edit-alu-parts" id="edit-alu-part-rates"></div></div></div>' : "") +
           editSaveCancel(kind, i) + "</div>";
       }
       return '<div class="rate-row is-combo editing"' + attrs + ">" +
@@ -3568,9 +3755,18 @@
     });
     const ph = kind === "alu" ? T.aluMmRatePh : T.mmRatePh;
     const editKind = kind === "alu" ? "alu" : "company";
-    renderThickPanel("edit-thicks", presets, thicks, "edit-thick", editKind, state.edit.rates, ph, state.edit.thickExtras, true);
+    renderThickPanel("edit-thicks", presets, thicks, "edit-thick", editKind, state.edit.rates, ph, state.edit.thickExtras, true, kind === "alu");
     renderColorPanel("edit-colors", editKind, colors, state.edit.colorExtras, true);
-    if ($("edit-thick-toggle")) $("edit-thick-toggle").textContent = thickRateLabel(thicks, state.edit.rates);
+    if (kind === "alu") {
+      if (!state.edit.parts) state.edit.parts = emptyAluParts();
+      renderAluPartRates("edit-alu-part-rates", state.edit.parts);
+      if ($("edit-alu-parts-toggle")) $("edit-alu-parts-toggle").textContent = aluPartsToggleLabel(state.edit.parts);
+    }
+    if ($("edit-thick-toggle")) {
+      $("edit-thick-toggle").textContent = kind === "alu"
+        ? mselLabel(thicks.map(function (mm) { return mm + T.mm; }))
+        : thickRateLabel(thicks, state.edit.rates);
+    }
     if ($("edit-color-toggle")) $("edit-color-toggle").textContent = mselLabel(colors.map((id) => kind === "alu" ? aluColorLabel(id) : colorLabel(id)));
   }
 
@@ -3627,6 +3823,15 @@
       }
     });
     wrap.addEventListener("input", (e) => {
+      const partInp = e.target.closest("[data-alu-part]");
+      if (partInp && e.target.closest(".rate-row.editing")) {
+        if (!state.edit.parts) state.edit.parts = {};
+        const pv = parseFloat(partInp.value);
+        if (Number.isFinite(pv) && pv >= 0) state.edit.parts[partInp.dataset.aluPart] = pv;
+        else delete state.edit.parts[partInp.dataset.aluPart];
+        if ($("edit-alu-parts-toggle")) $("edit-alu-parts-toggle").textContent = aluPartsToggleLabel(state.edit.parts);
+        return;
+      }
       const inp = e.target.closest(".msel-mm-rate");
       if (!inp || !e.target.closest(".rate-row.editing")) return;
       if (!state.edit.rates) state.edit.rates = {};
@@ -3809,6 +4014,7 @@
       state.adminPick.aluThicks = [1];
       state.adminPick.aluColors = ["silver"];
       state.adminPick.aluRates = {};
+      state.adminPick.aluParts = {};
     }
     if (was === "company" || was === "alu") renderAdminPicks();
     setAddLabels();
@@ -3839,6 +4045,7 @@
       name: item.name || "",
       rate: item.rate,
       rates: (kind === "company" || kind === "alu") ? ratesByThickness(siblings) : {},
+      parts: kind === "alu" ? normalizeAluParts(item.parts || (siblings[0] && siblings[0].parts), item.rate) : null,
       thicks: uniqueNums(siblings.map((x) => x.thickness)),
       thickExtras: [],
       colors: uniqueIds(siblings.map((x) => kind === "alu" ? normalizeAluColorId(x.color) : normalizeColorId(x.color))),
@@ -3886,7 +4093,13 @@
     if (!Number.isNaN(extra) && extra > 0 && thicks.every((t) => Number(t) !== extra)) thicks.push(extra);
     const colors = (state.edit.colors || []).map((id) => kind === "alu" ? normalizeAluColorId(id) : normalizeColorId(id));
     if (!thicks.length || !colors.length) { flashNote(T.errNeedPick, true); return; }
-    if (kind === "company" || kind === "alu") {
+    if (kind === "alu") {
+      syncAluPartRatesFromDom("edit-alu-part-rates", state.edit.parts || (state.edit.parts = {}));
+      const parts = readAluPartRates("edit-alu-part-rates");
+      if (!parts) { flashNote(T.errNeedNumber, true); return; }
+      const primary = aluPartsPrimaryRate(parts, 0);
+      replaceCombos(list, state.edit.name, name, thicks, colors, primary, state.edit.rate, parts);
+    } else if (kind === "company") {
       syncMmRatesFromDom("edit-thicks", state.edit.rates);
       const rateByMm = readMmRates("edit-thicks", thicks);
       if (!rateByMm) { flashNote(T.errNeedNumber, true); return; }
@@ -4317,7 +4530,7 @@
       || null;
   }
 
-  function aluRunningFeet(heightFt, widthFt, shutters, qty) {
+  function aluPartFeetMap(heightFt, widthFt, shutters, qty) {
     const heightIn = ftToInchSuta(heightFt);
     const widthIn = ftToInchSuta(widthFt);
     const h = toSuta(heightIn);
@@ -4330,10 +4543,38 @@
     const lockSuta = Math.max(0, h - sideD);
     const shutterSuta = Math.max(0, Math.round((w - shutterD) / n));
     const outerSuta = Math.max(0, w - outerD);
-    // Same aluminium parts as cutting list (excludes glass)
-    const totalSuta = 2 * h + 2 * n * lockSuta + 2 * n * shutterSuta + 2 * outerSuta;
     const q = Math.max(1, Number(qty) || 1);
-    return (totalSuta / 96) * q;
+    const toFt = function (sutaLen, count) {
+      return (sutaLen / 96) * count * q;
+    };
+    return {
+      outerSide: toFt(h, 2),
+      shutterLock: toFt(lockSuta, n),
+      shutterBottom: toFt(shutterSuta, n),
+      shutterTop: toFt(shutterSuta, n),
+      interLock: toFt(lockSuta, n),
+      outerBottomHi: toFt(outerSuta, 1),
+      outerTopPart: toFt(outerSuta, 1)
+    };
+  }
+
+  function aluRunningFeet(heightFt, widthFt, shutters, qty) {
+    const map = aluPartFeetMap(heightFt, widthFt, shutters, qty);
+    return ALU_PART_KEYS.reduce(function (sum, k) { return sum + (Number(map[k]) || 0); }, 0);
+  }
+
+  function aluFrameCost(alu, heightFt, widthFt, shutters, qty, fallbackRate) {
+    const feet = aluPartFeetMap(heightFt, widthFt, shutters, qty);
+    const parts = normalizeAluParts(alu && alu.parts, alu && alu.rate != null ? alu.rate : fallbackRate);
+    let cost = 0;
+    let totalFt = 0;
+    ALU_PART_KEYS.forEach(function (k) {
+      const ft = Number(feet[k]) || 0;
+      const rate = Number(parts[k]) || 0;
+      cost += ft * rate;
+      totalFt += ft;
+    });
+    return { cost: cost, totalFt: totalFt, parts: parts, feet: feet };
   }
 
   function priceParts(item, company, alu, lock) {
@@ -4343,12 +4584,12 @@
     const totalSqft = heightFt * widthFt * qty;
     const type = getType(item.winType || state.selectedType);
     const shutters = type && type.shutters ? type.shutters : 2;
-    const totalAluFt = aluRunningFeet(heightFt, widthFt, shutters, qty);
     const companyRate = company ? Number(company.rate) || 0 : Number(item.companyRate) || 0;
-    const frameRate = alu ? Number(alu.rate) || 0 : Number(item.frameRate) || 0;
     const lockRate = lock ? Number(lock.rate) || 0 : Number(item.lockRate) || 0;
+    const frame = aluFrameCost(alu, heightFt, widthFt, shutters, qty, item.frameRate);
+    const frameRate = aluPartsPrimaryRate(frame.parts, item.frameRate);
     const glassCost = totalSqft * companyRate;
-    const frameCost = totalAluFt * frameRate;
+    const frameCost = frame.cost;
     const lockCost = lockRate * qty;
     const extra = totalSqft * (Number(state.charges.extra) || 0);
     const netCost = item.hasNet ? totalSqft * (Number(state.charges.net) || 0) : 0;
@@ -4360,7 +4601,7 @@
       frameRate: frameRate,
       lockRate: lockRate,
       totalSqft: totalSqft,
-      totalAluFt: totalAluFt,
+      totalAluFt: frame.totalFt,
       glassCost: glassCost,
       frameCost: frameCost,
       lockCost: lockCost,
@@ -5038,21 +5279,28 @@
     const name = cleanTextValue(nameEl && nameEl.value);
     const thicks = selectedThicks("alu");
     const colors = state.adminPick.aluColors.map(normalizeAluColorId);
-    if (!state.adminPick.aluRates) state.adminPick.aluRates = {};
-    syncMmRatesFromDom("new-alu-thicks", state.adminPick.aluRates);
-    const rateByMm = readMmRates("new-alu-thicks", thicks);
+    if (!state.adminPick.aluParts) state.adminPick.aluParts = {};
+    syncAluPartRatesFromDom("alu-part-rates", state.adminPick.aluParts);
+    const parts = readAluPartRates("alu-part-rates");
     markInvalid(nameEl, !name);
     if (!name) { flashNote(T.errNeedName, true); return; }
     if (!thicks.length || !colors.length) { flashNote(T.errNeedPick, true); return; }
-    if (!rateByMm) { flashNote(T.errNeedNumber, true); return; }
+    if (!parts) { flashNote(T.errNeedNumber, true); return; }
     if (nameEl) nameEl.value = name;
+    const primary = aluPartsPrimaryRate(parts, 0);
     thicks.forEach((thickness) => {
-      const rate = rateByMm[Number(thickness)];
-      colors.forEach((color) => upsertCombo(state.aluminium, { name: name, thickness: thickness, rate: rate, color: color }));
+      colors.forEach((color) => upsertCombo(state.aluminium, {
+        name: name,
+        thickness: thickness,
+        rate: primary,
+        color: color,
+        parts: Object.assign({}, parts)
+      }));
     });
     $("new-alu-name").value = "";
     if ($("new-alu-thick")) $("new-alu-thick").value = "";
     state.adminPick.aluRates = {};
+    state.adminPick.aluParts = {};
     state.adminPick.aluThicks = [1];
     state.adminPick.aluColors = ["silver"];
     renderAdminPicks();
@@ -5137,7 +5385,7 @@
 
   function setupPwa() {
     if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("js/sw.js?v=224", { scope: "/" }).then(function (reg) {
+      navigator.serviceWorker.register("js/sw.js?v=229", { scope: "/" }).then(function (reg) {
         if (reg && reg.update) reg.update().catch(function () {});
       }).catch(function () {});
       var refreshing = false;
@@ -5278,7 +5526,7 @@
     }
     return new Promise(function (resolve, reject) {
       const s = document.createElement("script");
-      s.src = "js/sql-setup.js?v=9";
+      s.src = "js/sql-setup.js?v=10";
       s.onload = function () {
         if (window.MTG_SQL_SETUP && window.MTG_SQL_SETUP.schema) resolve(window.MTG_SQL_SETUP);
         else reject(new Error("sql"));

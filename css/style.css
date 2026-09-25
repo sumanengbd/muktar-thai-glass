@@ -3586,6 +3586,103 @@ html.is-standalone .install-tip { display: none !important; }
   display: none;
 }
 
+/* Aluminium add: same full-row flex fill as glass company */
+#tab-rates .admin-tone-alu .alu-add-composer {
+  align-items: stretch;
+  gap: 10px;
+}
+
+#tab-rates .admin-tone-alu .alu-add-composer .add-name {
+  flex: 1.8 1 0;
+  min-width: 160px;
+  max-width: none;
+}
+
+#tab-rates .admin-tone-alu .alu-add-composer .alu-pick-thick,
+#tab-rates .admin-tone-alu .alu-add-composer .alu-pick-color,
+#tab-rates .admin-tone-alu .alu-add-composer .alu-pick-rates {
+  flex: 1.15 1 0;
+  min-width: 140px;
+  max-width: none;
+}
+
+#tab-rates .admin-tone-alu .alu-add-composer > .add-actions {
+  flex: 0 0 auto;
+}
+
+#tab-rates .admin-tone-alu .alu-add-composer .field input,
+#tab-rates .admin-tone-alu .alu-add-composer .msel,
+#tab-rates .admin-tone-alu .alu-add-composer .msel-toggle {
+  width: 100%;
+  max-width: none;
+}
+
+.msel-panel-rates {
+  min-width: 260px;
+  max-width: min(92vw, 340px);
+  padding: 10px !important;
+}
+
+.msel-panel-rates .alu-part-rates {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+
+.msel-panel-rates .alu-part-rate {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) 4.75em;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #2f4550;
+}
+
+.msel-panel-rates .alu-part-rate span {
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.msel-panel-rates .alu-part-rate input {
+  width: 100%;
+  min-height: 36px;
+  padding: 4px 8px;
+  border: 1.5px solid #7d939c;
+  border-radius: 10px;
+  background: #f3f7f8;
+  font: inherit;
+  font-weight: 600;
+  box-sizing: border-box;
+  font-variant-numeric: tabular-nums;
+}
+
+.msel-panel-rates .alu-part-rate input:focus {
+  outline: none;
+  border-color: var(--brand);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(14, 107, 134, 0.16);
+}
+
+#tab-rates .rate-row.has-alu-parts .edit-alu-parts-msel {
+  min-width: 0;
+  width: 100%;
+}
+
+@media (max-width: 720px) {
+  #tab-rates .admin-tone-alu .alu-add-composer .add-name,
+  #tab-rates .admin-tone-alu .alu-add-composer .alu-pick-thick,
+  #tab-rates .admin-tone-alu .alu-add-composer .alu-pick-color,
+  #tab-rates .admin-tone-alu .alu-add-composer .alu-pick-rates {
+    max-width: none;
+    min-width: 0;
+    flex: 1 1 100%;
+  }
+}
+
 .mm-rate-grid,
 .edit-mm-rates {
   display: flex;
@@ -3629,8 +3726,7 @@ html.is-standalone .install-tip { display: none !important; }
 
 #tab-rates .rate-list:has(> .rate-head) > .rate-row.is-combo.editing.has-mm-rates {
   display: grid;
-  grid-template-columns: 28px minmax(0, 1.2fr) minmax(0, 1.2fr) minmax(0, 1fr) 168px;
-  grid-column: 1 / -1;
+  grid-template-columns: 28px minmax(0, 1.15fr) minmax(0, 1.5fr) minmax(0, 0.85fr) minmax(100px, 0.7fr) 168px;
   align-items: center;
   column-gap: 10px;
   row-gap: 10px;
@@ -3648,6 +3744,22 @@ html.is-standalone .install-tip { display: none !important; }
   max-width: none;
   min-width: 0;
   justify-self: stretch;
+}
+
+/* Glass edit has no rate cell — keep Update/Cancel under actions column */
+#tab-rates .rate-row.is-combo.editing.has-mm-rates:not(.has-alu-parts) > .rate-actions {
+  grid-column: 6;
+}
+
+#tab-rates .rate-row.is-combo.editing > .rate-actions {
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 8px;
+  justify-self: end;
+  align-self: center;
+  white-space: nowrap;
 }
 
 #tab-rates .add-composer .add-mid {
@@ -3725,7 +3837,7 @@ html.is-standalone .install-tip { display: none !important; }
 .msel-panel {
   display: none;
   position: absolute;
-  left: 0;
+  left: auto;
   right: 0;
   top: calc(100% + 6px);
   z-index: 90;
@@ -3745,6 +3857,10 @@ html.is-standalone .install-tip { display: none !important; }
 .msel.drop-up .msel-panel {
   top: auto;
   bottom: calc(100% + 6px);
+}
+.msel.drop-left .msel-panel {
+  left: 0;
+  right: auto;
 }
 
 .msel-opts { display: flex; flex-direction: column; gap: 4px; }
@@ -3804,6 +3920,10 @@ html.is-standalone .install-tip { display: none !important; }
 .msel-mm-row.is-on .msel-mm-rate {
   border-color: var(--brand);
   background: #f3fbfc;
+}
+
+.msel-mm-row.no-rate {
+  grid-template-columns: 1fr auto;
 }
 
 .msel-mm-rate:disabled {
@@ -4499,7 +4619,6 @@ html.has-session #user-menu { display: flex !important; }
 #tab-rates .rate-list:has(> .rate-head) > .rate-row.is-combo.editing {
   display: grid;
   grid-template-columns: 28px minmax(0, 1.15fr) minmax(0, 1.5fr) minmax(0, 0.85fr) minmax(100px, 0.7fr) 168px;
-  grid-column: 1 / -1;
   align-items: center;
   column-gap: 10px;
   row-gap: 10px;
@@ -4576,20 +4695,18 @@ html.has-session #user-menu { display: flex !important; }
 }
 
 #tab-rates .rate-list:has(> .rate-head) {
-  display: grid;
-  grid-template-columns: 28px minmax(0, 1.15fr) minmax(0, 1.5fr) minmax(0, 0.85fr) minmax(100px, 0.7fr) 168px;
-  column-gap: 10px;
-  row-gap: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
 #tab-rates .rate-list:has(> .rate-head) > .rate-head,
 #tab-rates .rate-list:has(> .rate-head) > .rate-row.is-combo:not(.editing) {
   display: grid;
-  grid-template-columns: subgrid;
-  grid-column: 1 / -1;
+  grid-template-columns: 28px minmax(0, 1.15fr) minmax(0, 1.5fr) minmax(0, 0.85fr) minmax(100px, 0.7fr) 168px;
+  column-gap: 10px;
   align-items: start;
   justify-items: stretch;
-  gap: 0;
   padding: 8px 10px;
   box-sizing: border-box;
   border: 1.5px solid transparent;
@@ -4829,10 +4946,25 @@ html.is-busy { cursor: wait; }
   #tab-rates .rate-row.editing > .edit-style,
   #tab-rates .rate-row.editing > .edit-rate,
   #tab-rates .rate-row.editing > .edit-pin,
-  #tab-rates .rate-row.editing > .edit-mm-rates,
-  #tab-rates .rate-row.editing > .rate-actions {
+  #tab-rates .rate-row.editing > .edit-mm-rates {
     grid-column: 2;
     width: 100%;
+    max-width: none;
+    min-width: 0;
+    flex: none;
+    margin-left: 0;
+  }
+  #tab-rates .rate-row.is-combo.editing > .rate-actions {
+    grid-column: 2;
+    justify-self: start;
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 8px;
+  }
+  #tab-rates .rate-row.editing:not(.is-combo) > .rate-actions {
+    grid-column: 2;
+    width: auto;
     max-width: none;
     min-width: 0;
     flex: none;

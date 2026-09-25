@@ -17,11 +17,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://euynncqrcufdakmdmkrm.supabase.co">
   <link rel="dns-prefetch" href="https://euynncqrcufdakmdmkrm.supabase.co">
-  <link rel="preload" href="css/style.css?v=211" as="style">
+  <link rel="preload" href="css/style.css?v=223" as="style">
   <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
   <script>(function(){try{var s=JSON.parse(localStorage.getItem("glasscalc:session")||"null");if(!s)return;var role=s.r||s.role;if(!(s.k||s.pin))return;if(role!=="owner"&&role!=="superadmin"&&role!=="operator")return;document.documentElement.classList.add("has-session","is-staff");if(role==="owner"||role==="superadmin")document.documentElement.classList.add("is-owner");if(role==="superadmin")document.documentElement.classList.add("is-superadmin");}catch(e){}})();</script>
-  <link rel="stylesheet" href="css/style.css?v=211">
+  <link rel="stylesheet" href="css/style.css?v=223">
 </head>
 <body>
   <div class="app">
@@ -312,7 +312,16 @@
         <h2 id="alu-rates-title"><span class="title-text"></span> <span class="badge">৳ / ফুট</span></h2>
         <p class="hint" id="alu-rates-hint"></p>
         <div class="admin-pane"><div class="rate-list" id="alu-list"></div>
-                        <div class="add-stack add-composer"><div class="add-form-main"><div class="field add-name"><label for="new-alu-name" id="alu-name-label"></label><input type="text" id="new-alu-name" placeholder="কোম্পানি এর নাম"></div></div><div class="add-form-picks"><div class="field"><label id="alu-thick-pick-label"></label><div class="msel" id="msel-alu-thick"><button type="button" class="msel-toggle" id="alu-thick-toggle"></button><div class="msel-panel" id="new-alu-thicks"></div></div></div><div class="field"><label id="alu-color-pick-label"></label><div class="msel" id="msel-alu-color"><button type="button" class="msel-toggle" id="alu-color-toggle"></button><div class="msel-panel" id="new-alu-colors"></div></div></div></div><div class="add-actions"><button type="button" class="icon-btn secondary" id="btn-add-alu"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg><span id="btn-add-alu-label"></span></button></div></div></div>
+          <div class="add-stack add-composer alu-add-composer">
+            <div class="add-form-main"><div class="field add-name"><label for="new-alu-name" id="alu-name-label"></label><input type="text" id="new-alu-name" placeholder="কোম্পানি এর নাম"></div></div>
+            <div class="add-form-picks">
+              <div class="field alu-pick-thick"><label id="alu-thick-pick-label"></label><div class="msel" id="msel-alu-thick"><button type="button" class="msel-toggle" id="alu-thick-toggle"></button><div class="msel-panel" id="new-alu-thicks"></div></div></div>
+              <div class="field alu-pick-color"><label id="alu-color-pick-label"></label><div class="msel" id="msel-alu-color"><button type="button" class="msel-toggle" id="alu-color-toggle"></button><div class="msel-panel" id="new-alu-colors"></div></div></div>
+              <div class="field alu-pick-rates"><label id="alu-parts-pick-label"></label><div class="msel" id="msel-alu-parts"><button type="button" class="msel-toggle" id="alu-parts-toggle"></button><div class="msel-panel msel-panel-rates" id="new-alu-parts-panel"><div class="alu-part-rates" id="alu-part-rates"></div></div></div></div>
+            </div>
+            <div class="add-actions"><button type="button" class="icon-btn secondary" id="btn-add-alu"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg><span id="btn-add-alu-label"></span></button></div>
+          </div>
+        </div>
       </div>
         <div class="card admin-block admin-tone-lock hidden" data-admin-panel="lock"><span class="admin-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span>
         <h2>লক এর ধরন ও দাম <span class="badge">৳ / প্রতি লক</span></h2>
@@ -473,7 +482,7 @@
   <script src="js/chart.umd.min.js"></script>
   <script src="js/config.js?v=26"></script>
   <script src="js/api.js?v=5"></script>
-  <script src="js/sql-setup.js?v=9"></script>
-  <script src="js/calculator.js?v=241"></script>
+  <script src="js/sql-setup.js?v=10"></script>
+  <script src="js/calculator.js?v=246"></script>
 </body>
 </html>
